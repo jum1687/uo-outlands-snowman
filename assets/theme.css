@@ -1,0 +1,125 @@
+/* ===== 深色模式（参考官方 Wiki 暗色配色：深石板灰 + 暖金点缀）===== */
+/* 作用于 <html data-theme="dark">。浅色为默认（不写 data-theme 即当前外观）。 */
+
+/* 1) 覆盖使用 CSS 变量的样式表（skills / elements 板块） */
+html[data-theme="dark"]{
+  --text:#d7dae1; --link:#e8c98a; --visited:#c4a3e0;
+  --border:#343a44; --box-bg:#1e2228; --accent:#e6b35a; --muted:#9aa1ad; --mw-bg:#16181d;
+  color-scheme: dark;
+}
+
+/* 2) 通用页面表面（pets / codex 板块为硬编码颜色，统一用 !important 覆盖） */
+html[data-theme="dark"] body{
+  background:#16181d !important; color:#d7dae1 !important;
+}
+html[data-theme="dark"] .mw-body{ background:#1b1e24 !important; }
+
+/* 链接 */
+html[data-theme="dark"] a{ color:#e8c98a !important; }
+html[data-theme="dark"] a:visited{ color:#c4a3e0 !important; }
+html[data-theme="dark"] a:hover{ color:#f3d8a6 !important; }
+
+/* 顶部导航栏 */
+html[data-theme="dark"] .site-nav{
+  background:#1b1e24 !important; border-bottom:1px solid #343a44 !important;
+}
+html[data-theme="dark"] .site-nav .nav-brand{ color:#eef0f3 !important; }
+html[data-theme="dark"] .site-nav a{ color:#d7dae1 !important; }
+html[data-theme="dark"] .site-nav a:hover{ background:rgba(230,179,90,.14) !important; }
+html[data-theme="dark"] .site-nav .nav-dropdown > a::after{ color:#9aa1ad !important; }
+html[data-theme="dark"] .site-nav .nav-menu{
+  background:#23272f !important; border:1px solid #343a44 !important;
+}
+html[data-theme="dark"] .site-nav .nav-menu a{ color:#d7dae1 !important; }
+html[data-theme="dark"] .site-nav .nav-menu a:hover{
+  background:rgba(230,179,90,.14) !important; color:#e6b35a !important;
+}
+/* skills.html 等使用 header.site 的独立页 */
+html[data-theme="dark"] header.site{
+  background:#1b1e24 !important; border-bottom:1px solid #343a44 !important;
+}
+
+/* 面包屑 / 官方原文链接 */
+html[data-theme="dark"] .breadcrumb{
+  background:#1b1e24 !important; color:#9aa1ad !important; border-bottom-color:#343a44 !important;
+}
+html[data-theme="dark"] .source-link{
+  background:#1b1e24 !important; color:#9aa1ad !important; border-bottom-color:#343a44 !important;
+}
+
+/* 目录框 / 章节标题 */
+html[data-theme="dark"] .toc{ background:#1e2228 !important; border-color:#343a44 !important; }
+html[data-theme="dark"] .toc .toctitle{ border-bottom-color:#343a44 !important; }
+html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3,
+html[data-theme="dark"] .mw-page-title-main{ color:#eef0f3 !important; border-bottom-color:#343a44 !important; }
+html[data-theme="dark"] .cnsub, html[data-theme="dark"] .en-h, html[data-theme="dark"] .en,
+html[data-theme="dark"] .en-cell, html[data-theme="dark"] .muted{ color:#9aa1ad !important; }
+
+/* 提示 / 示例 / 代码框 */
+html[data-theme="dark"] .note{
+  background:#2a2616 !important; border-left-color:#e6b35a !important; color:#e8e2d2 !important;
+}
+html[data-theme="dark"] .example{ background:#1e2530 !important; border-color:#2f4a66 !important; }
+html[data-theme="dark"] .example .ex-title{ color:#8ab4f8 !important; }
+html[data-theme="dark"] pre, html[data-theme="dark"] code, html[data-theme="dark"] .formula{
+  background:#15171c !important; border-color:#343a44 !important; color:#cdd3dc !important;
+}
+
+/* 首页分类卡片 / 下拉菜单 */
+html[data-theme="dark"] .skill-card{
+  background:#1e2228 !important; color:#eef0f3 !important; border-color:#343a44 !important;
+}
+html[data-theme="dark"] .skill-card:hover{
+  border-color:#e6b35a !important; box-shadow:0 4px 14px rgba(230,179,90,.18) !important;
+}
+html[data-theme="dark"] .dropdown-menu{ background:#23272f !important; border-color:#343a44 !important; }
+html[data-theme="dark"] .dropdown-menu a{
+  color:#eef0f3 !important; border-bottom-color:#343a44 !important;
+}
+html[data-theme="dark"] .dropdown-menu a:hover{
+  background:rgba(230,179,90,.14) !important; color:#e6b35a !important;
+}
+html[data-theme="dark"] .idx-intro{ background:#1e2228 !important; border-color:#343a44 !important; }
+html[data-theme="dark"] .idx-list .cnsub{ color:#9aa1ad !important; }
+
+/* 页脚 */
+html[data-theme="dark"] footer{
+  background:#1b1e24 !important; color:#9aa1ad !important; border-top-color:#343a44 !important;
+}
+
+/* 宠物 / 元素 板块专用表面 */
+html[data-theme="dark"] .pet-summary, html[data-theme="dark"] .ability-list li,
+html[data-theme="dark"] .ability-entry, html[data-theme="dark"] .type-nav a,
+html[data-theme="dark"] .db-chk, html[data-theme="dark"] .db-clear-btn{
+  background:#1e2228 !important; border-color:#343a44 !important; color:#d7dae1 !important;
+}
+html[data-theme="dark"] .pet-summary b{ color:#eef0f3 !important; }
+html[data-theme="dark"] .ability-entry .ability-desc{ color:#cdd3dc !important; }
+html[data-theme="dark"] .db-chk:hover{ background:#23272f !important; }
+html[data-theme="dark"] .db-label{ color:#d7dae1 !important; }
+html[data-theme="dark"] .filter-box input, html[data-theme="dark"] .filter-box select{
+  background:#15171c !important; border-color:#343a44 !important; color:#d7dae1 !important;
+}
+html[data-theme="dark"] .img-placeholder, html[data-theme="dark"] .pet-img img,
+html[data-theme="dark"] img.creature-thumb{ background:#1e2228 !important; border-color:#343a44 !important; }
+html[data-theme="dark"] .backlink{ color:#9aa1ad !important; border-top-color:#343a44 !important; }
+
+/* 表格 */
+html[data-theme="dark"] .aspect-data-table th,
+html[data-theme="dark"] .pet-table th{ background:#272c34 !important; color:#eef0f3 !important; }
+html[data-theme="dark"] .aspect-data-table td,
+html[data-theme="dark"] .pet-table td{ border-color:#343a44 !important; }
+html[data-theme="dark"] .pet-table tbody tr:nth-child(even){ background:#1a1e24 !important; }
+html[data-theme="dark"] .pet-table th.sortable:hover{ background:#2f3540 !important; }
+html[data-theme="dark"] .aspect-data-table .en-cell{ color:#9aa1ad !important; }
+
+/* ===== 模式切换按钮 ===== */
+.theme-toggle{
+  margin-left:auto;
+  display:inline-flex; align-items:center; gap:4px;
+  font:inherit; font-size:14px; line-height:1; color:inherit;
+  background:transparent; border:1px solid rgba(140,140,140,.45);
+  border-radius:6px; padding:6px 10px; cursor:pointer; white-space:nowrap;
+}
+.theme-toggle:hover{ background:rgba(140,140,140,.18); }
+@media (max-width:640px){ .site-nav .theme-toggle{ margin-left:0; } }
