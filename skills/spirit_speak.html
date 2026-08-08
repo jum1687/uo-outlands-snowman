@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirit Speak · 通灵 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>通灵 Spirit Speak</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Spirit_Speak" target="_blank" rel="noopener">wiki.uooutlands.com/Spirit_Speak</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">通灵 <span class="cnsub">Spirit Speak</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#commands">宠物指令 / Pet Commands</a></li>
+    <li><a href="#offensive">攻击法术加成 / Offensive Spell Bonuses</a></li>
+    <li><a href="#summoning">召唤法术 / Summoning Spells</a></li>
+    <li><a href="#reducing">降低有效通灵 / Reducing Effective Spirit Speak</a></li>
+    <li><a href="#followers">可召唤追随者 / Summonable Followers</a></li>
+    <li><a href="#tome">Summoner's Tome / 召唤师典</a></li>
+    <li><a href="#necro">死灵召唤 / Necromancy Summons</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>通灵（Spirit Speak）显著提升召唤追随者的生命值、攻击速度、伤害、持续时间等。还提供对玩家法术伤害的加成，甚至可与处于鬼魂（死亡）状态的玩家交流。</p>
+    
+    <p>通灵技能为召唤追随者提供加成，外加其他法术加成，并允许玩家使用召唤师典（Summoner's Tome）。</p>
+
+    <h2 id="commands">宠物指令 <span class="en-h">Pet Commands</span></h2>
+    <div class="formula">All Guard   ：宠物会守护你，若遭攻击会反击；经过传送（recall/地牢层）后停止守护
+All Kill    ：宠物会攻击你选中的目标，若在范围内会先攻击你
+All Patrol  ：宠物巡逻至你指定的点，攻击遇到的任何敌人
+All Stop    ：宠物停止当前动作并静止
+All Stay    ：宠物停留在原地
+All Follow  ：宠物跟随你，不攻击任何目标
+All Come    ：宠物来到你身边，然后停留在原地
+（可用单个宠物名字替换 All，进行单独指令）</div>
+
+    <h2 id="offensive">攻击法术加成 <span class="en-h">Offensive Spell Bonuses</span></h2>
+    
+    <p>通灵提供（+10% × (有效通灵技能 / 100)）的蓄能法术（Charged Spell）触发几率。</p>
+
+    <h2 id="summoning">召唤法术 <span class="en-h">Summoning Spells</span></h2>
+    <ul class="plain">
+      
+      <li>召唤法术施放需 5 秒</li>
+      
+      <li>施放召唤法术时不会受到生物/环境来源的打断</li>
+      
+      <li>施放任何召唤法术都无法获得法力返还（仍可从法力来源如奥术法力井或死灵凋零获取法力）</li>
+      
+      <li>默认情况下驱散召唤物不会返还任何法力</li>
+    </ul>
+    <h3 id="duration">Summon Duration</h3>
+    
+    <p>非死灵召唤的基础召唤持续时间为（2 分钟 + (8 分钟 × (面板通灵技能 / 100))）。当玩家使用通灵技能从附近尸体汲取能量时，会自动延长其附近所有非死灵召唤的持续时间。通过通灵尸体汲取，玩家最长可达 30 分钟召唤持续时间。每具尸体获得的持续时间增量取决于死亡生物难度，并进一步按玩家对该生物造成的伤害占比缩放。</p>
+    <div class="formula">Summon Duration 增量(秒) = (10% + 90% × 玩家对该生物造成的伤害占比) × (50 × √生物难度)</div>
+    <h3 id="berserk">Berserk Summons</h3>
+    
+    <p>刀灵（Blade Spirits）与能量漩涡（Energy Vortex）被视为「狂暴（Berserk）」追随者，会自动攻击感知范围内任何非驯服的灰色生物/NPC。狂暴追随者不会攻击玩家或其追随者。玩家无法控制狂暴追随者攻击的目标，也无法对其下达指令。狂暴追随者无法被释放，只能通过驱散（Dispel）法术解除。狂暴追随者比其他追随者产生更多仇恨。</p>
+    <h3 id="dispel">Dispelling Other Players' Summons</h3>
+    
+    <p>当玩家试图用驱散或群体驱散法术驱散其他玩家的召唤追随者时，有（50% × (控制者面板通灵技能 / 100)）的几率该召唤物会忽略驱散尝试（适用于普通与亡灵召唤）。</p>
+    <h3 id="stats">Stat and Skill Increases</h3>
+    
+    <p>所有召唤追随者的属性与技能基于施法者的有效通灵技能提升：</p>
+    <div class="formula">Hit Points        +150% × (有效通灵 / 100)
+Attack Speed      +25%  × (有效通灵 / 100)
+Damage            +50%  × (有效通灵 / 100)
+Wrestling         +50%  × (有效通灵 / 100)
+Armor             +25   × (有效通灵 / 100)
+Magic Resist      +50   × (有效通灵 / 100)
+Dispel Resistance 20%   × (有效通灵 / 100)</div>
+
+    <h2 id="reducing">降低有效通灵 <span class="en-h">Reducing Effective Spirit Speak</span></h2>
+    
+    <p>若玩家进入 PvP 状态，其召唤物的属性与技能会自动调整为基于其面板通灵技能。此外，召唤师典的强化在对抗玩家时不生效。若玩家移除或停用任何为其有效通灵提供加成的元素护甲（Aspect Armor）或精通链（Mastery Chains），其控制的召唤物的属性与技能会相应调整。</p>
+
+    <h2 id="followers">可召唤追随者 <span class="en-h">Summonable Followers</span></h2>
+    
+    <p>以下是各可召唤追随者在通灵技能 Base / 80 / 100 / 120 / 150 时的属性。</p>
+
+    <h3>Air Elemental 气元素</h3>
+    
+    <p>2 控制槽 · 近战 · 近战输出，缺乏坦度。</p>
+    <div class="formula">           Base   80    100   120   150
+Hits       500   1100  1250  1400  1625
+Melee Dmg  34-40 47.6-56 51-60 54.4-64 59.5-70
+Wrestling  100   140   150   160   175
+Armor      50    70    75    80    87.5
+Mag Resist 100   140   150   160   175
+能力 Cleave：近战攻击额外对 2 格内随机目标造成 (伤害上限 × 0.6)</div>
+
+    <h3>Blade Spirits 刀灵</h3>
+    
+    <p>1 控制槽 · 狂暴 · 近战 · 同一时间仅一个（获得双倍召唤师典经验）。</p>
+    <div class="formula">           Base  80    100   120   150
+Hits       250  550   625   700   812.5
+Melee Dmg  20-24 28-33.6 30-36 32-38.4 35-42
+Wrestling  90   126   135   144   157.5
+Armor      50   70    75    80    87.5
+Mag Resist 100  140   150   160   175
+能力 Diversion：仇恨降低</div>
+
+    <h3>Earth Elemental 土元素</h3>
+    
+    <p>2 控制槽 · 近战 · 对抗近战的优秀坦克。</p>
+    <div class="formula">           Base   80    100   120   150
+Hits       550   1210  1375  1540  1787.5
+Melee Dmg  30-36 42-50.4 45-54 48-57.6 52.5-63
+Wrestling  95    133   142.5 152   166.25
+Armor      75    95    100   105   112.5
+Mag Resist 50    90    100   110   125
+能力 Rooted：免疫击退，仇恨提升</div>
+
+    <h3>Energy Vortex 能量漩涡</h3>
+    
+    <p>2 控制槽 · 狂暴 · 近战 · 既能坦也能打出可观伤害。</p>
+    <div class="formula">           Base   80    100   120   150
+Hits       500   1100  1250  1400  1625
+Melee Dmg  38-46 53.2-64.4 57-69 60.8-73.6 66.5-80.5
+Wrestling  105   147   157.5 168   183.75
+Armor      50    70    75    80    87.5
+Mag Resist 100   140   150   160   175
+能力 Discharge：近战 10% 几率回复 5% 生命，并造成无视护甲的额外 (伤害上限 × 2.0) 伤害</div>
+
+    <h3>Fire Elemental 火元素</h3>
+    
+    <p>2 控制槽 · 施法者 · 高输出的远程施法者。</p>
+    <div class="formula">           Base  80    100   120   150
+Hits       400  880   1000  1120  1300
+Spell Dmg  28-34 39.2-47.6 42-51 44.8-54.4 49-59.5
+Wrestling  85   119   127.5 136   148.75
+Armor      25   45    50    55    62.5
+Mag Resist 100  140   150   160   175
+能力 Epic Barrage：对 12 格内目标发射 3 发，各造成无视护甲的 (伤害上限 × 0.6)</div>
+
+    <h3>Water Elemental 水元素</h3>
+    
+    <p>2 控制槽 · 施法者 · 混合体，擅长抵御法术也能造成可观法术伤害。</p>
+    <div class="formula">           Base   80    100   120   150
+Hits       550   1210  1375  1540  1787.5
+Spell Dmg  24-30 33.6-42 36-45 38.4-48 42-52.5
+Wrestling  100   140   150   160   175
+Armor      50    70    75    80    87.5
+Mag Resist 150   190   200   210   225
+能力 Mirror：对其施放的法术有 15% 几率反射给施法者；Flux：自带 25 招架并提升仇恨</div>
+
+    <h3>Summon Daemon 召唤恶魔</h3>
+    
+    <p>2 控制槽 · 施法者 · 偏重输出。</p>
+    <div class="formula">           Base  80    100   120   150
+Hits       600  1320  1500  1680  1950
+Spell Dmg  26-32 36.4-44.8 39-48 41.6-51.2 45.5-56
+Wrestling  95   133   142.5 152   166.25
+Armor      50   70    75    80    87.5
+Mag Resist 100  140   150   160   175
+能力 Fury：每存活 30 秒伤害 +5%（上限 +30%）</div>
+
+    <h3>Summon Creature 召唤生物</h3>
+    
+    <p>召唤生物法术从「可驯服生物池」中随机召唤一只，池由召唤师典的「生物目录」升级决定：</p>
+    <div class="formula">Pool 1：所有 1 控制槽、最小驯服要求 45–55 的非坐骑可驯服生物
+Pool 2：60–70
+Pool 3：75–85
+Pool 4：90–100
+（若死灵「复仇之魂」能力生效，则从独特亡灵生物池召唤）</div>
+
+    <h2 id="tome">Summoner's Tome <span class="en-h">召唤师典</span></h2>
+    
+    <p>玩家可使用召唤师典进一步强化其对抗生物的召唤追随者，需要至少 80 面板通灵与 80 魔法方可使用。</p>
+
+    <h2 id="necro">死灵召唤 <span class="en-h">Necromancy Summons</span></h2>
+    
+    <p>在死灵「复仇之魂（Vengeful Spirit）」能力生效期间施放的任意召唤，都会以亡灵召唤形式出现，属性、技能与能力和普通召唤相同。例外是召唤生物法术，在能力生效期间会召唤独特亡灵生物，而非 1 槽可驯服生物。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–80 施法时被动获得（新手地牢）；或使用该技能（无需试剂，但技能获取少得多）</li>
+      
+      <li>80–120 施法时被动获得；或使用该技能（无需试剂，但技能获取少得多）</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

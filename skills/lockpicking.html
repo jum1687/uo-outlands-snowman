@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lockpicking · 开锁 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 盗窃类 › <span>开锁 Lockpicking</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Lockpicking" target="_blank" rel="noopener">wiki.uooutlands.com/Lockpicking</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">开锁 <span class="cnsub">Lockpicking</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#description">简介 / Description</a></li>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#dungeon_chests">地牢与藏宝图宝箱 / Dungeon and Treasure Map Chests</a></li>
+    <li><a href="#continuous">连续开锁 / Continuous Lockpicking</a></li>
+    <li><a href="#tool_bonus">工具加成 / Tool Bonus</a></li>
+    <li><a href="#chest_difficulty">宝箱难度 / Chest Difficulty</a></li>
+    <li><a href="#respawn">宝箱刷新时间 / Chest Respawn Times</a></li>
+    <li><a href="#harvest_aspect">丰收专精 / Harvest Aspect</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="description">简介 <span class="en-h">Description</span></h2>
+    
+    <p>开锁（Lockpicking）技能允许玩家使用开锁器（Lockpicks）开启地牢宝箱与藏宝箱。开启地牢宝箱与典范宝箱还需要玩家具备侦察隐藏（Detecting Hidden）技能并使用陷阱工具（Trap Tools）清除宝箱上的陷阱，才能安全开启。</p>
+
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    <ul class="plain">
+      
+      <li>玩家可使用向 NPC 购买或自制的开锁器，开启上锁的宝箱与容器</li>
+      
+      <li>开启通过藏宝图（Treasure Maps）找到的藏宝图宝箱所必需</li>
+      
+      <li>与侦察隐藏技能及陷阱工具配合，用于地牢宝箱与典范宝箱</li>
+      
+      <li>地牢与藏宝图宝箱可享受每周区域加成（Region Bonuses）</li>
+    </ul>
+
+    <h2 id="dungeon_chests">地牢与藏宝图宝箱 <span class="en-h">Dungeon and Treasure Map Chests</span></h2>
+    <ul class="plain">
+      
+      <li>地牢与藏宝图宝箱拥有 1 到 8 级（依地牢位置或地图难度而定）的锁难度（Lock Difficulty），以及 0–100% 的开锁进度（Lock Progress）值</li>
+      
+      <li>玩家可使用开锁器对宝箱进行开锁尝试，成功将提升开锁进度</li>
+      
+      <li>若宝箱的解除陷阱进度低于 100%，玩家在开锁尝试时有可能触发陷阱，导致本次尝试被取消</li>
+      
+      <li>随着宝箱解除陷阱进度的提升，开锁与解除陷阱时触发陷阱的几率都会下降</li>
+      
+      <li>玩家可双击宝箱打开开锁窗口</li>
+      
+      <li>该窗口会显示开锁／解除陷阱的成功率与进度值</li>
+      
+      <li>玩家可点击窗口中的按钮对宝箱进行开锁／解除陷阱尝试</li>
+      
+      <li>此外，在开锁／解除陷阱窗口中，玩家可轮换不同工具材质以查看成功率变化，并在背包中有对应工具时以该材质进行尝试</li>
+      
+      <li>玩家也可选择直接双击开锁器并指定宝箱</li>
+      
+      <li>单击宝箱会显示其开锁／解除陷阱进度（若已进行）</li>
+      
+      <li>地牢宝箱达到 100% 开锁进度后，会启动一个计时器，到期后宝箱将关闭并重置（难度越高的宝箱重置时间越长）</li>
+      
+      <li>使用卓越（exceptional）及有色材质的开锁器，会提升玩家的有效开锁技能（Effective Lockpicking），并提升对应工具每次成功技能判定对宝箱所推进的进度量</li>
+    </ul>
+    <div class="formula">成功开锁的几率 = ((有效技能 - 宝箱最低技能) × 2.5%)
+A player's chance to successfully Lockpick is ((Effective Skill - Chest Minimum Skill) * 2.5%)</div>
+    
+    <p>敏捷／耐力不影响你的开锁。</p>
+
+    <h2 id="continuous">连续开锁 <span class="en-h">Continuous Lockpicking</span></h2>
+    <ul class="plain">
+      
+      <li>玩家现在可为藏宝图、地牢宝箱与锁匠训练箱（Locksmith Training Boxes）启用“连续开锁（Continuous Lockpicking）”与“连续解除陷阱（Continuous Remove Trap）”</li>
+      
+      <li>若启用连续开锁，玩家将持续进行开锁尝试，直到宝箱被打开</li>
+      
+      <li>若启用连续解除陷阱，玩家将持续进行解除陷阱尝试，直到宝箱清除陷阱或触发陷阱</li>
+      
+      <li>若启用连续机制时玩家的开锁器或陷阱工具损坏，将自动换用上一资源类型的新工具</li>
+      
+      <li>若找不到上一资源类型的新工具，自动开锁或自动解除陷阱将停止</li>
+    </ul>
+
+    <h2 id="tool_bonus">工具加成 <span class="en-h">Tool Bonus</span></h2>
+    <table style="border-collapse:collapse;width:100%;max-width:560px;font-size:13.5px;">
+      <thead><tr style="background:#f8f9fa;">
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Material / 材质</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Effective Skill / 有效技能</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Progress Bonus / 进度加成</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Exceptional (卓越)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+5</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+12.50%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Iron (铁)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+0</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+0%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Dull Copper (暗铜)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+1</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+2.5%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Shadow Iron (影铁)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+2</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+5%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Copper (铜)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+3</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+7.5%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Bronze (青铜)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+4</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+10%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Gold (金)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+5</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+12.5%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Agapite (银长石)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+6</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+15%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Verite (绿石)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+7</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+17.5%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Valorite (秘银)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+8</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+20%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Avarite (钨金)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+9</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+22.5%</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="chest_difficulty">宝箱难度 <span class="en-h">Chest Difficulty</span></h2>
+    <h3 id="dungeon_treasure">Dungeon/Treasure Map Chests</h3>
+    <table style="border-collapse:collapse;width:100%;max-width:640px;font-size:13.5px;">
+      <thead><tr style="background:#f8f9fa;">
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Chest Difficulty / 宝箱难度</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Level / 等级</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Minimum Skill / 最低技能</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Progress Amount / 进度量</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Worthless</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">1</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">0</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((40% to 80%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Very Easy</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">2</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">25</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((36% to 72%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Easy</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">3</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">50</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((32% to 64%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Average</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">4</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">75</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((28% to 56%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Difficult</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">5</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">95</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((24% to 48%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Very Difficult</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">6</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">105</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((20% to 40%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Extremely Difficult</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">7</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">115</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((16% to 32%) × (1 + Tool Bonus)) %</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Nearly Impossible</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">8</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">125</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((12% to 24%) × (1 + Tool Bonus)) %</td></tr>
+      </tbody>
+    </table>
+    <h3 id="paragon">Paragon Chests</h3>
+    <table style="border-collapse:collapse;width:100%;max-width:480px;font-size:13.5px;">
+      <thead><tr style="background:#f8f9fa;">
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Paragon Chest / 典范宝箱</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Minimum Skill / 最低技能</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 10px;text-align:left;">Progress Chance / 进度几率</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Lesser</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">~75</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">???</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Greater</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">~95</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">???</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="respawn">宝箱刷新时间 <span class="en-h">Chest Respawn Times</span></h2>
+    
+    <p>刷新时间随难度等级而异，详见 Dungeon_Chests#Dungeon_Chest_Levels。</p>
+
+    <h2 id="harvest_aspect">丰收专精 <span class="en-h">Harvest Aspect</span></h2>
+    
+    <p>开锁受丰收专精（Harvest Aspect）加成影响。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–80 在新手地牢（New Player Dungeon）使用锁匠训练箱（Locksmith Training Box）反复开锁</li>
+      
+      <li>80–120 继续使用锁匠训练箱反复开锁</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

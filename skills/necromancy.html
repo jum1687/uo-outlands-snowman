@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Necromancy · 死灵法术 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>死灵法术 Necromancy</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Necromancy" target="_blank" rel="noopener">wiki.uooutlands.com/Necromancy</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">死灵法术 <span class="cnsub">Necromancy</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#acquiring">获取与提升 / Acquiring and Increasing</a></li>
+    <li><a href="#menu">死灵菜单 / Necromancy Menu</a></li>
+    <li><a href="#hotbar">死灵快捷栏 / Necromancy Hotbar</a></li>
+    <li><a href="#commands">指令 / Necromancy Commands</a></li>
+    <li><a href="#pvp">PvP 中的死灵 / Necromancy in PvP</a></li>
+    <li><a href="#abilities">能力说明 / Ability Descriptions</a></li>
+    <li><a href="#undead">亡灵召唤 / Undead Summons</a></li>
+    <li><a href="#effective">有效死灵技能 / Effective Necromancy Skill</a></li>
+    <li><a href="#tome">Summoner's Tome / 召唤师典</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>死灵法术（Necromancy）技能允许玩家激活死灵能力，可辅助追随者、强化法术或直接造成伤害。能力从《死灵之书》（Book of Necromancy）中激活，每个能力有各自的技能要求，但玩家还须拥有与之匹配的魔法值才能施展。拥有死灵技能的玩家会随时间生成「不神圣符号（Unholy Symbols）」，用于支付死灵能力。</p>
+    <ul class="plain">
+      
+      <li>Outlands 的死灵法术包含 10 个死灵能力，主题基于经典死灵法术，但为法师对抗生物重新平衡</li>
+      
+      <li>玩家自动累积不神圣符号（一种虚拟资源，用于消耗以使用能力）</li>
+      
+      <li>玩家每 5 秒获得 1 个不神圣符号，最多可储存 有效死灵技能 / 10（向下取整）个</li>
+      
+      <li>每个能力有不神圣符号消耗（1 至 5）；同一能力使用间隔 30 秒冷却；不消耗法力，也不依赖 Fame/Karma；激活瞬发、不可打断、无需空手</li>
+      
+      <li>可在隐身时使用的死灵能力在隐身状态下不显示视觉效果</li>
+    </ul>
+
+    <h2 id="acquiring">获取与提升死灵技能 <span class="en-h">Acquiring and Increasing Necromancy Skill</span></h2>
+    <ul class="plain">
+      
+      <li>角色创建时选择死灵法术的玩家，背包中起始即有一本死灵之书</li>
+      
+      <li>从死灵法师 NPC 处花 5,000 金币或牺牲 25,000 Fame 获取；可在死灵法师 NPC 处训练至 50</li>
+      
+      <li>背包中有死灵之书的玩家在发动法术攻击时自动获得死灵技能（类似获得魔法）</li>
+      
+      <li>玩家可通过技能卷轴达到 101–120 死灵；史诗技能卷轴提升技能上限</li>
+      
+      <li>死灵需要魔法：只要魔法不超过 100，有效死灵就被魔法所限（若魔法达到 100，则可自由超过 100）</li>
+    </ul>
+
+    <h2 id="menu">死灵菜单 <span class="en-h">Necromancy Menu</span></h2>
+    
+    <p>双击死灵之书或输入 [Necromancy 打开。显示能力说明、不神圣符号消耗、最低死灵技能要求，以及当前储存的符号数。「Activate Ability（激活能力）」按钮尝试激活所选能力。</p>
+
+    <h2 id="hotbar">死灵快捷栏 <span class="en-h">Necromancy Hotbar</span></h2>
+    
+    <p>通过「Open Hotbar」按钮或 [NecromancyHotbar 启动。</p>
+    <h3>Ability Button Hues</h3>
+    <div class="formula">黄色 Yellow：符号充足，可激活
+浅灰 Light Grey：符号不足
+深灰 Dark Grey：刚激活，处于 30 秒冷却
+红色 Red：不满足技能要求</div>
+    <h3>Layout Switching</h3>
+    
+    <p>顶部的小宝珠按钮可在完整/精简、垂直/水平、单行/双行或极简模式间切换布局。</p>
+    <h3>Ability Auto-Renew</h3>
+    
+    <p>勾选 Auto-Renew 后会在符号充足时自动激活能力（优先最便宜的，自上而下）。若脱离战斗超过 30 秒则不会自动续接。</p>
+    <h3>Save Hotbar on logout</h3>
+    
+    <p>使用 Gump Manager（选项 → 快捷栏 → Ctrl+Alt 点击符号图标 → 命名 → 勾选 Remember across client restarts → Remember UI Window Positions）。或指令 -savenecrobar 保存位置并启用「stay」。</p>
+
+    <h2 id="commands">死灵指令 <span class="en-h">Necromancy Commands</span></h2>
+    
+    <p>完整指令列表见指令菜单（纸娃娃 → Help → Commands → Necromancy）。每个能力有专属指令如 [EvilOmen 或 [RaiseDead。[Necromancy1..N 按快捷栏位置激活能力。</p>
+
+    <h2 id="pvp">PvP 中的死灵 <span class="en-h">Necromancy in PvP</span></h2>
+    <ul class="plain">
+      
+      <li>死灵能力在 PvP 中无效（处于 PvP 状态时效果不生效）</li>
+      
+      <li>提供（10% × (死灵技能 / 100)）的 PvP 法术伤害辅助加成（类似露营、法医、追踪、抄写）</li>
+      
+      <li>提升召唤追随者生命/伤害的能力，在 PvP 中按通灵加成同样处理</li>
+      
+      <li>玩家在 PvP 状态下可累积不神圣符号；除 Wither 与 Vampiric Embrace 外，所有能力均可在 PvP 状态下激活</li>
+    </ul>
+    <div class="formula">PvP 法术伤害辅助加成 = 10% × (死灵技能 / 100)</div>
+
+    <h2 id="abilities">死灵能力说明 <span class="en-h">Necromancy Ability Descriptions</span></h2>
+    <div class="formula">Vengeful Spirit  符号1 / 技能50：随后 30 秒，所有召唤法术改为创造亡灵追随者，每 10 秒损失 1% 生命与最大生命，但伤害 +(20% × (死灵/100))
+Poison Strike    符号1 / 技能55：对已施加法术中毒或疾病的生物结算最多 3 次毒 tick 与 8 次疾病 tick，伤害为 (100% × (死灵/100)) 正常值（结算次数受已结算 tick+1 限制）
+Evil Omen       符号2 / 技能60：随后 30 秒，法术伤害 +(20% × (死灵/100))，但法术有 25% 几率对玩家造成 (法力消耗 / 2) 伤害
+Corpse Skin     符号2 / 技能65：随后 30 秒，任意伤害法术施加疾病效果，30 秒内造成 (25% × (死灵/100)) 伤害
+Vampiric Embrace 符号3 / 技能70：指定附近尸体，为玩家亡灵追随者治疗其最大生命的 (15% × (死灵/100))
+Mind Rot        符号3 / 技能75：随后 30 秒，任何新中毒法术或法术疾病效果伤害 +(20% × (死灵/100))
+Blood Oath      符号4 / 技能80：玩家受 5 伤害，随后 30 秒其亡灵追随者伤害 +(30% × (死灵/100))
+Strangle        符号4 / 技能85：随后 30 秒，你造成的法术伤害延迟 5 秒，但伤害 +(30% × (死灵/100))
+Wither          符号5 / 技能90：玩家受 10 伤害，随后 30 秒获得 (30 × (死灵/100)) 法力，仅可用于非伤害法术
+Pain Spike      符号5 / 技能95：指定附近尸体，对 4 格内至多 4 个生物造成 (800 × (死灵/100)) 伤害，每目标上限 (600 × (死灵/100))</div>
+
+    <h2 id="undead">亡灵召唤 <span class="en-h">Undead Summons</span></h2>
+    
+    <p>在「复仇之魂」生效期间施放的任何召唤都会变为亡灵变体：无计时，但最大生命会随衰变缓慢流失。死灵召唤比普通召唤伤害更高。亡灵召唤仍受益于通灵（技能、属性、驱散抗性）。</p>
+    <h3>Summon Creature / Raise Dead</h3>
+    
+    <p>当「复仇之魂」生效时施放召唤生物，会从独立池中随机召唤亡灵生物：池1（骷髅、僵尸、骷髅骑士、食尸鬼），池2（骷髅法师、幽灵、骷髅射手、腐肉），池3/4 其他亡灵。</p>
+
+    <h2 id="effective">有效死灵技能 <span class="en-h">Effective Necromancy Skill</span></h2>
+    <ul class="plain">
+      
+      <li>每个能力有最低死灵技能要求方可激活</li>
+      
+      <li>玩家死灵受魔法限制；80 死灵 + 60 魔法 = 仅 60 有效（无法激活需 65 的 Raise Dead）</li>
+      
+      <li>达到 100 魔法后可自由超过 100 死灵（技能卷轴提升上限至 101–120）</li>
+      
+      <li>有效死灵的加成会提升能力威力，但不计入满足技能要求；玩家须同时拥有面板死灵与魔法均达到/超过要求</li>
+      
+      <li>最大储存符号 = (有效死灵技能 / 10) 向下取整</li>
+    </ul>
+
+    <h2 id="tome">Summoner's Tome <span class="en-h">召唤师典</span></h2>
+    
+    <p>若玩家拥有至少 80 通灵与 80 魔法，可使用召唤师典的强化；亡灵召唤获得与标准召唤相同的强化。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    
+    <p>要获得死灵技能，玩家背包中必须有死灵之书。</p>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–80 在新手地牢施法时被动获得</li>
+      
+      <li>80–120 施法时被动获得</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

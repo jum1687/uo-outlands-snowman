@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magery · 魔法 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>魔法 Magery</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Magery" target="_blank" rel="noopener">wiki.uooutlands.com/Magery</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">魔法 <span class="cnsub">Magery</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#reagents">试剂 / Reagents</a></li>
+    <li><a href="#circles">法术圈 / Spell Circles</a></li>
+    <li><a href="#detailed">详细信息 / Detailed Info</a></li>
+    <li><a href="#interrupts">施法打断 / Spell Interrupts</a></li>
+    <li><a href="#indirect">间接火力 / Indirect Fire</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>魔法（Magery）极其多变，拥有 64 个法术，可召唤追随者、远程造成伤害、治疗或解毒等。施法须先将对应法术卷轴拖入法术书学习。每个法术属于一种圈数，决定其魔法技能要求与法力消耗。每个法术施放时消耗 1 至 4 个试剂（新手可用法力石代替试剂）。</p>
+    <ul class="plain">
+      
+      <li>法术需要试剂（法师商店、商贩购买或掉落获取）；卷轴加入法术书（拖放或「Add All Scrolls in Backpack」）</li>
+      
+      <li>可用巫师行囊（Wizard's Satchel）减少试剂与卷轴消耗；用抄写（Inscription）进一步减少卷轴消耗</li>
+    </ul>
+
+    <h2 id="reagents">试剂 <span class="en-h">Reagents</span></h2>
+    
+    <p>每个法术需要特定组合的试剂：黑珍珠、血苔、大蒜、人参、曼德拉草根、颠茄、蛛丝、硫火灰。</p>
+
+    <h2 id="circles">法术圈 <span class="en-h">Spell Circles</span></h2>
+    
+    <p>基础法术伤害按（魔法 / 100%）缩放。对生物法术伤害提升 100%。智力评估提供伤害加成。法术伤害公式中：PvM 系数 (.75 + .75×(Eval/100))；PvP 系数 (.75 + .375×(Eval/100))。</p>
+
+    <h3>1st Circle <span class="en-h">第一圈</span> — Mana 4 · Cast 0.50s · Min 0 · 100% at 30</h3>
+    
+    <p><b>笨拙</b>：PvM 使目标生物近战攻速与施法速度降低 (5% × (魔法/100))，持续 2 分钟；PvP 使目标玩家敏捷降低 (11 × (魔法/100))，持续 2 分钟。</p>
+    
+    <p><b>造食</b>：召唤食物；PvM 可用巫师魔典强化。</p>
+    
+    <p><b>弱智</b>：PvM 使目标生物法术伤害降低 (5% × (魔法/100))；PvP 使目标玩家智力降低 (11 × (魔法/100))。</p>
+    
+    <p><b>治疗</b>：治疗 ((10 至 12) × (魔法/100)) 生命；PvP 治疗 ((6 至 9) × (魔法/100)) 生命。</p>
+    <div class="formula">Magic Arrow (Sulfurous Ash) — 伤害延迟 0.5s
+PvM: ((6 to 8) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对生物
+PvP: ((5 to 7) × (Magery/100) × (.75 + (.375 × (Eval/100)))) 对玩家</div>
+    
+    <p><b>夜视</b>：在黑暗区域提供 60 分钟光照。</p>
+    
+    <p><b>反应护甲</b>：物理减伤 20% + (5% × (抄写/100)) 直至上限；最多免疫 (25 × (魔法/100)) + (50 × (有效抄写/100)) 总伤害。</p>
+    
+    <p><b>虚弱</b>：PvM 使目标生物近战伤害降低 (5% × (魔法/100))；PvP 使目标玩家力量降低 (11 × (魔法/100))。</p>
+
+    <h3>2nd Circle <span class="en-h">第二圈</span> — Mana 6 · Cast 0.75s · Min 20 · 100% at 40</h3>
+    
+    <p><b>敏捷</b>：敏捷 +(11 × (魔法/100)) 2 分钟。<b>聪慧</b>：智力 +(11 × (魔法/100)) 2 分钟。<b>力量</b>：力量 +(11 × (魔法/100)) 2 分钟。</p>
+    
+    <p><b>解毒</b>：按毒类型决定解毒几率；PvM 可用巫师魔典强化。</p>
+    <div class="formula">Harm (Nightshade, Spider's Silk) — 伤害延迟 0.05s
+PvM: ((10 to 16) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对生物
+PvP（按距离）:
+  [0-2]  ((9 to 13) × (Magery/100) × (.75 + (.375 × (Eval/100))))
+  [3-4]  ((4 to 6)  × (Magery/100) × (.75 + (.375 × (Eval/100))))
+  [5+]   ((2 to 3)  × (Magery/100) × (.75 + (.375 × (Eval/100)))) 对玩家</div>
+    
+    <p><b>魔法陷阱</b>：在袋子上设陷阱（打开时受 1 伤害并解除麻痹）。<b>魔法解陷</b>：PvP 移除袋子上陷阱；每 10 秒一次。</p>
+    
+    <p><b>护身</b>：护甲 +(15 × (魔法/100)) 2 分钟；持续时间为正常的 (400% × (抄写/100))。</p>
+
+    <h3>3rd Circle <span class="en-h">第三圈</span> — Mana 9 · Cast 1.00s · Min 30 · 100% at 50</h3>
+    
+    <p><b>祝福</b>：力量/敏捷/智力 +(11 × (魔法/100)) 2 分钟；追随者额外 +5% 近战伤害、+5% 法术伤害、+5% 攻速；持续时间 (400% × 抄写)；PvM 可强化。</p>
+    <div class="formula">Fireball (Black Pearl) — 伤害延迟 0.5s
+PvM: ((14 to 18) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对生物
+PvP: ((12 to 16) × (Magery/100) × (.75 + (.375 × (Eval/100)))) 对玩家</div>
+    
+    <p><b>魔法锁</b> 与 <b>解锁</b> 当前均已禁用。</p>
+    
+    <p><b>中毒</b>：毒强度由施法者魔法、下毒、味觉鉴定决定，PvP 还看距离。<b>隔空取物</b>：使目标对爆炸药剂「黏着」（PvM 生物 60 秒 / PvP 玩家 30 秒）或对自己阻断。<b>传送</b>：10 格内视线；PvP 冷却 15 秒（除非用冒险者之绳）。</p>
+    
+    <p><b>石墙</b>：不可通行且阻挡视线，持续 15 秒；冷却 30 秒；可被玩家/怪物破坏。</p>
+
+    <h3>4th Circle <span class="en-h">第四圈</span> — Mana 11 · Cast 1.25s (Recall 2.00s) · Min 40 · 100% at 60</h3>
+    
+    <p><b>群体解毒</b>：解毒自身及 6 格内中毒友方；PvM 可强化。<b>群体护身</b>：护甲 + 1 + (14 × (魔法/100)) 2 分钟；持续 (400% × 抄写)；PvM 可强化。</p>
+    <div class="formula">Curse (Garlic, Nightshade, Sulfurous Ash) — Resist (20% × (Magic Resist/100))
+PvM: 目标生物 攻速/法术伤害/近战伤害 -(5% × (Magery/100)) 2 分钟
+PvP: 目标玩家 Str/Dex/Int -(11 × (Magery/100)) 2 分钟</div>
+    <div class="formula">Fire Field (Black Pearl, Spider's Silk, Sulfurous Ash) — Resist (25% × (Magic Resist/100)); 持续 (120 × (Magery/100))s
+PvM: 4 伤害（抵抗成功则 2）
+PvP: 2 伤害（抵抗成功则 1）</div>
+    <div class="formula">Greater Heal (Garlic, Ginseng, Mandrake Root, Spider's Silk): 治疗 ((40 to 50) × (Magery/100))；中毒时减少；PvM 可强化
+Lightning (Mandrake Root, Sulfurous Ash) — 伤害延迟 0.25s
+  PvM: ((16 to 20) × (Magery/100) × (.75 + (.75 × (Eval/100))))
+  PvP: ((14 to 18) × (Magery/100) × (.75 + (.375 × (Eval/100))))</div>
+    <div class="formula">Mana Drain (Black Pearl, Mandrake Root, Spider's Silk) — Resist (20% × (Magic Resist/100))
+  PvM: 目标生物 Magic Resist - 20 × (Magery/100) 2 分钟
+  PvP: 目标玩家 Magic Resist - 10 × (Magery/100) 2 分钟
+  （不与 Mana Vampire 叠加；可用抗咒药剂解除）</div>
+    
+    <p><b>召回</b>：传送至符文位置；地牢限制（金月门 8 格内）；任何角色可用卷轴以 0 魔法施放。</p>
+
+    <h3>5th Circle <span class="en-h">第五圈</span> — Mana 14 · Cast 1.50s (Summons 6.00s) · Min 50 · 100% at 70</h3>
+    
+    <p><b>刀灵</b>：追击最近目标；持续 (150 × (魔法/100)) 秒，+ (400% × 通灵)；PvM 用召唤师典强化。<b>召唤生物</b>：1 控制槽；PvM 用召唤师典强化。</p>
+    
+    <p><b>驱散领域</b>：驱散月门、石墙、能量场、火焰场、毒气场。<b>易容</b>：随机化外观；持续 (120 × (魔法/100)) 秒。</p>
+    <div class="formula">Magic Reflection (Garlic, Mandrake Root, Spider's Silk): 反射下一个敌对法术
+  PvM: 反射后保留几率 ((100% - (Spell Circle × 10%)) × (Inscription/100))
+  PvP: 保留并再反射 1 个的几率 (35% × (Inscription/100))；最多反射 2 个</div>
+    <div class="formula">Mind Blast (Black Pearl, Mandrake Root, Nightshade, Sulfurous Ash) — 伤害延迟 0.5s
+  PvM: ((20 to 32) × (Magery/100) × (.75 + (.75 × (Eval/100)))) + (目标护甲/100%)
+  PvP: ((18 to 24) × (Magery/100) × (.75 + (.375 × (Eval/100)))) + (16.5% × 目标法力回复减免)，上限 +33%</div>
+    
+    <p><b>麻痹</b>：PvM (30 × (魔法/100)) 秒；PvP (10 × (魔法/100)) 秒。<b>毒气场</b>：抵抗 (15% × 抗咒/100)；持续 (120 × (魔法/100)) 秒。</p>
+
+    <h3>6th Circle <span class="en-h">第六圈</span> — Mana 20 · Cast 1.75s (Reveal 4.00s) · Min 60 · 100% at 80</h3>
+    <div class="formula">Dispel (Garlic, Mandrake Root, Sulfurous Ash): 驱散召唤物
+  PvP: 控制者面板通灵 ≥ 时，(50% × (控制者面板通灵/100)) 几率忽略驱散
+Energy Bolt (Black Pearl, Nightshade) — 伤害延迟 0.5s
+  PvM: ((32 to 44) × (Magery/100) × (.75 + (.75 × (Eval/100))))
+  PvP: ((28 to 36) × (Magery/100) × (.75 + (.375 × (Eval/100))))
+Explosion (Bloodmoss, Mandrake Root) — 伤害延迟 2.5s
+  PvM: ((34 to 46) × (Magery/100) × (.75 + (.75 × (Eval/100))))
+  PvP: ((28 to 36) × (Magery/100) × (.75 + (.375 × (Eval/100))))</div>
+    
+    <p><b>隐身</b>：隐匿 (120 × (魔法/100)) 秒；自身施放时持续 (400% × 抄写)。<b>标记</b>：将位置绑定至召回符文。<b>显形</b>：显形 (3 × (魔法/100)) 格内隐藏目标。</p>
+    <div class="formula">Mass Curse (Garlic, Mandrake Root, Nightshade, Sulfurous Ash): 对目标及 4 格内同类目标施放诅咒
+  PvM: 同 Curse（攻速/法术伤害/近战伤害 -(5% × (Magery/100))）
+  PvP: 同 Curse（Str/Dex/Int -(11 × (Magery/100))）
+Paralyze Field (Black Pearl, Ginseng, Spider's Silk): 持续 (120 × (Magery/100))s
+  PvM: 生物麻痹 (30 × (施法者魔法/100))s
+  PvP: 玩家麻痹 (10 × (施法者魔法/100))s</div>
+
+    <h3>7th Circle <span class="en-h">第七圈</span> — Mana 40 · Cast 2.00s (Gate 4.00s) · Min 70 · 100% at 90</h3>
+    <div class="formula">Chain Lightning (Black Pearl, Bloodmoss, Mandrake Root, Sulfurous Ash) — 伤害延迟 0.5s
+  PvM: ((30 to 42) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对 2 格内生物
+  PvP: ((10-15) + (5 × 命中玩家数)) 对 3 格内玩家（每人上限 30）
+Flame Strike (Spider's Silk, Sulfurous Ash) — 伤害延迟 0.5s
+  PvM: ((72 to 96) × (Magery/100) × (.75 + (.75 × (Eval/100))))（对生物额外 +75%）
+  PvP: ((32 to 48) × (Magery/100) × (.75 + (.375 × (Eval/100))))
+Meteor Swarm (Bloodmoss, Mandrake Root, Spider's Silk, Sulfurous Ash) — 伤害延迟 0.5s
+  PvM: ((22 to 34) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对 3 格内生物
+  PvP: ((5-10) + (3 × 命中玩家数)) 对 5 格内玩家（每人上限 25）</div>
+    
+    <p><b>能量场</b>：不可通行 30 秒；可破坏；不阻挡视线。<b>门旅行</b>：开启通往符文的门（地牢限制）。<b>变形术</b>：变身为生物 (120 × (魔法/100)) 秒；玩家变灰名。</p>
+    <div class="formula">Mana Vampire (Black Pearl, Bloodmoss, Mandrake Root, Spider's Silk):
+  PvM: 目标生物 Magic Resist - 50 × (Magery/100) 2 分钟
+  PvP: 目标玩家 Magic Resist - 20 × (Magery/100) 2 分钟
+Mass Dispel (Black Pearl, Garlic, Mandrake Root, Sulfurous Ash):
+  PvP: 摧毁目标 4 格内所有非友好召唤物
+  控制者面板通灵 ≥ 时，(50% × (控制者面板通灵/100)) 几率忽略驱散</div>
+    <div class="note"><b>7th Circle PvP 重要改动（Chain Lightning / Meteor Swarm）：</b>
+    <ul class="plain">
+      
+      <li>不再受「多人对同目标短时间内施放导致的 PvP 哑火机制」影响</li>
+      
+      <li>现在会移除玩家身上的魔法反射，但移除该反射的那次施放仍只造成 1 伤害</li>
+      
+      <li>若命中任何玩家，则有 30 秒冷却才能再次施放；Chain Lightning 最多命中 8 名玩家；Meteor Swarm 最多 10 名</li>
+      
+      <li>Chain Lightning 现 0.25 秒伤害延迟；Meteor Swarm 现 0.5 秒伤害延迟</li>
+    </ul>
+    <b>PvP Flamestrike：</b>
+    
+    <p>PvP 中被 Flamestrike 命中会开启 1 秒「Flamestrike 窗口」。若窗口内再次被 Flamestrike 选中，窗口重置并叠加 10% 哑火几率；若 1 秒内无新 Flamestrike，窗口过期，哑火几率归零。</p>
+    <div class="example">
+      <div class="ex-title">Example</div>
+      
+      <p>玩家 1 对目标施放 Flamestrike：正常结算，窗口开启。0.1 秒后玩家 2 施放：窗口重置，玩家 2 有 10% 哑火。0.2 秒后玩家 3 施放：窗口重置，玩家 3 有 20% 哑火。依此类推。</p>
+    </div></div>
+
+    <h3>8th Circle <span class="en-h">第八圈</span> — Mana 50 · Cast 2.50s (Resurrection 5.00s, Earthquake 3.00s, Summons 6.00s) · Min 80 · 100% at 100</h3>
+    <div class="formula">Earthquake (Bloodmoss, Ginseng, Mandrake Root, Sulfurous Ash):
+  PvM: ((15 to 25) × (Magery/100) × (.75 + (.75 × (Eval/100)))) 对 8 格内所有生物
+  PvP: 对 8 格内每名玩家造成其当前生命 50% 的伤害</div>
+    
+    <p><b>能量漩涡</b>（2 槽）、<b>复活</b>（复活玩家或绑定追随者）、<b>气/火/水/土元素</b> 与 <b>召唤恶魔</b>（均 2 槽）——均可 PvM 用召唤师典强化。</p>
+
+    <h2 id="detailed">详细信息 <span class="en-h">Detailed Info</span></h2>
+    <ul class="plain">
+      
+      <li>施法最低魔法 = 法术圈数 × 10</li>
+      
+      <li>用卷轴施法使有效魔法 +20（仅影响施法成功率）</li>
+      
+      <li>施法恢复时间 0.2 秒；对生物法术伤害 +100%</li>
+      
+      <li>基础法术伤害按（魔法 / 100%）缩放；智力评估提供伤害加成</li>
+    </ul>
+    <h3>Spells</h3>
+    <ul class="plain">
+      
+      <li>驱散 —— 对自身施放可驱散世界中持续时间最短的刀灵/能量漩涡（无视距离）</li>
+      
+      <li>魔法反射 —— 30 秒冷却从反射发生时起算；法力汲取/吸血 —— 对怪物降低 MR 20×魔法/100（PvP 减半）；驱散领域 —— 指定地面/格或其中单位以驱散</li>
+      
+      <li>群体驱散 —— 驱散绿/灰/红/橙召唤；蓝色（无辜）需直接指定（标记罪犯）；并移除 4 格内所有领域法术</li>
+    </ul>
+    <h3>Charged Spells</h3>
+    
+    <p>生物对玩家或玩家对生物施放的法术有 10% 几率成为蓄能法术，额外造成 50% 伤害。</p>
+    <h3>Heat of Battle</h3>
+    
+    <p>处于激战（Heat of Battle）时，玩家无法施放召回、门旅行，或使用任何月门。</p>
+    <h3>Poisoning</h3>
+    
+    <p>生物无法抵抗施放的中毒。玩家有 (20% × (下毒/100)) 几率将法术毒升级为致死毒（需背包有致死毒药剂；成功时 20% 几率消耗一瓶）。PvP 中毒升级受距离限制：致死毒（0–4 格）、剧毒（0–8 格）。</p>
+    <h3>Wall of Stone and Energy Field</h3>
+    
+    <p>玩家可攻击石墙/能量场：1 格内双击开始攻击；攻击后显形并缠绕 0.5 秒；每 2 秒自动攻击；每次 10–25 伤害；石墙累计 100 伤害摧毁，能量场 200。怪物若被卡住会攻击相邻的墙/场。</p>
+
+    <h2 id="interrupts">施法打断 <span class="en-h">Spell Interrupts</span></h2>
+    
+    <p>4 至 8 圈的所有敌对法术 100% 打断其他玩家。对自身施法总是打断自己，且不会开启/重置窗口。每个圈数的窗口相互独立。</p>
+    <div class="formula">1st / 2nd / 3rd Circle：首次敌对法术打断几率 100%，随后开启 5 秒窗口，期间同圈敌对法术打断几率 0%；窗口内再被同圈命中则重置为 5 秒</div>
+
+    <h2 id="indirect">间接火力 <span class="en-h">Indirect Fire</span></h2>
+    
+    <p>被玩家施放的 AoE（流星雨、连锁闪电、地震）命中但施法者对其无视线（LOS）的玩家/追随者，视为「间接火力」：伤害减少 50%。不适用于船只。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    
+    <p>新角色选择 50 魔法、49 冥想、1 智力评估可获得 2250 次充能的法力石。技能获得几率取决于圈数。</p>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–60 在新手地牢施放闪电</li>
+      
+      <li>60–80 在新手地牢对自身施放隐身</li>
+      
+      <li>80–100 对 Prevalia 动物园生物施放烈焰风暴</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>驯兽宝典加点模拟器 | Outlands 中文百科</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.sim-wrap { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; }
+.sim-col { flex:1 1 260px; border:1px solid #c8ccd1; border-radius:8px; padding:10px; background:#fcfcfc; min-width:240px; }
+.sim-col.pet-active { border-color:#36c; box-shadow:0 0 0 2px #36c3; }
+.col-head { display:flex; align-items:center; gap:8px; border-bottom:1px solid #eaecf0; padding-bottom:8px; margin-bottom:8px; }
+.col-icon { width:34px; height:34px; flex-shrink:0; }
+.col-name { font-weight:bold; }
+.en { color:#54595d; font-size:.78em; font-weight:normal; }
+.col-pts { font-size:.8em; color:#54595d; margin-top:2px; }
+.col-pts.warn { color:#c0392b; font-weight:bold; }
+.tier-group { display:flex; flex-direction:column; gap:6px; margin-bottom:8px; }
+.cross-label { font-size:.75em; color:#a55; margin:8px 0 4px; border-top:1px dashed #ccc; padding-top:6px; }
+.talent { border:1px solid #c8ccd1; border-radius:6px; padding:6px 8px; background:#fff; cursor:pointer; user-select:none; transition:.1s; }
+.talent:hover { border-color:#36c; background:#f0f6ff; }
+.talent.maxed { background:#e8f5e9; border-color:#27ae60; }
+.talent.cross { border-style:dashed; }
+.talent.cross:not(.maxed) { background:#f7f7f7; }
+.t-name { font-size:.85em; font-weight:600; }
+.pips { display:flex; gap:4px; margin-top:4px; }
+.pips span { width:10px; height:10px; border-radius:50%; background:#ddd; border:1px solid #bbb; }
+.pips span.on { background:#27ae60; border-color:#1e8449; }
+.reset-btn { margin-top:6px; width:100%; padding:6px; border:1px solid #c8ccd1; border-radius:6px; background:#fff; cursor:pointer; }
+.reset-btn:hover { background:#f0f0f0; }
+.reset-btn-inline { padding:2px 10px; font-size:.78em; border:1px solid #c8ccd1; border-radius:10px; background:#fff; color:#333; cursor:pointer; white-space:nowrap; flex-shrink:0; align-self:flex-start; margin-top:2px; }
+.reset-btn-inline:hover { background:#fee; border-color:#eaa; color:#a33; }
+.pet-class { margin:12px 0; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.pet-class span { font-weight:bold; }
+.pc-btn { padding:6px 12px; border:1px solid #c8ccd1; border-radius:16px; background:#fff; cursor:pointer; }
+.pc-btn.active { background:#36c; color:#fff; border-color:#36c; }
+.tooltip { position:fixed; display:none; max-width:330px; background:#222; color:#fff; padding:8px 10px; border-radius:6px; font-size:.82em; line-height:1.45; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+.tip-name { font-weight:bold; margin-bottom:4px; color:#ffd866; }
+  .tip-name .en{color:#cdb892;font-size:.8em;font-weight:normal;}
+  .t-name .en{font-size:.8em;}
+
+/* 伤害统计面板 */
+.dmg-panel { border:1px solid #c8ccd1; border-radius:8px; background:#fefefe; margin:10px 0; overflow:hidden; }
+.dmg-panel-head { background:#f0f0f0; padding:8px 14px; font-weight:bold; font-size:.9em; border-bottom:1px solid #eaecf0; display:flex; align-items:center; gap:6px; }
+.dmg-panel-head .icon-dmg { font-size:1.1em; }
+.dmg-panel-body { padding:10px 14px; max-height:280px; overflow-y:auto; }
+.dmg-empty { color:#888; font-size:.85em; font-style:italic; }
+.dmg-item { display:flex; gap:6px; padding:4px 0; font-size:.82em; line-height:1.5; border-bottom:1px dotted #eee; }
+.dmg-item:last-child { border-bottom:none; }
+.dmg-tname { font-weight:600; color:#36c; white-space:nowrap; min-width:52px; }
+.dmg-teffect { color:#222; }
+.dmg-val { color:#c0392b; font-weight:bold; white-space:nowrap; }
+
+@media (max-width:700px){ .sim-col{ flex-basis:100%; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<div class="mw-body">
+  <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Taming_Bestiary" target="_blank" rel="noopener">wiki.uooutlands.com/Taming_Bestiary</a></div>
+  <h1>驯兽宝典加点模拟器 <span class="cnsub">Taming Bestiary</span></h1>
+  <div class="pet-class">
+    <span>宠物所属系：</span>
+    <button class="pc-btn active" data-cls="Attack">攻击 Attack</button>
+    <button class="pc-btn" data-cls="Utility">辅助 Utility</button>
+    <button class="pc-btn" data-cls="Tank">坦克 Tank</button>
+  </div>
+
+  <!-- 伤害加成统计 -->
+  <div class="dmg-panel" id="dmgPanel">
+    <div class="dmg-panel-head"><span class="icon-dmg">⚔️</span> 当前加点伤害加成汇总</div>
+    <div class="dmg-panel-body" id="dmgBody"><div class="dmg-empty">尚未分配天赋点，点击下方天赋开始加点</div></div>
+  </div>
+
+  <div class="sim-wrap" id="sim"></div>
+  <p class="backlink"><a href="index.html">← 返回可驯服生物目录</a> · <a href="follower-abilities.html">宠物技能大全</a></p>
+</div>
+<div class="tooltip" id="tip"></div>
+<script>
+window.onerror=function(msg,src,line,col,err){document.getElementById('sim').innerHTML='<div style="color:red;padding:20px">JS Error: '+msg+' (line '+line+')</div><pre>'+err.stack+'</pre>';return false;};
+/* ===== 天赋点数：累计值 [等级1, 等级2, 等级3] = [1点, 3点, 5点] ===== */
+const COSTS=[1,3,5];
+const DATA={"Attack":[{"name":"Ambush","desc":"Damage Dealt increased by (10%, 20%, 30%) and Damage Resistance by (5% / 10% / 15%) for 10 seconds after exiting Stealth (including on Backstab)<br>Damage Dealt increased by (4% / 8% / 12%) if creature does not have Stealth","cnname":"伏击","cndesc":"退出潜行 Stealth 后 10 秒内，造成伤害 Damage Dealt 提高 (10%, 20%, 30%)，伤害减免 Damage Resistance 提高 (5% / 10% / 15%)（包含触发背刺 Backstab 时）<br>若宠物没有潜行 Stealth，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Cornered","desc":"Damage Dealt increased by (10%, 20%, 30%) if follower has taken damage from another creature within the last 10 seconds<br>Damage Dealt increased by (4% / 8% / 12%) if follower has not taken damage from another creature within the last 10 seconds","cnname":"困兽","cndesc":"若宠物 follower 在最近 10 秒内受到过其他生物造成的伤害，则造成伤害 Damage Dealt 提高 (10%, 20%, 30%)<br>若宠物 follower 在最近 10 秒内未受到过其他生物造成的伤害，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Feed","desc":"If creature has a Bleed effect on target, Melee Attacks have a (10% / 20% / 30%) chance to restore 10% of Max Health (up to once every 15 seconds)<br>Damage Dealt increased by (4%, 8%, 12%) if target cannot inflict Bleed effects","cnname":"噬血","cndesc":"若生物对目标施加了流血 Bleed 效果，近战攻击 Melee Attacks 有 (10% / 20% / 30%) 几率恢复 10% 最大生命 Max Health（最多每 15 秒一次）<br>若目标无法造成流血 Bleed 效果，则造成伤害 Damage Dealt 提高 (4%, 8%, 12%)"},{"name":"Feral","desc":"While Frenzied or Enraged, creature's first non-backstab Melee Attack every 15 seconds has its Damage increased by (80% / 160% / 240%)<br>Damage Dealt increased by (4%, 8%, 12%) if creature does not have either of those abilities","cnname":"野性","cndesc":"在狂热 Frenzy 或狂怒 Enrage 状态下，生物每 15 秒的首次非背刺 Backstab 近战攻击 Melee Attack 伤害提高 (80% / 160% / 240%)<br>若生物不拥有以上任一技能，则造成伤害 Damage Dealt 提高 (4%, 8%, 12%)"},{"name":"Hunting Party","desc":"Damage Dealt increased by (10% / 20% / 30%) if creature and Tamer are both within 1 tile of target<br>Damage Dealt increased by (4% / 8% / 12%) if creature or Tamer are more than 1 tile from target","cnname":"狩猎小队","cndesc":"若生物与驯兽师 Tamer 都在目标 1 格内，则造成伤害 Damage Dealt 提高 (10% / 20%, 30%)<br>若生物或驯兽师 Tamer 距离目标超过 1 格，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Immolate","desc":"Flamestrike and Spellburn abilities now have Damage increased by (50% / 100% / 150%)<br>Damage Dealt increased by (4% / 8% / 12%) if creature does not have either of those abilities","cnname":"点燃","cndesc":"火焰打击 Flamestrike 与法术灼烧 Spellburn 技能的伤害现在提高 (50% / 100% / 150%)<br>若生物不拥有以上任一技能，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Lethality","desc":"Melee Attacks and Spellcasts have a (10% / 20% / 30%) chance to inflict +100% Damage, otherwise will inflict (4% / 8% / 12%) additional Damage","cnname":"致命","cndesc":"近战攻击 Melee Attacks 与施法 Spellcasts 有 (10% / 20% / 30%) 几率造成 +100% 伤害，否则将造成 (4% / 8% / 12%) 额外伤害"},{"name":"Menagerie","desc":"Damage Dealt increased by ((2% / 4% / 6%) * Different Types of Followers Controlled By Player)<br>Healing Amounts increased by ((2% / 4% / 6%) * Different Types of Followers Controlled By Player)","cnname":"动物园","cndesc":"造成伤害 Damage Dealt 提高 ((2% / 4% / 6%) * 玩家所控制的不同种类宠物数 Different Types of Followers Controlled By Player)<br>治疗量 Healing Amounts 提高 ((2% / 4% / 6%) * 玩家所控制的不同种类宠物数 Different Types of Followers Controlled By Player)"},{"name":"Mutation","desc":"Reduces cooldown length of Cooldown Abilities by (2 / 4 / 6) seconds<br>Damage Dealt increased by (4% / 8% / 12%) if creature does not have a Cooldown Ability","cnname":"变异","cndesc":"冷却类技能 Cooldown Abilities 的冷却时长 cooldown length 减少 (2 / 4 / 6) 秒<br>若生物没有冷却类技能 Cooldown Ability，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Pelt","desc":"Damage Dealt increased by (8% / 16% / 24%) if target is 4 tiles away or more<br>Damage Dealt increased by (4% / 8% / 12%) if target is within 3 tiles","cnname":"毛皮","cndesc":"若目标距离 4 格或更远，则造成伤害 Damage Dealt 提高 (8% / 16% / 24%)<br>若目标在 3 格内，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Primal","desc":"Chance to trigger Passive Abilities increased by (33% / 66% / 100%) of normal<br>Damage Dealt increased by (4% / 8% / 12%) if creature does not have a Passive Ability","cnname":"原始","cndesc":"触发被动技能 Passive Abilities 的几率提高正常的 (33% / 66% / 100%)<br>若生物没有被动技能 Passive Ability，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Swarm","desc":"Damage Dealt increased by ((2% / 4% / 6%) * Total Followers Controlled By Player)<br>Healing Amounts increased by ((2% / 4% / 6%) * Total Followers Controlled By Player)","cnname":"虫群","cndesc":"造成伤害 Damage Dealt 提高 ((2% / 4% / 6%) * 玩家所控制的宠物总数 Total Followers Controlled By Player)<br>治疗量 Healing Amounts 提高 ((2% / 4% / 6%) * 玩家所控制的宠物总数 Total Followers Controlled By Player)"}],"Utility":[{"name":"Beast Sting","desc":"If any of your creatures has Poison or Disease active on target, increases Damage of Melee Attacks by (10% / 20% / 30%) if creature can inflict Poison or Disease effects<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Poison or Disease effects","cnname":"野兽之刺","cndesc":"若你的任一宠物对目标施加了中毒 Poison 或疾病 Disease，则当宠物可施加中毒 Poison 或疾病 Disease 效果时，近战攻击 Melee Attacks 的伤害 Damage 提高 (10% / 20% / 30%)<br>若宠物无法施加中毒 Poison 或疾病 Disease 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Breaker","desc":"Melee Attacks and Spellcasts ignore (22% / 44% / 66%) of target's Armor and Magic Resist","cnname":"破法","cndesc":"近战攻击 Melee Attacks 与施法 Spellcasts 忽略目标护甲 Armor 与魔法抗性 Magic Resist 的 (22% / 44% / 66%)"},{"name":"Carrion","desc":"If creature has Disease active on target, Melee Attacks have a (10% / 20% / 30%) chance to restore 12.5% of Max Health (up to once every 15 seconds)<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Disease effects","cnname":"腐肉","cndesc":"若宠物对目标施加了疾病 Disease，近战攻击 Melee Attacks 有 (10% / 20% / 30%) 几率恢复最大生命 Max Health 的 12.5%（最多每 15 秒 一次）<br>若宠物无法施加疾病 Disease 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Contagion","desc":"Increases the Damage of Disease effects by (33% / 66% / 100%)<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Disease effects","cnname":"传染","cndesc":"使疾病 Disease 效果的伤害 Damage 提高 (33% / 66% / 100%)<br>若宠物无法施加疾病 Disease 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Debilitate","desc":"If any of your creatures has Poison or Disease active on target, the target will receive a stackable (1% / 2% / 3%) Damage Penalty against the Tamer and their Followers for each Control Slot worth of Utility-class creatures that can inflict Poison or Disease effects<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Poison or Disease effects","cnname":"衰弱","cndesc":"若你的任一宠物对目标施加了中毒 Poison 或疾病 Disease，则每有一个可施加中毒 Poison 或疾病 Disease 效果的辅助 Utility 系宠物 follower，其所占的每个控制栏位 Control Slots 都会使目标受到可叠加的 (1% / 2% / 3%) 伤害惩罚 Damage Penalty（对抗驯兽师 Tamer 及其宠物 Followers）<br>若宠物无法施加中毒 Poison 或疾病 Disease 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Frostbite","desc":"Damage of Chill Abilities increased by (15% / 30% / 45%) and amount of Chill effect applied increased by (33% / 66% / 100%) of normal<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Chill effects","cnname":"霜咬","cndesc":"寒冷 Chill 技能的伤害 Damage 提高 (15% / 30% / 45%)，且施加的寒冷 Chill 效果量提升为正常的 (33% / 66% / 100%)<br>若宠物无法施加寒冷 Chill 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Metabolism","desc":"Successful Melee Attacks will restore (0.66% / 1.33% / 2.0%) of Max Health<br>Damage Dealt increased by (4% / 8% / 12%) if already at Max Health","cnname":"代谢","cndesc":"成功的近战攻击 Melee Attacks 将恢复最大生命 Max Health 的 (0.66% / 1.33% / 2.0%)<br>若已处于最大生命 Max Health，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Opportunity","desc":"Melee and Spell Damage increased by (20%, 40%, 60%) if creature has applied an Entangle or Hinder effect to the target within last 10 seconds<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Entangle or Hinder effects","cnname":"时机","cndesc":"若宠物在过去 10 秒 内对目标施加了缠绕 Entangle 或阻碍 Hinder 效果，则近战与法术伤害 Melee and Spell Damage 提高 (20%, 40%, 60%)<br>若宠物无法施加缠绕 Entangle 或阻碍 Hinder 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Punishment","desc":"When creature's Pierce or Hex effects expire on a target, will inflict (DamageMax * (0.5 / 1.0 / 1.5)) Damage onto them which ignores Armor<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Pierce or Hex effects","cnname":"惩罚","cndesc":"当宠物的穿刺 Pierce 或压制 Hex 效果在目标身上到期 expire 时，将对其造成 (DamageMax * (0.5 / 1.0 / 1.5)) 伤害 Damage（忽略护甲 Armor）<br>若宠物无法施加穿刺 Pierce 或压制 Hex 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Scour","desc":"If creature has a Weaken or Cripple effect on target, their Tamer will receive a ((1.5% / 3% / 4.5%) * Control Slots) Damage Bonus (stackable) against the target<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict these effects","cnname":"净化","cndesc":"若宠物对目标施加了虚弱 Weaken 或残废 Cripple 效果，其驯兽师 Tamer 将获得 ((1.5% / 3% / 4.5%) * Control Slots) 伤害加成 Damage Bonus（可叠加）以对抗该目标<br>若宠物无法施加这些效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Swoop","desc":"The next Melee Attack or Spellcast within 10 seconds after using a Cooldown Ability will have its Damage increased by (33% / 66% / 100%)<br>Damage Dealt increased by (4% / 8% / 12%) if creature does not have a Cooldown Ability","cnname":"俯冲","cndesc":"使用冷却 Cooldown 技能后 10 秒 内的下一次近战攻击或施法 next Melee Attack or Spellcast 将使其伤害 Damage 提高 (33% / 66% / 100%)<br>若宠物没有冷却 Cooldown 技能，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"},{"name":"Toxic","desc":"If any of your creatures has Poison or Disease active on target, their Tamer will receive a stackable (1% / 2% / 3%) Damage Bonus against the target for each Control Slot worth of Utility-class creatures that can inflict Poison or Disease effects<br>Damage Dealt increased by (4% / 8% / 12%) if creature cannot inflict Poison or Disease effects","cnname":"剧毒","cndesc":"若你的任一宠物对目标施加了中毒 Poison 或疾病 Disease，则每有一个可施加中毒 Poison 或疾病 Disease 效果的辅助 Utility 系宠物 follower，其所占的每个控制栏位 Control Slots 都会使驯兽师 Tamer 获得可叠加的 (1% / 2% / 3%) 伤害加成 Damage Bonus 以对抗该目标<br>若宠物无法施加中毒 Poison 或疾病 Disease 效果，则造成伤害 Damage Dealt 提高 (4% / 8% / 12%)"}],"Tank":[{"name":"Adrenaline","desc":"Creature has a (15% / 30% / 45%) chance on any Damage Taken that would kill it, to instead take 1 Damage and receive 50% Damage Resistance for the next 5 seconds","cnname":"肾上腺素","cndesc":"宠物在承受任意伤害时有 (15% / 30% / 45%) 几率（该伤害本可致命）改为仅承受 1 点伤害，并获得 50% 伤害减免 Damage Resistance，持续 5 秒"},{"name":"Aggression","desc":"Melee Damage increased by (5% / 10% / 15%) for each target within 2 tiles that is Aggroed against them (up to 3 targets)<br>Damage Dealt increased by (4% / 8% / 12%) if no targets within 2 tiles are Aggroed against them","cnname":"侵略","cndesc":"近战伤害 Melee Damage 对 2 格内每个对其抱有敌意 Aggroed 的目标（最多 3 个）提升 (5% / 10% / 15%)<br>若 2 格内没有对其抱有敌意 Aggroed 的目标，造成伤害 Damage Dealt 提升 (4% / 8% / 12%)"},{"name":"Behemoth","desc":"Melee and Spell Damage increased by (10% / 20% / 30%) and Damage Resistance by (2% / 4% / 6%) if creature takes 3 or more Control Slots<br>Damage Resistance increased by (1.33% / 2.66% / 4%) if creature takes 1 or 2 Control Slots","cnname":"巨兽","cndesc":"若宠物占用 3 个或更多控制栏位 Control Slots，近战和法术伤害提升 (10% / 20% / 30%)，伤害减免 Damage Resistance 提升 (2% / 4% / 6%)<br>若宠物占用 1 或 2 个控制栏位 Control Slots，伤害减免 Damage Resistance 提升 (1.33% / 2.66% / 4%)"},{"name":"Critical Care","desc":"Veterinary Resurrection chances increased by (33% / 66% / 100%) of normal and creature will Resurrect with an additional (10% / 20% / 30%) of Max Health [will not work if PvP Flagged]","cnname":"急救护理","cndesc":"兽医复活 Veterinary Resurrection 几率提高正常的 (33% / 66% / 100%)，且宠物复活时额外拥有 (10% / 20% / 30%) 的最大生命 Max Health [PvP 标记时无效]"},{"name":"Deflection","desc":"Grants Damage Resistance of ((1.5% / 3% / 4.5%) * Control Slots) to non-Tank Followers and ((0.75% / 1.5% / 2.25%) * Control Slots) to the Tamer if they are within 2 tiles","cnname":"偏转","cndesc":"为 2 格内的非坦克宠物 non-Tank followers 提供 ((1.5% / 3% / 4.5%) * 控制栏位 Control Slots) 的伤害减免 Damage Resistance，并为同在 2 格内的驯兽师 Tamer 提供 ((0.75% / 1.5% / 2.25%) * 控制栏位 Control Slots) 的伤害减免 Damage Resistance"},{"name":"Guardian","desc":"((3% / 6% / 9%) * Control Slots) of Damage Taken by non-Tank Class Followers and ((1.5% / 3% / 4.5%) * Control Slots) of Damage Taken by Tamer within 2 tiles will be redirected amongst Tank Class followers (divided equally) as a direct health loss","cnname":"守护者","cndesc":"2 格内非坦克系宠物 non-Tank followers 承受伤害的 ((3% / 6% / 9%) * 控制栏位 Control Slots)，以及驯兽师 Tamer 承受伤害的 ((1.5% / 3% / 4.5%) * 控制栏位 Control Slots)，将被转移给坦克系宠物（平均分配）作为直接生命损失"},{"name":"Hearty","desc":"Damage Dealt increased by (10% / 20% / 30%) when above 75% Health<br>Damage Dealt increased by (4% / 8% / 12%) when below 75% Health","cnname":"强壮","cndesc":"生命高于 75% 时造成伤害 Damage Dealt 提升 (10% / 20% / 30%)<br>生命低于 75% 时造成伤害 Damage Dealt 提升 (4% / 8% / 12%)"},{"name":"Mending","desc":"Healing Amounts increased by (12% / 24% / 36%) and Curing chances by (20% / 40% / 60%)<br>Damage Dealt increased by (4% / 8% / 12%) when at Max Health and not Poisoned","cnname":"治愈","cndesc":"治疗量 Healing Amounts 提升 (12% / 24% / 36%)，治愈几率 Curing chance 提升 (20% / 40% / 60%)<br>处于最大生命 Max Health 且未中毒 Poison 时，造成伤害 Damage Dealt 提升 (4% / 8% / 12%)"},{"name":"Stalwart","desc":"Damage Resistance increased by (3% / 6% / 9%) and has a (25% / 50% / 75%) chance to ignore any non-movement Debuff effects (such as Cripple, Pierce, Hex, etc)","cnname":"坚定","cndesc":"伤害减免 Damage Resistance 提升 (3% / 6% / 9%)，并有 (25% / 50% / 75%) 几率忽略任何非移动类减益 Debuff 效果（例如致残 Cripple、穿刺 Pierce、诅咒 Hex 等）"},{"name":"Survival","desc":"Damage Resistance increased by (4% / 8% / 12%)","cnname":"生存","cndesc":"伤害减免 Damage Resistance 提升 (4% / 8% / 12%)"},{"name":"Tolerance","desc":"Has a (11% / 22% / 33%) chance to ignore any Bleed, Disease, or Poison tick<br>Damage Resistance increased by (1.33% / 2.66% / 4.0%) while not under the effect of Bleed, Disease, or Poison","cnname":"忍耐","cndesc":"有 (11% / 22% / 33%) 几率忽略任何流血 Bleed、疾病 Disease 或中毒 Poison 的 tick<br>未处于流血 Bleed、疾病 Disease 或中毒 Poison 影响时，伤害减免 Damage Resistance 提升 (1.33% / 2.66% / 4.0%)"},{"name":"Trample","desc":"Melee Attacks inflict an additional (DamageMax * (8% / 16% / 24%)) to 2 random targets within 1 tile of defender","cnname":"践踏","cndesc":"近战攻击 Melee Attack 对防御者 1 格内的 2 个随机目标造成额外 (最大伤害 DamageMax * (8% / 16% / 24%)) 的伤害"}]};
+const NATIVEMAP={"Ambush": "Attack", "Cornered": "Attack", "Feed": "Attack", "Feral": "Attack", "Hunting Party": "Attack", "Immolate": "Attack", "Lethality": "Attack", "Menagerie": "Attack", "Mutation": "Attack", "Pelt": "Attack", "Primal": "Attack", "Swarm": "Attack", "Beast Sting": "Utility", "Breaker": "Utility", "Carrion": "Utility", "Contagion": "Utility", "Debilitate": "Utility", "Frostbite": "Utility", "Metabolism": "Utility", "Opportunity": "Utility", "Punishment": "Utility", "Scour": "Utility", "Swoop": "Utility", "Toxic": "Utility", "Adrenaline": "Tank", "Aggression": "Tank", "Behemoth": "Tank", "Critical Care": "Tank", "Deflection": "Tank", "Guardian": "Tank", "Hearty": "Tank", "Mending": "Tank", "Stalwart": "Tank", "Survival": "Tank", "Tolerance": "Tank", "Trample": "Tank"};
+const CLASSES=['Attack','Utility','Tank'];
+const CLS_ZH={Attack:'攻击',Utility:'辅助',Tank:'坦克'};
+const ICON={Attack:'../../data/images/pets/icon-attackclass.png',Utility:'../../data/images/pets/icon-utilityclass.png',Tank:'../../data/images/pets/icon-tankclass.png'};
+let state={Attack:{},Utility:{},Tank:{}};
+let petClass='Attack';
+
+/* ---- 点数计算（COSTS 为累计值）---- */
+function colPts(c){let s=0;for(const k in state[c])s+=COSTS[state[c][k]-1];return s;}
+function colCross(c){let s=0;for(const k in state[c])if(NATIVEMAP[k]!==c)s+=COSTS[state[c][k]-1];return s;}
+function incrCost(lvl){return lvl===0?COSTS[0]:COSTS[lvl]-COSTS[lvl-1];}
+
+function tl(n){for(const c of CLASSES){const f=DATA[c].find(x=>x.name===n);if(f)return f;}return {};}
+function makeNode(cls,name){
+  const n=document.createElement('div');
+  n.className='talent'; n.dataset.cls=cls; n.dataset.name=name;
+  const t=tl(name);
+  n.innerHTML='<div class="t-name">'+t.cnname+' <span class="en">'+name+'</span></div><div class="pips"><span></span><span></span><span></span></div>';
+  n.addEventListener('click',()=>allocate(cls,name));
+  n.addEventListener('contextmenu',e=>{e.preventDefault();deallocate(cls,name);});
+  n.addEventListener('mouseenter',e=>showTip(e,name));
+  n.addEventListener('mousemove',moveTip);
+  n.addEventListener('mouseleave',hideTip);
+  return n;
+}
+
+function buildColumns(){
+  const wrap=document.getElementById('sim'); wrap.innerHTML='';
+  CLASSES.forEach(cls=>{
+    const col=document.createElement('div'); col.className='sim-col'; col.id='col-'+cls;
+    const head=document.createElement('div'); head.className='col-head';
+    head.innerHTML='<img class="col-icon" src="'+ICON[cls]+'"><div style="flex:1;min-width:0"><div class="col-name">'+CLS_ZH[cls]+' <span class="en">'+cls+'</span></div><div class="col-pts" id="pts-'+cls+'"></div></div>';
+    const rb=document.createElement('button'); rb.className='reset-btn-inline'; rb.textContent='重置'; rb.title='重置整列（本系+跨系）';
+    rb.onclick=()=>{resetCross(cls);};
+    head.appendChild(rb);
+    col.appendChild(head);
+    const nat=document.createElement('div'); nat.className='tier-group';
+    DATA[cls].forEach(t=>nat.appendChild(makeNode(cls,t.name)));
+    col.appendChild(nat);
+    const cross=document.createElement('div'); cross.className='tier-group cross';
+    const lab=document.createElement('div'); lab.className='cross-label'; lab.textContent='跨系天赋 Cross-Class（≤5）';
+    cross.appendChild(lab);
+    CLASSES.filter(c=>c!==cls).forEach(oc=>DATA[oc].forEach(t=>cross.appendChild(makeNode(cls,t.name))));
+    col.appendChild(cross);
+    wrap.appendChild(col);
+  });
+  refresh();
+}
+
+function allocate(cls,name){
+  const cur=state[cls][name]||0;
+  if(cur>=3)return;
+  const cost=incrCost(cur);
+  if(colPts(cls)+cost>20){flash(cls,'本系点数已满（20）');return;}
+  const nat=NATIVEMAP[name];
+  if(nat!==cls && colCross(cls)+cost>5){flash(cls,'跨系点数已满（5）');return;}
+  state[cls][name]=cur+1; refresh();
+}
+function deallocate(cls,name){
+  const cur=state[cls][name]||0;
+  if(cur>0){state[cls][name]=cur-1; if(state[cls][name]===0)delete state[cls][name]; refresh();}
+}
+function resetCross(cls){
+  state[cls] = {};
+  refresh();
+}
+function refresh(){
+  CLASSES.forEach(cls=>{
+    const pts=colPts(cls),cross=colCross(cls);
+    const pe=document.getElementById('pts-'+cls);
+    pe.classList.remove('warn'); pe.textContent='已用 '+pts+' / 20　跨系 '+cross+' / 5';
+    document.querySelectorAll('#col-'+cls+' .talent').forEach(node=>{
+      const name=node.dataset.name; const t=state[cls][name]||0;
+      const pips=node.querySelectorAll('.pips span');
+      pips.forEach((p,i)=>p.classList.toggle('on',i<t));
+      node.classList.toggle('maxed',t>=3);
+    });
+    document.getElementById('col-'+cls).classList.toggle('pet-active',cls===petClass);
+  });
+  updateDmgStats();
+}
+function flash(cls,msg){
+  const pe=document.getElementById('pts-'+cls);
+  pe.classList.add('warn'); pe.textContent=msg;
+  setTimeout(refresh,1300);
+}
+function showTip(e,name){
+  const tip=document.getElementById('tip');
+  const tt=tl(name);
+  tip.innerHTML='<div class="tip-name">'+tt.cnname+' <span class="en">'+name+'</span></div><div class="tip-desc">'+tt.cndesc+'</div>';
+  tip.style.display='block'; moveTip(e);
+}
+function moveTip(e){
+  const tip=document.getElementById('tip');
+  let x=e.clientX+14,y=e.clientY+14;
+  if(x+340>window.innerWidth)x=e.clientX-340;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+function hideTip(){document.getElementById('tip').style.display='none';}
+
+/* ==================== 伤害统计面板 ====================
+   解析每个已分配天赋的 cndesc，提取与伤害相关的效果及当前等级数值。
+   只统计：Damage Dealt/伤害提高、Damage increased/伤害提高、额外伤害等。
+   排除：Healing/治疗、Damage Resistance/伤害减免、cooldown/冷却、Resurrection/复活 等。
+*/
+const DMG_KW=/Damage\s*Dealt|造成.*伤害|Damage\s*increased|伤害提高|伤害.*提升|additional\s*Damage|额外伤害|Melee\s*(and\s*)?Spell\s*Damage|近战.*法术伤害|近战伤害|ignore.*Armor|忽略.*护甲|Damage\s*Bonus|伤害加成|Damage\s*Penalty|伤害惩罚|inflict.*Damage|造成.*伤害/i;
+const NON_DMG_KW=/Healing|治疗量|治愈|Damage\s*Resistance|伤害减免|cooldown|冷却|Resurrection|复活|restore|恢复.*Health|Health|生命|Curing|chance.*ignore|几率.*忽略|redirected|转移|defensive|防御性|will\s*not\s*work/i;
+
+function isDmgClause(text){
+  // 必须含伤害关键词 且 不含明确的非伤害关键词
+  if(!DMG_KW.test(text)) return false;
+  // 但有些句子同时含伤害和治疗（如 Metabolism），需更精细判断
+  // 规则：如果主要动词是恢复/治疗/减免 则不算
+  if(/(restore|恢复[^伤]|Healing|治疗|治愈|Resurrection|复活|Damage\s*Resistance|伤害减免)\s/.test(text)) return false;
+  return true;
+}
+
+// 从形如 (10%, 20%, 30%) 或 (80% / 160% / 240%) 的括号中取第 lvlIdx 个值
+function extractVal(text, lvlIdx){
+  // 匹配 (val1, val2, val3) 或 (val1 / val2 / val3)
+  const m=text.match(/\(([^)]+)\)/g);
+  if(!m) return null;
+  for(let i=0;i<m.length;i++){
+    const inner=m[i];
+    // 取逗号或斜杠分隔的值
+    const parts=inner.replace(/[()]/g,'').split(/[,\/]/).map(s=>s.trim());
+    if(parts.length>=3 && lvlIdx<parts.length){
+      const v=parts[lvlIdx].replace('%','');
+      if(!isNaN(parseFloat(v))) return parts[lvlIdx];
+    }
+  }
+  return null;
+}
+
+// 从子句中生成简短描述（去掉英文术语括号，截断）
+function shortenClause(clause, val){
+  let s=clause
+    .replace(/\([^)]*\)/g,'')  // 先去掉所有括号内容
+    .replace(/\s+/g,'')         // 去空白
+    .trim();
+  // 如果太短或不合理，返回原始 clause 并替换数值
+  if(s.length<6){
+    s=clause.replace(/\(([^)]+)\)/, function(m,g){
+      const parts=g.split(/[,\/]/);
+      if(parts.length>=3) return '（'+val+'）';
+      return m;
+    });
+  }else{
+    // 截断到合理长度
+    if(s.length>60) s=s.substring(0,57)+'…';
+  }
+  return s;
+}
+
+function updateDmgStats(){
+  const body=document.getElementById('dmgBody');
+  const items=[];
+
+  for(const cls of CLASSES){
+    for(const name in state[cls]){
+      const lvl=state[cls][name];
+      if(lvl<=0) continue;
+      const t=tl(name);
+      if(!t.cndesc) continue;
+
+      // 按 <br> 拆分子句
+      const clauses=t.cndesc.split(/\s*<br>\s*/);
+      for(const cl of clauses){
+        if(!isDmgClause(cl)) continue;
+        const val=extractVal(cl, lvl-1);
+        const shortText=shortenClause(cl, val||'');
+        items.push({
+          cnname:t.cnname,
+          cls:cls,
+          text:shortText,
+          val:val
+        });
+      }
+    }
+  }
+
+  if(items.length===0){
+    body.innerHTML='<div class="dmg-empty">尚未分配天赋点，或当前加点无伤害加成效果</div>';
+    return;
+  }
+
+  let html='';
+  for(const it of items){
+    html+='<div class="dmg-item">'+
+      '<span class="dmg-tname">'+it.cnname+'</span>'+
+      '<span class="dmg-teffect">'+it.text+'</span>'+
+      (it.val?'<span class="dmg-val">'+it.val+'</span>':'')+
+      '</div>';
+  }
+  body.innerHTML=html;
+}
+
+document.querySelectorAll('.pc-btn').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('.pc-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');petClass=b.dataset.cls;refresh();};
+});
+try{buildColumns();}catch(e){document.getElementById('sim').innerHTML='<div style="color:red;padding:20px">buildColumns Error: '+e.message+'<br><pre>'+e.stack+'</pre></div>';}
+</script>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

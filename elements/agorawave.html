@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>声波 · Agorawave | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">元素精通</a> › <span>声波 Agorawave</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Agorawave_Aspect" target="_blank" rel="noopener">wiki.uooutlands.com/Agorawave_Aspect</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">声波 <span class="cnsub">Agorawave</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#overview">概要 / Overview</a></li>
+    <li><a href="#weapon">武器特效 / Weapon Effects</a></li>
+    <li><a href="#spellbook">魔法书特效 / Spellbook Effects</a></li>
+    <li><a href="#armor">护甲特效 / Armor Effects</a></li>
+    <li><a href="#aoe">范围法术机制 / AoE Spell Mechanics</a></li>
+    <li><a href="#spelldmg">法术伤害加成 / Spell Damage Bonus</a></li>
+    <li><a href="#field">移动法阵距离 / Moving Field Distance</a></li>
+    <li><a href="#drcast">施法期间减伤 / Damage Resistance While Casting</a></li>
+    <li><a href="#pvp">PvP 效果 / PvP Effects</a></li>
+    <li><a href="#cloth">布料 / Cloth</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="overview">概要 <span class="en-h">Overview</span></h2>
+    <p>声波（Agorawave）是 Outlands 的元素精通（Aspect Mastery）之一，其特性围绕<strong>范围（AoE）法术</strong>与<strong>移动法阵（Moving Field）</strong>展开。该元素的特殊特效名为「织焰者（Flameweaver）」，可对周围最多 8 格内的怪物造成范围法术伤害，命中目标越多，总伤害越高。在武器与魔法书上，声波元素会强化法术伤害与法力返还；在护甲上则强化护甲值、法术伤害（对 AoE 与法阵法术翻倍）、移动法阵距离，以及施法期间的伤害减免。</p>
+
+    <h2 id="weapon">武器特效 <span class="en-h">Weapon Effects</span></h2>
+<div class="aspect-img"><img src="../../data/images/elements/agorawave-weapon.png" alt="武器截图" loading="lazy"/><div class="img-caption">武器截图</div></div>
+    <p>激活声波元素武器后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
+    <table class="aspect-data-table">
+      <tr><th>加成项</th><th>数值（随玩家声波阶位）</th></tr>
+      <tr><td>近战命中加成<br><span class="en-cell">(Melee Accuracy Bonus)</span></td><td>10% + 每阶位 2%</td></tr>
+      <tr><td>战术加成<br><span class="en-cell">(Tactics Bonus)</span></td><td>10 + 每阶位 2</td></tr>
+      <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随武器速度缩放)</span></td><td>0.5% + 每阶位 0.05%</td></tr>
+    </table>
+    <p>特殊特效 <strong>织焰者（Flameweaver）</strong>：对 8 格范围内的怪物造成（1250 + 125 × 阶位等级）点伤害，由范围内的怪物均摊；命中的目标总数每多 1 个，总伤害提升 10%。</p>
+    <div class="formula">Flameweaver 伤害 = 1250 + 125 × Tier Level（Tier Level）
+范围 = 8 格
+总伤害加成 = 每命中 1 个目标 +10%</div>
+
+    <h2 id="spellbook">魔法书特效 <span class="en-h">Spellbook Effects</span></h2>
+<div class="aspect-img"><img src="../../data/images/elements/agorawave-spellbook.png" alt="魔法书截图" loading="lazy"/><div class="img-caption">魔法书截图</div></div>
+    <p>激活声波元素魔法书后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
+    <table class="aspect-data-table">
+      <tr><th>加成项</th><th>数值（随玩家声波阶位）</th></tr>
+      <tr><td>法力返还几率<br><span class="en-cell">(Mana Refund Chance)</span></td><td>10% + 每阶位 2%</td></tr>
+      <tr><td>伤害加成<br><span class="en-cell">(Damage Bonus)</span></td><td>10% + 每阶位 2%</td></tr>
+      <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随法术环缩放)</span></td><td>4% + 每阶位 0.4%</td></tr>
+    </table>
+    <p>特殊特效同样为 <strong>织焰者（Flameweaver）</strong>（数值与武器特效一致）：对 8 格范围内的怪物造成（1250 + 125 × 阶位等级）点伤害均摊，命中目标越多总伤害越高。</p>
+
+    <h2 id="armor">护甲特效 <span class="en-h">Armor Effects</span></h2>
+<div class="aspect-img"><img src="../../data/images/elements/agorawave-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
+    <p>激活声波元素护甲后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
+    <table class="aspect-data-table">
+      <tr><th>加成项</th><th>数值（随玩家声波阶位）</th></tr>
+      <tr><td>护甲值加成<br><span class="en-cell">(Armor Rating Bonus)</span></td><td>20% + 每阶位 5%</td></tr>
+      <tr><td>法术伤害加成<br><span class="en-cell">(Spell Damage Bonus，对 AoE 与法阵法术翻倍)</span></td><td>9% + 每阶位 3%</td></tr>
+      <tr><td>移动法阵距离<br><span class="en-cell">(Moving Field Distance)</span></td><td>7 + 每 4 阶位 +1</td></tr>
+      <tr><td>施法期间减伤<br><span class="en-cell">(Damage Resistance While Casting)</span></td><td>7.5% + 每阶位 2.5%</td></tr>
+    </table>
+
+    <h2 id="aoe">范围法术机制 <span class="en-h">AoE Spell Mechanics</span></h2>
+    <p>当玩家穿着声波元素护甲时，施放的<strong>流星雨（Meteor Swarm）</strong>、<strong>连锁闪电（Chain Lightning）</strong>与<strong>地震（Earthquake）</strong>法术只会伤害怪物，而不会伤害任何玩家或随从（包括在 PvP 中也如此）。</p>
+
+    <h2 id="spelldmg">法术伤害加成（对 AoE 与法阵法术翻倍） <span class="en-h">Spell Damage Bonus (doubled for AOE and Field Spells)</span></h2>
+    <p>法术伤害提升（9% + 3% × 阶位等级）的常规数值；对于<strong>任意 AoE 法术</strong>（含流星雨、连锁闪电、地震）以及<strong>任意移动法阵</strong>（含火焰法阵 Fire Field、毒气法阵 Poison Field、麻痹法阵 Paralyze Field），该伤害加成会<strong>翻倍</strong>。</p>
+    <div class="formula">法术伤害加成 = 9% + 3% × Tier Level
+对 AoE 法术与移动法阵 = (9% + 3% × Tier Level) × 2</div>
+
+    <h2 id="field">移动法阵距离 <span class="en-h">Moving Field Distance</span></h2>
+    <p>由火焰法阵、毒气法阵、麻痹法阵法术所创建的移动法阵的<strong>行进距离</strong>为（7 + 每 4 个阶位 +1）。</p>
+    <div class="formula">移动法阵距离 = 7 + (每 4 阶位 +1)</div>
+
+    <h2 id="drcast">施法期间减伤 <span class="en-h">Damage Resistance While Casting</span></h2>
+    <p>玩家在<strong>施法动作进行期间</strong>（即施法动画播放时）会获得伤害减免。</p>
+
+    <h2 id="pvp">PvP 效果 <span class="en-h">PvP Effects</span></h2>
+    <p>声波元素在 PvP 中的表现如下：</p>
+    <table class="aspect-data-table">
+      <tr><th>状态</th><th>效果</th></tr>
+      <tr><td>禁用<br><span class="en-cell">(Deactivated)</span></td><td>无变化<br><span class="en-cell">(No Changes)</span></td></tr>
+      <tr><td>激活<br><span class="en-cell">(Activated)</span></td><td>无变化<br><span class="en-cell">(No Changes)</span></td></tr>
+    </table>
+    <ul class="plain">
+      <li>玩家处于 PvP 标记（Flagged）状态时，所有被禁用的元素护甲效果会列在「PvP 禁用效果（PvP Deactivated Effects）」之下。</li>
+      <li>玩家脱离 PvP 满 60 秒后，这些效果会重新激活。</li>
+      <li>列在「PvP 激活效果（PvP Activated Effects）」之下的加成，是在玩家当前处于 PvP 标记状态下、针对怪物（Creatures）时生效的额外加成。</li>
+    </ul>
+
+    <h2 id="cloth">布料 <span class="en-h">Cloth</span></h2>
+    <ul class="plain">
+      <li>色相（Hue）：4221</li>
+      <li>制作（To Craft）：裁缝（Tailoring）120 级、1 个声波蒸馏物（Agorawave Distillation）与 1 个羊毛（Wool）</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回元素精通</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

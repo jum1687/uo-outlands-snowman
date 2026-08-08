@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meditation · 冥想 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>冥想 Meditation</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Meditation" target="_blank" rel="noopener">wiki.uooutlands.com/Meditation</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">冥想 <span class="cnsub">Meditation</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#location">护甲部位惩罚 / Armor Location Penalty</a></li>
+    <li><a href="#material">护甲材质惩罚 / Armor Material Penalty</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>冥想（Meditation）技能显著提升玩家被动与主动回复法力的速率。玩家始终被动回复法力，但可以主动激活冥想技能进入「主动」冥想状态，使法力回复速率翻倍。任何移动、动作或受到伤害都会打断冥想状态。穿戴更重的护甲（如锁甲或板甲）会显著降低法力回复速率。</p>
+    <ul class="plain">
+      
+      <li>基础法力回复速率为每 2 秒回复 1 点法力（即每秒 0.5 点）。</li>
+      
+      <li>最大法力回复速率为每 0.5 秒回复 1 点法力（即每秒 2 点）。</li>
+      
+      <li>最小法力回复速率为每 8 秒回复 1 点法力（即每秒 0.125 点）。</li>
+      
+      <li>使用冥想技能的玩家总会进入冥想状态（无论技能等级），使其当前法力回复速率翻倍。</li>
+      
+      <li>法力回复速率提升（100% × (冥想技能 / 100)）。</li>
+      
+      <li>若玩家处于主动冥想状态，法力回复速率再提升 100%。</li>
+      
+      <li>法力回复速率受护甲惩罚：惩罚为（2 × 玩家总护甲冥想惩罚）；总护甲冥想惩罚等于所穿全部护甲冥想惩罚之和；每件护甲的冥想惩罚 =（护甲部位惩罚 × 护甲材质惩罚）。</li>
+    </ul>
+    <div class="formula">最终法力回复速率倍数 = (1 + 100% × (冥想 / 100)) × (主动冥想 ? 2 : 1) × (1 − 2 × 总护甲冥想惩罚)
+受上下限约束：每 0.5 秒～每 8 秒回复 1 点法力</div>
+    
+    <p>法力回复速率也会通过冥想速率的精通链（Mastery Chain）链接进行调整。</p>
+    <div class="example">
+      <div class="ex-title">Example</div>
+      
+      <p>若玩家法力回复速率为每 1.0 秒 1 点法力，获得 10% 提升后，会变为每 0.9 秒 1 点法力。</p>
+    </div>
+
+    <h2 id="location">护甲部位惩罚 <span class="en-h">Armor Location Penalty</span></h2>
+    
+    <p>各护甲部位的冥想惩罚权重如下：</p>
+    <div class="formula">Shield 盾牌 35%
+Chest 胸甲 35%
+Legs 腿甲 22%
+Arms 臂甲 15%
+Helmet 头盔 14%
+Gloves 手套 7%
+Gorget 护颈 7%</div>
+
+    <h2 id="material">护甲材质惩罚 <span class="en-h">Armor Material Penalty</span></h2>
+    
+    <p>各护甲材质的冥想惩罚如下：</p>
+    <div class="formula">无护甲 / 皮甲 / 小圆盾 / 木盾：0%
+studded 皮甲 / 木鸢盾：10%
+骨甲 / 金属盾 / 骨盾：25%
+锁甲 / 青铜盾：50%
+chainmail 锁甲 / 金属鸢盾：75%
+板甲 /  heater 盾 / chaos 或 order 盾：100%</div>
+    <div class="example">
+      <div class="ex-title">Example</div>
+      
+      <p>一名玩家全身穿 studded 皮甲但佩戴板甲护颈：(.35 × .10) + (.22 × .10) + (.15 × .10) + (.14 × .10) + (.07 × .10) + (.07 × 1.0) = 16.3% 总护甲冥想惩罚。这将导致对其法力回复速率产生 (2 × 16.3%) = -32.6% 的影响。</p>
+    </div>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–80 在新手地牢中施法并冥想</li>
+      
+      <li>80–100 当玩家法力低于上限时被动获得，并可通过使用该技能获得</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

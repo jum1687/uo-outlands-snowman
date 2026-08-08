@@ -1,0 +1,155 @@
+/* ===== UO Outlands 中文资料库 · 仿 MediaWiki 浅色主题（共享样式） ===== */
+:root{
+  --text:#202122; --link:#3366cc; --visited:#795cb2;
+  --border:#a2a9b1; --box-bg:#f8f9fa; --accent:#36c;
+  --muted:#54595d; --mw-bg:#ffffff;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--mw-bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:15px; line-height:1.65;
+}
+a{color:var(--link);text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:visited{color:var(--visited);}
+
+/* 面包屑 */
+.breadcrumb{
+  font-size:13px;color:var(--muted);padding:10px 24px;border-bottom:1px solid #eaecf0;
+  background:#fcfcfc;
+}
+.breadcrumb a{color:var(--link);}
+
+/* 顶部官方原文链接 */
+.source-link{
+  font-size:13px;color:var(--muted);padding:8px 24px;
+  background:#eef3fb;border-bottom:1px solid #eaecf0;
+}
+.source-link a{color:var(--link);}
+
+/* 中文正文段落间距 */
+.mw-content p{margin:.45em 0;}
+
+/* 正文容器 */
+.mw-body{max-width:960px;margin:0 auto;padding:18px 24px 80px;}
+.mw-page-title-main{
+  font-size:1.9em;font-weight:600;line-height:1.25;
+  border-bottom:1px solid var(--border);padding-bottom:.25em;margin:0 0 .6em;
+}
+.mw-page-title-main .cnsub{color:var(--muted);font-weight:400;font-size:.62em;margin-left:.4em;}
+
+/* 目录框（右浮动，仿 MediaWiki） */
+.toc{
+  float:right;margin:0 0 1em 1.5em;max-width:280px;
+  border:1px solid var(--border);background:var(--box-bg);
+  border-radius:3px;padding:10px 14px;font-size:13px;
+}
+.toc .toctitle{font-weight:600;font-size:13px;margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:4px;}
+.toc ol{margin:0;padding-left:20px;}
+.toc li{margin:2px 0;}
+.toc .lv3{padding-left:14px;list-style:none;font-size:12.5px;color:var(--muted);}
+
+/* 章节标题 */
+h2{
+  font-size:1.45em;font-weight:600;margin:1.4em 0 .4em;
+  border-bottom:1px solid var(--border);padding-bottom:.2em;
+}
+h2 .en-h{color:var(--muted);font-weight:400;font-size:.7em;margin-left:.4em;}
+h3{font-size:1.15em;font-weight:600;margin:1.1em 0 .3em;}
+
+/* 中英对照段落 */
+.en{color:var(--muted);font-style:italic;font-size:13.5px;margin:.3em 0;}
+.cn{margin:.3em 0;}
+
+/* 公式 / 代码块 */
+pre,code,.formula{
+  font-family:"Consolas","SFMono-Regular",Menlo,monospace;
+  background:#f6f8fa;border:1px solid #e4e7eb;border-radius:4px;
+}
+.formula{display:block;padding:10px 14px;margin:.6em 0;white-space:pre-wrap;font-size:13px;color:#1a1a1a;}
+pre{padding:10px 14px;overflow:auto;}
+
+/* 示例框 */
+.example{
+  border:1px solid #c8e1ff;background:#f0f7ff;border-radius:4px;
+  padding:10px 16px;margin:.8em 0;
+}
+.example .ex-title{font-weight:600;color:#0b5394;margin-bottom:.3em;font-size:13.5px;}
+
+/* 提示 / 注意 */
+.note{border-left:4px solid #f0c36d;background:#fff8e1;padding:8px 14px;margin:.8em 0;border-radius:0 4px 4px 0;font-size:13.5px;}
+
+/* 返回链接 */
+.backlink{display:inline-block;margin:6px 0 0;font-size:13px;}
+
+/* 详情页列表 */
+ul.plain{margin:.4em 0 .4em 1.2em;padding:0;}
+ul.plain li{margin:.25em 0;}
+
+/* ===== 目录页（index） ===== */
+.idx-wrap{max-width:1000px;margin:0 auto;padding:18px 24px 80px;}
+.idx-intro{background:var(--box-bg);border:1px solid var(--border);border-radius:3px;padding:14px 18px;margin:14px 0 22px;}
+.idx-cat{margin-top:28px;}
+.idx-cat h2{border-bottom:1px solid var(--border);padding-bottom:6px;}
+.idx-list{columns:2;column-gap:32px;margin:.6em 0;}
+.idx-list a{display:block;padding:3px 0;break-inside:avoid;}
+.idx-list .cnsub{color:var(--muted);font-size:.85em;margin-left:.3em;}
+.idx-unused{opacity:.7;}
+
+@media(max-width:700px){
+  .toc{float:none;max-width:none;margin:1em 0;}
+  .idx-list{columns:1;}
+}
+
+/* 页脚 */
+footer{
+  border-top:1px solid var(--border);background:var(--box-bg);
+  padding:18px 24px;color:var(--muted);font-size:12.5px;line-height:1.7;clear:both;
+}
+footer a{color:var(--link);}
+
+/* ===== 首页分类卡片 + 宠物悬停下拉 ===== */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:18px 0;}
+.skill-card{
+  display:block;padding:18px 20px;border:1px solid var(--border);border-radius:10px;
+  background:#fff;color:var(--text);font-size:1.15em;font-weight:600;text-decoration:none;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);transition:.15s;
+}
+.skill-card:hover{text-decoration:none;border-color:var(--accent);box-shadow:0 4px 14px rgba(51,102,204,.18);transform:translateY(-1px);}
+.skill-card .en{display:block;font-weight:400;font-size:.72em;margin-top:.25em;color:var(--muted);font-style:normal;}
+.skill-card-dropdown{position:relative;}
+.dropdown-menu{
+  opacity:0;visibility:hidden;position:absolute;left:0;right:0;top:100%;z-index:60;
+  background:#fff;border:1px solid var(--border);border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);overflow:hidden;
+  /* 鼠标移开后用透明桥接 + 延迟淡出，便于移到子项 */
+  transition:opacity .2s ease,visibility .2s ease;
+  transition-delay:.45s;
+}
+/* 卡片与菜单之间补一块透明桥，消除 6px 间隙导致的"死区" */
+.skill-card-dropdown::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px;z-index:59;}
+.skill-card-dropdown:hover .dropdown-menu,
+.skill-card-dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transition-delay:0s;}
+.dropdown-menu a{
+  display:block;padding:11px 18px;color:var(--text);font-size:.98em;font-weight:500;
+  border-bottom:1px solid #eaecf0;text-decoration:none;
+}
+.dropdown-menu a:last-child{border-bottom:none;}
+.dropdown-menu a:hover{background:#f0f6ff;color:var(--accent);text-decoration:none;}
+.dropdown-menu .en{display:block;font-size:.72em;color:var(--muted);margin-top:.15em;font-weight:400;}
+@media(max-width:700px){
+  .skill-grid{grid-template-columns:1fr;}
+}
+
+/* == site-nav injected == */
+.site-nav{ position:sticky; top:0; z-index:1000; display:flex; align-items:center; gap:2px; background:#fff; border-bottom:1px solid #eaecf0; padding:0 14px; height:46px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+.site-nav .nav-brand{ font-weight:700; color:#202122; margin-right:14px; font-size:15px; white-space:nowrap; }
+.site-nav a{ color:#202122; text-decoration:none; padding:8px 12px; border-radius:6px; font-size:14px; white-space:nowrap; }
+.site-nav a:hover{ background:#f0f6ff; text-decoration:none; }
+.site-nav .nav-dropdown{ position:relative; }
+.site-nav .nav-dropdown > a::after{ content:" \25BE"; font-size:.78em; color:#54595d; }
+.site-nav .nav-menu{ display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #eaecf0; border-radius:0 0 8px 8px; min-width:180px; box-shadow:0 4px 12px rgba(0,0,0,.1); padding:4px 0; z-index:1001; }
+.site-nav .nav-dropdown:hover .nav-menu{ display:block; }
+.site-nav .nav-menu a{ display:block; padding:8px 16px; border-radius:0; }
+@media (max-width:640px){ .site-nav{ height:auto; flex-wrap:wrap; padding:6px 10px; gap:2px; } .site-nav .nav-brand{ width:100%; margin-bottom:2px; } }

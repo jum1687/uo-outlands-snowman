@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forensic Evaluation · 法医鉴定 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 荒野类 › <span>法医鉴定 Forensic Evaluation</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Forensic_Evaluation" target="_blank" rel="noopener">wiki.uooutlands.com/Forensic_Evaluation</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">法医鉴定 <span class="cnsub">Forensic Evaluation</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#details">详情 / Details</a></li>
+    <li><a href="#colored-leather">采集彩色皮革 / Harvesting Colored Leather</a></li>
+    <li><a href="#skinning-knives">彩色剥皮刀 / Colored Skinning Knives</a></li>
+    <li><a href="#skinning-maps">剥皮地图 / Skinning Maps</a></li>
+    <li><a href="#buffs">增益 / Buffs</a></li>
+    <li><a href="#hamstring">割腱 / Hamstring</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>法医鉴定（Forensic Evaluation）技能让玩家对尸体使用剥皮刀（skinning knife）以获取皮革与肉。皮革主要供裁缝（Tailors）制作护甲，肉则供烹饪（Cooking）技能制作食物与餐食。法医鉴定还提供近战与法术伤害加成，并提升玩家有效的吟游（Barding）技能。</p>
+    <ul class="plain">
+      
+      <li>玩家可用剥皮刀采集皮革，并有几率从尸体上剥下彩色皮革。</li>
+      
+      <li>即使玩家近期未剥皮，也始终会从法医鉴定技能获得伤害与吟游技能加成。</li>
+      
+      <li>玩家可使用法医鉴定或剥皮刀，以自身或附近地面为目标激活「智能采集（Smart Harvest）」，这会剥取 2 格内所有「灰色」恶名（notoriety）尸体。</li>
+      
+      <li>剥取生物尸体会自动为该玩家打开尸体。</li>
+      
+      <li>对自己使用法医鉴定可采集最近的尸体。</li>
+      
+      <li>玩家有几率从尸体上剥下彩色皮革，且只要满足材料的技能要求，任意生物都可能出所有颜色的皮革。</li>
+      
+      <li>所有生物都可剥出皮革与肉，并有一定几率获得特殊烹饪材料，几率随玩家的法医鉴定技能而定。</li>
+    </ul>
+
+    <h2 id="details">详情 <span class="en-h">Details</span></h2>
+    <ul class="plain">
+      
+      <li>使用法医鉴定技能或剥皮刀剥取尸体，或智能采集附近尸体，不受全局技能冷却限制；法医鉴定技能有其自身独特的 0.5 秒冷却（即使用潜行/隐藏的玩家无需等待 10 秒即可剥尸）。</li>
+      
+      <li>剥取尸体时获得的皮革与肉数量为该生物基础数量的（50% + (150% × (法医鉴定技能 / 100))）。</li>
+      
+      <li>玩家采集彩色皮革（而非普通皮革）的几率为（7.5% × (1 + 工具加成)）。</li>
+      
+      <li>若你的法医鉴定技能足够，典范（Paragon）与首领（Boss）生物必定出彩色皮革而非普通皮革。</li>
+      
+      <li>该技能还提供以下法术与近战伤害的附加加成：PvM 中为（25% × (法医鉴定技能 / 100)），PvP 中为（10% × (法医鉴定技能 / 100)）——注意：此伤害加成现已只要你拥有该技能即被动生效，不再显示下方 gif 中的提示。</li>
+    </ul>
+    <div class="formula">皮革/肉数量 = 基础数量 × (50% + 150% × (法医鉴定技能 / 100))
+彩色皮革几率 = 7.5% × (1 + 工具加成)
+PvM 伤害加成 = 25% × (法医鉴定技能 / 100)
+PvP 伤害加成 = 10% × (法医鉴定技能 / 100)</div>
+
+    <h2 id="colored-leather">采集彩色皮革 <span class="en-h">Harvesting Colored Leather</span></h2>
+    
+    <p>注：「有效技能（Effective Skill）」= 你的原始（显示）技能 + 收获（Harvest）方面加成（在护甲上激活时）+ 任何有效收获技能精通链环（安装在活跃链上）之和。</p>
+    <table style="border-collapse:collapse;width:100%;font-size:12.5px;margin:.6em 0;">
+      <thead><tr style="background:#f8f9fa;">
+        <th style="border:1px solid #a2a9b1;padding:5px 6px;text-align:left;">Material 材料</th>
+        <th style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">Min Effective<br>Skill 最低有效技能</th>
+        <th style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">Basic<br>Skinning Knife<br>普通剥皮刀</th>
+        <th style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">Exceptional<br>Mastercrafted<br>Avarite 卓越精工阿瓦莱特</th>
+        <th style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">Bosses &amp;<br>Paragons 首领与典范</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Leather 皮革</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">92.50%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">90.55%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">n/a</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Dullhide 钝皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">65</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">2.18%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">2.74%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">29.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Shadowhide 影皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">70</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.58%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.98%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">21.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Copperhide 铜皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">75</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.20%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.51%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">16.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Bronzehide 青铜皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">80</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.90%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.13%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">12.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Goldenhide 金皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">85</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.68%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.85%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">9.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Rosehide 玫瑰皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">90</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.45%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.57%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">6.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Verehide 真银皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">95</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.30%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.38%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">4.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Valehide 谷皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">99</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.15%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.19%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">2.00%</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:5px 6px;">Avarhide 阿瓦莱特皮</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">110</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.08%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">0.09%</td><td style="border:1px solid #a2a9b1;padding:5px 6px;text-align:center;">1.00%</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="skinning-knives">彩色剥皮刀 <span class="en-h">Colored Skinning Knives</span></h2>
+    
+    <p>使用卓越（exceptional）与彩色材料剥皮刀的玩家，会获得如下采集彩色皮革几率的工具加成（所有适用加成可叠加）：</p>
+    <table style="border-collapse:collapse;width:100%;font-size:13px;margin:.6em 0;">
+      <thead><tr style="background:#f8f9fa;">
+        <th style="border:1px solid #a2a9b1;padding:6px 8px;text-align:left;width:30%;">Material 材料</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">Tool Bonus 工具加成</th>
+        <th style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">Tool Uses 使用次数</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Iron 铁</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">500 基础次数</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Exceptional 卓越</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.04</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+250 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Mastercrafted 精工</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.04</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+250 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Dull Copper 钝铜</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.02</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+125 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Shadow 影铁</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.04</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+250 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Copper 铜</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.06</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+375 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Bronze 青铜</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.08</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+500 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Gold 金</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.10</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+625 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Agapite 阿加派特</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.12</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+750 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Verite 真银</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.14</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+875 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Valorite 瓦罗莱特</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.16</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+1000 次</td></tr>
+        <tr><td style="border:1px solid #a2a9b1;padding:6px 8px;">Avarite 阿瓦莱特</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">0.18</td><td style="border:1px solid #a2a9b1;padding:6px 8px;text-align:center;">+1125 次</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="skinning-maps">剥皮地图 <span class="en-h">Skinning Maps</span></h2>
+    
+    <p>使用剥皮地图（Skinning Maps）时，搜索半径增加（100% × (法医鉴定技能 / 100)）。</p>
+    <div class="formula">剥皮地图搜索半径加成 = 100% × (法医鉴定技能 / 100)</div>
+
+    <h2 id="buffs">增益 <span class="en-h">Buffs</span></h2>
+    
+    <p>法医鉴定技能没有增益图标，因为其加成始终生效。</p>
+
+    <h3 id="pvm-bonus">PvM 加成 <span class="en-h">PvM Bonus</span></h3>
+    <ul class="plain">
+      
+      <li>法医鉴定提供对生物的附加法术与近战伤害（含箭术）加成，最高 30%。公式：（25% × (法医鉴定技能 / 100)）。</li>
+      
+      <li>攻击生物时，每次挥击额外增加 基础武器伤害 × 当前法医鉴定加成 的伤害。</li>
+      
+      <li>可获得的最高有效吟游技能加成为 12。公式：（10 × (法医鉴定技能 / 100)）。</li>
+    </ul>
+    <div class="formula">PvM 伤害加成 = 25% × (法医鉴定技能 / 100)（最高 30%）
+有效吟游技能加成 = 10 × (法医鉴定技能 / 100)（最高 12）</div>
+
+    <h3 id="pvp-bonus">PvP 加成 <span class="en-h">PvP Bonus</span></h3>
+    <ul class="plain">
+      
+      <li>法医鉴定提供对其他玩家的附加法术与近战伤害（含箭术）加成，最高 12%。公式：（10% × (法医鉴定技能 / 100)）。</li>
+      
+      <li>攻击玩家时，每次挥击额外增加 基础武器伤害 × 当前法医鉴定加成 的伤害。</li>
+    </ul>
+    <div class="formula">PvP 伤害加成 = 10% × (法医鉴定技能 / 100)（最高 12%）</div>
+
+    <h2 id="hamstring">割腱 <span class="en-h">Hamstring</span></h2>
+    
+    <p>更多信息请参阅割腱（Hamstring）页面。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    
+    <p>技能进阶：0–50 向 NPC 训练 | 50–100 剥皮怪物（Skinning mobs）| 100–120 剥皮怪物。</p>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

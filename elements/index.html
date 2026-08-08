@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元素精通（Aspect Mastery）| UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> › <span>元素精通 Aspect Mastery</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Aspect_Mastery" target="_blank" rel="noopener">wiki.uooutlands.com/Aspect_Mastery</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">元素精通 <span class="cnsub">Aspect Mastery</span></h1>
+
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#overview">系统总览 / Overview</a></li>
+    <li><a href="#unlock">解锁 / Unlocking</a></li>
+    <li><a href="#activate">激活 / Activating</a></li>
+    <li><a href="#tiers">阶位 / Tiers</a></li>
+    <li><a href="#binding">绑定与失效 / Binding</a></li>
+    <li><a href="#list">元素列表 / Aspects</a></li>
+  </ol></div>
+
+  <div class="mw-content">
+    <h2 id="overview">系统总览 <span class="en-h">Overview</span></h2>
+    <p>元素精通（Aspect Mastery）是 Outlands 特有的一套<strong>基于进度的附魔强化系统</strong>，用以提升玩家的 PvM 体验。它本质上是一种附魔（Enchantment），通过消耗少量<strong>奥术精华（Arcane Essence）</strong>应用到武器、护甲或魔法书上，为装备附加额外的元素特效。</p>
+    <p>每个角色需要<strong>单独解锁</strong>某个元素后才能将其应用到物品上。角色对 25 种常规元素（以及 1 个特殊的虹彩核心 Chromatic Core）各自拥有独立的等级（Tier）与经验。角色的某一元素等级（如火焰 Fire Tier）在武器、护甲、魔法书之间是<strong>跨部位共享</strong>的。</p>
+    <p>获取元素经验的方式包括：装备对应元素的装备击杀怪物、扒窃与打劫（Pilfering &amp; Mugging）、开启 Paragon/地牢/藏宝图箱子；通过击沉 NPC 船只获得的 Doubloons 转化来的元素经验会减少 50%。</p>
+
+    <h2 id="unlock">解锁 <span class="en-h">Unlocking</span></h2>
+    <p>解锁某个元素需要在背包中备齐以下材料，并在物品上对该元素点击两次「Unlock（解锁）」：</p>
+    <table class="aspect-data-table">
+      <tr><th>材料</th><th>数量</th><th>说明</th></tr>
+      <tr><td>元素蒸馏物<br><span class="en-cell">(Aspect Distillation)</span></td><td>2（同类型）</td><td>同元素各 2 个</td></tr>
+      <tr><td>元素核心<br><span class="en-cell">(Aspect Cores)</span></td><td>4（同类型）</td><td>同元素各 4 个</td></tr>
+      <tr><td>元素工具包<br><span class="en-cell">(Aspect Kit)</span></td><td>1</td><td>通用 1 个</td></tr>
+    </table>
+    <p>材料会被消耗，角色永久解锁该元素。解锁后即可随时切换并激活其武器 / 护甲 / 魔法书附魔。</p>
+
+    <h2 id="activate">激活 <span class="en-h">Activating</span></h2>
+    <p>每次激活消耗 <strong>5 点奥术精华（Arcane Essence）</strong>，次数不限。激活后对当前佩戴的装备临时附魔；若角色死亡、或将物品脱下放到背包以外（如存入银行箱、死亡掉落、被偷），附魔会消失。</p>
+    <p>激活武器 / 魔法书时，背包内同部位但非匹配元素的装备会失去附魔；激活护甲同理。可用命令 <code>[AspectWeapon</code> / <code>[AspectSpellbook</code> 直接对手中物品生效。</p>
+
+    <h2 id="tiers">阶位 <span class="en-h">Tiers</span></h2>
+    <p>元素的强度按阶位（Tier）划分，从解锁（Tier 0）到 Tier 15。升级所需材料（蒸馏物 / 核心 / 元素战利品 Aspect Triumphs）随阶位递增——例如 Tier 1 需 500 经验 + 1 蒸馏物 + 2 核心，Tier 15 需 250,000 经验 + 16 蒸馏物 + 50 核心 + 1 战利品。</p>
+    <p>可通过命令 <code>[LowerWeaponAspect</code> 等将<strong>激活阶位</strong>临时调低于永久等级，以节省奥术精华的燃烧；升级时自动重置回永久等级。</p>
+
+    <h2 id="binding">绑定与失效 <span class="en-h">Binding</span></h2>
+    <p>元素附魔<strong>绑定角色</strong>——若附魔物品离开角色 / 背包（放入银行箱、死亡掉落、被偷），附魔即消失。此外，奥术充能（Arcane Charges）耗尽也会导致附魔失效。相关支持道具包括：元素水晶（Aspect Crystals，增伤 / 触发）、元素护符（Aspect Phylacteries，保底特效）；旧版的 Foci / Oils / Ammo 可换新。</p>
+    <p>PvP 中护甲的大部分效果保留，部分因平衡被禁用（PvP Deactivated Effects），同时可能激活仅对怪物生效的替代效果（PvP Activated Effects），脱离 PvP 60 秒后恢复。</p>
+
+    <h2 id="list">元素列表 <span class="en-h">Aspects</span></h2>
+    <p class="note">以下 26 个元素，点击进入各自的激活特效详解（武器 / 护甲 / 魔法书的通用加成规则相同，差异仅在各元素的「特殊特效 Special Effect」）。</p>
+    <div class="skill-grid">
+      <a class="skill-card" href="agorawave.html">声波 <span class="en">Agorawave</span></a>
+      <a class="skill-card" href="air.html">疾风 <span class="en">Air</span></a>
+      <a class="skill-card" href="arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a class="skill-card" href="artisan.html">工匠 <span class="en">Artisan</span></a>
+      <a class="skill-card" href="blood.html">鲜血 <span class="en">Blood</span></a>
+      <a class="skill-card" href="command.html">号令 <span class="en">Command</span></a>
+      <a class="skill-card" href="death.html">死亡 <span class="en">Death</span></a>
+      <a class="skill-card" href="discipline.html">戒律 <span class="en">Discipline</span></a>
+      <a class="skill-card" href="earth.html">大地 <span class="en">Earth</span></a>
+      <a class="skill-card" href="eldritch.html">诡秘 <span class="en">Eldritch</span></a>
+      <a class="skill-card" href="fire.html">火焰 <span class="en">Fire</span></a>
+      <a class="skill-card" href="fortune.html">幸运 <span class="en">Fortune</span></a>
+      <a class="skill-card" href="frost.html">冰霜 <span class="en">Frost</span></a>
+      <a class="skill-card" href="gadget.html">机关 <span class="en">Gadget</span></a>
+      <a class="skill-card" href="harvest.html">丰收 <span class="en">Harvest</span></a>
+      <a class="skill-card" href="holy.html">神圣 <span class="en">Holy</span></a>
+      <a class="skill-card" href="lightning.html">闪电 <span class="en">Lightning</span></a>
+      <a class="skill-card" href="lyric.html">韵律 <span class="en">Lyric</span></a>
+      <a class="skill-card" href="madness.html">狂乱 <span class="en">Madness</span></a>
+      <a class="skill-card" href="poison.html">剧毒 <span class="en">Poison</span></a>
+      <a class="skill-card" href="shadow.html">暗影 <span class="en">Shadow</span></a>
+      <a class="skill-card" href="temporal.html">时空 <span class="en">Temporal</span></a>
+      <a class="skill-card" href="void.html">虚空 <span class="en">Void</span></a>
+      <a class="skill-card" href="war.html">战争 <span class="en">War</span></a>
+      <a class="skill-card" href="water.html">流水 <span class="en">Water</span></a>
+      <a class="skill-card" href="chromatic.html">虹彩 <span class="en">Chromatic Core</span></a>
+    </div>
+  </div>
+  <p class="backlink"><a href="../index.html">← 返回资料库首页</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/Aspect_Mastery" target="_blank" rel="noopener">wiki.uooutlands.com/Aspect_Mastery</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camping · 露营 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 荒野类 › <span>露营 Camping</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Camping" target="_blank" rel="noopener">wiki.uooutlands.com/Camping</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">露营 <span class="cnsub">Camping</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#buffs">增益 / Buffs</a></li>
+    <li><a href="#hiking">徒步 / Hiking</a></li>
+    <li><a href="#bedrolls">睡袋 / Bedrolls</a></li>
+    <li><a href="#enhancements">增强 / Enhancements</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>露营（Camping）技能提升玩家携带物品的重量与数量上限。玩家可用匕首（Dagger）对树木使用以制作引火物（kindling），也可用木工（Carpentry）技能制作多个引火物。引火物可用于生起营火（campfire）。经过短暂时间后，玩家的营地会变为「安全（secure）」。在安全的营火旁，玩家可进行「徒步（Hiking）」以快速旅行到地图册（Atlas）中的众多地点。玩家也可在安全的营火旁使用睡袋（Bedroll）从大多数地点（地牢除外）立即登出。</p>
+    <ul class="plain">
+      
+      <li>要生起营火，玩家必须使用一块引火物——可通过用匕首对树使用获得；也可通过木工菜单用木板与木工工具制作（无需任何木工技能）。</li>
+      
+      <li>露营技能提升玩家背包的最大重量上限与物品数量上限。</li>
+      
+      <li>拥有世界地图册（World Atlas）且露营达到 60，玩家便可徒步（快速旅行）到地图册中的任意地点（用 Atlas 创建）。</li>
+      
+      <li>徒步到某地会将玩家送至地图册条目地点 5 格半径内的随机位置；若是乡镇（Townships），则送至镇界内任意位置。</li>
+      
+      <li>每当玩家通过召回/门/徒步/月光门旅行，都会移除由其他玩家赋予其的任何露营舒适（Camping Comfort）加成效果。</li>
+      
+      <li>即使玩家近期未点燃安全营火，也始终会从露营技能获得自身的伤害技能加成——此效果始终启用，无相关提示/图标。</li>
+      
+      <li>营火持续 10 分钟。</li>
+      
+      <li>在 Shelter Island 的新手地牢中，露营是初期提升所有属性（力量、敏捷、智力）的好技能。注意：要获得属性，露营技能必须设为「UP（可增益）」，但不一定要获得技能点。例如，你即使已达 700 技能上限且锁住所有其他技能，仍可通过露营获得属性。你不仅在点火时有机会获得，站在火旁满 10 分钟期间也会持续获得。</li>
+    </ul>
+
+    <h2 id="buffs">增益 <span class="en-h">Buffs</span></h2>
+    <ul class="plain">
+      
+      <li>露营技能将玩家背包最大重量上限提升（200 石 × (露营技能 / 100)）。</li>
+      
+      <li>该技能还将玩家背包允许的最大物品数量提升（50 × (露营技能 / 100)）。</li>
+      
+      <li>玩家生起的营火，根据生火者的露营技能，需（57 至 60 秒 − (45 秒 × (露营技能 / 100))）秒才能变安全。</li>
+      
+      <li>露营技能不再有增益图标（因其始终生效）。</li>
+    </ul>
+    <div class="formula">背包重量上限加成 = 200 石 × (露营技能 / 100)
+背包物品数量上限加成 = 50 × (露营技能 / 100)
+营火安全所需时间 = 57~60 秒 − (45 秒 × (露营技能 / 100))</div>
+
+    <h3 id="pvm">PvM <span class="en-h">PvM</span></h3>
+    <ul class="plain">
+      
+      <li>玩家对生物每次武器命中额外造成 基础武器伤害 × (25% × (露营技能 / 100)) 的附加伤害。</li>
+      
+      <li>玩家对生物获得（25% × (露营技能 / 100)）的附加法术伤害加成。</li>
+    </ul>
+
+    <h3 id="pvp">PvP <span class="en-h">PvP</span></h3>
+    <ul class="plain">
+      
+      <li>玩家对其他玩家每次武器命中额外造成 基础武器伤害 × (10% × (露营技能 / 100)) 的附加近战伤害。</li>
+      
+      <li>玩家对其他玩家获得（10% × (露营技能 / 100)）的附加法术伤害加成。</li>
+    </ul>
+
+    <h2 id="hiking">徒步 <span class="en-h">Hiking</span></h2>
+    <ul class="plain">
+      
+      <li>玩家可「徒步」前往地图册中可找到的目的地，最低需 60 露营技能，包括自定义地点。</li>
+      
+      <li>若玩家当前拥有生效的探索（Exploration）效果，则无需安全营火也可徒步前往地图册中的目的地——详见探险者背包（Explorer's Packs）。</li>
+      
+      <li>当玩家徒步前往地图册目的地时，会在原地定身 5 秒后被传送至目的地。玩家初始有 3 个自定义地点条目。购买漂泊者（Drifter）玩家增强可解锁 2 个额外自定义地点条目（对账号下所有角色）；购买旅人（Wayfarer）玩家增强可再解锁 4 个额外自定义地点条目（对账号下所有角色）。</li>
+    </ul>
+    
+    <p><b>徒步前往目的地的条件：</b>玩家必须在地图册该目的地条目中选择「徒步前往地点（Hike to Location）」按钮；玩家必须处于安全的营火地点；玩家在 30 秒内不得处于任何类型的战斗；玩家在 2 分钟内不得与任何玩家战斗。</p>
+
+    <h2 id="bedrolls">睡袋 <span class="en-h">Bedrolls</span></h2>
+    <ul class="plain">
+      
+      <li>玩家可双击背包中的睡袋将其放在脚边。</li>
+      
+      <li>若睡袋放置在安全营地旁，玩家可使用它立即登出。</li>
+      
+      <li>玩家不可在地牢内使用睡袋登出 [2019 年 4 月 28 日补丁]。</li>
+    </ul>
+
+    <h2 id="enhancements">增强 <span class="en-h">Enhancements</span></h2>
+    
+    <p>玩家可通过「玩家自定义（Player Customizations）」下的帮助菜单，增加可标记的自定义徒步地点数量。</p>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    
+    <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）中生营火 | 80–120 生起营火并站在附近以获得技能增益。</p>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

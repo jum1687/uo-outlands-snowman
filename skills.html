@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UO Outlands 技能详解 · Skill Reference</title>
+<style>
+  :root{
+    --text:#202122; --link:#3366cc; --visited:#795cb2;
+    --border:#a2a9b1; --box-bg:#f8f9fa; --accent:#36c; --muted:#54595d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:#fff; color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:15px; line-height:1.6;
+  }
+  header.site{
+    background:linear-gradient(180deg,#fcfcfc,#f0f0f0);
+    border-bottom:1px solid var(--border);
+    padding:18px 28px;
+  }
+  header.site h1{margin:0;font-size:24px;font-weight:600;}
+  header.site .sub{color:var(--muted);font-size:13px;margin-top:4px;}
+  .disclaimer{
+    background:#fff8e1;border:1px solid #f0c36d;color:#7a5b00;
+    font-size:12.5px;padding:8px 14px;margin:0 0 0 0;border-radius:0;
+  }
+  .layout{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto;padding:0 20px;}
+  main{flex:1 1 auto;min-width:0;padding:24px 8px 80px 8px;}
+  /* 右侧粘性目录 */
+  nav.toc{
+    flex:0 0 280px;position:sticky;top:16px;align-self:flex-start;
+    border:1px solid var(--border);background:var(--box-bg);
+    border-radius:3px;padding:12px 14px;margin:24px 0 0 24px;font-size:13px;
+    max-height:calc(100vh - 40px);overflow:auto;
+  }
+  nav.toc h2{font-size:14px;margin:0 0 8px;border-bottom:1px solid var(--border);padding-bottom:6px;}
+  nav.toc ol{margin:0;padding-left:18px;}
+  nav.toc li{margin:2px 0;}
+  nav.toc .cat{font-weight:600;margin-top:6px;}
+  nav.toc a{color:var(--link);text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+  /* 过滤器 */
+  .filterbar{margin:18px 0 6px;}
+  .filterbar input{
+    width:100%;max-width:360px;padding:8px 10px;font-size:14px;
+    border:1px solid var(--border);border-radius:4px;
+  }
+  .filterbar input:focus{outline:2px solid #c8e0ff;border-color:var(--accent);}
+  .intro{background:var(--box-bg);border:1px solid var(--border);border-radius:3px;padding:14px 18px;margin:14px 0 22px;}
+  .intro b{color:var(--text);}
+  section.cat{margin-top:30px;}
+  h2.cat-title{
+    font-size:21px;font-weight:600;margin:0 0 4px;
+    border-bottom:1px solid var(--border);padding-bottom:6px;
+  }
+  h2.cat-title .en{color:var(--muted);font-weight:400;font-size:15px;margin-left:8px;}
+  .skill{
+    border:1px solid #e4e7eb;border-left:4px solid var(--accent);
+    border-radius:4px;padding:12px 16px;margin:12px 0;background:#fff;
+  }
+  .skill h3{margin:0 0 6px;font-size:17px;font-weight:600;}
+  .skill h3 .cn{color:var(--accent);font-weight:600;margin-left:8px;font-size:16px;}
+  .skill .en-text{color:var(--muted);font-size:13.5px;font-style:italic;margin:4px 0;}
+  .skill .cn-text{margin:4px 0;}
+  .skill .key{
+    margin-top:8px;font-size:13px;background:#f6f8fa;border-radius:3px;
+    padding:7px 10px;border:1px solid #e4e7eb;
+  }
+  .skill .key b{color:#b32424;}
+  .unused{opacity:.72;border-left-color:#999;}
+  .unused .tag{
+    display:inline-block;background:#eee;color:#555;font-size:11px;
+    padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;
+  }
+  footer{
+    border-top:1px solid var(--border);background:var(--box-bg);
+    padding:18px 28px;color:var(--muted);font-size:12.5px;line-height:1.7;
+  }
+  footer a{color:var(--link);}
+  .noresult{color:#b32424;font-size:14px;padding:14px;display:none;}
+  @media(max-width:900px){
+    .layout{flex-direction:column;}
+    nav.toc{position:static;flex:none;width:100%;margin:16px 0 0 0;}
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="index.html">首页</a>
+  <a href="skills/index.html">技能详解</a>
+  <a href="elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="pets/index.html">可驯服宠物</a>
+      <a href="pets/follower-abilities.html">宠物技能大全</a>
+      <a href="pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<header class="site">
+  <h1>UO Outlands 技能详解 <span style="color:var(--muted);font-weight:400;font-size:16px;">Skill Reference</span></h1>
+  <div class="sub">非官方粉丝整理 · 中英对照 · 资料译自 wiki.uooutlands.com · 仅供学习交流</div>
+</header>
+<div class="disclaimer">
+  ⚠️ 免责声明：本页内容由 AI 翻译自官方 Wiki，可能与最新版本存在滞后；关键数值（伤害公式、技能上限等）请以官方 Discord 补丁公告为准。技能上限 700 / 可解锁至 720，三围（Strength/Dexterity/Intelligence）总和 225。
+</div>
+
+<div class="layout">
+<main>
+  <div class="intro">
+    <b>技能体系总览</b>：UO Outlands 共启用 <b>53</b> 项技能，另保留 <b>6</b> 项服务器未开放技能（见末尾）。技能点总和上限为 <b>700</b>，通过成长系统可解锁至 <b>720</b>；三围属性总和固定 <b>225</b>。技能按用途分为：战斗、魔法、吟游、盗窃、制造、荒野、杂项七大类。下方按官方分类逐一中英对照介绍。
+  </div>
+
+  <div class="filterbar">
+    <input id="filter" type="text" placeholder="🔍 按技能名筛选（中/英文均可，如 archery 或 箭术）" oninput="filterSkills(this.value)">
+  </div>
+  <div id="noresult" class="noresult">没有匹配的技能。</div>
+
+  <!-- ===================== 战斗类 ===================== -->
+  <section class="cat" id="cat-combat">
+    <h2 class="cat-title">战斗类 <span class="en">Combat</span></h2>
+
+    <div class="skill" id="anatomy">
+      <h3>Anatomy <span class="cn">解剖学</span></h3>
+      <p class="en-text">Anatomy increases weapon damage, gives a swing speed bonus, and boosts bandage healing. At 60+ with Healing you can cure poison via bandages; at 80+ you can attempt resurrection. It also grants resistance to bleed/disease.</p>
+      <p class="cn-text">解剖学提升武器伤害与挥击速度，并增强绷带治疗效果。当解剖学与治愈技能均达 60 时可尝试用绷带回毒，达 80 时尝试复活。还提供对流血与疾病的抗性。</p>
+      <div class="key"><b>关键要点：</b>近战/弓箭每次挥击增伤为「基础武器伤害 × 20% × (技能/100)」；PvM 中提升武器终结技触发率与挥速（仅 PvM）。</div>
+    </div>
+
+    <div class="skill" id="archery">
+      <h3>Archery <span class="cn">箭术</span></h3>
+      <p class="en-text">Archery uses bows/crossbows to fire arrows/bolts from range, offering safe distance. It has a 0.5s pre-shot delay and a PvM special attack that Hinders targets.</p>
+      <p class="cn-text">箭术使用弓与弩从远距离发射箭矢/弩箭，凭借射程保持安全距离。攻击前需静止 0.5 秒，PvM 特殊攻击可使目标被阻碍（Hinder）。</p>
+      <div class="key"><b>关键要点：</b>弓射程 10 格、弩 8 格；弓箭武器不可涂毒；PvP 副武器增伤上限 20%；双手远程武器自带 PvM +50% 伤害配置加成。</div>
+    </div>
+
+    <div class="skill" id="dualwielding">
+      <h3>Dual Wielding <span class="cn">双持</span></h3>
+      <p class="en-text">Dual Wielding is a weapon skill using paired weapons that occupy both hands, scaling to 100. These weapons need only Dual Wielding skill (not the mirrored skill like Swords).</p>
+      <p class="cn-text">双持是武器技能，使用占用双手的成对武器，最高 100 点。双持武器只需双持技能即可使用，无需对应单手武器技能。</p>
+      <div class="key"><b>关键要点：</b>PvM 对怪物特殊攻击「虚晃（Feint）」增伤 150% 并叠层减目标伤害；双手远程配装对怪物 +50% 近战伤害。</div>
+    </div>
+
+    <div class="skill" id="chivalry">
+      <h3>Chivalry <span class="cn">骑士精神（圣骑士技能）</span></h3>
+      <p class="en-text">Chivalry grants 10 abilities (from a Book of Chivalry) that buff attacks, heal, or fast-travel, paid via Holy Symbols generated over time. Effective skill is capped by Tactics.</p>
+      <p class="cn-text">骑士精神通过《骑士之书》施放 10 个能力，可强化攻击、治疗或传送，消耗随时间累积的「神圣符印」。有效技能受战术（Tactics）上限限制。</p>
+      <div class="key"><b>关键要点：</b>每 5 秒获得 1 个神圣符印，符印上限为有效技能/10；Chivalry 能力在 PvP 中无效，但提供 10%×技能 的 PvP 近战增伤。</div>
+    </div>
+
+    <div class="skill" id="fencing">
+      <h3>Fencing <span class="cn">剑术（细剑/穿刺类）</span></h3>
+      <p class="en-text">Fencing uses fast, low-damage piercing weapons (all poisonable). Its PvM special applies Cripple, lowering target defense and boosting poison/disease damage.</p>
+      <p class="cn-text">剑术使用攻速快、伤害较低的穿刺类武器（全部可涂毒）。其 PvM 特殊攻击施加「残废（Cripple）」，降低目标防御并提升毒与病伤害。</p>
+      <div class="key"><b>关键要点：</b>命中率 = (剑术+50) / ((防御武器或徒手+50)×2)；每残废层降目标 6% 防御。</div>
+    </div>
+
+    <div class="skill" id="healing">
+      <h3>Healing <span class="cn">治愈</span></h3>
+      <p class="en-text">Healing uses bandages to heal self/others; with 60+ Anatomy can cure poison, 80+ can resurrect. Bandage slips during combat reduce effectiveness.</p>
+      <p class="cn-text">治愈使用绷带为自己或他人疗伤；与解剖学均达 60 可回毒，达 80 可复活。战斗中绷带「打滑」会降低效果。</p>
+      <div class="key"><b>关键要点：</b>治愈量 = (技能/100)×(40~60 随机)×(1+0.2×解剖/100)；100 治愈+80 解剖复活必成功。</div>
+    </div>
+
+    <div class="skill" id="macefighting">
+      <h3>Mace Fighting <span class="cn">锤击（钝器战）</span></h3>
+      <p class="en-text">Mace Fighting uses slow, high-damage blunt weapons (not poisonable). Its PvM special "Pierce" reduces target armor; in PvP it drains enemy Stamina.</p>
+      <p class="cn-text">锤击使用攻速慢、伤害高的钝器（不可涂毒）。其 PvM 特殊攻击「穿刺（Pierce）」降低目标护甲；PvP 中打击敌人会削减其耐力。</p>
+      <div class="key"><b>关键要点：</b>PvM 特殊攻击施加 25 点穿刺，持续 8~16 秒；PvP 依伤害有几率使目标失去 5 点耐力。</div>
+    </div>
+
+    <div class="skill" id="parrying">
+      <h3>Parrying <span class="cn">招架</span></h3>
+      <p class="en-text">Parrying gives a large chance to greatly reduce incoming melee/spell damage while wielding shields or two-handed weapons, and lets you Taunt creatures to draw aggro.</p>
+      <p class="cn-text">招架在使用盾牌或双手武器时大幅降低来袭近战/法术伤害，并可「嘲讽」怪物将其仇恨引向自己。</p>
+      <div class="key"><b>关键要点：</b>招架近战成功减伤 75%（双手武器仅 50%）；80 招架+80 战术或徒手可使用招架法典。</div>
+    </div>
+
+    <div class="skill" id="swordsmanship">
+      <h3>Swordsmanship <span class="cn">剑类武器（刀剑精通）</span></h3>
+      <p class="en-text">Swordsmanship uses bladed weapons of average speed/damage. Its PvM special applies stackable Lacerate (boosts specials) and Bleed (tick damage).</p>
+      <p class="cn-text">剑类武器使用速度与伤害均中等的刀剑。其 PvM 特殊攻击施加可叠加的「撕裂（Lacerate）」与「流血（Bleed）」持续伤害。</p>
+      <div class="key"><b>关键要点：</b>单手剑可涂毒，斧与双手剑不可；流血总量为命中伤害的 150%，每 3 秒一跳共 15 秒。</div>
+    </div>
+
+    <div class="skill" id="tactics">
+      <h3>Tactics <span class="cn">战术</span></h3>
+      <p class="en-text">Tactics dramatically increases damage for all melee and ranged weapons. 0–100 adds Base Damage × (-50% + Skill/200); 100+ adds 1% per point over 100.</p>
+      <p class="cn-text">战术大幅增强所有近战与远程武器伤害。0~100 区间每 swing 增加「基础伤害 × (-50% + 技能/200)」；超过 100 每点额外 +1%。</p>
+      <div class="key"><b>关键要点：</b>低战术（如 50）反而减伤；是多数武器/法典的前置（需 80 战术）。</div>
+    </div>
+
+    <div class="skill" id="throwing">
+      <h3>Throwing <span class="cn">投掷</span></h3>
+      <p class="en-text">Throwing uses short-range one-handed ranged weapons (range 8) needing no ammo, allowing limited Moving Throws while moving before needing to become "Planted" (stationary).</p>
+      <p class="cn-text">投掷使用射程 8 格的单手远程武器，无需弹药，移动中可进行有限次「移动投掷」，之后需静止（Planted）重置。</p>
+      <div class="key"><b>关键要点：</b>PvM 特殊攻击「羽化（Winged）」增伤 150%；PvP 仅 1 次移动投掷，静止 5 秒重置。</div>
+    </div>
+
+    <div class="skill" id="wrestling">
+      <h3>Wrestling <span class="cn">摔跤（徒手/格斗）</span></h3>
+      <p class="en-text">Wrestling allows attacking/defending unarmed or with Wrestling weapons; vital for mages since melee hits interrupt casts. PvM special "Stagger" boosts special/ability damage.</p>
+      <p class="cn-text">摔跤允许徒手或使用格斗武器攻防，对法师至关重要（近战命中会打断施法）。其 PvM 特殊攻击「踉跄（Stagger）」提升特殊攻击与能力伤害。</p>
+      <div class="key"><b>关键要点：</b>徒手对怪基础伤害 2~8、对玩家 1~4；连续命中不落空积累连击（Combo），第 3 击 +50% 伤害。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 魔法类 ===================== -->
+  <section class="cat" id="cat-magic">
+    <h2 class="cat-title">魔法类 <span class="en">Magic</span></h2>
+
+    <div class="skill" id="arcane">
+      <h3>Arcane <span class="cn">奥术</span></h3>
+      <p class="en-text">Arcane is a weapon skill for the two-handed Arcane Staff, granting spell damage/resist bonuses via Arcane Buildup; carrying followers or using barding clears it.</p>
+      <p class="cn-text">奥术是一项围绕「纯法师」双手法杖构建的武器技能，命中怪物积累蓄能以提升法伤与抗性。80 奥术+80 徒手+80 魔法可持法杖施法；带随从或用吟游技会丢失蓄能与法典姿态。</p>
+      <div class="key"><b>关键要点：</b>持法杖施法时按有效奥术技能免打断；PvM 对附近奥术符文效果加成 25%×(技能/100)。</div>
+    </div>
+
+    <div class="skill" id="evalint">
+      <h3>Evaluating Intelligence <span class="cn">智力评估</span></h3>
+      <p class="en-text">Evaluating Intelligence passively boosts Magery spell damage to creatures and players. Spell base damage scales with the caster's Eval Int, and can view creature stats without Animal Lore.</p>
+      <p class="cn-text">智力评估用于放大魔法法术的伤害与效果，是法师核心增益技能。可在无动物学识时查看怪物属性。</p>
+      <div class="key"><b>关键要点：</b>100 技能 PvM 提供 50% 法伤加成、0 技能为 -25%；可替代动物学识查看怪物属性。</div>
+    </div>
+
+    <div class="skill" id="magery">
+      <h3>Magery <span class="cn">魔法（法师技能）</span></h3>
+      <p class="en-text">Magery has 8 circles, 64 spells for ranged damage, healing, summoning and control; requires spellbook, reagents and mana. Outlands reworked AoE, walls/fields and indirect fire heavily.</p>
+      <p class="cn-text">魔法共分 8 圈（每圈最低可施=圈×10，满成功=圈×10+20），用于远程输出、治疗、召唤与控场；施法需法术书、试剂与法力。Outlands 对群体法术、墙/能量场、间接火力做了大量重制。</p>
+      <div class="key"><b>关键要点：</b>8 圈法术：1圈4蓝/0.5s 至 8圈50蓝/2.5s；PvM 伤害总体 +100%；Chain Lightning/Meteor Swarm 重制并加公共 CD；Wall of Stone/Energy Field 可被物理摧毁；部分法术（如 Magic Lock）已禁用。</div>
+    </div>
+
+    <div class="skill" id="meditation">
+      <h3>Meditation <span class="cn">冥想</span></h3>
+      <p class="en-text">Meditation greatly raises mana regen; active meditating doubles it but is interrupted by any movement/action/damage. Heavy armor (chain/plate) sharply reduces regen.</p>
+      <p class="cn-text">冥想提高法力再生，主动进入冥想态后当前回复速率翻倍。穿重型护甲（链甲/板甲）会显著降低回复速率。</p>
+      <div class="key"><b>关键要点：</b>回复率加成为 100%×(技能/100)，主动冥想再 +100%；护甲惩罚=2×总护甲冥想惩罚（板甲 100%、链甲 75%）。</div>
+    </div>
+
+    <div class="skill" id="necromancy">
+      <h3>Necromancy <span class="cn">死灵法术</span></h3>
+      <p class="en-text">Necromancy (via Necromancer's Book) grants support abilities that buff followers, boost spell effects or deal damage, paid by auto-accumulating Unholy Symbols. All instantaneous, uninterruptible, no mana. Most abilities inert in PvP.</p>
+      <p class="cn-text">死灵法术是基于经典死灵重做的辅助技能，每 5 秒获 1 个不洁符号（上限=有效技能/10），各能力耗 1–5 符号、同名 30 秒冷却。有效死灵受魔法上限约束。</p>
+      <div class="key"><b>关键要点：</b>PvP 补伤为 10%×(技能/100) 且仅限法伤；Wither、Vampiric Embrace 禁用于 PvP；不依赖善恶值。</div>
+    </div>
+
+    <div class="skill" id="resistingspells">
+      <h3>Resisting Spells <span class="cn">抗咒（法术抵抗）</span></h3>
+      <p class="en-text">Resisting Spells reduces spell damage taken and offers a chance to not be interrupted by creature/environment damage. Being hit grants "Spell Siphon" buff boosting swing speed, mana return and resist.</p>
+      <p class="cn-text">抗咒减少法术伤害，并按公式抵抗诅咒/中毒等无伤法术。PvM 另有法术吸收机率。</p>
+      <div class="key"><b>关键要点：</b>减伤最低 12.5%×技能/100、最高 37.5%×技能/100；每 5 分钟首次被法术命中获 60 分钟「法术虹吸」增益（攻速/返蓝/抗性各 +10%×有效技能/100）；免打断率=有效技能/100。</div>
+    </div>
+
+    <div class="skill" id="spiritspeak">
+      <h3>Spirit Speak <span class="cn">通灵（通灵术）</span></h3>
+      <p class="en-text">Spirit Speak greatly boosts summoned follower HP, attack speed, damage and duration, grants caster spell damage, and lets you speak with ghost players. Core buff skill for summoner builds.</p>
+      <p class="cn-text">通灵是召唤派必点技能：随从 HP +150%×技能/100、攻速 +25%、伤害 +50%。配合召唤师之卷进一步强化。</p>
+      <div class="key"><b>关键要点：</b>提供 +10%×技能/100 的蓄能法术触发率；Blade Spirits/Energy Vortex 会狂暴攻击灰名。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 吟游类 ===================== -->
+  <section class="cat" id="cat-bard">
+    <h2 class="cat-title">吟游类 <span class="en">Bard</span></h2>
+
+    <div class="skill" id="discordance">
+      <h3>Discordance <span class="cn">不谐</span></h3>
+      <p class="en-text">Discordance debuffs a creature, lowering its stats, reducing its damage dealt by 25% and increasing damage taken by 25% (extra +15% if already provoked/peaced). On Bosses also lowers melee/cast speed and skill cooldowns.</p>
+      <p class="cn-text">不谐使吟游诗人令怪物属性大幅下降、输出减少 25% 且受伤增加 25%（对已挑衅/平息目标再额外 +15% 受伤）。</p>
+      <div class="key"><b>关键要点：</b>持续时间 = ((60 − 怪物难度值) × 有效吟游 / 100)，最短 15×(音乐造诣/100) 秒；成功率下限 33%×有效技能/100；对已被挑衅/平息目标 +25 有效技能；乐器/附加加成总和不得超过 Musicianship。</div>
+    </div>
+
+    <div class="skill" id="musicianship">
+      <h3>Musicianship <span class="cn">音乐造诣</span></h3>
+      <p class="en-text">Musicianship is the shared skill cap for Discordance, Peacemaking and Provocation. All barding actions need an instrument in pack, consuming durability each use. Effective barding = base + instrument + slayer + lyric + link bonuses, capped by Musicianship.</p>
+      <p class="cn-text">音乐造诣是三大吟游技能的能力上限，决定其实际生效等级；所有吟游术都需乐器且每次消耗耐久。</p>
+      <div class="key"><b>关键要点：</b>基础吟游被音乐造诣封顶（50/25 → 实际 25）；PvP 防守吟游可按三技能均值/2 提供最多 100 的等效搏击与魔抗。</div>
+    </div>
+
+    <div class="skill" id="peacemaking">
+      <h3>Peacemaking <span class="cn">平息</span></h3>
+      <p class="en-text">Peacemaking temporarily freezes creatures, preventing movement, melee, casting or most skills. Duration = ((60 − creature difficulty) × effective skill / 100), min 15×(Musicianship/100)s; 10s success / 5s fail cooldown.</p>
+      <p class="cn-text">平息能令怪物暂时停止行动与攻击，是强力的单体/范围控制。持续时间随技能缩放，对已被控制目标有加成，友方获得命中增益。</p>
+      <div class="key"><b>关键要点：</b>范围平息对自身施放，8 格内每个非驯服怪物判定 2 秒；对已挑衅/不谐目标 +25；驯服怪物最多 15 秒。</div>
+    </div>
+
+    <div class="skill" id="provocation">
+      <h3>Provocation <span class="cn">挑衅</span></h3>
+      <p class="en-text">Provocation makes two creatures attack each other; provoked creatures deal +50% to other provoked targets. Lasts until bard leaves 50 tiles (leash = effective skill/2). Duration = ((60 − highest difficulty) × effective skill/100).</p>
+      <p class="cn-text">挑衅使两只怪物互斗，被挑衅者相互造成额外伤害，效果在诗人离开牵引范围前持续。</p>
+      <div class="key"><b>关键要点：</b>驯服怪物无法被挑衅；牵引距离 = 有效挑衅/2 格；成功冷却 10 秒、失败 5 秒，可与不谐每 5 秒交替使用。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 盗窃类 ===================== -->
+  <section class="cat" id="cat-thieving">
+    <h2 class="cat-title">盗窃类 <span class="en">Thieving</span></h2>
+
+    <div class="skill" id="detectinghidden">
+      <h3>Detecting Hidden <span class="cn">侦察隐藏</span></h3>
+      <p class="en-text">Detecting Hidden reveals hidden targets and boosts Tracking against them; also boosts Tinker traps. Dungeon/Paragon chests need this skill plus Trap Tools to disarm. Outlands merged Remove Trap into this skill.</p>
+      <p class="cn-text">侦察隐藏可揭示隐身的玩家/生物，使用 Tracking 时也能扩大发现距离，并为地雷陷阱提供加成。地牢/卓越宝箱必须靠它配拆陷阱工具排雷；本服把原版「拆除陷阱」合并到了这里。</p>
+      <div class="key"><b>关键要点：</b>揭示成功率 = 技能值（80=80%）；最少 80 技能才能用 Tinker 陷阱与侦探透镜；排雷成功率 = (有效侦察隐藏 − 宝箱最低技能) × 2.5%。</div>
+    </div>
+
+    <div class="skill" id="hiding">
+      <h3>Hiding <span class="cn">隐藏</span></h3>
+      <p class="en-text">Hiding makes you invisible to other players and most creatures until an "exposing" action. With Stealth you can move while hidden. 80+ Hiding & Stealth allows backstab on creatures. Revealed by Detect Hidden / Reveal for 5s lockout.</p>
+      <p class="cn-text">隐藏使玩家对其他人及多数怪物隐形，做暴露动作前一直有效；会潜行的玩家可在隐身状态下移动。隐身中若 Hiding 与 Stealth 都达 80 以上，攻击怪物可造成背刺。</p>
+      <div class="key"><b>关键要点：</b>成功率 = 技能值（50=50%）；房屋好友在房内享 100 隐藏加成、房外 1 格内享 50 加成；被生物能力揭示后 10 秒内禁止隐身。</div>
+    </div>
+
+    <div class="skill" id="lockpicking">
+      <h3>Lockpicking <span class="cn">撬锁</span></h3>
+      <p class="en-text">Lockpicking opens dungeon/treasure-map chests with lockpicks; dungeon/paragon chests also need Detecting Hidden + Trap Tools. Progress 0–100%; now supports continuous auto-picking with auto tool-swap.</p>
+      <p class="cn-text">撬锁可用于开启上锁宝箱与容器，开启地牢/藏宝图宝箱需结合侦察隐藏与拆陷阱工具。每次成功提升进度，现可开启连续模式自动撬到开为止。</p>
+      <div class="key"><b>关键要点：</b>撬锁成功率 = (有效技能 − 宝箱最低技能) × 2.5%；特殊/彩色材质撬锁器提升有效技能与进度。</div>
+    </div>
+
+    <div class="skill" id="poisoning">
+      <h3>Poisoning <span class="cn">下毒</span></h3>
+      <p class="en-text">Poisoning applies Lesser–Lethal poison to fencing/swords weapons or via Magery poison spells. PvM poison damage +50% and boosted by Taste ID. New stacking, poison resist and poison strike mechanics added.</p>
+      <p class="cn-text">下毒可给刺击武器涂毒，或配合法术系施放毒咒，造成五级周期伤害，目标需解毒。对怪物毒伤额外 +50% 且受 Taste ID 加成。</p>
+      <div class="key"><b>关键要点：</b>毒伤随等级递增（Lesser 5/10秒 → Lethal 25/5秒），涂 Lethal 需 95 技能；被 Greater+ 击中累积毒耐（上限 50%）降低对手成功率。</div>
+    </div>
+
+    <div class="skill" id="snooping">
+      <h3>Snooping <span class="cn">窥探</span></h3>
+      <p class="en-text">Snooping (Thieves Guild "Red Hand") lets you view other players' packs/containers. Success = skill; nearby players may notice (100%−75%×skill) unless you are Hidden. Requires Snooping & Stealing ≥80 to join.</p>
+      <p class="cn-text">窥探允许盗贼工会红手成员翻看他人背包与容器。成功率等于技能值，附近玩家有几率察觉，但小偷处于隐身状态时不提示。需窥探与偷窃均达 80 才能入会。</p>
+      <div class="key"><b>关键要点：</b>死亡后 2 分钟内禁止窥探/偷窃；需视线可达容器；可用「盗窃记录簿」追踪尝试次数。</div>
+    </div>
+
+    <div class="skill" id="stealing">
+      <h3>Stealing <span class="cn">偷窃</span></h3>
+      <p class="en-text">Stealing (Thieves Guild "Red Hand") takes items from other players; base success = skill, needs Snooping ≥80. Caught by town NPCs summons guards; Outlands adds town "suspicion" accumulation. Gray-hand members can rob creatures for loot.</p>
+      <p class="cn-text">偷窃让盗贼工会红手成员从其他玩家身上取走物品，基础成功率等于技能值，且需窥探达 80。在城镇被 NPC 发现会招来卫兵；本服新增按城镇累计的「嫌疑值」。</p>
+      <div class="key"><b>关键要点：</b>单件可偷最大重量 = 10×技能/100 石；技能冷却降至 5 秒；从怪物每只能偷最多 1000 金且每只仅一次。</div>
+    </div>
+
+    <div class="skill" id="stealth">
+      <h3>Stealth <span class="cn">潜行</span></h3>
+      <p class="en-text">Stealth lets a Hidden player move a short distance while remaining hidden (needs Hiding ≥80). Each use grants (5 + 10×skill/100) steps; after 10s hidden, success = skill, failure exposes. Running always reveals. Backstab on creatures up to +800%~+1600% damage.</p>
+      <p class="cn-text">潜行允许已隐藏的玩家短距离移动而保持隐身，前提隐藏达 80。隐身 10 秒后潜行成功率等于技能值，失败即现形；奔跑一定暴露。隐身状态下对怪物背刺可造成最高 16 倍伤害。</p>
+      <div class="key"><b>关键要点：</b>背刺需潜行与武器技能均 ≥80，命中 +25%、上毒几率 +25%、不可触发武器特技。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 制造类 ===================== -->
+  <section class="cat" id="cat-trade">
+    <h2 class="cat-title">制造类 <span class="en">Trade</span></h2>
+
+    <div class="skill" id="alchemy">
+      <h3>Alchemy <span class="cn">炼金</span></h3>
+      <p class="en-text">Uses Mortar and Pestle with 8 reagents and empty bottles to craft potions, Aspect items and farming supplies. Highest potions craft in batches of 25; durations scale with skill. Can drink potions while armed; PvM heal bonus 50%×skill/100 vs PvP 25%.</p>
+      <p class="cn-text">使用臼杵配合 8 种基础试剂与空瓶制造药水、方面物品及种植用品。高级药水可一次批量造 25 瓶，药水时长随技能提升。</p>
+      <div class="key"><b>关键要点：</b>Greater Cure 每 30 秒首瓶免费；毒桶（Potion Keg）按数量计重；练至 GM 约耗 11 万试剂或 13 小时。</div>
+    </div>
+
+    <div class="skill" id="blacksmithy">
+      <h3>Blacksmithy <span class="cn">铁匠</span></h3>
+      <p class="en-text">Uses ingots at anvil/forge to craft weapons, ring/chain/plate armor, shields, repair kits and dyes. Ingots come from Mining. Wearing smith armor / wielding smith weapons grants skill-scaled bonuses (PvM +25% dmg/AR, PvP +10%).</p>
+      <p class="cn-text">在铁砧熔炉旁用铁锭打造武器、环形/锁子/板甲、盾牌、修理包与染料。矿锭由采矿产出而非铁匠制造。</p>
+      <div class="key"><b>关键要点：</b>彩色锭（Dull Copper→Avarite）按阶提升耐久与战斗属性；练 50–120 约耗 24 万锭；120 级解锁方面装备。</div>
+    </div>
+
+    <div class="skill" id="carpentry">
+      <h3>Carpentry <span class="cn">木工</span></h3>
+      <p class="en-text">Merges original Bowcraft/Fletching; uses Boards to craft shields, weapons, instruments, furniture, containers, ship deeds and repair kits. Wearing carpentry armor / using its weapons grants PvM/PvP bonuses; ships have random ±10% stats.</p>
+      <p class="cn-text">合并原版弓箭制造，直接用木板制作盾牌、武器、乐器、家具、容器、船契与修理包。</p>
+      <div class="key"><b>关键要点：</b>省略原木→木板前置；高级品需 Mastercrafting Diagram 与 Pristine Lumber；练满约耗 26 万木板。</div>
+    </div>
+
+    <div class="skill" id="cartography">
+      <h3>Cartography <span class="cn">制图</span></h3>
+      <p class="en-text">Uses Map Maker's Pen and Blank Maps to craft Local/City/Regional/World maps. Spyglass deciphers treasure/resource maps; players can Hike via Atlas. Explorer Packs grant skill-scaled damage/resist vs treasure/sea creatures.</p>
+      <p class="cn-text">用制图笔与空白地图制作本地/城市/区域/世界地图。用望远镜破译藏宝/资源图，可借图册徒步至目的地。可造探险者背包，对藏宝怪与海上生物提供加成。</p>
+      <div class="key"><b>关键要点：</b>世界地图需 100 技能；探险者背包（100 技能）提供 60 分钟探索效果；练至 GM 约需 1.1 万空白地图。</div>
+    </div>
+
+    <div class="skill" id="cooking">
+      <h3>Cooking <span class="cn">烹饪</span></h3>
+      <p class="en-text">Uses a frying pan and heat source to turn raw meat/fish into food (6 quality tiers, 1.0x–1.5x recovery) and craft dyes/ovens. Eating every 60s grants a 60-min Satisfaction buff with mana regen and PvM attack-speed bonus.</p>
+      <p class="cn-text">用煎锅与热源将生肉/鱼烹成食物（6 级品质，恢复倍率 1.0–1.5x）并制作染料、烤箱。每 60 秒进食获 60 分钟饱食 buff，提供法力再生与 PvM 攻速加成。</p>
+      <div class="key"><b>关键要点：</b>饱食加成取烹饪与 Taste ID 较高者；PvP 标红恢复减半；练至 120 约需 18–20k 排骨。</div>
+    </div>
+
+    <div class="skill" id="fishing">
+      <h3>Fishing <span class="cn">钓鱼</span></h3>
+      <p class="en-text">Uses rods and nets to catch fish and trigger events (spawns, SOS bottles, fishing frenzy); can fight with harpoon/trident (Impale). Material grade boosts catch chance. Special nets: 75% spawn / 25% special fish.</p>
+      <p class="cn-text">用鱼竿、皮革/特殊渔网捕鱼并触发刷怪、SOS 漂流瓶、钓鱼狂热等；可用鱼叉/三叉戟战斗（专属 Impale）。材质阶提升捕获率与次数。</p>
+      <div class="key"><b>关键要点：</b>陆钓可 AFK 但仅产生鱼且成功率大降；SOS 不过期，皮革网 12 格内最多 20 次；新增钓鱼武器与法典架势。</div>
+    </div>
+
+    <div class="skill" id="inscription">
+      <h3>Inscription <span class="cn">铭文（抄写）</span></h3>
+      <p class="en-text">Uses scribe's pen with blank/arcane scrolls, leather and boards to craft spell scrolls (1–8), spellbooks, runebooks, codexes and dyes. Consumes backpack scrolls instead of reagents; refunds 40%–100% by circle at higher skill.</p>
+      <p class="cn-text">用抄写笔配合空白卷轴、奥术卷轴、皮革与木板制作 1–8 圈法术卷轴、法术书、符文书、法典与染料。自动以背包卷轴替代试剂。</p>
+      <div class="key"><b>关键要点：</b>7–8 圈卷轴需奥术卷轴（战利品）；支持 [AutoUseSpellScrolls]；练至 GM 约需 5.5–6.5 万卷轴。</div>
+    </div>
+
+    <div class="skill" id="lumberjacking">
+      <h3>Lumberjacking <span class="cn">伐木</span></h3>
+      <p class="en-text">Uses a hatchet to chop trees for Logs (double-click to Boards). Smart Harvest auto-targets trees; random colored logs by skill. Axes gain skill-scaled damage (PvM +25%, PvP +10% per hit).</p>
+      <p class="cn-text">用斧砍树得原木（双击转木板，供木工等使用）。智能采集自动锁定附近树木；按技能随机出彩色木。持斧按技能获伤害加成。</p>
+      <div class="key"><b>关键要点：</b>100+ 仅采到彩色木才涨技能；城镇内禁止（Shelter Island 除外）。</div>
+    </div>
+
+    <div class="skill" id="mining">
+      <h3>Mining <span class="cn">采矿</span></h3>
+      <p class="en-text">Uses a pickaxe to harvest ore, smelted into ingots (2 per ore) at forges. Smart Harvest auto-targets nodes; random colored ore by skill. Mace weapons gain skill-scaled damage (PvM +25%, PvP +10% per hit).</p>
+      <p class="cn-text">用镐从山体/洞窟采矿石，在熔炉冶炼成锭（每矿 2 锭），供铁匠与机械师使用。智能采集自动锁定矿点；按技能随机出彩色矿。</p>
+      <div class="key"><b>关键要点：</b>采彩色矿每击 50% 回落为铁矿；城镇内禁止（Shelter Island 除外）。</div>
+    </div>
+
+    <div class="skill" id="tailoring">
+      <h3>Tailoring <span class="cn">裁缝</span></h3>
+      <p class="en-text">Uses leather and cloth to craft bone/leather/studded armor, clothing, nets, quivers, repair kits and Aspect cloth. Wearing tailor armor grants AR bonus; tailor weapons +25% damage; reflects melee from creatures.</p>
+      <p class="cn-text">用皮革与布制作骨甲/皮甲/Studded 甲、服饰、渔网、箭袋、修理包与方面布。穿裁缝甲获护甲加成；裁缝武器 +25% 伤害；受生物近战伤害时按技能反伤。</p>
+      <div class="key"><b>关键要点：</b>120 级造 Artisan 装需 Mastercrafting Diagram；练 50–120 约耗 23.9 万皮革；95 技能造修理包可批量修装备。</div>
+    </div>
+
+    <div class="skill" id="tinkering">
+      <h3>Tinkering <span class="cn">机械（巧匠）</span></h3>
+      <p class="en-text">Uses ingots, boards and special materials to craft tools, harvesting gear, locks, traps, jewelry, ID wands, ship items, clockwork parts, Aspect items and event goods. Player traps split: Ground (PvM only) vs Container (PvP only).</p>
+      <p class="cn-text">用铁锭、木板与特殊材料制造工具、采集器具、锁具、陷阱、珠宝、鉴定魔杖、船只用品、钟表零件、方面物品与活动物。玩家陷阱区分：地陷阱仅 PvM、容器陷阱仅 PvP。</p>
+      <div class="key"><b>关键要点：</b>技能上限扩至 120，高阶品需 110–120；引入 Avarite 新矿阶；练至 GM 约 7 万锭，GM→120 再需 8 万锭。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 荒野类 ===================== -->
+  <section class="cat" id="cat-wilderness">
+    <h2 class="cat-title">荒野类 <span class="en">Wilderness</span></h2>
+
+    <div class="skill" id="animallore">
+      <h3>Animal Lore <span class="cn">动物知识</span></h3>
+      <p class="en-text">Animal Lore works with Animal Taming to tame and command followers. Boosts Veterinary healing; 60 to cure poison, 80 to resurrect bound followers. Any level views creature stats, skills, Slayer group and difficulty.</p>
+      <p class="cn-text">动物知识需与驯兽配合使用，方能驯服和控制宠物。它能提升兽医治疗随从的疗效，60 级可解毒、80 级可复活绑定宠物。任何等级都能查看生物属性、技能、克制组与难度值。</p>
+      <div class="key"><b>关键要点：</b>宠物最高 15 级，1–10 级每级属性增益约为 11–15 级的两倍；可查看最远 12 格内生物。</div>
+    </div>
+
+    <div class="skill" id="animaltaming">
+      <h3>Animal Taming <span class="cn">驯兽</span></h3>
+      <p class="en-text">Animal Taming lets you tame creatures as followers. Tame must start within 3 tiles, maintain within 6. Success = (Taming − creature min) × 8%, min 10%. Pets bond at level 1; pack animals don't bond. Control Slots limit carrying; Bestiary & Animist Guild are endgame core.</p>
+      <p class="cn-text">驯兽让玩家收服并指挥生物作战。成功率公式为（技能差）×8%，最低保底 10%。宠物 1 级绑定、驮兽不绑定；控制栏决定携带上限，图鉴与动物学公会是终局强化核心。</p>
+      <div class="key"><b>关键要点：</b>被动增益 = 杀怪金币×标量×(有效栏/5)/1000，冷却 15 秒；PvP 中跟随者伤害按控制栏封顶。</div>
+    </div>
+
+    <div class="skill" id="camping">
+      <h3>Camping <span class="cn">露营</span></h3>
+      <p class="en-text">Camping raises pack weight/item caps and lights campfires with kindling. Safe campfire enables Hiking (needs 60) or Bedroll logout (no dungeons). Passive PvM/PvP bonus damage.</p>
+      <p class="cn-text">露营提升背包负重量与物品数，并用于生营火。营火安全可靠后，配合地图册可快速旅行（需 60 技能），或在营火旁用睡袋即时下线（地牢不可用）。</p>
+      <div class="key"><b>关键要点：</b>负重上限 +200×(技能/100) 石、物品数 +50×(技能/100)；PvM 附加 25%×(技能/100) 伤害，PvP 为 10%。</div>
+    </div>
+
+    <div class="skill" id="forensiceval">
+      <h3>Forensic Evaluation <span class="cn">法医鉴定（剥皮）</span></h3>
+      <p class="en-text">Forensic Evaluation uses a flaying knife to get leather/meat from corpses, with a chance at colored leather. Passive PvM 25%/PvP 10% bonus damage and boosts effective Barding (+12 cap). Smart Harvest flays nearby corpses.</p>
+      <p class="cn-text">法医鉴定用剥皮刀从尸体取得皮革和肉，有几率获得彩色皮革（供裁缝与烹饪使用）。技能常驻提供 PvM 25%、PvP 10% 的额外伤害，并提升有效弹奏技能。</p>
+      <div class="key"><b>关键要点：</b>皮革/肉产量 = (50% + 150%×技能/100)×基础量；Paragon 与 Boss 必出彩色皮革（需技能达标）。</div>
+    </div>
+
+    <div class="skill" id="herding">
+      <h3>Herding <span class="cn">放牧</span></h3>
+      <p class="en-text">Herding, while a Shepherd's Crook is equipped or in pack, boosts your tamed/summoned followers' damage and resist. Bonus scales further with the crook's material or magic properties.</p>
+      <p class="cn-text">放牧在玩家激活牧羊钩（装备或置于背包）时，提升其宠物与召唤物的伤害与抗性。加成随牧羊钩的材质与魔法属性叠加提高。</p>
+      <div class="key"><b>关键要点：</b>PvM 随从额外伤害 +22%×(有效技能/100)、抗性 +11%；PvP 分别为 +11% 与 +5.5%。</div>
+    </div>
+
+    <div class="skill" id="tracking">
+      <h3>Tracking <span class="cn">追踪</span></h3>
+      <p class="en-text">Tracking searches for creatures and players; success and sight range scale with skill. Hunting mode auto-tracks with on-screen arrow alerts (incl. murderers). Hidden targets much harder; Detecting Hidden helps. Passive bonus damage and Barding.</p>
+      <p class="cn-text">追踪用于搜寻生物和其他玩家，成功率与可见范围随技能增长。可开启狩猎模式自动持续追踪并以屏幕箭头预警（含红名玩家）。技能常驻提供额外伤害与弹奏加成。</p>
+      <div class="key"><b>关键要点：</b>可见非隐藏目标距离 = 20 + 80×(技能/100) 格（地牢减半）；PvM 附加 25%×(技能/100) 伤害、PvP 10%，并 +10×(技能/100) 有效 Barding。</div>
+    </div>
+
+    <div class="skill" id="veterinary">
+      <h3>Veterinary <span class="cn">兽医</span></h3>
+      <p class="en-text">Veterinary uses vet tools or bandages to heal, cure and resurrect followers. Vet kit (100 Tailoring) area-heals followers within 2 tiles. Healing boosted by Animal Lore; 80+80 unlocks Healers Codex.</p>
+      <p class="cn-text">兽医使用兽医用具或绷带为宠物治疗、解毒与复活。兽医用具（需 100 裁缝）可范围治疗 2 格内多名友方随从。治疗量受动物知识加成。</p>
+      <div class="key"><b>关键要点：</b>解毒需动物知识 ≥60、复活需 ≥80；对随从施 Heal/Greater Heal 时治疗量 +50%×(有效兽医/100)。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 杂项类 ===================== -->
+  <section class="cat" id="cat-misc">
+    <h2 class="cat-title">杂项类 <span class="en">Misc</span></h2>
+
+    <div class="skill" id="armslore">
+      <h3>Arms Lore <span class="cn">武器知识</span></h3>
+      <p class="en-text">Arms Lore boosts weapon special attack chances, swing speed and ability activation frequency, and lets high-skill players disarm opponents while reducing durability loss on equipped gear.</p>
+      <p class="cn-text">武器知识提升武器特殊攻击触发率、挥击速度与武器能力激活频率，高等级可解除对手武器，并降低装备耐久损耗。</p>
+      <div class="key"><b>关键要点：</b>忽略耐久损耗几率 = 75%×(技能/100)；80 级及以上可发动「缴械」(Disarm)；PvM 特殊攻击触发率 +10%×(技能/100)，挥速 +5%×(技能/100)。</div>
+    </div>
+
+    <div class="skill" id="begging">
+      <h3>Begging <span class="cn">乞讨</span></h3>
+      <p class="en-text">Begging lets players beg NPCs for small gold and, at sea, motivate ship crewmembers for combat bonuses.</p>
+      <p class="cn-text">乞讨可让玩家向 NPC 商人乞讨少量金币；在海上可用于激励船员以提升其战斗能力。</p>
+      <div class="key"><b>关键要点：</b>成功乞讨得 5 金币，每商人每 24 小时一次，冷却 5 秒；激励船员伤害 +25%×(技能/100)、摔跤 +12.5%×(技能/100)，持续 5 分钟；仅船长可激励。</div>
+    </div>
+
+    <div class="skill" id="focus">
+      <h3>Focus <span class="cn">专注</span></h3>
+      <p class="en-text">Focus is a versatile skill granting melee accuracy, defense, swing speed, charged spell chance, mana refund and meditation bonuses, plus supplemental PvP damage.</p>
+      <p class="cn-text">专注是一项通用技能，提供近战命中、防御、挥击速度、蓄力法术触发、法力返还与冥想速度加成，并在 PvP 中提供额外伤害。</p>
+      <div class="key"><b>关键要点：</b>上限 100；PvM 各项加成 = 15%×(技能/100)；PvP 近战/法术额外伤害 = 10%×(技能/100)。</div>
+    </div>
+
+    <div class="skill" id="itemid">
+      <h3>Item Identification <span class="cn">物品鉴定</span></h3>
+      <p class="en-text">Item ID permanently reveals magical properties of unidentified gear, boosts those properties in PvM, and at max skill decodes research materials for Lore Books.</p>
+      <p class="cn-text">物品鉴定可永久揭示未鉴定装备的魔法属性，在 PvM 中增强这些属性加成，满级时还可解码研究材料以录入典籍。</p>
+      <div class="key"><b>关键要点：</b>上限 120；PvP 额外近战伤害 +10%×(技能/100)；PvM 武器伤害/护甲防护加成最高 +100%×(技能/100)。</div>
+    </div>
+
+    <div class="skill" id="tasteid">
+      <h3>Taste Identification <span class="cn">味觉鉴定</span></h3>
+      <p class="en-text">Taste ID enhances applied poison, improves the Food Satisfaction buff, aids plant growth conditions, and reduces bleed/poison/disease damage taken.</p>
+      <p class="cn-text">味觉鉴定增强施毒效果、提升食物满意度增益，协助判断植物生长的理想条件，并减少流血/中毒/疾病伤害。</p>
+      <div class="key"><b>关键要点：</b>玩家施毒伤害 +100%×(技能/100)，并降低目标解毒/抗毒几率 50%×(技能/100)；饱食增益取味觉与烹饪较高者。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 未启用 ===================== -->
+  <section class="cat" id="cat-unused">
+    <h2 class="cat-title">未启用技能 <span class="en">Unused (server not implemented)</span></h2>
+
+    <div class="skill unused" id="bushido">
+      <h3>Bushido <span class="cn">武士道</span><span class="tag">未开放</span></h3>
+      <p class="cn-text">官方 Wiki 暂无内容。UO Outlands 当前版本未实装该技能。</p>
+    </div>
+
+    <div class="skill unused" id="imbuing">
+      <h3>Imbuing <span class="cn">附魔（制附魔）</span><span class="tag">未开放</span></h3>
+      <p class="cn-text">官方 Wiki 暂无内容。UO Outlands 当前版本未实装该技能。</p>
+    </div>
+
+    <div class="skill unused" id="mysticism">
+      <h3>Mysticism <span class="cn">神秘学</span><span class="tag">未开放</span></h3>
+      <p class="cn-text">官方 Wiki 暂无内容。UO Outlands 当前版本未实装该技能。</p>
+    </div>
+
+    <div class="skill unused" id="removetrap">
+      <h3>Remove Trap <span class="cn">解除陷阱（已合并）</span><span class="tag">已合并</span></h3>
+      <p class="cn-text">在 Outlands 中，「解除陷阱」已合并入「侦测隐身」(Detecting Hidden)。玩家使用陷阱工具配合侦测隐身来清除地下城/典范宝箱的陷阱。需至少 80 侦测隐身 + 陷阱工具，成功率 = (有效侦测隐身 − 宝箱最低技能) × 2.5%。</p>
+    </div>
+
+    <div class="skill unused" id="spellweaving">
+      <h3>Spellweaving <span class="cn">织法（法术编织）</span><span class="tag">未开放</span></h3>
+      <p class="cn-text">官方 Wiki 暂无内容。UO Outlands 当前版本未实装该技能。</p>
+    </div>
+
+    <div class="skill unused" id="bowcraft">
+      <h3>Bowcraft <span class="cn">弓箭制作（已并入木工）</span><span class="tag">已合并</span></h3>
+      <p class="cn-text">官方 Wiki 暂无独立内容。Outlands 已将原版 Bowcraft/Fletching 合并进 Carpentry（木工）技能。</p>
+    </div>
+  </section>
+
+</main>
+
+<nav class="toc">
+  <h2>目录 / Contents</h2>
+  <ol>
+    <li><a href="#cat-combat">战斗类 Combat</a>
+      <ol>
+        <li><a href="#anatomy">Anatomy 解剖学</a></li>
+        <li><a href="#archery">Archery 箭术</a></li>
+        <li><a href="#dualwielding">Dual Wielding 双持</a></li>
+        <li><a href="#chivalry">Chivalry 骑士精神</a></li>
+        <li><a href="#fencing">Fencing 剑术</a></li>
+        <li><a href="#healing">Healing 治愈</a></li>
+        <li><a href="#macefighting">Mace Fighting 锤击</a></li>
+        <li><a href="#parrying">Parrying 招架</a></li>
+        <li><a href="#swordsmanship">Swordsmanship 剑类</a></li>
+        <li><a href="#tactics">Tactics 战术</a></li>
+        <li><a href="#throwing">Throwing 投掷</a></li>
+        <li><a href="#wrestling">Wrestling 摔跤</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-magic">魔法类 Magic</a>
+      <ol>
+        <li><a href="#arcane">Arcane 奥术</a></li>
+        <li><a href="#evalint">Evaluating Intelligence 智力评估</a></li>
+        <li><a href="#magery">Magery 魔法</a></li>
+        <li><a href="#meditation">Meditation 冥想</a></li>
+        <li><a href="#necromancy">Necromancy 死灵法术</a></li>
+        <li><a href="#resistingspells">Resisting Spells 抗咒</a></li>
+        <li><a href="#spiritspeak">Spirit Speak 通灵</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-bard">吟游类 Bard</a>
+      <ol>
+        <li><a href="#discordance">Discordance 不谐</a></li>
+        <li><a href="#musicianship">Musicianship 音乐造诣</a></li>
+        <li><a href="#peacemaking">Peacemaking 平息</a></li>
+        <li><a href="#provocation">Provocation 挑衅</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-thieving">盗窃类 Thieving</a>
+      <ol>
+        <li><a href="#detectinghidden">Detecting Hidden 侦察隐藏</a></li>
+        <li><a href="#hiding">Hiding 隐藏</a></li>
+        <li><a href="#lockpicking">Lockpicking 撬锁</a></li>
+        <li><a href="#poisoning">Poisoning 下毒</a></li>
+        <li><a href="#snooping">Snooping 窥探</a></li>
+        <li><a href="#stealing">Stealing 偷窃</a></li>
+        <li><a href="#stealth">Stealth 潜行</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-trade">制造类 Trade</a>
+      <ol>
+        <li><a href="#alchemy">Alchemy 炼金</a></li>
+        <li><a href="#blacksmithy">Blacksmithy 铁匠</a></li>
+        <li><a href="#carpentry">Carpentry 木工</a></li>
+        <li><a href="#cartography">Cartography 制图</a></li>
+        <li><a href="#cooking">Cooking 烹饪</a></li>
+        <li><a href="#fishing">Fishing 钓鱼</a></li>
+        <li><a href="#inscription">Inscription 铭文</a></li>
+        <li><a href="#lumberjacking">Lumberjacking 伐木</a></li>
+        <li><a href="#mining">Mining 采矿</a></li>
+        <li><a href="#tailoring">Tailoring 裁缝</a></li>
+        <li><a href="#tinkering">Tinkering 机械</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-wilderness">荒野类 Wilderness</a>
+      <ol>
+        <li><a href="#animallore">Animal Lore 动物知识</a></li>
+        <li><a href="#animaltaming">Animal Taming 驯兽</a></li>
+        <li><a href="#camping">Camping 露营</a></li>
+        <li><a href="#forensiceval">Forensic Eval 法医鉴定</a></li>
+        <li><a href="#herding">Herding 放牧</a></li>
+        <li><a href="#tracking">Tracking 追踪</a></li>
+        <li><a href="#veterinary">Veterinary 兽医</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-misc">杂项类 Misc</a>
+      <ol>
+        <li><a href="#armslore">Arms Lore 武器知识</a></li>
+        <li><a href="#begging">Begging 乞讨</a></li>
+        <li><a href="#focus">Focus 专注</a></li>
+        <li><a href="#itemid">Item ID 物品鉴定</a></li>
+        <li><a href="#tasteid">Taste ID 味觉鉴定</a></li>
+      </ol>
+    </li>
+    <li><a href="#cat-unused">未启用 Unused</a>
+      <ol>
+        <li><a href="#bushido">Bushido 武士道</a></li>
+        <li><a href="#imbuing">Imbuing 附魔</a></li>
+        <li><a href="#mysticism">Mysticism 神秘学</a></li>
+        <li><a href="#removetrap">Remove Trap 解除陷阱</a></li>
+        <li><a href="#spellweaving">Spellweaving 织法</a></li>
+        <li><a href="#bowcraft">Bowcraft 弓箭制作</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+</div>
+
+<footer>
+  <div><b>资料来源：</b>本页内容由 AI 翻译整理自官方 Wiki（<a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>），非官方出品，版权归 UO Outlands 开发团队所有，仅供学习交流使用。</div>
+  <div><b>说明：</b>技能上限 700 / 可解锁至 720；三围（STR/DEX/INT）总和 225。未启用技能为服务器当前未实装的占位项。数值可能随版本更新变动，请以官方 Discord 公告为准。</div>
+  <div style="margin-top:6px;color:#888;">UO Outlands 中文资料库 · 本地预览版 · 生成于 2026-08-07</div>
+</footer>
+
+<script>
+function filterSkills(q){
+  q=(q||'').trim().toLowerCase();
+  var cards=document.querySelectorAll('.skill');
+  var shownCats=new Set();
+  var any=false;
+  cards.forEach(function(c){
+    var txt=c.textContent.toLowerCase();
+    var match=!q || txt.indexOf(q)>-1;
+    c.style.display=match?'':'none';
+    if(match){any=true; var sec=c.closest('section.cat'); if(sec) shownCats.add(sec.id); }
+  });
+  document.querySelectorAll('section.cat').forEach(function(s){
+    s.style.display=shownCats.has(s.id)?'':'none';
+  });
+  document.getElementById('noresult').style.display=(q && !any)?'block':'none';
+}
+</script>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

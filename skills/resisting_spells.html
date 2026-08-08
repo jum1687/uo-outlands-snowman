@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resisting Spells · 抗咒 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>抗咒 Resisting Spells</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Resisting_Spells" target="_blank" rel="noopener">wiki.uooutlands.com/Resisting_Spells</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">抗咒 <span class="cnsub">Resisting Spells</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#absorption">Spell Absorption (PvM) / 法术吸收</a></li>
+    <li><a href="#siphon">Spell Siphon (PvM) / 法术虹吸</a></li>
+    <li><a href="#chance">抗咒几率与减伤表 / Resist Chance</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    
+    <p>抗咒（Resisting Spells）技能减少受到的法术伤害。提供让来自生物的伤害不打断玩家施法的几率。当玩家被法术命中（包括自己施放的）时，会获得「法术虹吸（spell siphon）」效果，在接下来 60 分钟内提升其攻击速度、法力返还几率与伤害减免。</p>
+    <ul class="plain">
+      
+      <li>受到的法术伤害最少减少（12.5% × (抗咒技能 / 100)）（PvM/PvP 均适用）</li>
+      
+      <li>受到的法术伤害最多减少（37.5% × (抗咒技能 / 100)）（PvM/PvP 均适用）</li>
+      
+      <li>抵抗任何非伤害性效果（如诅咒或中毒）的敌对法术的几率为（(40% − (法术圈数 × 5%)) × (抗咒技能 / 100)）</li>
+      
+      <li>为玩家提供（有效抗咒技能 / 100%）的几率，避免来自生物/环境的伤害导致的施法打断</li>
+    </ul>
+
+    <h2 id="absorption">Spell Absorption (PvM) <span class="en-h">法术吸收（打怪）</span></h2>
+    
+    <p>除了抗咒的常规法术减伤外，玩家还有（25% × (抗咒技能 / 100)）的几率吸收生物施放的法术。被吸收的法术会显示粉色/紫色宝珠效果（类似招架）。被吸收的法术伤害减少 75%（类似招架效果）。</p>
+    <div class="formula">吸收几率 = 25% × (抗咒技能 / 100)
+吸收后伤害减少 75%</div>
+
+    <h2 id="siphon">Spell Siphon (PvM) <span class="en-h">法术虹吸（打怪）</span></h2>
+    
+    <p>每 5 分钟内，玩家首次被法术命中（来自任意玩家/生物）时，会获得法术虹吸效果，对生物施加加成，持续 60 分钟（不叠加）。若在虹吸加成生效期间再次被法术命中，持续时间不会刷新。60 分钟过后玩家会收到「Your spell siphon bonus has expired（你的法术虹吸加成已过期）」提示。生效中的法术虹吸加成如下，且仅影响 PvM：</p>
+    <div class="formula">Swing Speed 提升 (10% × (有效抗咒技能 / 100))
+Mana Refund Chance 提升 (10% × (有效抗咒技能 / 100))
+Damage Resistance 提升 (10% × (有效抗咒技能 / 100))</div>
+
+    <h2 id="chance">Spell Resist / Non-Damaging Spell Chance Reduction Chance <span class="en-h">抗咒几率与减伤表</span></h2>
+    
+    <p>下表显示各抗咒技能等级下的减伤幅度、各圈数非伤害法术的抗咒几率，以及 PvM 法术吸收几率。</p>
+    <div class="formula">Skill | DR Min% | DR Max% | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | PvM Absorb%
+  0 |  0.00 |  0.00 | 0.0 | 0.0 | N/A | 0.0 | 0.0 | 0.0 | 0.0 | N/A |  0.0
+ 10 |  1.25 |  3.75 | 3.5 | 3.0 | N/A | 2.0 | 1.5 | 1.0 | 0.5 | N/A |  2.5
+ 20 |  2.50 |  7.50 | 7.0 | 6.0 | N/A | 4.0 | 3.0 | 2.0 | 1.0 | N/A |  5.0
+ 30 |  3.75 | 11.25 |10.5 | 9.0 | N/A | 6.0 | 4.5 | 3.0 | 1.5 | N/A |  7.5
+ 40 |  5.00 | 15.00 |14.0 |12.0 | N/A | 8.0 | 6.0 | 4.0 | 2.0 | N/A | 10.0
+ 50 |  6.25 | 18.75 |17.5 |15.0 | N/A |10.0 | 7.5 | 5.0 | 2.5 | N/A | 12.5
+ 60 |  7.50 | 22.50 |21.0 |18.0 | N/A |12.0 | 9.0 | 6.0 | 3.0 | N/A | 15.0
+ 70 |  8.75 | 26.25 |24.5 |21.0 | N/A |14.0 |10.5 | 7.0 | 3.5 | N/A | 17.5
+ 80 | 10.00 | 30.00 |28.0 |24.0 | N/A |16.0 |12.0 | 8.0 | 4.0 | N/A | 20.0
+ 90 | 11.25 | 33.75 |31.5 |27.0 | N/A |18.0 |13.5 | 9.0 | 4.5 | N/A | 22.5
+100 | 12.50 | 37.50 |35.0 |30.0 | N/A |20.0 |15.0 |10.0 | 5.0 | N/A | 25.0
+
+C1–C8 = 对应圈数非伤害法术的抗咒几率(%)；N/A 表示该圈数无对应非伤害法术。
+DR = 受到的法术伤害减伤幅度(%)；PvM Absorb = PvM 法术吸收几率(%)。</div>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    
+    <p>抗咒可通过两种方式训练：对自己施法，或被怪物施法。对自己施法比被怪物施法慢得多，但可挂机宏训练。注意：法术必须由自己（对自己）施放，或来自友好玩家（同公会/同盟），否则无法获得技能。</p>
+    <ul class="plain">
+      
+      <li>若法术由生物施放，技能获得几率高得多</li>
+      
+      <li>截至 2025/7/7，从单个生物处可获得抗咒技能的次数不再有限制</li>
+    </ul>
+    <ul class="plain">
+      
+      <li>0–50 向 NPC 训练</li>
+      
+      <li>50–60 穿过火焰场；在新手地牢让魔法生物对你施法</li>
+      
+      <li>60–70 穿过毒气场</li>
+      
+      <li>70–80 在遮蔽处对自己施放 6 圈伤害法术 / 穿过麻痹场</li>
+      
+      <li>80–90 对自己施放 7 圈法术；让魔法生物对你施法</li>
+      
+      <li>90–100 让另一名盟友角色用地震术命中你</li>
+    </ul>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

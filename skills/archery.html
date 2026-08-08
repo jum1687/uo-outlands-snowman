@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>箭术 · Archery | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 战斗类 › <span>箭术 Archery</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Archery" target="_blank" rel="noopener">wiki.uooutlands.com/Archery</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">箭术 <span class="cnsub">Archery</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#pvm">PvM 加成 / PvM Bonuses</a>
+      <ol>
+        <li class="lv3"><a href="#pvmattack">PvM 特殊攻击 / PvM Special Attack</a></li>
+        <li class="lv3"><a href="#setup">武器配置加成 / Weapon Setup Bonus</a></li>
+      </ol>
+    </li>
+    <li><a href="#pvp">PvP 静止效果与要求 / PvP Stationary Effects</a></li>
+    <li><a href="#weapons">武器类型 / Weapon Types</a></li>
+    <li><a href="#quivers">箭袋 / Quivers</a></li>
+    <li><a href="#codex">法典 / Codex</a></li>
+    <li><a href="#beneficial">增益技能 / Beneficial Skills</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    <p>箭术（Archery）技能决定玩家使用箭术武器时的攻击或闪避几率。箭术武器通常伤害低于平均，但凭借射程带来的安全性弥补。箭术武器需要箭（arrows）或弩矢（bolts）作为弹药才能发射。箭术武器对抗怪物的特殊攻击是「阻碍（Hinder）」，可暂时使目标丧失行动能力。</p>
+    <ul class="plain">
+      <li>箭术允许玩家用弓（Bows）与十字弩（Crossbows）从远处发射箭矢/弩矢。</li>
+      <li>箭术类武器无法被下毒（poisoned）。</li>
+      <li>玩家须静止 0.5 秒才能射击（与其敏捷无关）。</li>
+      <li>PvP 中静止延迟依玩家敏捷缩放：从 1.0 秒（敏捷 25 及以下）降至 0.5 秒（敏捷 100 及以上）。</li>
+      <li>弓可攻击至多 10 格外的目标；十字弩与巨弓（Great Bow）可攻击至多 8 格外的目标。</li>
+      <li>命中几率 = (攻击方箭术技能 + 50) / ((防御方武器或徒手技能 + 50) × 2) + 相关命中加成。</li>
+      <li>PvM 中作为副武器技能（使用其他武器技能时）提升基础武器伤害 (25% × 技能 / 100)。</li>
+      <li>PvP 中作为副武器技能提升基础武器伤害 (10% × 技能 / 100)（PvP 近战补充伤害上限 20%）。</li>
+      <li>在许多计算中（如精通链 Mastery Chain 加成），箭术武器被视为「近战」。</li>
+    </ul>
+
+    <h2 id="pvm">PvM 加成 <span class="en-h">PvM Bonuses</span></h2>
+    <p>作为副武器技能（使用其他武器技能时），PvM 中提升基础武器伤害 (25% × 技能 / 100)。</p>
+
+    <h3 id="pvmattack">PvM 特殊攻击 <span class="en-h">PvM Special Attack</span></h3>
+    <ul class="plain">
+      <li>仅对怪物生效，对其他玩家无效。</li>
+      <li>玩家有 10% 几率对怪物触发箭术武器特殊攻击。</li>
+      <li>此几率可通过 Arms Lore 技能、水元素护甲（Water Aspect Armor）或精通链链接（Mastery Chain Links）进一步提升。</li>
+      <li>使触发该次攻击的伤害提升 50%（若目标已被阻碍或对阻碍免疫，则提升 100%）。</li>
+      <li>提升 100% 伤害并使目标陷入阻碍（阻止一切移动、施法、近战攻击）4–8 秒；若目标对阻碍免疫，伤害提升 50%。</li>
+      <li>阻碍效果持续时间随武器速度（越慢的箭术武器持续越久）与怪物难度缩放。</li>
+      <li>玩家在攻击时，若目标正处于阻碍状态，使用箭术武器额外获得 +25% 命中加成。</li>
+      <li>怪物从玩家武器的阻碍效果恢复后，会在等于原阻碍时长 50% 的时间内对进一步阻碍免疫；此期间任何新的阻碍尝试将改为造成该伤害加成。</li>
+    </ul>
+
+    <h3 id="setup">武器配置加成 <span class="en-h">Weapon Setup Bonus</span></h3>
+    <p>玩家会根据双手所握武器/盾牌的「配置（setup）」获得对抗怪物的加成。加成在属性页中标注为「(配置)」，仅适用于非祝福武器/法术书。</p>
+    <table class="craft-table">
+      <thead><tr><th>类型 Type</th><th>配置 Setup</th><th>加成 Bonus</th></tr></thead>
+      <tbody>
+        <tr><td>单手 (1H)</td><td>近战 无盾</td><td>+20% 命中</td></tr>
+        <tr><td>单手 (1H)</td><td>近战 持盾</td><td>+10% 命中，+10% 伤害抗性</td></tr>
+        <tr><td>单手 (1H)</td><td>远程 无盾</td><td>+20% 命中，+25% 近战伤害</td></tr>
+        <tr><td>单手 (1H)</td><td>远程 持盾</td><td>+10% 命中，+25% 近战伤害，+10% 伤害抗性</td></tr>
+        <tr><td>单手 (1H)</td><td>法术书 无盾</td><td>+30% 冥想速率</td></tr>
+        <tr><td>单手 (1H)</td><td>法术书 持盾</td><td>+15% 冥想速率，+10% 伤害抗性</td></tr>
+        <tr><td>双手 (2H)</td><td>近战</td><td>+25% 近战伤害</td></tr>
+        <tr><td>双手 (2H)</td><td>远程</td><td>+50% 近战伤害</td></tr>
+        <tr><td>双手 (2H)</td><td>奥术法杖</td><td>+10% 奥术法力恢复几率</td></tr>
+        <tr><td>成对 (Pa)</td><td>双持、徒手</td><td>+10 攻击速度</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="pvp">PvP 静止效果与要求 <span class="en-h">PvP Stationary Effects and Requirements</span></h2>
+    <p>静止延迟（Stationary Delay）指玩家须停留在同一格上、远程武器才能发射的时长。</p>
+    <h3 id="swingdelay">PvP 中的武器挥击延迟 <span class="en-h">Weapon Swing Delay in PvP</span></h3>
+    <ul class="plain">
+      <li>箭术与奥术武器的静止延迟在 PvP 中依玩家敏捷缩放：从 1.0 秒（敏捷 25 及以下）降至 0.5 秒（敏捷 100 及以上）（此前为固定 0.5 秒）。</li>
+      <li>敏捷 25 的玩家须静止 1.0 秒才能发射箭术/奥术武器。</li>
+      <li>敏捷 63 的玩家须静止 0.75 秒。</li>
+      <li>敏捷 100 的玩家须静止 0.5 秒。</li>
+    </ul>
+    <h3 id="damagedelay">PvP 中的伤害延迟 <span class="en-h">Damage Delays in PvP</span></h3>
+    <ul class="plain">
+      <li>在 PvP 中用远程武器攻击时，命中伤害会有依敏捷随机缩放的延迟，最大延迟从 0 秒（敏捷 100 及以上）到 0.5 秒（敏捷 25 及以下）。</li>
+      <li>敏捷 25：远程武器伤害有 0 到 0.5 秒的随机延迟。</li>
+      <li>敏捷 63：远程武器伤害有 0 到 0.25 秒的随机延迟。</li>
+      <li>敏捷 100：远程武器伤害无延迟。</li>
+    </ul>
+
+    <h2 id="weapons">武器类型 <span class="en-h">Weapon Types</span></h2>
+    <p>箭术武器由木工（carpentry）制造，或从 NPC 处购买。详见护甲与武器（Armor & Weapons）。</p>
+    <table class="craft-table">
+      <thead><tr><th>武器 Weapon</th><th>持握 Wielded</th><th>可下毒 Poisonable</th><th>弹药 Ammo</th><th>速度 Speed</th></tr></thead>
+      <tbody>
+        <tr><td>弓 Bow</td><td>2H</td><td>否</td><td>箭 Arrows</td><td>34</td></tr>
+        <tr><td>十字弩 Crossbow</td><td>1H</td><td>否</td><td>弩矢 Bolts</td><td>28</td></tr>
+        <tr><td>重弩 Heavy Crossbow</td><td>2H</td><td>否</td><td>弩矢 Bolts</td><td>20</td></tr>
+        <tr><td>猎弓 Hunting Bow</td><td>2H</td><td>否</td><td>箭 Arrows</td><td>34</td></tr>
+        <tr><td>巴拉斯特弩 Balestra</td><td>1H</td><td>否</td><td>弩矢 Bolts</td><td>28</td></tr>
+        <tr><td>壁垒弩 Rampart Crossbow</td><td>2H</td><td>否</td><td>弩矢 Bolts</td><td>20</td></tr>
+        <tr><td>反曲弓 Recurve Bow</td><td>2H</td><td>否</td><td>箭 Arrows</td><td>34</td></tr>
+        <tr><td>手枪弩 Pistol Crossbow</td><td>1H</td><td>否</td><td>弩矢 Bolts</td><td>28</td></tr>
+        <tr><td>巨弓 Great Bow</td><td>2H</td><td>否</td><td>箭 Arrows</td><td>20</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="quivers">箭袋 <span class="en-h">Quivers</span></h2>
+    <p>玩家可使用箭袋（Quivers）来降低弹药重量与弹药消耗速率。</p>
+
+    <h2 id="codex">法典 <span class="en-h">Codex</span></h2>
+    <p>箭术武器受益于箭术法典（Codex of Archery）提供的弹药与终结技。需要 80 箭术与 80 战术。详见武器与招架法典（Weapon and Parry Codex）。</p>
+    <table class="craft-table">
+      <thead><tr><th>类型 Type</th><th>名称 Name</th><th>描述 Description</th></tr></thead>
+      <tbody>
+        <tr><td>架势 Stance</td><td>奥术 Arcane</td><td>命中与伤害每阶提升 3%</td></tr>
+        <tr><td>架势 Stance</td><td>诱禽 Fowling</td><td>伤害每阶提升 2%，且武器挥击使你对所有敌人的伤害抗性提升 4% / 阶，持续 5 秒（不叠加）</td></tr>
+        <tr><td>架势 Stance</td><td>燃烧 Incendiary</td><td>每阶对 2 格内随机一名敌人造成 10% 伤害</td></tr>
+        <tr><td>架势 Stance</td><td>远射 Longshot</td><td>射程增加 (阶数 / 2) 向上取整，伤害每阶提升 3%</td></tr>
+        <tr><td>架势 Stance</td><td>重创 Maiming</td><td>定身效果每阶延长 10%，过载定身每阶额外造成 10% 伤害</td></tr>
+        <tr><td>终结技 Finisher</td><td>跳弹 Ricochet</td><td>对目标及目标 6 格内最多 2 名随机敌人造成 350% 伤害</td></tr>
+        <tr><td>终结技 Finisher</td><td>针垫 Pincushion</td><td>对目标进行 6 次攻击，每次造成 100% 伤害</td></tr>
+        <tr><td>武器能力 Weapon Ability</td><td>游击 Skirmish</td><td>接下来 15 秒伤害提升 35%，且可在移动中射击</td></tr>
+        <tr><td>武器能力 Weapon Ability</td><td>满弓 Full Draw</td><td>接下来 15 秒伤害提升 50%，但须静止 3 秒才能射击</td></tr>
+        <tr><td>武器能力 Weapon Ability</td><td>连发 Repeater</td><td>若未潜行，立即进行 3 次命中，每次造成 75% 武器伤害（随武器速度缩放）</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="beneficial">增益技能 <span class="en-h">Beneficial Skills</span></h2>
+    <p>下表仅包含被动技能加成，不含临时或可开关的效果。</p>
+    <table class="craft-table">
+      <thead><tr><th>技能 Skill</th><th>加成 Benefit</th><th>适用武器 Weapons</th><th>伤害类型 DamageType</th></tr></thead>
+      <tbody>
+        <tr><td>解剖学 Anatomy</td><td>提升基础武器伤害 (20% × (解剖学技能 / 100))；提升武器终结技几率 (100% × (解剖学 / 100))；提升攻击速度 (5% × (解剖学 / 100))</td><td>全部</td><td>核心</td></tr>
+        <tr><td>骑士精神 Chivalry</td><td>提升 PvP 基础武器伤害 (10% × (骑士精神 / 100))</td><td>全部</td><td>补充</td></tr>
+        <tr><td>战术 Tactics</td><td>0–100：提升基础武器伤害 (-50% + 战术 / 200)；100+：额外每点提升基础武器伤害 (1% × (战术 - 100))</td><td>全部</td><td>核心</td></tr>
+        <tr><td>武器学识 Arms Lore</td><td>提升特殊攻击几率 (10% × (武器学识 / 100))；提升武器能力充能条 (10% × (武器学识 / 100))；提升攻击速度 (5% × (武器学识 / 100))</td><td>全部</td><td>补充</td></tr>
+        <tr><td>伐木 Lumberjacking</td><td>提升斧类基础武器伤害 (25% × (伐木 / 100))；PvP 降为 (10% × (伐木 / 100))</td><td>斧类（剑术）</td><td>补充</td></tr>
+        <tr><td>采矿 Mining</td><td>提升基础武器伤害 (25% × (采矿 / 100))；PvP 降为 (10% × (采矿 / 100))</td><td>锤击</td><td>补充</td></tr>
+        <tr><td>铁匠 Blacksmithy</td><td>提升铁匠制造武器伤害 (25% × (铁匠 / 100))；PvP 降为 (10% × (铁匠 / 100))</td><td>全部</td><td>补充</td></tr>
+        <tr><td>木工 Carpentry</td><td>提升木工制造武器伤害 (25% × (木工 / 100))；PvP 降为 (10% × (木工 / 100))</td><td>全部</td><td>补充</td></tr>
+        <tr><td>营地 / 追踪 / 取证 Camping / Tracking / Forensic</td><td>提升基础武器伤害 (25% × 技能 / 100)；PvP 降为 (10% × 技能 / 100)</td><td>全部</td><td>补充</td></tr>
+        <tr><td>箭术 / 剑术(穿刺) / 锤击 / 剑类 / 奥术 / 钓鱼</td><td>挥舞其他武器类别时，提升基础武器伤害 (25% × 技能 / 100)；PvP 降为 (10% × 技能 / 100)</td><td>全部</td><td>补充</td></tr>
+        <tr><td>徒手 Wrestling</td><td>挥舞其他武器类别时，PvM 提升基础武器伤害 (25% × 技能 / 100)</td><td>全部</td><td>补充</td></tr>
+        <tr><td>铭文 Inscription</td><td>提升文书制造武器伤害 (20% × (铭文 / 100))；PvP 降为 (8% × (铭文 / 100))</td><td>徒手</td><td>补充</td></tr>
+        <tr><td>专注 Focus</td><td>PvM 提升攻击速度与命中 (15% × (专注 / 100))；PvP 提升基础武器伤害 (10% × (专注 / 100))</td><td>全部</td><td>补充</td></tr>
+        <tr><td>裁缝 Tailoring</td><td>提升裁缝制造武器伤害 (25% × (裁缝 / 100))；PvP 降为 (10% × 裁缝 / 100)（未确认）</td><td>徒手</td><td>补充</td></tr>
+        <tr><td>物品辨识 Item Identification</td><td>提升魔法武器命中属性 (50% × (物品辨识 / 100))；提升伤害属性 (100% × (物品辨识 / 100))；提升 Slayer 属性 (50% × (物品辨识 / 100))</td><td>魔法武器</td><td>补充</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    <p>使用优质箭袋（Quiver）可减少箭与弩矢的消耗！使用重弩训练可进一步减少弹药需求。</p>
+    <table class="craft-table">
+      <thead><tr><th>技能区间 Skill</th><th>方式 Activity</th></tr></thead>
+      <tbody>
+        <tr><td>0–50</td><td>向 NPC 训练（Train from NPC）</td></tr>
+        <tr><td>50–80</td><td>在新手地牢（New Player Dungeon）中通过战斗被动获得</td></tr>
+        <tr><td>80–100</td><td>通过战斗被动获得，地点如 Prevalia 动物园或战斗训练师（Battletrainer）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>治愈 · Healing | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">技能目录</a> › 战斗类 › <span>治愈 Healing</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Healing" target="_blank" rel="noopener">wiki.uooutlands.com/Healing</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">治愈 <span class="cnsub">Healing</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">概要 / Summary</a></li>
+    <li><a href="#stationary">静止包扎 / Stationary Bandaging</a></li>
+    <li><a href="#resurrection">复活 / Resurrection</a></li>
+    <li><a href="#curing">解毒 / Curing Poison</a>
+      <ol>
+        <li class="lv3"><a href="#progressive">递进解毒 / Progressive Curing</a></li>
+        <li class="lv3"><a href="#curechances">包扎解毒几率 / Bandaging Cure Chances</a></li>
+      </ol>
+    </li>
+    <li><a href="#pvm">PvM</a></li>
+    <li><a href="#crossover">包扎技能交叉 / Bandaging Skills Crossover</a></li>
+    <li><a href="#codex">治愈者法典 / Healer's Codex</a></li>
+    <li><a href="#training">训练 / Training</a></li>
+  </ol></div>
+  <div class="mw-content">
+    <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
+    <p>治愈（Healing）让玩家可以使用绷带（bandage）为自己和其他玩家治疗。当治愈与解剖学（Anatomy）均达到 60 或以上时，可尝试用绷带解毒；当两者均达到 80 或以上时，可尝试复活死亡玩家。若玩家在包扎过程中受到伤害，会出现「滑脱（slip）」，降低该次包扎的效果。对其他玩家使用绷带，耗时仅为正常的一半。</p>
+    <ul class="plain">
+      <li>成功的绷带解毒尝试需要最低 60 点解剖学技能。</li>
+      <li>成功的绷带复活尝试需要最低 80 点解剖学技能。</li>
+      <li>治愈达到 100 且解剖学至少 80 的玩家，用绷带复活目标时必定 100% 成功。</li>
+      <li>治愈达到 80 且解剖学达到 80 的玩家，可使用治愈者法典（Healer's Codex）。</li>
+      <li>绷带治疗量 = ((治愈技能 / 100) × ((40 到 60 的随机值) × (1 + (0.2 × 解剖学技能 / 100))))。</li>
+      <li>战斗中每出现一次绷带滑脱，包扎治疗量降低 2%；"Your fingers slip!" 提示越多，效果越差。</li>
+      <li>给自己包扎需 10–15 秒，依治愈者敏捷（Dex，上限 100）缩放；使用治愈者法典可进一步缩短。</li>
+      <li>给他人包扎需 5–7.5 秒，依治愈者敏捷（上限 100）缩放。</li>
+      <li>包扎时间 = 15 − (5 × (敏捷 − 25) / 75) 秒。</li>
+    </ul>
+    <div class="formula">绷带治疗量 = (Healing / 100) × (Random(40, 60) × (1 + 0.2 × Anatomy / 100))
+包扎时间 = 15 − (5 × (Dex − 25) / 75) 秒</div>
+
+    <h2 id="stationary">静止包扎 <span class="en-h">Stationary Bandaging</span></h2>
+    <ul class="plain">
+      <li>静止（stationary）超过 5 秒的玩家，可对至多 2 格外的目标进行包扎。</li>
+      <li>若在包扎完成前 5 秒内移动，治疗范围将恢复为 1 格。</li>
+    </ul>
+
+    <h2 id="resurrection">复活 <span class="en-h">Resurrection</span></h2>
+    <ul class="plain">
+      <li>玩家需要 80 点治愈与 80 点解剖学，才能有几率用绷带成功复活目标。</li>
+      <li>治愈 100 且解剖学 80 的玩家，用绷带复活目标时必定 100% 成功。</li>
+      <li>治愈低于 100 时的复活几率，从 80 治愈时的 24% 提升至 99 治愈时的 62%（前提是满足最低 80 解剖学要求）。</li>
+    </ul>
+
+    <h2 id="curing">解毒 <span class="en-h">Curing Poison</span></h2>
+
+    <h3 id="progressive">递进解毒 <span class="en-h">Progressive Curing</span></h3>
+    <p>每次连续失败的解毒尝试，都会使下一次尝试的基础解毒几率提升 100%（此前为 50%）。</p>
+    <div class="example">
+      <div class="ex-title">示例 1：解毒由 GM 毒药技能 + GM 味觉辨识制造的重毒（Deadly Poison）</div>
+      <p>通过大解毒药剂（Greater Cure Potion）或 GM 魔法（Magery）解毒重毒的基础几率为 50%。若失败，下一次尝试获得 50% 的额外加成。由 GM 毒药 + GM 味觉辨识（Taste ID）制造的毒药，其解毒几率按 50% 的系数缩减（即 50% 基础变为 25%）。</p>
+      <ul class="plain">
+        <li>第 1 次解毒尝试 = 25% 几率</li>
+        <li>第 2 次解毒尝试 = 75% 几率</li>
+        <li>第 3 次解毒尝试 = 125% 几率</li>
+      </ul>
+    </div>
+    <div class="example">
+      <div class="ex-title">示例 2：解毒由 120 毒药技能 + 120 味觉辨识制造的致命毒（Lethal Poison）</div>
+      <p>通过大解毒药剂或 GM 魔法解毒致命毒的基础几率为 25%。若失败，下一次尝试获得 25% 的额外加成。由 120 毒药 + 120 味觉辨识制造的毒药，其解毒几率按 60% 的系数缩减（即 25% 基础变为 10%）。</p>
+      <ul class="plain">
+        <li>第 1 次解毒尝试 = 10% 几率</li>
+        <li>第 2 次解毒尝试 = 35% 几率</li>
+        <li>第 3 次解毒尝试 = 60% 几率</li>
+        <li>第 4 次解毒尝试 = 85% 几率</li>
+        <li>第 5 次解毒尝试 = 110% 几率</li>
+      </ul>
+    </div>
+    <ul class="plain">
+      <li>玩家施加的毒药（武器与法术）有 (25% × (毒药技能 / 100)) 的解毒几率惩罚。</li>
+      <li>玩家施加的毒药（武器与法术）有 (25% × (味觉辨识技能 / 100)) 的解毒几率惩罚。</li>
+    </ul>
+    <p>例如：正常情况下解毒几率为 50% 的玩家，若毒药由 100 毒药 + 100 味觉辨识的玩家施加，则解毒几率仅为 25%。</p>
+
+    <h3 id="curechances">包扎解毒几率 <span class="en-h">Bandaging Cure Chances</span></h3>
+    <div class="formula">对玩家解毒几率 = ((125% − (毒药等级 × 25%)) × (治愈技能 / 100)) − (滑脱次数 × 2%)
+对怪物解毒几率 = ((125% − (毒药等级 × 25%)) × (兽医技能 / 100)) − (滑脱次数 × 2%)</div>
+
+    <h2 id="pvm">PvM</h2>
+    <p>对中毒目标包扎时，无论解毒成败，都会治疗其伤害。在 PvM 中，对中毒目标的包扎治疗量如下：</p>
+    <table class="craft-table">
+      <thead><tr><th>毒药等级 Poison Level</th><th>治疗比例 Healing %</th></tr></thead>
+      <tbody>
+        <tr><td>轻毒 Lesser</td><td>100% 正常治疗量</td></tr>
+        <tr><td>普通毒 Regular</td><td>100% 正常治疗量</td></tr>
+        <tr><td>重度毒 Greater</td><td>75% 正常治疗量</td></tr>
+        <tr><td>重毒 Deadly</td><td>50% 正常治疗量</td></tr>
+        <tr><td>致命毒 Lethal</td><td>25% 正常治疗量</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="crossover">包扎技能交叉 <span class="en-h">Bandaging Skills Crossover</span></h2>
+    <ul class="plain">
+      <li>用绷带包扎目标时，玩家可选择性「交叉（Crossover）」使用通常不允许用于该目标类型的包扎技能，例如对玩家使用兽医（Veterinary）+ 动物学识（Animal Lore），或对随从使用治愈 + 解剖学。</li>
+      <li>交叉包扎有严重惩罚：治疗量仅为正常的 33%，解毒与复活几率也降为正常的 33%。</li>
+      <li>若用交叉技能尝试解毒或复活，所用交叉技能必须满足该动作的基础技能要求（即解毒需两种技能均 ≥ 60，复活需两种技能均 ≥ 80）。</li>
+      <li>若玩家同时拥有对目标使用「常规」或「交叉」技能的资格，包扎将采用治疗量更高、或解毒/复活成功率更高的那组技能。</li>
+      <li>包扎的技能提升始终默认为目标的常规技能：包扎玩家始终提升治愈 + 解剖学，包扎怪物始终提升兽医 + 动物学识。</li>
+    </ul>
+
+    <h2 id="codex">治愈者法典 <span class="en-h">Healer's Codex</span></h2>
+    <ul class="plain">
+      <li>治愈者法典（Healer's Codex）需要 80 治愈与 80 解剖学才能使用。</li>
+      <li>法典的加成仅在该玩家包扎玩家（包括自己）或船员（Ship Crewmember）时生效。</li>
+      <li>法典提供的任何增益效果（如提升近战伤害、伤害抗性、毒药减益等）仅对病人对抗怪物时生效。</li>
+    </ul>
+    <table class="craft-table">
+      <thead><tr><th>名称 Name</th><th>每阶点数 Points / Tier</th><th>描述 Description</th></tr></thead>
+      <tbody>
+        <tr><td>战地医者 Combat Medic</td><td>1 / 2 / 2</td><td>病人在接下来 15 秒内获得 (2% / 6% / 10%) 的伤害抗性加成（不可叠加）</td></tr>
+        <tr><td>免疫 Immunize</td><td>1 / 2 / 2</td><td>接下来 15 秒，病人有 (20% / 60% / 100%) 几率使新毒药降低 1 级生效；新的流血与疾病效果以降低 (8% / 24% / 40%) 的伤害生效（不可叠加）</td></tr>
+        <tr><td>过量治疗 Overheal</td><td>1 / 2 / 2</td><td>额外 (8% / 24% / 40%) 的治疗量在接下来 3 秒内分摊给病人</td></tr>
+        <tr><td>穴位 Pressure Points</td><td>1 / 2 / 2</td><td>玩家对怪物的近战伤害提升 (5% / 15% / 25%)</td></tr>
+        <tr><td>自我处置 Self Treatment</td><td>1 / 2 / 2</td><td>给自己包扎所需时间减少 (0.75 / 2.25 / 3.75) 秒（不适用于兽医用品）</td></tr>
+        <tr><td>专家 Specialist</td><td>1 / 2 / 2</td><td>病人治疗量及解毒/复活几率提升正常的 (8% / 24% / 40%)</td></tr>
+        <tr><td>检伤分类 Triage</td><td>1 / 2 / 2</td><td>病人在被包扎过程中获得 (3% / 9% / 15%) 的伤害抗性加成；若病人生命低于 33%，加成翻倍（不可叠加）</td></tr>
+        <tr><td>无界 Without Borders</td><td>1 / 2 / 2</td><td>病人范围增加 (1 / 2 / 3)，并使病人治疗量及解毒/复活几率提升正常的 (2% / 6% / 10%)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="training">训练 <span class="en-h">Training</span></h2>
+    <table class="craft-table">
+      <thead><tr><th>技能区间 Skill</th><th>方式 Activity</th></tr></thead>
+      <tbody>
+        <tr><td>0–50</td><td>向 NPC 训练（Train from NPC）</td></tr>
+        <tr><td>50–80</td><td>在新手地牢（New Player Dungeon）</td></tr>
+        <tr><td>80–100</td><td>包扎鬼魂尝试复活，或治疗战斗训练师（Battletrainer）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
+</div>
+<footer>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+</footer>
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+
+
+
+
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  // 恢复持久化设置（跨页面连续播放 + 进度连续）
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+
+<style>
+/* ===== 背景音乐控制 ===== */
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>
