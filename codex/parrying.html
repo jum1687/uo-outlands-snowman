@@ -2,83 +2,69 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UO Outlands 中文资料库</title>
-<link rel="stylesheet" href="skills/style.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>格挡（Parrying）宝典 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="site-nav">
   <span class="nav-brand">UO Outlands 中文资料库</span>
-  <a href="index.html">首页</a>
-  <a href="skills/index.html">技能详解</a>
-  <a href="elements/index.html">元素精通</a>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
   <div class="nav-dropdown">
-    <a href="pets/index.html">宠物图鉴</a>
+    <a href="../pets/index.html">宠物图鉴</a>
     <div class="nav-menu">
-      <a href="pets/index.html">可驯服宠物</a>
-      <a href="pets/follower-abilities.html">宠物技能大全</a>
-      <a href="pets/simulator.html">宠物天赋模拟器</a>
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
     </div>
   </div>
-  <a href="codex/index.html">宝典图鉴</a>
+  <div class="nav-dropdown">
+    <a href="index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="parrying.html">格挡 <span class="en">Parrying</span></a>
+    </div>
+  </div>
 </nav>
-
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> › <a href="index.html">宝典图鉴</a> › <span>格挡 Parrying</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Weapon_and_Parry_Codex" target="_blank" rel="noopener">wiki.uooutlands.com/Weapon_and_Parry_Codex</a></div>
 <div class="mw-body">
-  <h1 class="mw-page-title-main">UO Outlands <span class="cnsub">中文资料库</span></h1>
-  <div class="mw-content">
-    <p>非官方粉丝整理，资料译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，仅供学习交流；数值以官方 Discord 补丁公告为准。</p>
-    <p class="note">本站为本地预览版。宠物图鉴（含宠物技能大全与驯兽宝典加点模拟器）已上线；后续将持续补充怪物图鉴等内容。</p>
+  <h1 class="mw-page-title-main">格挡 <span class="cnsub">Parrying 宝典</span></h1>
+  <div class="pet-summary">类型 <b>格挡 Parry</b> · 使用要求 <b>80 战术(Tactics) 或 80 徒手(Wrestling) + 80 格挡(Parrying)</b></div>
+  <p>格挡宝典是防御向分支，提供姿态与终结技，无独立武器能力(Weapon Abilities)。装备双手武器或盾牌时获得经验。</p>
+  <h2>姿态 <span class="en-h">Stances</span></h2>
+  <table class="aspect-data-table">
+    <tr><th>姿态 <span class="en-cell">Stance</span></th><th>效果 <span class="en-cell">Effect</span></th></tr>
+    <tr><td>盾击 <span class="en-cell">Shield Bash</span></td><td>对战斗对象的伤害减免 +3%/级，被战斗对象近战命中时有 4%/级 几率对其施加 3 秒阻碍(Hinder)</td></tr>
+    <tr><td>守护 <span class="en-cell">Warding</span></td><td>中毒、流血、疾病持续伤害 -8%/级</td></tr>
+    <tr><td>龟甲 <span class="en-cell">Testudo</span></td><td>每有一个敌对生物对你产生仇恨，伤害减免 +1.5%/级，最多 5 个生物</td></tr>
+    <tr><td>镜反 <span class="en-cell">Mirror</span></td><td>受到的法术伤害 -7%/级</td></tr>
+    <tr><td>壁垒 <span class="en-cell">Bulwark</span></td><td>若玩家静止 3 秒或以上，伤害减免 +5%/级</td></tr>
+  </table>
+  <h2>终结技 <span class="en-h">Finishers</span></h2>
+  <table class="aspect-data-table">
+    <tr><th>终结技 <span class="en-cell">Finisher</span></th><th>效果 <span class="en-cell">Effect</span></th></tr>
+    <tr><td>背水 <span class="en-cell">Last Stand</span></td><td>有 5%/级 几率将受到的任何伤害减至 1</td></tr>
+    <tr><td>屏障 <span class="en-cell">Barrier</span></td><td>有 10%/级 几率将任何中毒、流血、疾病持续伤害减至 1</td></tr>
+  </table>
 
-    <h2>资料分类 <span class="en-h">Categories</span></h2>
-    <div class="skill-grid">
-      <a class="skill-card" href="skills/index.html">技能详解 <span class="en">Skills</span></a>
-      <a class="skill-card" href="elements/index.html">元素精通 <span class="en">Aspect Mastery</span></a>
-      <a class="skill-card" href="codex/index.html">宝典图鉴 <span class="en">Codex</span></a>
-      <div class="skill-card-dropdown" tabindex="0">
-        <a class="skill-card" href="pets/index.html">宠物图鉴 <span class="en">Pets & Bestiary</span></a>
-        <div class="dropdown-menu">
-          <a href="pets/index.html">可驯服宠物 <span class="en">Tameable Pets</span></a>
-          <a href="pets/follower-abilities.html">宠物技能大全 <span class="en">Follower Abilities</span></a>
-          <a href="pets/simulator.html">宠物天赋模拟器 <span class="en">Taming Bestiary</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <p class="backlink"><a href="index.html">← 返回宝典图鉴</a></p>
 </div>
 <footer>
-  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
+  <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/Weapon_and_Parry_Codex" target="_blank" rel="noopener">wiki.uooutlands.com/Weapon_and_Parry_Codex</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
+  <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-08</div>
 </footer>
-
-<!-- 背景音乐 -->
-
-
-<!-- 背景音乐 -->
-
-
-
-
-
-<!-- 背景音乐 -->
-
-
-
-
-
-<!-- 背景音乐 -->
-
-
-
-
-
-<!-- 背景音乐 -->
-
-
-
-
-
-<!-- 背景音乐 -->
-<audio id="bgm" loop preload="auto" src="assets/music/buccaneers-den.mp3"></audio>
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
 <div class="bgm-ctrl" id="bgmCtrl">
   <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -99,18 +85,14 @@
   var vol=document.getElementById('bgmVol');
   var playing=false;
   function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
-  // 恢复持久化设置（跨页面连续播放 + 进度连续）
   var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
   bgm.volume=v; vol.value=v;
   var muted=localStorage.getItem(KEY_M)==='1';
   bgm.muted=muted; mute.classList.toggle('muted',muted);
-  // 用户“意图播放”的状态：只有用户主动点击才改变，切页时系统暂停不清除
   var intendPlay=localStorage.getItem(KEY_P)==='1';
-  // 离开页面前保存当前播放进度（timeupdate 兜底 + pagehide 保证切页瞬间最新）
   function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
   bgm.addEventListener('timeupdate',saveTime);
   window.addEventListener('pagehide',saveTime);
-  // 自动续播：先 seek 到上次进度，再播放（进度不从头开始）
   function startFrom(t){
     if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
     bgm.play().then(function(){setPlaying(true);}).catch(function(){});
@@ -140,7 +122,6 @@
 </script>
 
 <style>
-/* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
   background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
   box-shadow:0 2px 10px rgba(0,0,0,.12);}
@@ -158,6 +139,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>

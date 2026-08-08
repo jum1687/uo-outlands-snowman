@@ -1,0 +1,334 @@
+/* ===== Outlands 中文百科 · 宠物页统一浅色主题 ===== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #202122;
+  background: #f6f6f4;
+  line-height: 1.6;
+  font-size: 16px;
+}
+a { color: #3366cc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.mw-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 16px 60px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+/* 顶部官方原文链接 */
+.source-link {
+  font-size: 0.85em;
+  color: #54595d;
+  background: #f8f9fa;
+  border: 1px solid #eaecf0;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 1.7em;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 8px;
+  margin: 0 0 12px;
+}
+h2 {
+  font-size: 1.3em;
+  border-bottom: 1px solid #eaecf0;
+  padding-bottom: 4px;
+  margin: 28px 0 12px;
+}
+h3 {
+  font-size: 1.05em;
+  margin: 18px 0 8px;
+  color: #333;
+}
+.cnsub { font-size: 0.6em; color: #54595d; font-weight: normal; margin-left: 6px; }
+.en-h { font-size: 0.6em; color: #54595d; font-weight: normal; margin-left: 6px; }
+
+/* 宠物概况条 */
+.pet-summary {
+  background: #f8f9fa;
+  border: 1px solid #eaecf0;
+  border-left: 4px solid #36c;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+}
+.pet-summary b { color: #202122; }
+
+/* 生物形象截图 */
+.pet-img {
+  text-align: center;
+  margin: 14px 0 6px;
+}
+.pet-img img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border: 1px solid #eaecf0;
+  border-radius: 6px;
+  background: #f8f9fa;
+  padding: 6px;
+}
+.pet-img--none .img-placeholder {
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #c8ccd1;
+  border-radius: 6px;
+  background: #f8f9fa;
+  color: #54595d;
+  font-size: 0.9em;
+}
+.img-caption {
+  font-size: 0.8em;
+  color: #54595d;
+  margin-top: 4px;
+}
+
+/* 数据表格（手机友好：中文上 / 英文换行） */
+.aspect-data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0 12px;
+  font-size: 0.95em;
+}
+.aspect-data-table th,
+.aspect-data-table td {
+  padding: 8px 10px;
+  border: 1px solid #c8ccd1;
+  vertical-align: top;
+  text-align: left;
+}
+.aspect-data-table th {
+  background: #eaecf0;
+  font-weight: bold;
+}
+.aspect-data-table .en-cell {
+  display: block;
+  color: #54595d;
+  font-size: 0.82em;
+  font-weight: normal;
+  margin-top: 2px;
+}
+
+/* 技能列表 */
+.ability-group { margin: 10px 0 18px; }
+.ability-list { list-style: none; padding: 0; margin: 6px 0; }
+.ability-list li {
+  padding: 6px 10px;
+  border: 1px solid #eaecf0;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  background: #fcfcfc;
+}
+.ability-tag {
+  display: inline-block;
+  font-size: 0.72em;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: #fff;
+}
+.tag-cooldown { background: #e67e22; }
+.tag-passive { background: #27ae60; }
+.tag-innate { background: #8e44ad; }
+
+/* 技能大全页 */
+.ability-entry {
+  border: 1px solid #eaecf0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.ability-entry .ability-name {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+.ability-entry .ability-desc {
+  color: #333;
+  margin-top: 4px;
+}
+.type-nav { margin: 10px 0 20px; }
+.type-nav a {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 4px 12px;
+  border: 1px solid #eaecf0;
+  border-radius: 14px;
+  background: #f8f9fa;
+  font-size: 0.9em;
+}
+
+/* 返回链接 */
+.backlink {
+  margin-top: 30px;
+  padding-top: 12px;
+  border-top: 1px solid #eaecf0;
+  font-size: 0.95em;
+}
+
+/* ===== 目录索引页 ===== */
+.filter-box {
+  margin: 12px 0 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-box input {
+  flex: 1 1 200px;
+  padding: 8px 10px;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  font-size: 1em;
+}
+.filter-box select {
+  padding: 8px 10px;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  font-size: 1em;
+}
+.filter-box input[type="number"] {
+  flex: 0 0 160px;
+}
+/* 特殊技能筛选行（复选框组，与 filter-box 风格统一） */
+.db-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+.db-label {
+  font-weight: 600;
+  font-size: 0.92em;
+  color: var(--text, #222);
+  white-space: nowrap;
+}
+.db-chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  font-size: 0.9em;
+  white-space: nowrap;
+  user-select: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f8f9fa;
+  border: 1px solid #c8ccd1;
+  transition: background .15s, border-color .15s;
+}
+.db-chk:hover { background: #eef; border-color: #a2a9b1; }
+.db-chk input[type="checkbox"] { cursor: pointer; }
+.db-chk input[type="checkbox"]:checked + * { font-weight: 600; }
+.db-clear-btn {
+  padding: 4px 12px;
+  border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin-left: auto;
+}
+.db-clear-btn:hover { background: #f0f0f0; }
+/* 特殊技能徽章 */
+.dbadge {
+  display: inline-block;
+  padding: 1px 6px;
+  margin: 1px 2px 1px 0;
+  border-radius: 9px;
+  font-size: 0.72em;
+  line-height: 1.5;
+  color: #fff;
+  white-space: nowrap;
+}
+.db-none { color: #aaa; }
+.db-poison { background: #2e7d32; }
+.db-disease { background: #6a1b9a; }
+.db-armor_break { background: #ef6c00; }
+.db-frost { background: #0277bd; }
+.db-bleed { background: #c62828; }
+.db-weaken { background: #757575; }
+.db-cripple { background: #4e342e; }
+.db-web { background: #00695c; }
+.pet-table th.sortable { cursor: pointer; user-select: none; }
+.pet-table th.sortable:hover { background: #eaecf0; }
+.pet-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92em;
+}
+.pet-table th, .pet-table td {
+  padding: 7px 9px;
+  border: 1px solid #c8ccd1;
+  text-align: left;
+}
+.pet-table th { background: #eaecf0; cursor: pointer; }
+.pet-table tbody tr:nth-child(even) { background: #f8f9fa; }
+.count-hint { color: #54595d; font-size: 0.85em; margin-bottom: 8px; }
+
+img.creature-thumb {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 4px 0 12px;
+  border: 1px solid #eaecf0;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .mw-body { padding: 12px 10px 50px; }
+  h1 { font-size: 1.4em; }
+  .aspect-data-table th, .aspect-data-table td { padding: 7px 8px; }
+  .pet-table { font-size: 0.85em; }
+  .pet-table thead { display: none; }
+  .pet-table tbody tr {
+    display: block;
+    border: 1px solid #c8ccd1;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 4px 8px;
+  }
+  .pet-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 5px 2px;
+  }
+  .pet-table tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #54595d;
+    margin-right: 12px;
+  }
+}
+
+/* == site-nav injected == */
+.site-nav{ position:sticky; top:0; z-index:1000; display:flex; align-items:center; gap:2px; background:#fff; border-bottom:1px solid #eaecf0; padding:0 14px; height:46px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+.site-nav .nav-brand{ font-weight:700; color:#202122; margin-right:14px; font-size:15px; white-space:nowrap; }
+.site-nav a{ color:#202122; text-decoration:none; padding:8px 12px; border-radius:6px; font-size:14px; white-space:nowrap; }
+.site-nav a:hover{ background:#f0f6ff; text-decoration:none; }
+.site-nav .nav-dropdown{ position:relative; }
+.site-nav .nav-dropdown > a::after{ content:" \25BE"; font-size:.78em; color:#54595d; }
+.site-nav .nav-menu{ display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #eaecf0; border-radius:0 0 8px 8px; min-width:180px; box-shadow:0 4px 12px rgba(0,0,0,.1); padding:4px 0; z-index:1001; }
+.site-nav .nav-dropdown:hover .nav-menu{ display:block; }
+.site-nav .nav-menu a{ display:block; padding:8px 16px; border-radius:0; }
+@media (max-width:640px){ .site-nav{ height:auto; flex-wrap:wrap; padding:6px 10px; gap:2px; } .site-nav .nav-brand{ width:100%; margin-bottom:2px; } }
+
+/* == tooltip injected == */
+.tooltip{ position:fixed; display:none; max-width:340px; background:#222; color:#fff; padding:9px 11px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+.tooltip .tip-name{ font-weight:bold; margin-bottom:4px; color:#ffd866; }
+.tooltip .tip-desc{ color:#eee; }
