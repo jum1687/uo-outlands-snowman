@@ -136,3 +136,151 @@ html[data-theme="dark"] .aspect-data-table .en-cell{ color:#9aa3ad !important; }
 html[data-theme="dark"] .site-credit{
   background:#1d2026; color:#9aa3ad; border-bottom-color:#3a414b;
 }
+
+/* ===== 模拟器手机端 Tab（桌面端隐藏）===== */
+.sim-mobile-tabs{ display:none; }
+
+/* ===== 手机响应式布局 ===== */
+@media (max-width:768px){
+  /* 导航栏：改为汉堡菜单 */
+  .site-nav{
+    flex-wrap:wrap; position:relative;
+    padding:10px 14px; min-height:48px;
+  }
+  .site-nav .nav-brand{ font-size:15px; margin-right:auto; }
+  /* 默认隐藏除brand外的所有导航项 */
+  .site-nav > a:not(.nav-brand),
+  .site-nav .nav-dropdown{ display:none; }
+  /* 汉堡按钮 */
+  .nav-hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border:1px solid #c0c4cc; border-radius:6px;
+    background:transparent; cursor:pointer; margin-left:8px; flex-shrink:0;
+    font-size:20px; line-height:1; color:#333; order:99;
+  }
+  .nav-hamburger:hover{ background:rgba(0,0,0,.06); }
+  /* 展开状态：所有导航项纵向排列 */
+  .site-nav.nav-open{ flex-direction:column; align-items:stretch; }
+  .site-nav.nav-open > a,
+  .site-nav.nav-open .nav-dropdown{
+    display:block; text-align:left;
+    padding:10px 14px; border-bottom:1px solid #e8eaed; font-size:15px;
+  }
+  .site-nav.nav-open .nav-dropdown > a{ display:block; padding:8px 0; }
+  .site-nav.nav-open .nav-menu{
+    position:static; display:block; box-shadow:none; border:none;
+    background:transparent; padding:6px 0 6px 14px;
+  }
+  .site-nav.nav-open .nav-menu a{
+    display:block; padding:6px 0; font-size:13.5px; border-bottom:1px dotted #e8eaed;
+  }
+  .site-nav.nav-open .nav-dropdown > a::after{ content:' ▾'; font-size:11px; color:#888; }
+  /* 展开时主题按钮靠右 */
+  .site-nav.nav-open .theme-toggle{ align-self:flex-end; margin-top:-32px; }
+
+  /* 面包屑 & 来源链接 */
+  .breadcrumb, .source-link{ font-size:12px; padding:6px 12px; }
+  .source-link a{ font-size:11px; }
+
+  /* 页面标题 */
+  .mw-page-title-main{ font-size:1.35em !important; padding:10px 14px 6px; }
+  .cnsub{ font-size:.78em; display:block; margin-top:2px; }
+
+  /* 正文宽度 */
+  .mw-content{ padding:10px 14px !important; }
+  .mw-content h2{ font-size:1.15em; }
+  .mw-content h3{ font-size:1.05em; }
+  .mw-content p, .mw-content li{ font-size:14px; line-height:1.6; }
+
+  /* 首页分类卡片：单列 */
+  .skill-grid{ grid-template-columns:1fr !important; gap:10px; margin:12px 0; }
+  .skill-card{ padding:14px 16px !important; font-size:.95em !important; }
+
+  /* 表格：横向滚动 */
+  table{ display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+  table th, table td{ padding:6px 8px; font-size:13px; }
+  .aspect-data-table, .pet-table{ min-width:100%; }
+
+  /* 缩进块 */
+  blockquote{ margin:10px 0; padding:8px 12px; font-size:13px; }
+
+  /* 提示 & 示例 */
+  .note, .example{ padding:10px 12px; font-size:13px; }
+  .idx-intro{ padding:14px; }
+
+  /* 筛选区域 */
+  .filter-box{ flex-wrap:wrap; gap:6px; padding:8px 4px; }
+  .filter-box input, .filter-box select{ flex:1 1 auto; min-width:100px; font-size:13px; }
+  .pet-class{ gap:6px; }
+  .pc-btn{ padding:5px 10px; font-size:13px; }
+
+  /* 模拟器：Tab 切换代替三列 */
+  .sim-mobile-tabs{
+    display:flex; gap:0; margin:10px 14px 0; border-radius:8px 8px 0 0;
+    overflow:hidden; border:1px solid #c8ccd1; border-bottom:none;
+  }
+  .sim-tab-btn{
+    flex:1; padding:10px 4px; font-size:14px; font-weight:600;
+    background:#f5f6f8; border:none; border-right:1px solid #dde0e4;
+    cursor:pointer; color:#555; text-align:center;
+    transition:background .15s, color .15s;
+  }
+  .sim-tab-btn:last-child{ border-right:none; }
+  .sim-tab-btn.active{ background:#36c; color:#fff; }
+  .sim-tab-btn:not(.active):hover{ background:#e8ecf2; }
+  .sim-wrap{ flex-direction:column; gap:0; margin-top:0; }
+  .sim-col{
+    flex:1 1 auto !important; min-width:0 !important;
+    border-radius:0 0 8px 8px; margin-top:0;
+  }
+
+  /* 详情页的表格恢复(非宽表) */
+  .mw-content > table:not(.pet-table):not(.aspect-data-table){
+    white-space:normal;
+  }
+
+  /* 背景音乐控件缩小 */
+  .bgm-ctrl{ right:8px; bottom:8px; padding:5px 8px 5px 5px; gap:4px; }
+  .bgm-toggle, .bgm-mute{ width:30px; height:30px; }
+  .bgm-toggle svg, .bgm-mute svg{ width:15px; height:15px; }
+  .bgm-vol{ width:60px; }
+
+  /* 署名条 */
+  .site-credit{ font-size:11px; padding:5px 10px; }
+
+  /* 目录 */
+  .toc{ font-size:13px; padding:10px; }
+  .toc ul{ padding-left:16px; }
+
+  /* 返回链接 */
+  .backlink{ font-size:13px; padding:8px 14px; }
+
+  /* 页脚 */
+  footer{ font-size:12px; padding:10px 14px; }
+
+  /* 下拉菜单在汉堡模式下去掉箭头 */
+  .site-nav.nav-open .nav-dropdown > a::after{ display:inline; }
+
+  /* 导航下拉联动样式 */
+  .site-nav .nav-menu a{ color:#222; }
+  .site-nav .theme-toggle{ margin-left:0; }
+}
+
+/* 暗色模式下的汉堡按钮 */
+html[data-theme="dark"] .nav-hamburger{
+  color:#d6dbe2; border-color:#555;
+}
+html[data-theme="dark"] .nav-hamburger:hover{ background:rgba(255,255,255,.1); }
+html[data-theme="dark"] .site-nav.nav-open > a,
+html[data-theme="dark"] .site-nav.nav-open .nav-dropdown{
+  border-bottom-color:#3a414b;
+}
+html[data-theme="dark"] .site-nav.nav-open .nav-menu a{
+  color:#c8cdd4; border-bottom-color:#333a;
+}
+
+/* 暗色下模拟器 Tab */
+html[data-theme="dark"] .sim-mobile-tabs{ border-color:#3a414b; }
+html[data-theme="dark"] .sim-tab-btn{ background:#2b3038; color:#9aa3ad; border-right-color:#3a414b; }
+html[data-theme="dark"] .sim-tab-btn.active{ background:#36c; color:#fff; }
+html[data-theme="dark"] .sim-tab-btn:not(.active):hover{ background:#32383f; }

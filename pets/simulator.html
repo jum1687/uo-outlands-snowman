@@ -20,6 +20,7 @@
 .tier-group { display:flex; flex-direction:column; gap:6px; margin-bottom:8px; }
 .cross-label { font-size:.75em; color:#a55; margin:8px 0 4px; border-top:1px dashed #ccc; padding-top:6px; }
 .talent { border:1px solid #c8ccd1; border-radius:6px; padding:6px 8px; background:#fff; cursor:pointer; user-select:none; transition:.1s; }
+@media (min-width:769px){ .talent:hover{ border-color:#36c; background:#f0f6ff; } }
 .talent:hover { border-color:#36c; background:#f0f6ff; }
 .talent.maxed { background:#e8f5e9; border-color:#27ae60; }
 .talent.cross { border-style:dashed; }
@@ -28,6 +29,26 @@
 .pips { display:flex; gap:4px; margin-top:4px; }
 .pips span { width:10px; height:10px; border-radius:50%; background:#ddd; border:1px solid #bbb; }
 .pips span.on { background:#27ae60; border-color:#1e8449; }
+
+/* 操作按钮 [+][-][详情]（默认隐藏，靠媒体查询控制显隐）*/
+.talent-row{ display:flex; align-items:center; justify-content:space-between; margin-top:4px; gap:8px; }
+.talent-btns{ gap:4px; }
+@media (min-width:769px){ .talent-btns{ display:none; } }
+@media (max-width:768px){ .talent-btns{ display:flex; } }
+.t-btn{
+  border:1px solid #c8ccd1; border-radius:5px; background:#fff; cursor:pointer;
+  font:inherit; font-size:12px; line-height:1; padding:4px 8px; min-width:30px;
+  color:#333; transition:background .15s, color .15s, border-color .15s;
+}
+.t-btn:hover{ background:#f0f3f8; }
+.t-btn-plus{ color:#27ae60; border-color:#27ae60; font-weight:600; }
+.t-btn-plus:hover{ background:#27ae60; color:#fff; }
+.t-btn-plus:disabled, .t-btn-plus[disabled]{ color:#ccc; border-color:#ddd; cursor:not-allowed; background:#fafafa; }
+.t-btn-minus{ color:#c0392b; border-color:#c0392b; font-weight:600; }
+.t-btn-minus:hover{ background:#c0392b; color:#fff; }
+.t-btn-minus:disabled, .t-btn-minus[disabled]{ color:#ccc; border-color:#ddd; cursor:not-allowed; background:#fafafa; }
+.t-btn-info{ color:#36c; border-color:#36c; }
+.t-btn-info:hover{ background:#36c; color:#fff; }
 .reset-btn { margin-top:6px; width:100%; padding:6px; border:1px solid #c8ccd1; border-radius:6px; background:#fff; cursor:pointer; }
 .reset-btn:hover { background:#f0f0f0; }
 .reset-btn-inline { padding:2px 10px; font-size:.78em; border:1px solid #c8ccd1; border-radius:10px; background:#fff; color:#333; cursor:pointer; white-space:nowrap; flex-shrink:0; align-self:flex-start; margin-top:2px; }
@@ -41,17 +62,36 @@
   .tip-name .en{color:#cdb892;font-size:.8em;font-weight:normal;}
   .t-name .en{font-size:.8em;}
 
+/* 移动端：tooltip 居中 + 遮罩 */
+.tip-mobile{
+  position:fixed !important; left:50% !important; top:50% !important;
+  transform:translate(-50%,-50%);
+  max-width:88vw !important; width:88vw !important;
+  font-size:.95em !important; pointer-events:auto !important;
+  padding:14px 16px !important;
+}
+.tip-bg{
+  position:fixed; inset:0; background:rgba(0,0,0,.55);
+  z-index:9998; opacity:0; pointer-events:none; transition:opacity .15s;
+}
+.tip-bg-show{ opacity:1; pointer-events:auto; }
+
 /* 伤害统计面板 */
 .dmg-panel { border:1px solid #c8ccd1; border-radius:8px; background:#fefefe; margin:10px 0; overflow:hidden; }
 .dmg-panel-head { background:#f0f0f0; padding:8px 14px; font-weight:bold; font-size:.9em; border-bottom:1px solid #eaecf0; display:flex; align-items:center; gap:6px; }
 .dmg-panel-head .icon-dmg { font-size:1.1em; }
 .dmg-panel-body { padding:10px 14px; max-height:280px; overflow-y:auto; }
 .dmg-empty { color:#888; font-size:.85em; font-style:italic; }
-.dmg-item { display:flex; gap:6px; padding:4px 0; font-size:.82em; line-height:1.5; border-bottom:1px dotted #eee; }
+.dmg-item { display:flex; gap:8px; padding:4px 0; font-size:.82em; line-height:1.5; border-bottom:1px dotted #eee; align-items:flex-start; }
 .dmg-item:last-child { border-bottom:none; }
-.dmg-tname { font-weight:600; color:#36c; white-space:nowrap; min-width:52px; }
-.dmg-teffect { color:#222; }
+.dmg-head{ flex-shrink:0; min-width:80px; }
+.dmg-tname { font-weight:600; color:#36c; white-space:nowrap; }
+.dmg-en { display:block; font-size:.85em; color:#888; font-weight:normal; white-space:nowrap; }
+.dmg-lv { display:inline-block; font-size:.75em; color:#c0392b; background:#fbeaea; padding:0 4px; border-radius:3px; margin-top:2px; }
+.dmg-body { flex:1 1 auto; min-width:0; }
 .dmg-val { color:#c0392b; font-weight:bold; white-space:nowrap; }
+.dmg-sub { color:#999; font-style:italic; font-size:.85em; }
+.dmg-sub-val { color:#888; font-weight:normal; font-style:normal; }
 
 @media (max-width:700px){ .sim-col{ flex-basis:100%; } }
 </style>
@@ -114,12 +154,25 @@ function makeNode(cls,name){
   const n=document.createElement('div');
   n.className='talent'; n.dataset.cls=cls; n.dataset.name=name;
   const t=tl(name);
-  n.innerHTML='<div class="t-name">'+t.cnname+' <span class="en">'+name+'</span></div><div class="pips"><span></span><span></span><span></span></div>';
-  n.addEventListener('click',()=>allocate(cls,name));
+  n.innerHTML='<div class="t-name">'+t.cnname+' <span class="en">'+name+'</span></div>'
+    +'<div class="talent-row"><div class="pips"><span></span><span></span><span></span></div>'
+    +'<div class="talent-btns">'
+    +'<button type="button" class="t-btn t-btn-minus" title="减少1点">−</button>'
+    +'<button type="button" class="t-btn t-btn-plus" title="增加1点">+</button>'
+    +'<button type="button" class="t-btn t-btn-info" title="查看详情">详情</button>'
+    +'</div></div>';
+  n.querySelector('.t-btn-plus').addEventListener('click',function(e){e.stopPropagation();allocate(cls,name);});
+  n.querySelector('.t-btn-minus').addEventListener('click',function(e){e.stopPropagation();deallocate(cls,name);});
+  n.querySelector('.t-btn-info').addEventListener('click',function(e){e.stopPropagation();showTip(null,name);});
+  // 桌面端：点卡片=加点（手机端必须用按钮，避免误触）
+  n.addEventListener('click',function(e){
+    if(window.innerWidth>768 && n.contains(e.target)) allocate(cls,name);
+  });
   n.addEventListener('contextmenu',e=>{e.preventDefault();deallocate(cls,name);});
-  n.addEventListener('mouseenter',e=>showTip(e,name));
+  // 桌面端：鼠标悬停仍显示 tooltip（移动端不依赖此，依赖详情按钮）
+  n.addEventListener('mouseenter',function(e){if(window.innerWidth>768)showTip(e,name);});
   n.addEventListener('mousemove',moveTip);
-  n.addEventListener('mouseleave',hideTip);
+  n.addEventListener('mouseleave',function(){if(window.innerWidth>768)hideTip();});
   return n;
 }
 
@@ -173,6 +226,10 @@ function refresh(){
       const pips=node.querySelectorAll('.pips span');
       pips.forEach((p,i)=>p.classList.toggle('on',i<t));
       node.classList.toggle('maxed',t>=3);
+      // [+]/[-] 按钮的禁用状态
+      var plus=node.querySelector('.t-btn-plus'), minus=node.querySelector('.t-btn-minus');
+      if(plus) plus.disabled = (t>=3);
+      if(minus) minus.disabled = (t<=0);
     });
     document.getElementById('col-'+cls).classList.toggle('pet-active',cls===petClass);
   });
@@ -187,109 +244,101 @@ function showTip(e,name){
   const tip=document.getElementById('tip');
   const tt=tl(name);
   tip.innerHTML='<div class="tip-name">'+tt.cnname+' <span class="en">'+name+'</span></div><div class="tip-desc">'+tt.cndesc+'</div>';
-  tip.style.display='block'; moveTip(e);
+  tip.style.display='block';
+  // 移动端：居中显示 + 遮罩
+  if(window.innerWidth<=768){
+    tip.style.left='';tip.style.top='';tip.style.transform='';  // 清除残留
+    tip.classList.add('tip-mobile');
+    var bg=document.getElementById('tip-bg');
+    if(!bg){bg=document.createElement('div');bg.id='tip-bg';bg.className='tip-bg';document.body.appendChild(bg);}
+    bg.classList.add('tip-bg-show');
+    bg.onclick=hideTip;
+  }else if(e){
+    tip.classList.remove('tip-mobile');
+    moveTip(e);
+  }
 }
 function moveTip(e){
   const tip=document.getElementById('tip');
+  if(tip.classList.contains('tip-mobile'))return;
   let x=e.clientX+14,y=e.clientY+14;
   if(x+340>window.innerWidth)x=e.clientX-340;
   tip.style.left=x+'px'; tip.style.top=y+'px';
 }
-function hideTip(){document.getElementById('tip').style.display='none';}
-
-/* ==================== 伤害统计面板 ====================
-   解析每个已分配天赋的 cndesc，提取与伤害相关的效果及当前等级数值。
-   只统计：Damage Dealt/伤害提高、Damage increased/伤害提高、额外伤害等。
-   排除：Healing/治疗、Damage Resistance/伤害减免、cooldown/冷却、Resurrection/复活 等。
-*/
-const DMG_KW=/Damage\s*Dealt|造成.*伤害|Damage\s*increased|伤害提高|伤害.*提升|additional\s*Damage|额外伤害|Melee\s*(and\s*)?Spell\s*Damage|近战.*法术伤害|近战伤害|ignore.*Armor|忽略.*护甲|Damage\s*Bonus|伤害加成|Damage\s*Penalty|伤害惩罚|inflict.*Damage|造成.*伤害/i;
-const NON_DMG_KW=/Healing|治疗量|治愈|Damage\s*Resistance|伤害减免|cooldown|冷却|Resurrection|复活|restore|恢复.*Health|Health|生命|Curing|chance.*ignore|几率.*忽略|redirected|转移|defensive|防御性|will\s*not\s*work/i;
-
-function isDmgClause(text){
-  // 必须含伤害关键词 且 不含明确的非伤害关键词
-  if(!DMG_KW.test(text)) return false;
-  // 但有些句子同时含伤害和治疗（如 Metabolism），需更精细判断
-  // 规则：如果主要动词是恢复/治疗/减免 则不算
-  if(/(restore|恢复[^伤]|Healing|治疗|治愈|Resurrection|复活|Damage\s*Resistance|伤害减免)\s/.test(text)) return false;
-  return true;
+function hideTip(){
+  document.getElementById('tip').style.display='none';
+  document.getElementById('tip')?.classList.remove('tip-mobile');
+  var bg=document.getElementById('tip-bg');if(bg)bg.classList.remove('tip-bg-show');
 }
 
-// 从形如 (10%, 20%, 30%) 或 (80% / 160% / 240%) 的括号中取第 lvlIdx 个值
+// 从形如 (10%, 20%, 30%) 或 (2% / 6% / 10%) 的括号中取第 lvlIdx 个值
 function extractVal(text, lvlIdx){
-  // 匹配 (val1, val2, val3) 或 (val1 / val2 / val3)
   const m=text.match(/\(([^)]+)\)/g);
   if(!m) return null;
   for(let i=0;i<m.length;i++){
-    const inner=m[i];
-    // 取逗号或斜杠分隔的值
-    const parts=inner.replace(/[()]/g,'').split(/[,\/]/).map(s=>s.trim());
+    const parts=m[i].replace(/[()]/g,'').split(/[,\/]/).map(s=>s.trim());
     if(parts.length>=3 && lvlIdx<parts.length){
-      const v=parts[lvlIdx].replace('%','');
-      if(!isNaN(parseFloat(v))) return parts[lvlIdx];
+      if(!isNaN(parseFloat(parts[lvlIdx]))) return parts[lvlIdx];
     }
   }
   return null;
 }
 
-// 从子句中生成简短描述（去掉英文术语括号，截断）
-function shortenClause(clause, val){
-  let s=clause
-    .replace(/\([^)]*\)/g,'')  // 先去掉所有括号内容
-    .replace(/\s+/g,'')         // 去空白
-    .trim();
-  // 如果太短或不合理，返回原始 clause 并替换数值
-  if(s.length<6){
-    s=clause.replace(/\(([^)]+)\)/, function(m,g){
-      const parts=g.split(/[,\/]/);
-      if(parts.length>=3) return '（'+val+'）';
-      return m;
-    });
-  }else{
-    // 截断到合理长度
-    if(s.length>60) s=s.substring(0,57)+'…';
-  }
+/* ==================== 全天赋汇总面板（新版）====================
+   不再区分伤害/非伤害，所有已分配天赋均列出。
+   每个天赋：主效果 + 当前等级数值 → 若...副效果用灰色斜体括号
+*/
+function shortenForPanel(clause, val){
+  // 裁掉英文术语，中文精炼
+  var s = clause.replace(/\([^)]*\)/g, '').replace(/\s+/g, '').trim();
+  if(s.length>40) s=s.substring(0,37)+'…';
   return s;
 }
 
 function updateDmgStats(){
   const body=document.getElementById('dmgBody');
-  const items=[];
-
+  const rows=[];
   for(const cls of CLASSES){
     for(const name in state[cls]){
       const lvl=state[cls][name];
       if(lvl<=0) continue;
       const t=tl(name);
       if(!t.cndesc) continue;
-
-      // 按 <br> 拆分子句
       const clauses=t.cndesc.split(/\s*<br>\s*/);
+      let main='', val='';
+      const subs=[];
+      const allCond = clauses.every(c=>/^若/.test(c));
       for(const cl of clauses){
-        if(!isDmgClause(cl)) continue;
-        const val=extractVal(cl, lvl-1);
-        const shortText=shortenClause(cl, val||'');
-        items.push({
-          cnname:t.cnname,
-          cls:cls,
-          text:shortText,
-          val:val
-        });
+        if(!main){
+          // 第一个子句始终作为主效果（即使以"若"开头——双条件天赋）
+          main=cl; val=extractVal(cl,lvl-1)||'';
+        }else if(/^若/.test(cl)){
+          subs.push(cl);
+        }
       }
+      rows.push({cnname:t.cnname, enname:t.name, lvl, main, val, subs});
     }
   }
-
-  if(items.length===0){
-    body.innerHTML='<div class="dmg-empty">尚未分配天赋点，或当前加点无伤害加成效果</div>';
+  if(rows.length===0){
+    body.innerHTML='<div class="dmg-empty">尚未分配天赋点</div>';
     return;
   }
-
   let html='';
-  for(const it of items){
+  for(const r of rows){
     html+='<div class="dmg-item">'+
-      '<span class="dmg-tname">'+it.cnname+'</span>'+
-      '<span class="dmg-teffect">'+it.text+'</span>'+
-      (it.val?'<span class="dmg-val">'+it.val+'</span>':'')+
-      '</div>';
+      '<div class="dmg-head">'+
+        '<span class="dmg-tname">'+r.cnname+'</span>'+
+        '<span class="dmg-en">'+r.enname+'</span>'+
+        '<span class="dmg-lv">Lv.'+r.lvl+'</span>'+
+      '</div>'+
+      '<div class="dmg-body">'+
+        '<span class="dmg-teffect">'+shortenForPanel(r.main, r.val)+'</span>'+
+        (r.val?'<span class="dmg-val">'+r.val+'</span>':'');
+    for(const sub of r.subs){
+      const subVal=extractVal(sub, r.lvl-1)||'';
+      html+=' <span class="dmg-sub">（'+shortenForPanel(sub, subVal)+(subVal?' <span class="dmg-sub-val">'+subVal+'</span>':'')+'）</span>';
+    }
+    html+='</div></div>';
   }
   body.innerHTML=html;
 }
