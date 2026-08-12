@@ -50,9 +50,41 @@
     nav.appendChild(btn);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildBtn);
-  } else {
+  // 全局署名条：插入到导航栏之后，所有页面生效
+  function buildCredit() {
+    if (document.getElementById('site-credit')) return;
+    var nav = document.querySelector('.site-nav') ||
+              document.querySelector('header.site');
+    if (!nav || !nav.parentNode) return;
+    var bar = document.createElement('div');
+    bar.id = 'site-credit';
+    bar.className = 'site-credit';
+    bar.textContent = '收集整理：Snowman Liang ｜ 如发现错误请联系整理者：QQ16873486 ｜ 更新日期：2026年8月12日';
+    nav.parentNode.insertBefore(bar, nav.nextSibling);
+  }
+
+  // 清除遗留的“本地预览版”字样（旧页脚）
+  function fixFooters() {
+    var footers = document.querySelectorAll('footer');
+    for (var i = 0; i < footers.length; i++) {
+      var f = footers[i];
+      if (f.innerHTML.indexOf('本地预览版') !== -1) {
+        f.innerHTML = f.innerHTML
+          .replace(/本地预览版\s*·\s*/, '')
+          .replace(/本地预览版/, '');
+      }
+    }
+  }
+
+  function init() {
     buildBtn();
+    buildCredit();
+    fixFooters();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

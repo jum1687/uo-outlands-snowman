@@ -123,3 +123,16 @@ html[data-theme="dark"] .aspect-data-table .en-cell{ color:#9aa3ad !important; }
 }
 .theme-toggle:hover{ background:rgba(150,150,150,.18); }
 @media (max-width:640px){ .site-nav .theme-toggle{ margin-left:0; } }
+
+/* ===== 全局署名条（注入到导航栏之后，所有页面）===== */
+.site-credit{
+  font-size:13px; line-height:1.5; color:#5a6b7b;
+  background:#f3f5f7; border-bottom:1px solid #e3e7ea;
+  padding:6px 16px; text-align:center; letter-spacing:.3px;
+}
+@media (max-width:640px){ .site-credit{ font-size:12px; padding:5px 10px; } }
+
+/* 深色模式下的署名条 */
+html[data-theme="dark"] .site-credit{
+  background:#1d2026; color:#9aa3ad; border-bottom-color:#3a414b;
+}
