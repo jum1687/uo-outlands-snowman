@@ -140,6 +140,10 @@ html[data-theme="dark"] .site-credit{
 /* ===== 模拟器手机端 Tab（桌面端隐藏）===== */
 .sim-mobile-tabs{ display:none; }
 
+/* 首页更新日志 */
+.changelog-date{ font-weight:700; color:#36c; margin-bottom:6px; font-size:.95em; }
+html[data-theme="dark"] .changelog-date{ color:#7fb0e8; }
+
 /* ===== 手机响应式布局 ===== */
 @media (max-width:768px){
   /* 导航栏：改为汉堡菜单 */
