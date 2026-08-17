@@ -263,6 +263,10 @@ h3 {
 .db-cripple { background: #4e342e; }
 .db-web { background: #00695c; }
 .db-fire { background: #f4511e; }
+.db-aoe { background: #d81b60; }
+.db-curse { background: #4527a0; }
+.db-backstab { background: #1a237e; }
+.db-buff { background: #f9a825; }
 .pet-table th.sortable { cursor: pointer; user-select: none; }
 .pet-table th.sortable:hover { background: #eaecf0; }
 .pet-table {
