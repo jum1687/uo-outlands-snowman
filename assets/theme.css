@@ -1,3 +1,20 @@
+/* ===== 全站背景图（仅浅色模式，不影响阅读）===== */
+html:not([data-theme="dark"])::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: url('bg/ultima_online.jpg') center/cover no-repeat fixed;
+  opacity: 0.3;
+  pointer-events: none;
+}
+html:not([data-theme="dark"]) body {
+  background: rgba(255, 255, 255, 0.55) !important;
+}
+html:not([data-theme="dark"]) .mw-body {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
 /* ===== 深色模式（参考官方 Wiki 暗色风格：中灰石板色，非纯黑）===== */
 /* 作用于 <html data-theme="dark">。浅色为默认（不写 data-theme 即当前外观）。 */
 
