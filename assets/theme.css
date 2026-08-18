@@ -12,7 +12,7 @@ html:not([data-theme="dark"]) body {
   background: rgba(255, 255, 255, 0.55) !important;
 }
 html:not([data-theme="dark"]) .mw-body {
-  background: rgba(255, 255, 255, 0.6) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* ===== 深色模式（参考官方 Wiki 暗色风格：中灰石板色，非纯黑）===== */
