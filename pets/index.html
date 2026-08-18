@@ -34,7 +34,7 @@
   </div>
   <div class="filter-box db-row">
     <span class="db-label">特殊技能：</span>
-    <label class="db-chk"><input type="checkbox" class="db-filter" value="poison" onchange="filter()"> 中毒</label><label class="db-chk"><input type="checkbox" class="db-filter" value="disease" onchange="filter()"> 疾病</label><label class="db-chk"><input type="checkbox" class="db-filter" value="armor_break" onchange="filter()"> 破甲</label><label class="db-chk"><input type="checkbox" class="db-filter" value="frost" onchange="filter()"> 冰霜易伤</label><label class="db-chk"><input type="checkbox" class="db-filter" value="fire" onchange="filter()"> 火系</label><label class="db-chk"><input type="checkbox" class="db-filter" value="bleed" onchange="filter()"> 流血</label><label class="db-chk"><input type="checkbox" class="db-filter" value="weaken" onchange="filter()"> 虚弱</label><label class="db-chk"><input type="checkbox" class="db-filter" value="cripple" onchange="filter()"> 残废</label><label class="db-chk"><input type="checkbox" class="db-filter" value="web" onchange="filter()"> 缠绕</label><label class="db-chk"><input type="checkbox" class="db-filter" value="aoe" onchange="filter()"> AOE</label><label class="db-chk"><input type="checkbox" class="db-filter" value="curse" onchange="filter()"> 诅咒</label><label class="db-chk"><input type="checkbox" class="db-filter" value="backstab" onchange="filter()"> 背刺</label><label class="db-chk"><input type="checkbox" class="db-filter" value="buff" onchange="filter()"> 增益</label>
+    <label class="db-chk"><input type="checkbox" class="db-filter" value="poison" onchange="filter()"> 中毒</label><label class="db-chk"><input type="checkbox" class="db-filter" value="disease" onchange="filter()"> 疾病</label><label class="db-chk"><input type="checkbox" class="db-filter" value="armor_break" onchange="filter()"> 破甲</label><label class="db-chk"><input type="checkbox" class="db-filter" value="frost" onchange="filter()"> 冰霜易伤</label><label class="db-chk"><input type="checkbox" class="db-filter" value="fire" onchange="filter()"> 火系</label><label class="db-chk"><input type="checkbox" class="db-filter" value="bleed" onchange="filter()"> 流血</label><label class="db-chk"><input type="checkbox" class="db-filter" value="weaken" onchange="filter()"> 虚弱</label><label class="db-chk"><input type="checkbox" class="db-filter" value="cripple" onchange="filter()"> 断筋</label><label class="db-chk"><input type="checkbox" class="db-filter" value="web" onchange="filter()"> 缠绕</label><label class="db-chk"><input type="checkbox" class="db-filter" value="aoe" onchange="filter()"> AOE</label><label class="db-chk"><input type="checkbox" class="db-filter" value="curse" onchange="filter()"> 诅咒</label><label class="db-chk"><input type="checkbox" class="db-filter" value="backstab" onchange="filter()"> 背刺</label><label class="db-chk"><input type="checkbox" class="db-filter" value="buff" onchange="filter()"> 增益</label>
     <button type="button" onclick="clearDb()" class="db-clear-btn">清除</button>
   </div>
   <div class="count-hint" id="cnt"></div>
@@ -138,7 +138,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="38–44">38–44</td>
-<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="harvestman.html">Harvestman</a></td>
@@ -192,7 +192,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="44–58">44–58</td>
-<td data-label="特殊技能" data-debuff="bleed,cripple,web"><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="bleed,cripple,web"><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="decaying-dragon.html">Decaying Dragon</a></td>
@@ -273,7 +273,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="52–64">52–64</td>
-<td data-label="特殊技能" data-debuff="aoe,bleed,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,bleed,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="smoke-dragon.html">Smoke Dragon</a></td>
@@ -336,7 +336,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="4">4</td>
 <td data-label="基础伤害" data-dmg="60–80">60–80</td>
-<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="otyugh.html">Otyugh</a></td>
@@ -372,7 +372,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="4">4</td>
 <td data-label="基础伤害" data-dmg="62–84">62–84</td>
-<td data-label="特殊技能" data-debuff="cripple,poison,weaken,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-weaken">虚弱</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,poison,weaken,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-weaken">虚弱</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="shadow-prowler.html">Shadow Prowler</a></td>
@@ -390,7 +390,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="4">4</td>
 <td data-label="基础伤害" data-dmg="58–76">58–76</td>
-<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="phoenix.html">Phoenix</a></td>
@@ -444,7 +444,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="4">4</td>
 <td data-label="基础伤害" data-dmg="62–84">62–84</td>
-<td data-label="特殊技能" data-debuff="aoe,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="colossal-strider.html">Colossal Strider</a></td>
@@ -489,7 +489,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="28–34">28–34</td>
-<td data-label="特殊技能" data-debuff="aoe,armor_break,cripple,poison"><span class="dbadge db-poison">中毒</span><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,armor_break,cripple,poison"><span class="dbadge db-poison">中毒</span><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="jade-scorpion.html">Jade Scorpion</a></td>
@@ -516,7 +516,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="48–60">48–60</td>
-<td data-label="特殊技能" data-debuff="armor_break,buff,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,buff,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="blood-hunter.html">Blood Hunter</a></td>
@@ -606,7 +606,7 @@
 <td data-label="战斗" data-combat="Spell">法术 Spell</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="12–15">12–15</td>
-<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="blood-serpent.html">Blood Serpent</a></td>
@@ -696,7 +696,7 @@
 <td data-label="战斗" data-combat="Spell">法术 Spell</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="34–42">34–42</td>
-<td data-label="特殊技能" data-debuff="armor_break,buff,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,buff,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="earth-dragon.html">Earth Dragon</a></td>
@@ -750,7 +750,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="42–54">42–54</td>
-<td data-label="特殊技能" data-debuff="aoe,armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="firebite-cobra.html">Firebite Cobra</a></td>
@@ -903,7 +903,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="36–42">36–42</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="giant-spitting-viper.html">Giant Spitting Viper</a></td>
@@ -930,7 +930,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="40–50">40–50</td>
-<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="cripple"><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="smoke-drake.html">Smoke Drake</a></td>
@@ -1020,7 +1020,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="46–62">46–62</td>
-<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="giant-black-widow.html">Giant Black Widow</a></td>
@@ -1029,7 +1029,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="48–60">48–60</td>
-<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="bonfire-wisp.html">Bonfire Wisp</a></td>
@@ -1065,7 +1065,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="52–66">52–66</td>
-<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">残废</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">断筋</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="giant-strider.html">Giant Strider</a></td>
@@ -1272,7 +1272,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="20–24">20–24</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="komodo.html">Komodo</a></td>
@@ -1281,7 +1281,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="24–30">24–30</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="shade-wolf.html">Shade Wolf</a></td>
@@ -1299,7 +1299,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="20–24">20–24</td>
-<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">残废</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">断筋</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="ruby-smallshell.html">Ruby Smallshell</a></td>
@@ -1335,7 +1335,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="32–36">32–36</td>
-<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,disease,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-disease">疾病</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="giant-chameleon.html">Giant Chameleon</a></td>
@@ -1371,7 +1371,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="40–46">40–46</td>
-<td data-label="特殊技能" data-debuff="bleed,cripple"><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="bleed,cripple"><span class="dbadge db-bleed">流血</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="water-drake.html">Water Drake</a></td>
@@ -1380,7 +1380,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="38–44">38–44</td>
-<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">残废</span><span class="dbadge db-aoe">AOE</span></td>
+<td data-label="特殊技能" data-debuff="aoe,cripple"><span class="dbadge db-cripple">断筋</span><span class="dbadge db-aoe">AOE</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="reef-serpent.html">Reef Serpent</a></td>
@@ -1425,7 +1425,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="42–62">42–62</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple,fire"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-fire">火系</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple,fire"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-fire">火系</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="skeletal-dragon.html">Skeletal Dragon</a></td>
@@ -1470,7 +1470,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="30–36">30–36</td>
-<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="wyvern-hatchling.html">Wyvern Hatchling</a></td>
@@ -1524,7 +1524,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="18–22">18–22</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="vampire-bat.html">Vampire Bat</a></td>
@@ -1569,7 +1569,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="48–62">48–62</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="blood-ape.html">Blood Ape</a></td>
@@ -1686,7 +1686,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="3">3</td>
 <td data-label="基础伤害" data-dmg="48–62">48–62</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="aegis-slime.html">Aegis Slime</a></td>
@@ -1704,7 +1704,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="14–18">14–18</td>
-<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="backstab,buff,cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span><span class="dbadge db-backstab">背刺</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="drake-whelp.html">Drake Whelp</a></td>
@@ -1839,7 +1839,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="18–22">18–22</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple,fire"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-fire">火系</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple,fire"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-fire">火系</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="desert-ostard.html">Desert Ostard</a></td>
@@ -1920,7 +1920,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="18–22">18–22</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="fire-ant.html">Fire Ant</a></td>
@@ -1947,7 +1947,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="2">2</td>
 <td data-label="基础伤害" data-dmg="26–30">26–30</td>
-<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="aegis-rat.html">Aegis Rat</a></td>
@@ -1965,7 +1965,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="12–16">12–16</td>
-<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">残废</span><span class="dbadge db-web">缠绕</span></td>
+<td data-label="特殊技能" data-debuff="cripple,poison,web"><span class="dbadge db-poison">中毒</span><span class="dbadge db-cripple">断筋</span><span class="dbadge db-web">缠绕</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="flamehound.html">Flamehound</a></td>
@@ -2001,7 +2001,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="16–20">16–20</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="grizzly-bear.html">Grizzly Bear</a></td>
@@ -2064,7 +2064,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="16–20">16–20</td>
-<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">残废</span></td>
+<td data-label="特殊技能" data-debuff="armor_break,cripple"><span class="dbadge db-armor_break">破甲</span><span class="dbadge db-cripple">断筋</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="shallow-water.html">Shallow Water</a></td>
@@ -2073,7 +2073,7 @@
 <td data-label="战斗" data-combat="Melee">近战 Melee</td>
 <td data-label="栏位" data-slots="1">1</td>
 <td data-label="基础伤害" data-dmg="16–20">16–20</td>
-<td data-label="特殊技能" data-debuff="buff,cripple"><span class="dbadge db-cripple">残废</span><span class="dbadge db-buff">增益</span></td>
+<td data-label="特殊技能" data-debuff="buff,cripple"><span class="dbadge db-cripple">断筋</span><span class="dbadge db-buff">增益</span></td>
 </tr>
 <tr>
 <td data-label="名称"><a href="familiar.html">Familiar</a></td>
