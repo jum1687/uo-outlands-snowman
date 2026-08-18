@@ -346,6 +346,14 @@ img.creature-thumb {
 .site-nav .nav-dropdown:hover .nav-menu{ display:block; }
 .site-nav .nav-menu a{ display:block; padding:8px 16px; border-radius:0; }
 @media (max-width:640px){ .site-nav{ height:auto; flex-wrap:wrap; padding:6px 10px; gap:2px; } .site-nav .nav-brand{ width:100%; margin-bottom:2px; } }
+html[data-theme="dark"] .site-nav{ background:#1d2026; border-bottom-color:#3a414b; }
+html[data-theme="dark"] .site-nav .nav-brand{ color:#eef0f3; }
+html[data-theme="dark"] .site-nav a{ color:#d6dbe2; }
+html[data-theme="dark"] .site-nav a:hover{ background:rgba(220,169,78,.14); }
+html[data-theme="dark"] .site-nav .nav-dropdown > a::after{ color:#9aa3ad; }
+html[data-theme="dark"] .site-nav .nav-menu{ background:#262b32; border-color:#3a414b; }
+html[data-theme="dark"] .site-nav .nav-menu a{ color:#d6dbe2; }
+html[data-theme="dark"] .site-nav .nav-menu a:hover{ background:rgba(220,169,78,.14); color:#dca94e; }
 
 /* == tooltip injected == */
 .tooltip{ position:fixed; display:none; max-width:340px; background:#222; color:#fff; padding:9px 11px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
