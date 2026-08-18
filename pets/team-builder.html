@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智能配宠向导 | Outlands 中文百科</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/theme.js"></script>
+<style>
+.tb-intro{ color:#444; font-size:.92em; line-height:1.6; background:#f6f8fb; border-left:3px solid #36c; padding:8px 12px; border-radius:4px; margin:10px 0 16px;}
+.tb-controls{ display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; background:#fff; border:1px solid #c8ccd1; border-radius:10px; padding:14px; margin-bottom:18px; }
+.tb-field{ display:flex; flex-direction:column; gap:4px; min-width:180px; flex:1 1 180px; }
+.tb-field label{ font-size:.8em; font-weight:bold; color:#54595d; }
+.tb-field select, .tb-field input{ padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
+.tb-slots{ max-width:120px; flex:0 0 120px; }
+.tb-gen{ padding:9px 18px; border:1px solid #36c; border-radius:8px; background:#36c; color:#fff; font:inherit; font-weight:bold; cursor:pointer; transition:.15s; }
+.tb-gen:hover{ background:#2a8; border-color:#2a8; }
+#petSearch{ margin-bottom:4px; }
+
+.tb-overview{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#eef5ff; border:1px solid #bcd6f5; border-radius:8px; padding:10px 14px; margin-bottom:14px; font-size:.88em; }
+.tb-overview b{ color:#1a4f8a; }
+
+.tb-section-title{ font-size:1.05em; font-weight:bold; margin:18px 0 10px; padding-left:10px; border-left:4px solid #36c; }
+
+.tb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media (max-width:760px){ .tb-grid{ grid-template-columns:1fr; } }
+.tb-card{ border:1px solid #d4d8dd; border-radius:10px; background:#fff; overflow:hidden; display:flex; flex-direction:column; }
+.tb-card.core{ grid-column:1 / -1; border-color:#36c; box-shadow:0 0 0 2px #36c3; }
+.tb-card-head{ display:flex; align-items:center; gap:8px; padding:10px 12px; background:#f3f5f8; border-bottom:1px solid #e4e7eb; flex-wrap:wrap; }
+.tb-card-head .tb-name{ font-weight:bold; font-size:1.05em; }
+.tb-card-head .en{ color:#888; font-size:.78em; font-weight:normal; }
+.tb-card-body{ padding:10px 12px; font-size:.86em; line-height:1.55; flex:1; }
+.tb-stats{ display:flex; flex-wrap:wrap; gap:4px 14px; margin:6px 0; color:#333; }
+.tb-stats span b{ color:#1a4f8a; }
+.tb-row{ margin:6px 0; }
+.tb-row .lbl{ color:#777; font-size:.82em; }
+.tb-reason{ background:#fff8e6; border:1px solid #f0dca0; border-radius:6px; padding:6px 9px; margin:8px 0; font-size:.85em; color:#7a5a10; }
+.cls-badge{ font-size:.74em; font-weight:bold; color:#fff; padding:2px 8px; border-radius:10px; }
+.cls-Attack{ background:#e74c3c; }
+.cls-Utility{ background:#27ae60; }
+.cls-Tank{ background:#2980b9; }
+
+.tb-table{ width:100%; border-collapse:collapse; margin-top:8px; font-size:.82em; }
+.tb-table th{ text-align:left; background:#f0f3f7; color:#555; font-weight:bold; padding:4px 6px; border:1px solid #e0e4e9; }
+.tb-table td{ padding:4px 6px; border:1px solid #e8ebef; vertical-align:top; }
+.tb-table .tl-name{ font-weight:600; color:#1a4f8a; white-space:nowrap; }
+.tb-table .tl-name .en{ color:#999; font-weight:normal; font-size:.85em; }
+.tb-table .tl-eff{ color:#444; line-height:1.4; }
+.tb-table .tl-lv{ color:#c0392b; font-weight:bold; text-align:center; }
+.tb-table .tl-cls{ text-align:center; font-size:.82em; }
+.tb-cross{ color:#a55; }
+.tb-native{ color:#27ae60; }
+.tb-note{ font-size:.8em; color:#888; margin-top:6px; font-style:italic; }
+.tb-empty{ padding:30px; text-align:center; color:#999; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/simulator.html">宠物天赋模拟器</a>
+      <a href="../pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+</nav>
+
+<div class="mw-body">
+  <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：14 类特殊技能</div>
+  <h1>智能配宠向导 <span class="cnsub">Team Builder</span></h1>
+  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。算法依据：① 核心宠缺失的战斗维度（AOE / 破甲 / 毒 / Poison / 流血 / 断筋 / 缠绕 / 诅咒 / 背刺 等）反向匹配补位宠；② 每只宠按系别（攻击/辅助/坦克）套用驯兽宝典天赋树推导向点。系别为按特征推断，正式配装请以游戏内为准。</p>
+
+  <div class="tb-controls">
+    <div class="tb-field">
+      <label>核心宠</label>
+      <input id="petSearch" placeholder="搜索宠物名…（如 Warpig）" />
+      <select id="coreSel" size="1"></select>
+    </div>
+    <div class="tb-field">
+      <label>作战场景</label>
+      <select id="scenarioSel">
+        <option value="pve">通用清图 / PvE</option>
+        <option value="boss">单挑 BOSS</option>
+        <option value="pvp">PvP 对战</option>
+        <option value="gather">采集护驾</option>
+      </select>
+    </div>
+    <div class="tb-field tb-slots">
+      <label>总槽位预算</label>
+      <input id="slotsInput" type="number" min="2" max="20" value="8" />
+    </div>
+    <button id="genBtn" class="tb-gen">生成推荐阵容</button>
+  </div>
+
+  <div id="result"></div>
+
+  <p class="backlink"><a href="index.html">← 返回可驯服生物目录</a> · <a href="simulator.html">宠物天赋模拟器</a> · <a href="follower-abilities.html">宠物技能大全</a></p>
+</div>
+
+<script src="team-builder-data.js"></script>
+<script>
+const PETS = window.PET_DATA;
+const TALENT = window.TALENT_DATA;
+const NATIVEMAP = window.NATIVEMAP;
+const TAGLABELS = window.TAG_LABELS;
+const CLSZH = window.CLS_ZH;
+const AB_CN = window.AB_CN || {};
+
+// 战斗维度权重（互补打分基础值）
+const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5};
+// 场景对维度的权重修正
+const SCEN = {
+  pve:   {},
+  boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2},
+  pvp:   {cripple:1.7, web:1.7, curse:1.7, backstab:1.5, poison:1.3},
+  gather:{buff:1.0, cripple:1.3, web:1.3, armor_break:1.2}
+};
+
+function talentInfo(name){
+  for(const c of ['Attack','Utility','Tank']){
+    const t = TALENT[c].find(x=>x.name===name);
+    if(t) return t;
+  }
+  return null;
+}
+function badges(tags){
+  return (tags||[]).map(t=>`<span class="dbadge db-${t}">${TAGLABELS[t]||t}</span>`).join(' ');
+}
+function abText(list){
+  if(!list || !list.length) return '<span style="color:#aaa">无特殊技能</span>';
+  return list.map(en=>{
+    const info = AB_CN[en];
+    return info ? `${info[0]} <span style="color:#999;font-size:.9em">${en}</span>` : en;
+  }).join('、');
+}
+
+// ---------- 互补选宠 ----------
+function pickComplements(core, scenario, totalSlots){
+  const coreTags = new Set(core.tags);
+  const scenW = SCEN[scenario] || {};
+  const remain0 = Math.max(0, (totalSlots||8) - core.slots);
+  const cands = PETS.filter(p=>p.name!==core.name && p.tags.length>0);
+  const selected = [];
+  const used = new Set([core.name]);
+  const pickedDims = new Set();
+  let remain = remain0;
+  const reasons = {};
+  for(let i=0;i<3;i++){
+    let best=null, bestScore=-1e9, bestGot=[];
+    for(const p of cands){
+      if(used.has(p.name)) continue;
+      if(p.slots > remain) continue;
+      let comp=0, dims=0; const got=[];
+      for(const d of p.tags){
+        if(d in W && !coreTags.has(d) && !pickedDims.has(d)){
+          const w = W[d]*(scenW[d]||1);
+          comp += w; dims++; got.push(d);
+        }
+      }
+      comp += dims*0.8;
+      // 近战偏好：核心有被动增益（增伤）时，偏好背刺/近战宠
+      if(core.abilities && (core.abilities.passive||[]).length && (p.tags.includes('backstab'))) comp += 1.0;
+      const score = comp - p.slots*0.3 + (p.maxdmg||0)*0.02;
+      if(score>bestScore){ bestScore=score; best=p; bestGot=got; }
+    }
+    if(!best) break;
+    selected.push(best);
+    reasons[best.name] = bestGot;
+    used.add(best.name);
+    best.tags.forEach(d=>{ if(d in W) pickedDims.add(d); });
+    remain -= best.slots;
+  }
+  return {selected, reasons};
+}
+
+// ---------- 渲染单卡 ----------
+function renderCard(pet, isCore, reasonDims){
+  const cls = pet.cls;
+  const isNative = n => NATIVEMAP[n]===cls;
+  let rows = pet.recommend.map(([nm,lv])=>{
+    const t = talentInfo(nm);
+    if(!t) return '';
+    const native = isNative(nm);
+    const clsTag = native ? '<span class="tb-native">本系</span>' : '<span class="tb-cross">跨系</span>';
+    return `<tr>
+      <td class="tl-name">${t.cnname} <span class="en">${nm}</span></td>
+      <td class="tl-lv">${lv}/3</td>
+      <td class="tl-eff">${t.cndesc||''}</td>
+      <td class="tl-cls">${clsTag}</td>
+      <td class="tl-lv">5</td>
+    </tr>`;
+  }).join('');
+
+  let reasonHtml = '';
+  if(!isCore && reasonDims && reasonDims.length){
+    const zh = reasonDims.map(d=>TAGLABELS[d]||d).join('、');
+    reasonHtml = `<div class="tb-reason"><b>互补理由：</b>补齐核心宠缺失的 <b>${zh}</b> 维度，弥补短板。</div>`;
+  }
+  const abilitiesAll = [].concat(pet.abilities.cooldown||[], pet.abilities.passive||[], pet.abilities.innate||[]);
+
+  return `<div class="tb-card ${isCore?'core':''}">
+    <div class="tb-card-head">
+      <span class="tb-name">${pet.name}</span><span class="en">${pet.slug}</span>
+      <span class="cls-badge cls-${cls}">${CLSZH[cls]}系</span>
+    </div>
+    <div class="tb-card-body">
+      <div class="tb-stats">
+        <span>槽位 <b>${pet.slots}</b></span>
+        <span>驯兽 <b>${pet.taming}</b></span>
+        <span>生命 <b>${pet.hits}</b></span>
+        <span>伤害 <b>${pet.mindmg}–${pet.maxdmg}</b></span>
+        <span>武术 <b>${pet.wrestling}</b></span>
+      </div>
+      <div class="tb-row"><span class="lbl">标签：</span>${badges(pet.tags)}</div>
+      <div class="tb-row"><span class="lbl">技能：</span>${abText(abilitiesAll)}</div>
+      ${reasonHtml}
+      <table class="tb-table">
+        <thead><tr><th>天赋（满级）</th><th>等级</th><th>效果</th><th>类别</th><th>点</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div class="tb-note">合计 25 点（本系 20 + 跨系 5）。点击名字可在 <a href="simulator.html">模拟器</a> 微调。</div>
+    </div>
+  </div>`;
+}
+
+// ---------- 生成 ----------
+function generate(){
+  const core = PETS.find(p=>p.name===document.getElementById('coreSel').value);
+  if(!core) return;
+  const scenario = document.getElementById('scenarioSel').value;
+  const totalSlots = parseInt(document.getElementById('slotsInput').value)||8;
+  const {selected, reasons} = pickComplements(core, scenario, totalSlots);
+
+  // 阵容总览
+  const all = [core, ...selected];
+  const usedSlots = all.reduce((s,p)=>s+p.slots,0);
+  const covered = new Set();
+  all.forEach(p=>p.tags.forEach(t=>{ if(t in W) covered.add(t); }));
+  const coveredZh = [...covered].map(t=>TAGLABELS[t]).join('、') || '（无特殊技能标签）';
+
+  const coreHtml = renderCard(core, true, null);
+  const recHtml = selected.length
+    ? `<div class="tb-section-title">推荐补位（互补核心宠短板）</div>
+       <div class="tb-grid">${selected.map(p=>renderCard(p,false,reasons[p.name])).join('')}</div>`
+    : `<div class="tb-section-title">推荐补位</div><div class="tb-empty">在当前槽位预算下没有合适的补位候选（可放宽总槽位）。</div>`;
+
+  const overview = `<div class="tb-overview">
+    <span>核心宠：<b>${core.name}</b></span>
+    <span>队伍槽位：<b>${usedSlots}</b> / 预算 ${totalSlots}</span>
+    <span>阵容覆盖标签：<b>${coveredZh}</b></span>
+  </div>`;
+
+  document.getElementById('result').innerHTML = overview + coreHtml + recHtml;
+}
+
+// ---------- 初始化 ----------
+(function init(){
+  const sel = document.getElementById('coreSel');
+  const sorted = [...PETS].sort((a,b)=>a.name.localeCompare(b.name));
+  sel.innerHTML = sorted.map(p=>`<option value="${p.name}">${p.name}（${p.slots}槽 / 驯${p.taming}）${p.tags.length?' #'+p.tags.map(t=>TAGLABELS[t]||t).join(' '):''}</option>`).join('');
+  // 默认 Warpig
+  if(PETS.some(p=>p.name==='Warpig')) sel.value='Warpig';
+
+  const search = document.getElementById('petSearch');
+  search.addEventListener('input', ()=>{
+    const q = search.value.trim().toLowerCase();
+    [...sel.options].forEach(o=>{ o.style.display = (!q || o.text.toLowerCase().includes(q)) ? '' : 'none'; });
+  });
+  document.getElementById('genBtn').addEventListener('click', generate);
+  document.getElementById('scenarioSel').addEventListener('change', generate);
+  document.getElementById('slotsInput').addEventListener('change', generate);
+  sel.addEventListener('change', generate);
+  generate(); // 默认展示 Warpig 样板
+})();
+</script>
+</body>
+</html>
