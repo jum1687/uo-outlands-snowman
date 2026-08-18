@@ -255,6 +255,7 @@ h3 {
 }
 .db-none { color: #aaa; }
 .db-poison { background: #2e7d32; }
+.db-poison_skill { background: #7cb342; }
 .db-disease { background: #6a1b9a; }
 .db-armor_break { background: #ef6c00; }
 .db-frost { background: #0277bd; }
@@ -281,6 +282,19 @@ h3 {
 }
 .pet-table th { background: #eaecf0; cursor: pointer; }
 .pet-table tbody tr:nth-child(even) { background: #f8f9fa; }
+.tag-note {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border: 1px solid #c8ccd1;
+  border-left: 4px solid #7cb342;
+  border-radius: 4px;
+  background: #f4f8f0;
+  font-size: 0.9em;
+  color: var(--text, #222);
+  line-height: 1.7;
+}
+.tag-note b { font-weight: 600; }
+.tag-note .dbadge { vertical-align: middle; }
 .count-hint { color: #54595d; font-size: 0.85em; margin-bottom: 8px; }
 
 img.creature-thumb {
