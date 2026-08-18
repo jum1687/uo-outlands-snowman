@@ -1,5 +1,23 @@
 /* ===== Outlands 中文百科 · 宠物页统一浅色主题 ===== */
 * { box-sizing: border-box; }
+
+/* ===== 全站背景图（仅浅色模式，不影响阅读）===== */
+html:not([data-theme="dark"])::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: url('../assets/bg/ultima_online.jpg') center/cover no-repeat fixed;
+  opacity: 0.3;
+  pointer-events: none;
+}
+html:not([data-theme="dark"]) body {
+  background: rgba(255, 255, 255, 0.55) !important;
+}
+html:not([data-theme="dark"]) .mw-body {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
