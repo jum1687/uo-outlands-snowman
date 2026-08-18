@@ -15,7 +15,7 @@ html:not([data-theme="dark"]) body {
   background: rgba(255, 255, 255, 0.55) !important;
 }
 html:not([data-theme="dark"]) .mw-body {
-  background: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.6) !important;
 }
 
 body {
