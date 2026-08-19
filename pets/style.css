@@ -80,7 +80,7 @@ h3 {
 }
 .pet-summary b { color: #202122; }
 
-/* 生物形象截图 */
+/* 生物形象截图（官方 Wiki 缩略图普遍 61×55 像素，CSS 像素放大清晰显示） */
 .pet-img {
   text-align: center;
   margin: 14px 0 6px;
@@ -93,6 +93,8 @@ h3 {
   border-radius: 6px;
   background: #f8f9fa;
   padding: 6px;
+  image-rendering: pixelated;  /* 官方缩略图多为像素风，等比放大保持清晰 */
+  image-rendering: crisp-edges;  /* Firefox 等浏览器兼容 */
 }
 .pet-img--none .img-placeholder {
   max-width: 320px;
