@@ -1,0 +1,896 @@
+{
+ "Aegis Rat": [
+  "buff",
+  "disease"
+ ],
+ "Aegis Mongbat": [
+  "buff"
+ ],
+ "Aegis Slime": [
+  "buff"
+ ],
+ "Wolfhound": [
+  "aoe",
+  "buff"
+ ],
+ "Blood Ape": [
+  "bleed"
+ ],
+ "Skulker": [
+  "backstab",
+  "buff",
+  "disease"
+ ],
+ "Aegis Imp": [
+  "buff"
+ ],
+ "Aegis Minion": [
+  "buff"
+ ],
+ "Aegis Scorpion": [
+  "buff",
+  "poison_skill"
+ ],
+ "Aegis Whelp": [
+  "buff"
+ ],
+ "Aegis Asp": [
+  "buff",
+  "poison_skill"
+ ],
+ "Aegis Leech": [
+  "bleed",
+  "buff"
+ ],
+ "Blood Hunter": [
+  "bleed"
+ ],
+ "Sinewseeker": [
+  "backstab",
+  "bleed",
+  "buff"
+ ],
+ "Bloodskipper": [
+  "bleed"
+ ],
+ "Rime Guar": [
+  "frost"
+ ],
+ "Snowdrift": [
+  "buff",
+  "frost"
+ ],
+ "Lemura": [
+  "buff"
+ ],
+ "Winter Wolf": [
+  "buff",
+  "frost"
+ ],
+ "Boreal Faerie Wyrm": [
+  "armor_break",
+  "frost"
+ ],
+ "Muck": [
+  "buff",
+  "poison_skill"
+ ],
+ "Swamp Spider": [
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Silverback": [
+  "buff"
+ ],
+ "Jaguar": [
+  "backstab",
+  "buff"
+ ],
+ "Giant Swamp Slug": [
+  "buff"
+ ],
+ "Firebat": [
+  "bleed",
+  "fire"
+ ],
+ "Flamehound": [
+  "buff",
+  "fire"
+ ],
+ "Searing Imp": [
+  "armor_break",
+  "fire"
+ ],
+ "Fire Minion": [
+  "armor_break",
+  "fire"
+ ],
+ "Searing Lizard": [
+  "armor_break",
+  "fire",
+  "hamstring",
+  "hinder"
+ ],
+ "Fire Salamander": [
+  "buff",
+  "fire"
+ ],
+ "Molten Mongbat": [
+  "fire"
+ ],
+ "Spitting Viper": [
+  "poison",
+  "poison_skill"
+ ],
+ "Cave Bear": [
+  "buff"
+ ],
+ "Trapdoor Spider": [
+  "backstab",
+  "buff",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Devilbat": [
+  "bleed",
+  "weaken"
+ ],
+ "Stinger": [
+  "poison_skill"
+ ],
+ "Primordial Whelp": [
+  "buff"
+ ],
+ "Monitor Hatchling": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Primordial": [
+  "buff"
+ ],
+ "Monitor": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Drake Whelp": [
+  "fire"
+ ],
+ "Chameleon": [
+  "backstab",
+  "buff"
+ ],
+ "Asp": [
+  "poison_skill"
+ ],
+ "Dragon Whelp": [
+  "fire"
+ ],
+ "Army Ant": [
+  "armor_break",
+  "cripple"
+ ],
+ "Komodo": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Smoke Faerie Dragon": [
+  "aoe",
+  "armor_break",
+  "backstab",
+  "buff"
+ ],
+ "Scorpion": [
+  "poison_skill"
+ ],
+ "Fire Ant": [
+  "fire"
+ ],
+ "Cave Bat": [
+  "bleed"
+ ],
+ "Sphinx": [
+  "buff"
+ ],
+ "Black Cat": [
+  "armor_break",
+  "buff"
+ ],
+ "Cryptwing": [
+  "bleed",
+  "buff"
+ ],
+ "Fiery Leaper": [
+  "fire"
+ ],
+ "Sand Muck": [
+  "aoe",
+  "armor_break",
+  "buff"
+ ],
+ "Shallow Water": [
+  "buff",
+  "cripple"
+ ],
+ "Husk Crab": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Blood Mephit": [
+  "bleed"
+ ],
+ "Earth Mephit": [
+  "armor_break"
+ ],
+ "Eldritch Mephit": [
+  "armor_break",
+  "curse"
+ ],
+ "Fire Mephit": [
+  "armor_break",
+  "fire"
+ ],
+ "Frost Mephit": [
+  "armor_break",
+  "frost"
+ ],
+ "Poison Mephit": [
+  "poison"
+ ],
+ "Gravebug": [
+  "disease"
+ ],
+ "Corpse Eater": [
+  "disease"
+ ],
+ "Vampire Bat": [
+  "bleed"
+ ],
+ "Shadow Minion": [
+  "weaken"
+ ],
+ "Shade Wolf": [
+  "backstab",
+  "buff"
+ ],
+ "Void Slime": [
+  "buff"
+ ],
+ "Incubus": [
+  "hamstring",
+  "hinder"
+ ],
+ "Aquamarine Smallshell": [
+  "aoe",
+  "cripple"
+ ],
+ "Dungeon-Nest Crab": [
+  "aoe"
+ ],
+ "Oozing Noughtilus": [
+  "aoe",
+  "poison",
+  "poison_skill"
+ ],
+ "Ruby Smallshell": [
+  "aoe",
+  "armor_break"
+ ],
+ "Singing Noughtilus": [
+  "armor_break"
+ ],
+ "Desert Ostard": [
+  "buff"
+ ],
+ "Tundra Ostard": [
+  "buff"
+ ],
+ "Frenzied Ostard": [
+  "buff"
+ ],
+ "Sand Crab": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Cougar": [
+  "buff"
+ ],
+ "Wolf": [
+  "buff"
+ ],
+ "Black Bear": [
+  "buff"
+ ],
+ "Brown Bear": [
+  "buff"
+ ],
+ "Grizzly Bear": [
+  "buff"
+ ],
+ "Polar Bear": [
+  "buff"
+ ],
+ "Sandstalker": [
+  "backstab",
+  "buff"
+ ],
+ "Giant Bat": [
+  "bleed"
+ ],
+ "Giant Frog": [
+  "buff"
+ ],
+ "Giant Rat": [
+  "disease"
+ ],
+ "Bloodwolf": [
+  "aoe",
+  "bleed"
+ ],
+ "Blood Scorpion": [
+  "bleed",
+  "poison_skill"
+ ],
+ "Blood Drake": [
+  "aoe",
+  "bleed"
+ ],
+ "Blood Courser": [
+  "bleed"
+ ],
+ "Blood Serpent": [
+  "bleed",
+  "poison_skill"
+ ],
+ "Bloodworm": [
+  "bleed"
+ ],
+ "Blood Purger": [
+  "bleed"
+ ],
+ "Air Drake": [
+  "weaken"
+ ],
+ "Sabeartooth": [
+  "aoe",
+  "frost"
+ ],
+ "Acarid": [
+  "bleed"
+ ],
+ "White Wyrmling": [
+  "aoe",
+  "armor_break",
+  "frost"
+ ],
+ "Frigid Hornbeast": [
+  "aoe",
+  "buff",
+  "frost"
+ ],
+ "Antlion": [
+  "aoe"
+ ],
+ "Colossal Swamp Slug": [
+  "buff"
+ ],
+ "Anaconda": [
+  "poison_skill"
+ ],
+ "Giant Poison Dart Frog": [
+  "buff",
+  "poison_skill"
+ ],
+ "Swamp Drake": [
+  "poison",
+  "poison_skill",
+  "web"
+ ],
+ "Black Widow": [
+  "disease",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Searing Mantis": [
+  "bleed",
+  "fire"
+ ],
+ "Embear": [
+  "aoe",
+  "fire"
+ ],
+ "Fire Beetle": [
+  "fire"
+ ],
+ "Hellhound": [
+  "aoe",
+  "fire"
+ ],
+ "Brasshopper": [
+  "cripple"
+ ],
+ "Giant Chameleon": [
+  "backstab",
+  "buff"
+ ],
+ "Giant Crystal Beetle": [
+  "buff"
+ ],
+ "Giant Locust": [
+  "armor_break",
+  "cripple"
+ ],
+ "Giant Spitting Viper": [
+  "poison",
+  "poison_skill"
+ ],
+ "Giant Swamp Beetle": [
+  "poison",
+  "poison_skill"
+ ],
+ "Glowworm": [
+  "cripple"
+ ],
+ "Jungle Mantis": [
+  "bleed",
+  "poison_skill"
+ ],
+ "Savage Primordial": [
+  "buff"
+ ],
+ "Giant Trapdoor Spider": [
+  "backstab",
+  "buff",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Ankheg": [
+  "aoe",
+  "poison",
+  "poison_skill"
+ ],
+ "Dusk Drake": [
+  "aoe",
+  "armor_break",
+  "weaken"
+ ],
+ "Earth Drake": [
+  "buff"
+ ],
+ "Drake": [
+  "fire"
+ ],
+ "Wyvern Hatchling": [
+  "poison_skill"
+ ],
+ "Adder": [
+  "poison_skill"
+ ],
+ "Flame Purger": [
+  "buff"
+ ],
+ "Eldritch Drake": [
+  "buff",
+  "curse"
+ ],
+ "Ember Drake": [
+  "aoe",
+  "fire"
+ ],
+ "Smoke Drake": [
+  "aoe",
+  "armor_break",
+  "backstab",
+  "buff"
+ ],
+ "Harvestman": [
+  "bleed",
+  "disease"
+ ],
+ "Ruby Wyrmling": [
+  "aoe",
+  "armor_break"
+ ],
+ "Azure Wyrmling": [
+  "armor_break"
+ ],
+ "Sun Wyrmling": [
+  "armor_break"
+ ],
+ "Giant Scorpion": [
+  "poison_skill"
+ ],
+ "Scarab": [
+  "buff"
+ ],
+ "Nightmare": [
+  "armor_break",
+  "fire"
+ ],
+ "Radiant Burrowbug": [
+  "aoe",
+  "fire"
+ ],
+ "Tidal Mantis": [
+  "bleed",
+  "cripple"
+ ],
+ "Water Drake": [
+  "aoe",
+  "cripple"
+ ],
+ "Reef Serpent": [
+  "poison_skill"
+ ],
+ "Corrupted Hornbeast": [
+  "aoe",
+  "buff",
+  "disease"
+ ],
+ "Carrion Beetle": [
+  "disease"
+ ],
+ "Corpse Purger": [
+  "disease"
+ ],
+ "Blightmare": [
+  "disease"
+ ],
+ "Nightstalker": [
+  "aoe",
+  "backstab",
+  "buff"
+ ],
+ "Devourer Beetle": [
+  "disease"
+ ],
+ "Entozoon": [
+  "disease"
+ ],
+ "Biolumen Shellpod": [
+  "buff"
+ ],
+ "Giant Pincer Crab": [
+  "armor_break",
+  "web"
+ ],
+ "Lighthouse Shellpod": [
+  "buff"
+ ],
+ "Bonehorn": [
+  "armor_break",
+  "bleed"
+ ],
+ "Warpig": [
+  "buff"
+ ],
+ "Colossal Frog": [
+  "buff"
+ ],
+ "Giant Spider": [
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Blood Dragon": [
+  "aoe",
+  "bleed"
+ ],
+ "Goretusk": [
+  "armor_break",
+  "bleed",
+  "buff"
+ ],
+ "Blood Gorger": [
+  "bleed",
+  "hamstring",
+  "hinder",
+  "web"
+ ],
+ "Decaying Dragon": [
+  "aoe",
+  "bleed"
+ ],
+ "Giant Blood Purger": [
+  "bleed"
+ ],
+ "Arctic Bullvore": [
+  "aoe",
+  "frost"
+ ],
+ "Air Dragon": [
+  "weaken"
+ ],
+ "Colossal Frost Scorpion": [
+  "frost",
+  "poison_skill"
+ ],
+ "White Wyrm": [
+  "aoe",
+  "armor_break",
+  "frost"
+ ],
+ "Cave Gorger": [
+  "hamstring",
+  "hinder",
+  "poison_skill",
+  "web"
+ ],
+ "Boreal Wyrm": [
+  "armor_break",
+  "frost"
+ ],
+ "Colossal Poison Dart Frog": [
+  "buff",
+  "poison_skill"
+ ],
+ "Arboreal Wisp": [
+  "bleed",
+  "buff"
+ ],
+ "Swamp Dragon": [
+  "poison",
+  "poison_skill",
+  "web"
+ ],
+ "Giant Black Widow": [
+  "disease",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Bullvore": [
+  "aoe"
+ ],
+ "Bonfire Wisp": [
+  "armor_break",
+  "buff",
+  "fire"
+ ],
+ "Searing Bullvore": [
+  "aoe",
+  "fire"
+ ],
+ "Fire Crawler": [
+  "armor_break",
+  "fire",
+  "hamstring",
+  "hinder"
+ ],
+ "Colossal Crystal Beetle": [
+  "buff"
+ ],
+ "Colossal Spitting Viper": [
+  "poison",
+  "poison_skill"
+ ],
+ "Colossal Swamp Beetle": [
+  "poison",
+  "poison_skill"
+ ],
+ "Sword Spider": [
+  "aoe",
+  "bleed",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Volt Wisp": [
+  "armor_break",
+  "buff",
+  "hamstring",
+  "hinder"
+ ],
+ "Dusk Dragon": [
+  "aoe",
+  "armor_break",
+  "weaken"
+ ],
+ "Earth Dragon": [
+  "buff"
+ ],
+ "Dragon": [
+  "fire"
+ ],
+ "Wyvern": [
+  "poison_skill"
+ ],
+ "Eldritch Dragon": [
+  "buff",
+  "curse"
+ ],
+ "Ember Dragon": [
+  "aoe",
+  "fire"
+ ],
+ "Smoke Dragon": [
+  "aoe",
+  "armor_break",
+  "backstab",
+  "buff"
+ ],
+ "Ruby Wyrm": [
+  "aoe",
+  "armor_break"
+ ],
+ "Azure Wyrm": [
+  "armor_break"
+ ],
+ "Sun Wyrm": [
+  "armor_break"
+ ],
+ "Sand Crawler": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Temple Guardian": [
+  "backstab",
+  "buff"
+ ],
+ "Skeletal Dragon": [
+  "aoe",
+  "armor_break"
+ ],
+ "Colossal Searing Scorpion": [
+  "fire",
+  "poison_skill"
+ ],
+ "Deep Crawler": [
+  "armor_break",
+  "hamstring",
+  "hinder"
+ ],
+ "Drowned Dragon": [
+  "aoe",
+  "armor_break",
+  "cripple"
+ ],
+ "Water Dragon": [
+  "aoe",
+  "cripple"
+ ],
+ "Manticore": [
+  "armor_break",
+  "poison",
+  "poison_skill"
+ ],
+ "Colossal Pincer Crab": [
+  "armor_break",
+  "web"
+ ],
+ "Wisp": [
+  "buff"
+ ],
+ "Giant Strider": [
+  "aoe"
+ ],
+ "Barbed Prowler": [
+  "aoe",
+  "bleed",
+  "buff"
+ ],
+ "Colossal Black Widow": [
+  "disease",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Otyugh": [
+  "aoe"
+ ],
+ "Bogyugh": [
+  "aoe",
+  "disease"
+ ],
+ "Colossal Dung Beetle": [
+  "aoe",
+  "disease"
+ ],
+ "Gargantua Spider": [
+  "hamstring",
+  "hinder",
+  "poison_skill",
+  "weaken"
+ ],
+ "Shadow Prowler": [
+  "armor_break",
+  "buff"
+ ],
+ "Colossal Trapdoor Spider": [
+  "backstab",
+  "buff",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Phoenix": [
+  "armor_break",
+  "buff",
+  "fire"
+ ],
+ "Colossal Blazing Beetle": [
+  "aoe",
+  "fire"
+ ],
+ "Fortress Beetle": [
+  "buff"
+ ],
+ "Darkscale": [
+  "aoe",
+  "armor_break",
+  "buff",
+  "disease"
+ ],
+ "Tidal Krait": [
+  "armor_break",
+  "poison_skill",
+  "web"
+ ],
+ "Colossal Huntsman": [
+  "aoe",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Colossal Strider": [
+  "aoe"
+ ],
+ "Sunscale": [
+  "armor_break"
+ ],
+ "Colossal Boa": [
+  "armor_break",
+  "poison_skill",
+  "web"
+ ],
+ "Bird of Paradise": [
+  "armor_break",
+  "curse",
+  "weaken"
+ ],
+ "Basilisk": [
+  "aoe",
+  "armor_break",
+  "hamstring",
+  "hinder",
+  "poison_skill"
+ ],
+ "Brood Beetle": [
+  "buff"
+ ],
+ "Firebite Cobra": [
+  "armor_break",
+  "poison",
+  "poison_skill"
+ ],
+ "Firebite Scorpion": [
+  "armor_break",
+  "poison",
+  "poison_skill"
+ ],
+ "Jade Scorpion": [
+  "buff",
+  "poison_skill"
+ ],
+ "Jade Androsphinx": [
+  "buff"
+ ],
+ "Pocket Beetle": [
+  "buff"
+ ],
+ "Spectraldile": [
+  "armor_break",
+  "buff",
+  "hamstring",
+  "hinder"
+ ]
+}
