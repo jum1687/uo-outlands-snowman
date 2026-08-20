@@ -14,7 +14,7 @@ window.ABILITIES = {
  },
  "basilisk-breath": {
   "name": "蛇蜥吐息",
-  "desc": "以锥形发射弹射物，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.75）伤害，无视目标一半护甲，首个命中的目标额外承受 +50% 伤害。每个被命中的目标有（5% * 控制栏位 Control Slots）的几率：若为宠物则被阻碍 3 秒，若为目标玩家则被断筋 2 秒。"
+  "desc": "以锥形发射弹射物，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.75）伤害，无视目标一半护甲，首个命中的目标额外承受 +50% 伤害。每个被命中的目标有（5% * 控制栏位 Control Slots）的几率：若为宠物则被定身 3 秒，若为目标玩家则被断筋 2 秒。"
  },
  "biolumen-barrage": {
   "name": "生物荧光弹幕",
@@ -90,7 +90,7 @@ window.ABILITIES = {
  },
  "crush": {
   "name": "碾压",
-  "desc": "近战攻击时有 15% 几率施加（10 * 控制栏位 Control Slots）的穿刺效果，持续 15 秒。若成功，则有（10% * 控制栏位 Control Slots）的几率阻碍宠物 3 秒，或使玩家断筋 2 秒。"
+  "desc": "近战攻击时有 15% 几率施加（10 * 控制栏位 Control Slots）的穿刺效果，持续 15 秒。若成功，则有（10% * 控制栏位 Control Slots）的几率定身宠物 3 秒，或使玩家断筋 2 秒。"
  },
  "darkstrike": {
   "name": "黑暗打击",
@@ -174,11 +174,11 @@ window.ABILITIES = {
  },
  "gorge": {
   "name": "吞噬",
-  "desc": "对最远 1 格内处于缠绕 Entangle、阻碍 Hinder 或断筋 Hamstring 状态的目标造成（最大伤害 DamageMax * 2.0）伤害，并恢复 5% 最大生命值。"
+  "desc": "对最远 1 格内处于缠绕 Entangle、定身 Hinder 或断筋 Hamstring 状态的目标造成（最大伤害 DamageMax * 2.0）伤害，并恢复 5% 最大生命值。"
  },
  "hunting-web": {
   "name": "狩猎蛛网",
-  "desc": "传送至最远 12 格外的位置，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.75）伤害，首个命中的目标承受 +50% 伤害。同时阻碍 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒。"
+  "desc": "传送至最远 12 格外的位置，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.75）伤害，首个命中的目标承受 +50% 伤害。同时定身 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒。"
  },
  "light-barrage": {
   "name": "光芒弹幕",
@@ -302,11 +302,11 @@ window.ABILITIES = {
  },
  "weakening-web": {
   "name": "弱化蛛网",
-  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率阻碍 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。同时施加虚弱 Weaken 效果 (Control Slots * 4%)，持续 15 秒。"
+  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。同时施加虚弱 Weaken 效果 (Control Slots * 4%)，持续 15 秒。"
  },
  "web": {
   "name": "蛛网",
-  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率阻碍 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。"
+  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。"
  },
  "bad-luck": {
   "name": "厄运",
@@ -326,7 +326,7 @@ window.ABILITIES = {
  },
  "dreamlull": {
   "name": "梦境沉眠",
-  "desc": "施法时有 15% 几率施加压制效果（控制栏位 * 25），持续 15 秒。同时阻碍生物（控制栏位 * 1）秒或使玩家断筋 2 秒。"
+  "desc": "施法时有 15% 几率施加压制效果（控制栏位 * 25），持续 15 秒。同时定身生物（控制栏位 * 1）秒或使玩家断筋 2 秒。"
  },
  "earth-seeds": {
   "name": "大地之种",
@@ -374,7 +374,7 @@ window.ABILITIES = {
  },
  "shock": {
   "name": "电击",
-  "desc": "法术施放有 15% 几率造成（最大伤害 DamageMax * 1.0）伤害（无视半数护甲）。使生物受阻（控制槽 Control Slots * 1）秒，或使玩家瘸腿 2 秒。"
+  "desc": "法术施放有 15% 几率造成（最大伤害 DamageMax * 1.0）伤害（无视半数护甲）。使生物定身（控制槽 Control Slots * 1）秒，或使玩家断筋 2 秒。"
  },
  "soak": {
   "name": "浸没",
@@ -471,10 +471,6 @@ window.ABILITIES = {
  "fury": {
   "name": "狂怒",
   "desc": "每存活 30 秒，造成伤害 Damage Dealt 提高 5%（最高 +30%）。"
- },
- "mule": {
-  "name": "驮兽",
-  "desc": "宠物为驮兽 pack animal，每只控制栏位 Control Slots 提供 50 石 Stones 的负重容量。"
  },
  "rooted": {
   "name": "扎根",
