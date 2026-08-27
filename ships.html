@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>船舰系统 · UO Outlands 中文资料库</title>
-<link rel="stylesheet" href="skills/style.css?v=20260827_2">
+<link rel="stylesheet" href="skills/style.css?v=20260827_3">
 <link rel="stylesheet" href="assets/theme.css">
 <script src="assets/theme.js"></script>
 <style>
@@ -38,82 +38,7 @@
 .note{border-left:4px solid #f0c36d;background:#fff8e1;padding:8px 14px;margin:.8em 0;border-radius:0 4px 4px 0;font-size:13.5px;}
 @media(max-width:640px){.two-col{columns:1;}}
 
-/* ===== 左侧固定导航试点（仅本页） ===== */
-.side-nav-page .site-nav{
-  position:fixed; top:0; left:0; width:170px; height:100vh;
-  flex-direction:column; align-items:flex-start; justify-content:flex-start;
-  gap:0; padding:14px 12px; overflow-y:auto;
-  background:#1e3a5f; border-bottom:none; border-right:1px solid #152a45;
-  box-shadow:2px 0 8px rgba(0,0,0,.15);
-}
-.side-nav-page .site-nav .nav-brand{
-  width:100%; margin:0 0 12px; padding-bottom:10px;
-  border-bottom:1px solid rgba(255,255,255,.15); font-size:14px; line-height:1.4; color:#fff;
-}
-.side-nav-page .site-nav > a,
-.side-nav-page .site-nav .nav-dropdown{
-  display:block; width:100%; margin:2px 0;
-}
-.side-nav-page .site-nav > a{
-  padding:8px 10px; border-radius:6px; color:#e8edf2; font-size:13.5px;
-}
-.side-nav-page .site-nav > a:hover{
-  background:rgba(220,169,78,.18); color:#fff;
-}
-.side-nav-page .site-nav .nav-dropdown > a{
-  display:block; padding:8px 10px; border-radius:6px; color:#e8edf2; font-size:13.5px;
-}
-.side-nav-page .site-nav .nav-dropdown > a::after{ content:" ▾"; color:#b8c4d0; font-size:.75em; }
-.side-nav-page .site-nav .nav-menu{
-  position:static; display:none; width:100%; margin:2px 0 6px;
-  background:#27466f; border:none; border-radius:6px; box-shadow:none; padding:4px 0;
-}
-.side-nav-page .site-nav .nav-dropdown:hover .nav-menu{ display:block; }
-.side-nav-page .site-nav .nav-menu a{
-  padding:6px 12px 6px 18px; font-size:12.5px; color:#e8edf2; border-radius:0;
-}
-.side-nav-page .site-nav .nav-menu a:hover{ background:rgba(220,169,78,.2); color:#fff; }
-.side-nav-page .site-nav .theme-toggle{
-  margin-top:auto; margin-left:0; width:100%; text-align:left;
-  background:rgba(255,255,255,.1); color:#e8edf2; border:1px solid rgba(255,255,255,.15);
-  padding:8px 10px; border-radius:6px; cursor:pointer; font-size:13px;
-}
-.side-nav-page .site-nav .theme-toggle:hover{ background:rgba(220,169,78,.25); color:#fff; }
-.side-nav-page #nav-hamburger{ display:none; }
-.side-nav-page .site-credit,
-.side-nav-page .breadcrumb,
-.side-nav-page .source-link,
-.side-nav-page .mw-body{ margin-left:170px; }
-.side-nav-page .mw-body{ max-width:none; padding-left:20px; padding-right:20px; }
 
-@media (max-width:900px){
-  .side-nav-page .site-nav{
-    position:sticky; top:0; width:auto; height:auto;
-    flex-direction:row; align-items:center; justify-content:flex-start;
-    padding:0 14px; gap:2px; border-right:none; border-bottom:1px solid #152a45;
-    box-shadow:0 2px 6px rgba(0,0,0,.18);
-  }
-  .side-nav-page .site-nav .nav-brand{
-    width:auto; margin-right:14px; margin-bottom:0; padding-bottom:0;
-    border-bottom:none; font-size:15px;
-  }
-  .side-nav-page .site-nav > a,
-  .side-nav-page .site-nav .nav-dropdown{ display:none; width:auto; margin:0; }
-  .side-nav-page .site-nav.nav-open > a,
-  .side-nav-page .site-nav.nav-open .nav-dropdown{ display:block; width:100%; }
-  .side-nav-page .site-nav .nav-dropdown > a{ display:block; width:100%; }
-  .side-nav-page .site-nav .nav-menu{
-    position:absolute; top:100%; left:0; width:auto; min-width:180px;
-    background:#27466f; border:1px solid #36547d; box-shadow:0 6px 16px rgba(0,0,0,.25);
-  }
-  .side-nav-page .site-nav .theme-toggle{ margin-top:0; margin-left:auto; width:auto; }
-  .side-nav-page #nav-hamburger{ display:inline-flex; }
-  .side-nav-page .site-credit,
-  .side-nav-page .breadcrumb,
-  .side-nav-page .source-link,
-  .side-nav-page .mw-body{ margin-left:0; }
-  .side-nav-page .mw-body{ max-width:960px; }
-}
 </style>
 </head>
 <body class="side-nav-page">
