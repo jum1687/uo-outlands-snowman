@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>驯兽宝典加点模拟器 | Outlands 中文百科</title>
-<link rel="stylesheet" href="style.css?v=20260827_3">
+<link rel="stylesheet" href="style.css?v=20260827_4">
   <link rel="stylesheet" href="../assets/theme.css">
   <script src="../assets/theme.js"></script>
 <style>
@@ -94,6 +94,58 @@
 .dmg-sub-val { color:#888; font-weight:normal; font-style:normal; }
 
 @media (max-width:700px){ .sim-col{ flex-basis:100%; } }
+
+/* ===== 深色模式下的模拟器 ===== */
+html[data-theme="dark"] .sim-col { background:#2b3038; border-color:#3a414b; }
+html[data-theme="dark"] .sim-col.pet-active { border-color:#4d8fe8; box-shadow:0 0 0 2px rgba(77,143,232,.35); }
+html[data-theme="dark"] .col-head { border-bottom-color:#3a414b; }
+html[data-theme="dark"] .col-name { color:#eef0f3; }
+html[data-theme="dark"] .en,
+html[data-theme="dark"] .col-pts,
+html[data-theme="dark"] .t-name .en { color:#9aa3ad; }
+html[data-theme="dark"] .col-pts.warn { color:#e57373; }
+html[data-theme="dark"] .cross-label { color:#e57373; border-top-color:#3a414b; }
+
+html[data-theme="dark"] .talent { background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .talent:hover { background:#32383f; border-color:#4d8fe8; }
+html[data-theme="dark"] .talent.maxed { background:#2a4232; border-color:#27ae60; }
+html[data-theme="dark"] .talent.cross { border-style:dashed; }
+html[data-theme="dark"] .talent.cross:not(.maxed) { background:#262b32; }
+html[data-theme="dark"] .t-name { color:#eef0f3; }
+html[data-theme="dark"] .pips span { background:#3a414b; border-color:#555b66; }
+html[data-theme="dark"] .pips span.on { background:#27ae60; border-color:#1e8449; }
+
+html[data-theme="dark"] .t-btn { background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .t-btn:hover { background:#32383f; }
+html[data-theme="dark"] .t-btn-plus { color:#58d68d; border-color:#58d68d; }
+html[data-theme="dark"] .t-btn-plus:hover { background:#58d68d; color:#fff; }
+html[data-theme="dark"] .t-btn-plus:disabled,
+html[data-theme="dark"] .t-btn-plus[disabled] { color:#5a626b; border-color:#3a414b; background:#23272e; }
+html[data-theme="dark"] .t-btn-minus { color:#e57373; border-color:#e57373; }
+html[data-theme="dark"] .t-btn-minus:hover { background:#e57373; color:#fff; }
+html[data-theme="dark"] .t-btn-minus:disabled,
+html[data-theme="dark"] .t-btn-minus[disabled] { color:#5a626b; border-color:#3a414b; background:#23272e; }
+html[data-theme="dark"] .t-btn-info { color:#7fb0e8; border-color:#7fb0e8; }
+html[data-theme="dark"] .t-btn-info:hover { background:#7fb0e8; color:#fff; }
+
+html[data-theme="dark"] .reset-btn { background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .reset-btn:hover { background:#32383f; }
+html[data-theme="dark"] .reset-btn-inline { background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .reset-btn-inline:hover { background:#3a2323; border-color:#7a4a4a; color:#e57373; }
+
+html[data-theme="dark"] .pc-btn { background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .pc-btn.active { background:#4d8fe8; border-color:#4d8fe8; color:#fff; }
+
+html[data-theme="dark"] .dmg-panel { background:#2b3038; border-color:#3a414b; }
+html[data-theme="dark"] .dmg-panel-head { background:#32383f; border-bottom-color:#3a414b; color:#eef0f3; }
+html[data-theme="dark"] .dmg-empty { color:#9aa3ad; }
+html[data-theme="dark"] .dmg-item { border-bottom-color:#3a414b; }
+html[data-theme="dark"] .dmg-tname { color:#7fb0e8; }
+html[data-theme="dark"] .dmg-en { color:#9aa3ad; }
+html[data-theme="dark"] .dmg-lv { color:#e57373; background:#3a2323; }
+html[data-theme="dark"] .dmg-val { color:#e57373; }
+html[data-theme="dark"] .dmg-sub { color:#9aa3ad; }
+html[data-theme="dark"] .dmg-sub-val { color:#9aa3ad; }
 </style>
 </head>
 <body class="side-nav-page">
@@ -480,6 +532,15 @@ try{buildColumns();}catch(e){document.getElementById('sim').innerHTML='<div styl
 .bgm-mute.muted .icon-muted{display:block;}
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+
+html[data-theme="dark"] .bgm-ctrl{ background:rgba(43,48,56,.92); border-color:#3a414b; }
+html[data-theme="dark"] .bgm-toggle,
+html[data-theme="dark"] .bgm-mute{ background:#2b3038; border-color:#3a414b; color:#7fb0e8; }
+html[data-theme="dark"] .bgm-toggle:hover,
+html[data-theme="dark"] .bgm-mute:hover{ background:#32383f; }
+html[data-theme="dark"] .bgm-toggle.playing{ background:#4d8fe8; color:#fff; border-color:#4d8fe8; }
+html[data-theme="dark"] .bgm-mute.muted{ background:#c0392b; color:#fff; border-color:#c0392b; }
+html[data-theme="dark"] .bgm-vol{ accent-color:#7fb0e8; }
 </style>
 
 </body>
