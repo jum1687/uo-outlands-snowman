@@ -332,3 +332,88 @@ img.creature-thumb {
 .tooltip{ position:fixed; display:none; max-width:340px; background:#222; color:#fff; padding:9px 11px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
 .tooltip .tip-name{ font-weight:bold; margin-bottom:4px; color:#ffd866; }
 .tooltip .tip-desc{ color:#eee; }
+
+/* ===== 左侧固定导航（全站通用） ===== */
+body.side-nav-page{ padding-left:170px; }
+.side-nav-page .site-nav{
+  position:fixed; top:0; left:0; width:170px; height:100vh;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+  gap:0; padding:14px 12px; overflow-y:auto;
+  background:#1e3a5f !important; border-bottom:none !important; border-right:1px solid #152a45 !important;
+  box-shadow:2px 0 8px rgba(0,0,0,.15);
+}
+.side-nav-page .site-nav .nav-brand{
+  width:100%; margin:0 0 12px; padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.15); font-size:14px; line-height:1.4; color:#fff !important;
+}
+.side-nav-page .site-nav > a,
+.side-nav-page .site-nav .nav-dropdown{
+  display:block; width:100%; margin:2px 0;
+}
+.side-nav-page .site-nav > a{
+  padding:8px 10px; border-radius:6px; color:#e8edf2 !important; font-size:13.5px;
+}
+.side-nav-page .site-nav > a:hover{
+  background:rgba(220,169,78,.18); color:#fff !important; text-decoration:none;
+}
+.side-nav-page .site-nav .nav-dropdown > a{
+  display:block; padding:8px 10px; border-radius:6px; color:#e8edf2 !important; font-size:13.5px;
+}
+.side-nav-page .site-nav .nav-dropdown > a::after{ content:" ▾"; color:#b8c4d0; font-size:.75em; }
+.side-nav-page .site-nav .nav-menu{
+  position:static; display:none; width:100%; margin:2px 0 6px;
+  background:#27466f !important; border:none; border-radius:6px; box-shadow:none; padding:4px 0;
+}
+.side-nav-page .site-nav .nav-dropdown:hover .nav-menu{ display:block; }
+.side-nav-page .site-nav .nav-menu a{
+  padding:6px 12px 6px 18px; font-size:12.5px; color:#e8edf2 !important;
+}
+.side-nav-page .site-nav .nav-menu a:hover{ background:rgba(220,169,78,.2); color:#fff !important; }
+.side-nav-page .site-nav .theme-toggle{
+  margin-top:auto; margin-left:0; width:100%; text-align:left;
+  background:rgba(255,255,255,.1); color:#e8edf2 !important; border:1px solid rgba(255,255,255,.15);
+  padding:8px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+}
+.side-nav-page .site-nav .theme-toggle:hover{ background:rgba(220,169,78,.25); color:#fff !important; }
+/* 正文靠 body padding 让位；统一抵消各页可能的 margin，并占满右侧区域 */
+.side-nav-page .mw-body,
+.side-nav-page .idx-wrap,
+.side-nav-page .site-credit,
+.side-nav-page .breadcrumb,
+.side-nav-page .source-link,
+.side-nav-page .mw-content{ margin-left:0 !important; max-width:none; }
+.side-nav-page .mw-body,
+.side-nav-page .idx-wrap,
+.side-nav-page .site-credit,
+.side-nav-page .breadcrumb,
+.side-nav-page .source-link{ padding-left:20px; padding-right:20px; }
+/* 暗色模式下侧栏保持深蓝（不被 theme.css 的暗色 .site-nav 规则覆盖） */
+html[data-theme="dark"] .side-nav-page .site-nav{ background:#1e3a5f !important; border-right:1px solid #152a45 !important; }
+html[data-theme="dark"] .side-nav-page .site-nav .nav-brand,
+html[data-theme="dark"] .side-nav-page .site-nav > a,
+html[data-theme="dark"] .side-nav-page .site-nav .nav-dropdown > a,
+html[data-theme="dark"] .side-nav-page .site-nav .nav-menu a{ color:#e8edf2 !important; }
+html[data-theme="dark"] .side-nav-page .site-nav .nav-menu{ background:#27466f !important; }
+
+@media (max-width:900px){
+  body.side-nav-page{ padding-left:0; }
+  .side-nav-page .site-nav{
+    position:sticky; top:0; width:auto; height:auto;
+    flex-direction:row; flex-wrap:wrap; align-items:center;
+    padding:6px 12px; gap:2px;
+    border-right:none !important; border-bottom:1px solid #152a45 !important;
+    box-shadow:0 2px 6px rgba(0,0,0,.18);
+  }
+  .side-nav-page .site-nav .nav-brand{ width:100%; margin:0 0 4px; padding-bottom:4px; border-bottom:1px solid rgba(255,255,255,.15); font-size:14px; }
+  .side-nav-page .site-nav > a,
+  .side-nav-page .site-nav .nav-dropdown{ display:inline-block; width:auto; margin:0; }
+  .side-nav-page .site-nav .nav-dropdown > a{ display:inline-block; }
+  .side-nav-page .site-nav .nav-menu{ position:absolute; top:100%; left:0; min-width:180px; background:#27466f !important; border:1px solid #36547d; box-shadow:0 6px 16px rgba(0,0,0,.25); }
+  .side-nav-page .site-nav .theme-toggle{ margin-top:0; margin-left:auto; width:auto; }
+  .side-nav-page .mw-body,
+  .side-nav-page .idx-wrap,
+  .side-nav-page .site-credit,
+  .side-nav-page .breadcrumb,
+  .side-nav-page .source-link{ max-width:960px; margin:0 auto !important; padding:18px 24px 80px; }
+  .side-nav-page #nav-hamburger{ display:none; }
+}
