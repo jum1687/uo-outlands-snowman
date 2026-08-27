@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>船舰系统 · UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="skills/style.css">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
+<style>
+/* ===== 船舰页专属样式 ===== */
+.wikitable{border-collapse:collapse;margin:.8em 0;width:100%;background:#fff;
+  border:1px solid #eaecf0;font-size:13.5px;}
+.wikitable th{background:#f8f9fa;border:1px solid #eaecf0;padding:7px 9px;text-align:center;font-weight:600;}
+.wikitable td{border:1px solid #eaecf0;padding:6px 9px;text-align:center;vertical-align:top;}
+.wikitable tr:nth-child(even) td{background:#fcfcfd;}
+.wikitable td.lft{text-align:left;}
+.ship-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:1em 0;}
+.ship-card{border:1px solid #eaecf0;border-radius:8px;padding:10px;text-align:center;background:#fff;}
+.ship-card img{max-width:100%;height:auto;max-height:240px;}
+.ship-card .nm{margin-top:6px;font-weight:600;font-size:14px;}
+.ship-card .en{color:var(--muted);font-size:12px;}
+.nav-box{display:flex;flex-wrap:wrap;gap:12px;margin:1em 0;padding:14px;background:#f8f9fa;border:1px solid #eaecf0;border-radius:8px;}
+.nav-box .nb-title{width:100%;font-weight:700;font-size:14px;margin-bottom:2px;}
+.nav-box a{display:flex;flex-direction:column;align-items:center;width:120px;padding:8px;text-decoration:none;
+  border:1px solid #eaecf0;border-radius:8px;background:#fff;color:var(--text);font-size:12.5px;}
+.nav-box a:hover{border-color:var(--link);box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.nav-box a img{width:64px;height:auto;margin-bottom:4px;}
+.deed{width:30px;height:auto;vertical-align:middle;margin:0 4px 2px 0;border:1px solid #eaecf0;border-radius:4px;background:#fff;}
+.shot{display:block;max-width:100%;height:auto;margin:.8em auto;border:1px solid #eaecf0;border-radius:6px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);background:#fff;}
+.shot.wide{max-width:640px;}
+.cap{text-align:center;color:var(--muted);font-size:12px;margin:-.4em 0 1em;}
+.yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:1em 0;border-radius:8px;border:1px solid #eaecf0;}
+.yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.two-col{columns:2;column-gap:28px;font-size:13.5px;}
+.two-col li{break-inside:avoid;}
+.note{border-left:4px solid #f0c36d;background:#fff8e1;padding:8px 14px;margin:.8em 0;border-radius:0 4px 4px 0;font-size:13.5px;}
+@media(max-width:640px){.two-col{columns:1;}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="index.html">首页</a>
+  <a href="skills/index.html">技能详解</a>
+  <a href="elements/index.html">元素精通</a>
+  <div class="nav-dropdown">
+    <a href="pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="pets/index.html">可驯服宠物</a>
+      <a href="pets/follower-abilities.html">宠物技能大全</a>
+      <a href="pets/simulator.html">宠物天赋模拟器</a>
+    </div>
+  </div>
+  <a href="codex/index.html">宝典图鉴</a>
+  <a href="ships.html">船舰系统</a>
+</nav>
+
+<nav class="breadcrumb"><a href="index.html">资料库首页</a> › <span>船舰系统 Ships</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Ships" target="_blank" rel="noopener">wiki.uooutlands.com/Ships</a></div>
+
+<div class="mw-body">
+  <h1 class="mw-page-title-main">船舰系统 <span class="cnsub">Ships</span></h1>
+  <div class="mw-content">
+
+  <div class="toc">
+    <b>目录</b>
+    <ul>
+      <li><a href="#summary">概述</a></li>
+      <li><a href="#types">船型种类</a></li>
+      <li><a href="#deeds">船契与放置</a></li>
+      <li><a href="#tillerman">舵手界面</a></li>
+      <li><a href="#repair">船只修理</a></li>
+      <li><a href="#hotbars">船只热键栏</a></li>
+      <li><a href="#crew">船员</a></li>
+      <li><a href="#upgrades">船只升级</a></li>
+      <li><a href="#ramming">撞船</a></li>
+      <li><a href="#boarding">登船作战</a></li>
+      <li><a href="#fighting">战斗小队</a></li>
+      <li><a href="#scaling">伤害缩放</a></li>
+      <li><a href="#sinking">沉没与打捞</a></li>
+      <li><a href="#docking">停靠船只</a></li>
+    </ul>
+  </div>
+
+  <h2 id="summary">概述 <span class="en-h">Summary</span></h2>
+  <ul>
+    <li>海域被视为「<b>无法地带（Lawless Zone）</b>」，即所有玩家可自由互相攻击或对任意玩家实施犯罪行为；但击杀或击沉其他玩家会累积<b>恶名（Infamy）</b>。</li>
+    <li>玩家可招募并培养 NPC <b>船员（Ship Crewmembers）</b>的等级，在战斗中提供协助，并在航行时提供各类增益。</li>
+    <li>好友 / 公会成员可乘船<b>钓鱼</b>，但不能参与其他系统。</li>
+    <li>玩家可攻击 NPC 船只并登船，收集战利品存入<b>船舱（Hold）</b>。船舱重量容量无限（类似银行箱）。</li>
+  </ul>
+
+  <h3>杜布隆 <span class="en-h">Doubloons</span></h3>
+  <ul>
+    <li><b>杜布隆（Doubloons）</b>是一种特殊货币，来源包括：击杀并掠夺敌方船员、击沉敌方船只，以及多种海上活动（如钓鱼、狂热 Frenzy、渔网 Nets 等）。</li>
+    <li>玩家可前往银行，说 "balance" 后输入金额并两次点击确认，即可将杜布隆制成<b>杜布隆支票</b>放入背包。</li>
+  </ul>
+  <div class="cap">敌方船员尸体上通常会散落杜布隆</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/doubloonsoncorpse.png?v=20260827" alt="敌方船员尸体上的杜布隆" loading="lazy">
+
+  <h2 id="types">船型种类 <span class="en-h">Types of Ships</span></h2>
+  <div class="ship-grid">
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/smallship.jpg?v=20260827" alt="小型船" loading="lazy"><div class="nm">小型船</div><div class="en">Small Ship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/smalldragonship.jpg?v=20260827" alt="小型龙船" loading="lazy"><div class="nm">小型龙船</div><div class="en">Small Dragonship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/mediumship.jpg?v=20260827" alt="中型船" loading="lazy"><div class="nm">中型船</div><div class="en">Medium Ship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/mediumdragonship.jpg?v=20260827" alt="中型龙船" loading="lazy"><div class="nm">中型龙船</div><div class="en">Medium Dragonship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/largeship.jpg?v=20260827" alt="大型船" loading="lazy"><div class="nm">大型船</div><div class="en">Large Ship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/largedragonship.jpg?v=20260827" alt="大型龙船" loading="lazy"><div class="nm">大型龙船</div><div class="en">Large Dragonship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/carrack.jpg?v=20260827" alt="克拉克帆船" loading="lazy"><div class="nm">克拉克帆船</div><div class="en">Carrack</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/galleon.jpg?v=20260827" alt="盖伦帆船" loading="lazy"><div class="nm">盖伦帆船</div><div class="en">Galleon</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/longship.png?v=20260827" alt="长船" loading="lazy"><div class="nm">长船</div><div class="en">Longship</div></div>
+    <div class="ship-card"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipoftheline.png?v=20260827" alt="战列舰" loading="lazy"><div class="nm">战列舰</div><div class="en">Ship of the Line</div></div>
+  </div>
+
+  <h3>打造船只 <span class="en-h">Crafting a Ship</span></h3>
+  <ul>
+    <li>玩家可用<b>木工（Carpentry）</b>技能打造船只。</li>
+    <li>每种船型的基础属性、火炮数量与船员容量各不相同。</li>
+    <li>持有船契的玩家必须先<b>注册</b>船只，方可下水。</li>
+    <li>船契只需注册一次；注册后，任何持有该船契（外观像一艘迷你船）的人都可自由下水。</li>
+    <li>双击船契可打开船只界面，查看船只信息，包括已安装的船员、升级与各项属性。</li>
+    <li>玩家也可双击玩家商人处待售的船契，在购买前查看船只详情（若尚未注册，购得后仍需支付注册费）。</li>
+    <li>每种船型各项属性有预设基础值，但打造时数值会小幅随机化。</li>
+    <li>通常每项属性在基础值的 <b>-10% ~ +10%</b> 间随机；但木工技能超过 100 时，会减少出现负向随机值的概率。</li>
+    <li>该几率随木工技能提升，至 <b>120 木工</b> 时，所有数值仅在 <b>+0% ~ +10%</b> 间浮动。</li>
+    <li>不满意的船只可送至 <b>Prevalia 交易所</b> 回收为原材料。</li>
+  </ul>
+  <table class="wikitable">
+    <tr><th colspan="8">木工 Carpentry</th></tr>
+    <tr><th>名称</th><th>材料</th><th>最低打造<br/>技能</th><th>最大船员</th><th>基础船体<br/>HP</th><th>基础船帆<br/>HP</th><th>基础火炮<br/>HP</th><th>每舷火炮<br/>数</th></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 小型船契</td><td class="lft">2000 木板<br/>200 铁锭<br/>200 布</td><td>85</td><td>2</td><td>2000</td><td>1800</td><td>1800</td><td>2</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 小型龙船契</td><td class="lft">2000 木板<br/>200 铁锭<br/>200 布</td><td>90</td><td>2</td><td>2000</td><td>1800</td><td>1800</td><td>2</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 中型船契</td><td class="lft">3000 木板<br/>300 铁锭<br/>300 布</td><td>95</td><td>3</td><td>3000</td><td>2700</td><td>2700</td><td>3</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 中型龙船契</td><td class="lft">3000 木板<br/>300 铁锭<br/>300 布</td><td>100</td><td>3</td><td>3000</td><td>2700</td><td>2700</td><td>3</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 大型船契</td><td class="lft">1 木板商品<br/>500 铁锭<br/>500 布</td><td>105</td><td>4</td><td>4000</td><td>3600</td><td>3600</td><td>4</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 大型龙船契</td><td class="lft">1 木板商品<br/>500 铁锭<br/>500 布</td><td>110</td><td>4</td><td>4000</td><td>3600</td><td>3600</td><td>4</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 克拉克帆船契</td><td class="lft">1 精制图纸<br/>2 木板商品<br/>1000 铁锭<br/>1000 布</td><td>115</td><td>5</td><td>5000</td><td>4500</td><td>4500</td><td>5</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 盖伦帆船契</td><td class="lft">2 精制图纸<br/>3 木板商品<br/>1500 铁锭<br/>1500 布</td><td>120</td><td>6</td><td>6000</td><td>5400</td><td>5400</td><td>6</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 长船契</td><td class="lft">3 精制图纸<br/>4 木板商品<br/>2000 铁锭<br/>2000 布</td><td>120</td><td>8</td><td>6000</td><td>5400</td><td>5400</td><td>4</td></tr>
+    <tr><td class="lft"><img class="deed" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdeed.png?v=20260827" alt="船契" loading="lazy"> 战列舰契</td><td class="lft">4 精制图纸<br/>5 木板商品<br/>2500 铁锭<br/>2500 布</td><td>120</td><td>7</td><td>7000</td><td>6300</td><td>6300</td><td>7</td></tr>
+  </table>
+
+  <h3>注册船只 <span class="en-h">Registering a Ship</span></h3>
+  <ul>
+    <li>注册船只只需在概览页点击「Register Ship（注册船只）」按钮，然后支付所需杜布隆。</li>
+    <li>注册费会自动从玩家<b>银行</b>扣除。</li>
+    <li><b>小型船</b>是最适合出海起步的选择，因为它们<b>没有</b>杜布隆注册费。</li>
+    <li>费用乘数会提高安装<b>船只升级</b>的杜布隆成本。</li>
+  </ul>
+  <table class="wikitable">
+    <tr><th>船型</th><th>注册费用<br/>（杜布隆）</th><th>升级费用<br/>乘数</th></tr>
+    <tr><td class="lft">小型船 Small Ship</td><td>0</td><td>1</td></tr>
+    <tr><td class="lft">小型龙船 Small Dragonship</td><td>0</td><td>1</td></tr>
+    <tr><td class="lft">中型船 Medium Ship</td><td>10,000</td><td>2</td></tr>
+    <tr><td class="lft">中型龙船 Medium Dragonship</td><td>10,000</td><td>2</td></tr>
+    <tr><td class="lft">大型船 Large Ship</td><td>50,000</td><td>3</td></tr>
+    <tr><td class="lft">大型龙船 Large Dragonship</td><td>50,000</td><td>3</td></tr>
+    <tr><td class="lft">克拉克帆船 Carrack</td><td>125,000</td><td>4</td></tr>
+    <tr><td class="lft">盖伦帆船 Galleon</td><td>250,000</td><td>5</td></tr>
+    <tr><td class="lft">长船 Longship</td><td>500,000</td><td>6</td></tr>
+    <tr><td class="lft">战列舰 Ship of the Line</td><td>750,000</td><td>7</td></tr>
+  </table>
+  <div class="cap">一艘尚未命名的船（注册前）</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/asmallunnamedship.png?v=20260827" alt="未命名船" loading="lazy">
+
+  <h3>船速 <span class="en-h">Ship Speed</span></h3>
+  <h4>基础速度与尾迹 <span class="en-h">Base Speeds and Wake</span></h4>
+  <table class="wikitable">
+    <tr><th>船型</th><th>格 / 秒（t/s）</th><th>尾迹<br/>Wake</th></tr>
+    <tr><td class="lft">小型船 Small Ship</td><td>6.25</td><td>50%</td></tr>
+    <tr><td class="lft">小型龙船 Small Dragonship</td><td>6.25</td><td>50%</td></tr>
+    <tr><td class="lft">中型船 Medium Ship</td><td>5.556</td><td>75%</td></tr>
+    <tr><td class="lft">中型龙船 Medium Dragonship</td><td>5.556</td><td>75%</td></tr>
+    <tr><td class="lft">大型船 Large Ship</td><td>5</td><td>100%</td></tr>
+    <tr><td class="lft">大型龙船 Large Dragonship</td><td>5</td><td>100%</td></tr>
+    <tr><td class="lft">克拉克帆船 Carrack</td><td>4.545</td><td>150%</td></tr>
+    <tr><td class="lft">盖伦帆船 Galleon</td><td>4.167</td><td>200%</td></tr>
+    <tr><td class="lft">长船 Longship</td><td>3.846</td><td>200%</td></tr>
+    <tr><td class="lft">战列舰 Ship of the Line</td><td>3.517</td><td>250%</td></tr>
+  </table>
+  <h4>速度上限 <span class="en-h">Speed Caps</span></h4>
+  <ul>
+    <li>所有船只的<b>前进速度上限</b>为 6.5 格/秒。</li>
+    <li>所有船只的<b>平移 / 倒退速度上限</b>为 3.25 格/秒。</li>
+    <li>提升船速的主动技能（如「Beat to Quarters」全员就位）可让船暂时突破速度上限，但仍以速度上限为加成前的基准（即 6.5 × 1.15 = 7.475 格/秒）。</li>
+    <li>若船速超过上限，船只菜单「Stats（属性）」页会在速度值旁显示「*」并以<b>红色</b>显示数字。</li>
+  </ul>
+  <div class="cap">超速时属性界面显示红色星号</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipspeedcappedgump.jpg?v=20260827" alt="超速属性界面" loading="lazy">
+
+  <h3>属性 <span class="en-h">Stats</span></h3>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipgumpstatspage2.png?v=20260827" alt="属性界面" loading="lazy">
+  <div class="two-col">
+    <ul>
+      <li>船型 Ship Type</li>
+      <li>最大船员数 Max Crew Size</li>
+      <li>注册费用 Registration Cost</li>
+      <li>升级费用乘数 Upgrade Cost Multiplier</li>
+      <li>总价值 Total Value</li>
+      <li>船体上限 Hull Max Points</li>
+      <li>船帆上限 Sail Max Points</li>
+      <li>火炮上限 Gun Max Points</li>
+      <li>前进速度 Forward Speed</li>
+      <li>平移速度 Strafe Speed</li>
+      <li>倒退速度 Reverse Speed</li>
+      <li>每舷火炮数 Cannons Per Side</li>
+      <li>火炮射程 Cannon Range</li>
+      <li>火炮命中 Cannon Accuracy</li>
+      <li>火炮最小伤害 Cannon Min Damage</li>
+      <li>火炮最大伤害 Cannon Max Damage</li>
+      <li>火炮装填时间 Cannon Reload Time</li>
+    </ul>
+    <ul>
+      <li>次级技能冷却 Lesser Ability Cooldown</li>
+      <li>普通技能冷却 Regular Ability Cooldown</li>
+      <li>高级技能冷却 Greater Ability Cooldown</li>
+      <li>船员生命加成 Crew Hit Points Bonus</li>
+      <li>船员勇气加成 Crew Bravery Bonus</li>
+      <li>船员伤害加成 Crew Damage Bonus</li>
+      <li>船员治疗加成 Crew Healing Bonus</li>
+      <li>修理冷却 Repair Cooldown</li>
+      <li>船体修理量 Hull Repair Amount</li>
+      <li>船帆修理量 Sails Repair Amount</li>
+      <li>火炮修理量 Guns Repair Amount</li>
+      <li>登船几率 Boarding Chance</li>
+      <li>杜布隆收益加成 Doubloons Earned Bonus</li>
+      <li>好运加成 Tidings Bonus</li>
+      <li>有效钓鱼技能 Effective Fishing Skill</li>
+      <li>望远镜距离加成 Spyglass Distance Bonus</li>
+      <li>尾迹系数 Wake Scalar</li>
+    </ul>
+  </div>
+  <p class="note"><b>好运（Tidings）</b>会让船只更常遇到通常不受「掉落加成」影响的特殊战利品，如船舰古董、船只升级契、船员契约与海盗赃物。<br>
+  <b>尾迹（Wake）</b>影响其他玩家用望远镜搜索时发现该船的距离，以及该船逃离敌方 NPC 船的难易度。100% 尾迹等于对该船搜索范围的 1.0 倍加成（即无变化）。船只尾迹系数最低为 25%。</p>
+
+  <h2 id="deeds">船契与放置 <span class="en-h">Ship Deeds and Placement</span></h2>
+  <ul>
+    <li>若玩家名下（按 OutlandsID）的某艘船在最近 5 分钟内被击沉，则任何方式都无法下水新船。</li>
+    <li>若当前有<b>争议海域首领（Contested Ocean Boss）</b>活动，沉船后下水新船的延迟为 10 分钟。</li>
+    <li>船契为<b>祝福（blessed）</b>物品。</li>
+    <li>玩家只能从<b>码头管理员（Dockmaster）</b>处下水船只（不能用船契直接放入水中）。</li>
+    <li>若玩家在过去 3 分钟内使用过召回 / 传送门 / 徒步，则无法从码头管理员处下水，除非该码头管理员位于玩家自己拥有的房屋（与屋主同账号或同 IP）。</li>
+    <li>使用任何船只指令都会显形（reveal）玩家。</li>
+    <li>登船、下船或在码头停靠的玩家，30 秒内无法对陆地上<b>无辜（蓝名）</b>目标发起任何敌对行为（但仍可正常自卫）。</li>
+    <li>登船或登船作战会取消玩家当前的任何选定目标光标。</li>
+  </ul>
+
+  <h2 id="tillerman">舵手界面 <span class="en-h">Ship Tillerman Gumps</span></h2>
+  <ul>
+    <li>双击舵手可打开船只主菜单。</li>
+    <li>点击「Embark（登船）」按钮上船，或使用 <b>[Embark</b> 指令登上最近的友方船只。</li>
+  </ul>
+  <h3>概述 <span class="en-h">Overview</span></h3>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipmenusmain_may2024.png?v=20260827" alt="船只主菜单" loading="lazy">
+  <ul>
+    <li>打开船只热键栏 Open Ship Hotbars</li>
+    <li>登船 Embark</li>
+    <li>带领跟随物登船 Embark Followers</li>
+    <li>让跟随物下船 Disembark Followers</li>
+    <li>目标模式 Targeting Mode</li>
+    <li>装填火炮 Reload Cannons</li>
+    <li>停靠船只 Dock Ship</li>
+    <li>抛入海中 Throw Overboard</li>
+    <li>就位船员 Ready Crew</li>
+    <li>让船员下舱 Send Crew Below</li>
+    <li>派遣登船小队 Send Boarding Party</li>
+    <li>召回登船 Recall Boarding</li>
+    <li>船员攻击 Crew Attack</li>
+    <li>船员停止 Crew Stop</li>
+    <li>修理船只 Repair Ship</li>
+    <li>清理甲板 Clear the Deck</li>
+    <li>领取打捞 Yield Salvage</li>
+  </ul>
+
+  <h2 id="repair">船只修理 <span class="en-h">Ship Repairing</span></h2>
+  <ul>
+    <li>玩家使用<b>船只修理包（Ship Repair Kits）</b>修复船只受损部位。</li>
+    <li>可用<b>修补（Tinkering）</b>技能打造船只修理包。</li>
+    <li>玩家需选择要修理的船只生命类型（船体 / 船帆 / 火炮），每艘船有对应属性决定各部位修理量。</li>
+    <li>修理时会显示头顶讯息指出正在修理的部位（如「*Repairing Hull* 修理船体」），并需原地停留 10 秒完成；若玩家死亡或被移动则失败。</li>
+    <li>默认战斗中每艘船每 3 分钟只能修理一次，但可用「修理冷却」属性缩短该冷却。</li>
+    <li>脱离战斗 60 秒且上次修理冷却已结束后，可无冷却连续修理。</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shiprepairinggump1a.png?v=20260827" alt="修理界面" loading="lazy">
+
+  <h2 id="hotbars">船只热键栏 <span class="en-h">Ship Hotbars</span></h2>
+  <ul>
+    <li>玩家可开启一系列独立热键栏，便捷管理与监控船只及其船员。</li>
+    <li>每个热键栏可拖动移动，也可关闭不想要的热键栏。</li>
+  </ul>
+  <div class="cap">船只热键栏</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipbasicsitem2.png?v=20260827" alt="船只热键栏" loading="lazy">
+
+  <h2 id="crew">船员 <span class="en-h">Ship Crewmembers</span></h2>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipgumpcrew.png?v=20260827" alt="船员界面" loading="lazy">
+  <ul>
+    <li>船员可在酒馆、客栈、码头寻找，或在航行中作为战利品获得。</li>
+    <li>玩家可用杜布隆雇佣船员，或使用<b>乞讨（Begging）</b>技能。</li>
+    <li>每名船员有特定<b>职业</b>，在海上提供相应加成。</li>
+    <li>当玩家船只因击杀 NPC 船员、击沉 NPC 船获得杜布隆时，船上所有船员按杜布隆数量获得<b>忠诚经验（Loyalty Experience）</b>。</li>
+    <li>若玩家在船上且其 NPC 船员攻击对方玩家，则该玩家在 PvP 中被标记为<b>已宣战（Flagged）</b>（即使双方玩家尚未互相攻击）。</li>
+  </ul>
+  <div class="cap">NPC 船员</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipnpccrewmembersitem1.png?v=20260827" alt="NPC 船员" loading="lazy">
+
+  <h2>跟随物 <span class="en-h">Followers</span></h2>
+  <ul>
+    <li>若船长有无法控制的存活跟随物（因控制槽不足或驯兽技能不够），则除「停止」外无法执行任何移动指令。</li>
+    <li>船上的驯服 / 召唤生物不再产生与陆地上相同的额外仇恨吸引（NPC 船员仍如常产生大量仇恨）。</li>
+  </ul>
+
+  <h2 id="upgrades">船只升级 <span class="en-h">Ship Upgrades</span></h2>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipabilities_may2024.png?v=20260827" alt="升级界面" loading="lazy">
+  <ul>
+    <li><b>船只升级</b>与<b>船员契约</b>不会作为实物出现在船舱、首领尸体或打捞箱（MIB）中。</li>
+    <li>它们仍会通过上述系统掉落，但会自动挂到玩家船只上，成为<b>「待领取打捞（Pending Salvage）」</b>，在船只停靠前无法取用。</li>
+    <li>玩家可用「Yield Salvage（领取打捞）」按钮在海上将待领取打捞转交给另一艘船。</li>
+    <li>升级包括：主题（Themes）、涂装（Paint）、火炮金属（Cannon Metal）、舾装（Outfittings）、 specialty 物品、技能（Abilities）与船员补给（Crew Supplies）。</li>
+    <li>这些升级为各项船只属性与技能提供有益加成。</li>
+    <li>玩家可将任意类型的次级 / 普通 / 高级技能装入辅助技能槽，只要该技能尚未在船上（即不可重复）。</li>
+    <li>辅助技能的冷却时间等于该技能类型（次级 / 普通 / 高级）的默认未修改冷却；降低技能冷却的加成<b>不会</b>影响辅助技能冷却。</li>
+  </ul>
+  <div class="cap">船只升级项</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipupgradesitem3.png?v=20260827" alt="船只升级项" loading="lazy">
+
+  <h2 id="ramming">撞船 <span class="en-h">Ship Ramming</span></h2>
+  <ul>
+    <li>NPC 船只可能尝试撞击玩家船只：</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipramming1.png?v=20260827" alt="撞击" loading="lazy">
+  <h3>撞击伤害 <span class="en-h">Ram Damage</span></h3>
+  <p><b>对抗环境（PvE）：</b></p>
+  <ul>
+    <li>若 NPC 船卡在玩家船旁，会自动尝试撞击。</li>
+    <li>NPC 船对玩家船造成相当于其<b>最大船体 HP 的 20%</b> 的船体伤害。</li>
+    <li>NPC 船自身受到相当于其<b>最大船体 HP 的 5%</b> 的船体伤害。</li>
+  </ul>
+
+  <h2 id="boarding">登船作战 <span class="en-h">Ship Boarding</span></h2>
+  <p>被击杀的敌方船员尸体上通常有杜布隆：强烈建议玩家尝试登船、击杀船员并掠夺这些杜布隆。若将敌方船只连同船员一起击沉，则会错过这些杜布隆以及该船舱内的所有物品。</p>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipboardingrope1.png?v=20260827" alt="登船绳" loading="lazy">
+  <ul>
+    <li>当目标船的<b>船帆或火炮</b>剩余 HP 低于 33% 时，玩家可开始尝试登船。</li>
+    <li>玩家使用<b>登船绳（Boarding Rope）</b>派遣登船小队。</li>
+    <li>登船成功后，你在登船界面选定的船员的成员（你自己、你的跟随物、船只船员）会跳上敌船展开近战。</li>
+    <li>船员无法在战斗中直接控制，会自行选择对手，通常攻击距离最近者。</li>
+    <li>若船员在战斗中「阵亡」，会进入<b>失能（Incapacitated）</b>状态，需等待恢复冷却后才能回到本船。</li>
+  </ul>
+  <div class="cap">登船小队</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipboardingparty.jpg?v=20260827" alt="登船小队" loading="lazy">
+  <ul>
+    <li>船只每 15 秒才能尝试一次登船。</li>
+    <li>登船几率从 0% 起步，随船帆或火炮 HP 趋近于 0% 升至 100%（取船帆与火炮中<b>较低</b>的值决定）。</li>
+    <li>船只属性提供的登船几率加成与升级加成会提高基础登船几率（例：25% 加成 + 50% 基础 = 实际 62.5%）。</li>
+    <li>发起登船尝试时，全船成员会收到通知，系统讯息显示本次尝试的实际成功几率。</li>
+    <li>登船或上船会取消当前目标光标。</li>
+    <li>登船或上船会重置玩家的近战挥击计时（即不能登船后立刻攻击）。</li>
+    <li>船只须静止 0.1 秒后才能尝试登船另一艘船。</li>
+    <li>若玩家在船上使用爆炸药水或施放爆炸法术，且引爆时已身处另一艘船，则伤害降为正常的 25%。</li>
+  </ul>
+
+  <h2 id="fighting">战斗小队 <span class="en-h">Fighting Parties</span></h2>
+  <ul>
+    <li>船只的<b>战斗小队（Fighting Party）</b>机制已整体移除；现在只有<b>船长</b>能执行原先战斗小队成员可用的核心船只动作（开火、掌舵、修理、敌对 / 有益动作、乞讨激励、吟游技能等）。</li>
+    <li>玩家船的船长（及其跟随物）对其他玩家显示为<b>橙色</b>而非灰色，以视觉提示其为船长。</li>
+    <li>其他非船长玩家仍可作为乘客上船，但在船上无法执行任何敌对或有益动作，并对其他船玩家保持灰色显示。</li>
+    <li>船只的<b>共有人（Co-Owner）</b>仍可访问船舱。</li>
+    <li>共有人与好友在友好船只上仍对其他友方成员显示为绿色。</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/fightingpartysailing1.jpg?v=20260827" alt="战斗小队" loading="lazy">
+
+  <h2 id="scaling">伤害缩放 <span class="en-h">General Damage Scaling</span></h2>
+  <ul>
+    <li>玩家与驯服 / 召唤生物对所有其他玩家、以及<b>其他船</b>上所有生物（即非同船）造成的伤害降低 <b>50%</b>。</li>
+    <li>玩家船船员对其他船上生物（非同船）造成的伤害提高 <b>50%</b>。</li>
+    <li>非伤害类法术（如诅咒 / 虚弱）不会打断船上的施法。</li>
+    <li>使用治疗或增益船员（如 Furious Assault、Hold Fast、Rum Rations）或减益 / 伤害登船者（Bad Rations / Razorwire）的 NPC 船，只获得正常加成 / 效果的 50%。</li>
+  </ul>
+  <h3>毒伤 <span class="en-h">Poison Damage</span></h3>
+  <ul>
+    <li>玩家与驯服 / 召唤生物对其他玩家及他船生物（非同船）造成的毒伤降低 <b>50%</b>（此效果叠加于其他缩放之上）。</li>
+  </ul>
+
+  <h2 id="sinking">船只沉没与打捞 <span class="en-h">Ship Sinking and Salvage</span></h2>
+  <ul>
+    <li>若已死亡，可用「Throw Overboard（抛入海中）」按钮返回城镇。</li>
+    <li>玩家船只沉没时，船长立即获得相当于船只总杜布隆价值 <b>80%</b> 的金额存入银行箱。</li>
+    <li>沉船总杜布隆价值的 <b>10%</b> 分配给对其造成伤害的敌方玩家船舱，按各船造成伤害比例分配。</li>
+    <li>船上的每个升级与船员有 <b>1%</b> 几率被移除并作为<b>「走失打捞（Wayward Salvage）」</b>发送给船长。</li>
+    <li>船契本身会立即送入打捞系统，所有剩余升级与船员仍安装其上（不再有 30 分钟延迟）。</li>
+    <li>玩家可在任意城镇码头的<b>打捞管理员（Salvage Foreman）</b>附近说 "Salvage" / "Recover" / "Buy" 访问打捞系统。</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipsinking1.png?v=20260827" alt="沉没" loading="lazy">
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipsinking2.png?v=20260827" alt="沉没" loading="lazy">
+  <div class="cap">船只打捞</div>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipsalvageitem1a.png?v=20260827" alt="船只打捞" loading="lazy">
+
+  <h2 id="docking">停靠船只 <span class="en-h">Docking the Ship</span></h2>
+  <ul>
+    <li>玩家可<b>在陆地停靠（Free-Dock）</b>：靠近陆地并点击主界面「Dock Ship（停靠）」按钮，或使用动作 / 技能热键栏的停靠动作。</li>
+    <li>若刚经历战斗，船须静止 30 秒；脱战状态须静止 15 秒方可在陆地停靠。</li>
+    <li>若带有来自敌对行为的「战斗热（Heat of Battle）」效果，无法自由停靠。</li>
+    <li>若玩家<b>自由停靠</b>（而非使用码头管理员），则该 OutlandsID 在 10 分钟内无法下水另一艘船。</li>
+    <li>自由停靠后，接下来 2 分钟内无法对无辜（蓝名）玩家发起敌对行为（类似「失誉 Dishonored」处理）。</li>
+    <li>玩家也可使用<b>码头管理员</b>停靠并收起船只。</li>
+    <li>在码头管理员处停靠：经历战斗须静止 10 秒，脱战须静止 5 秒。</li>
+    <li>停靠会将所有待领取打捞转入船长的打捞系统。</li>
+    <li>无论陆地还是码头管理员停靠，生成的船契都会进入码头管理员系统，而非玩家背包。</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipdockingdockmaster.jpg?v=20260827" alt="停靠码头" loading="lazy">
+
+  <h3>航运箱 <span class="en-h">Shipping Crates</span></h3>
+  <ul>
+    <li>点击「Shipping Crate（航运箱）」按钮会向玩家收取 250 金币（从银行箱扣除），并将船舱内全部物品运送至该玩家房屋或客栈房间的<b>封印点（Ban Location）</b>。</li>
+    <li>玩家可在房屋菜单的「Special（特殊）」页解锁「自定义航运箱地块」，让使用码头管理员航运箱功能时指定房屋内目的地（而非封印点）。</li>
+    <li>使用该选项须在该账号下拥有房屋或客栈房间。</li>
+  </ul>
+  <img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shippingcrate1.png?v=20260827" alt="航运箱" loading="lazy">
+  <h4>视频演示 <span class="en-h">Video Demonstration</span></h4>
+  <div class="yt-wrap"><iframe src="https://www.youtube.com/embed/erlEDFjmWe0" title="Shipping Crates 演示" allowfullscreen></iframe></div>
+
+  <h2>旧版信息 <span class="en-h">Legacy Information</span></h2>
+  <h3>社区视频 <span class="en-h">Community Video</span></h3>
+  <p>以下视频可能略有过时，但仍有大量有价值的信息！</p>
+  <div class="yt-wrap"><iframe src="https://www.youtube.com/embed/8FJCMuTmvSc" title="船只社区视频" allowfullscreen></iframe></div>
+
+  <h2>相关系统 <span class="en-h">Ship People Things</span></h2>
+  <div class="nav-box">
+    <div class="nb-title">船舰相关专题（链接至官方英文页）</div>
+    <a href="https://wiki.uooutlands.com/Ships" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipsoverviewitem.png?v=20260827" alt="船只总览" loading="lazy">船只总览<br/>Ships Overview</a>
+    <a href="https://wiki.uooutlands.com/Ship_Hotbars" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipbasicsitem2.png?v=20260827" alt="船只热键栏" loading="lazy">船只热键栏<br/>Ship Hotbars</a>
+    <a href="https://wiki.uooutlands.com/Fishing" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipactivitiesitem.png?v=20260827" alt="钓鱼" loading="lazy">钓鱼<br/>Fishing</a>
+    <a href="https://wiki.uooutlands.com/Bosses" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/oceans_fury_bossicon.jpg?v=20260827" alt="海洋首领" loading="lazy">海洋首领<br/>Ocean Bosses</a>
+    <a href="https://wiki.uooutlands.com/Ship_Crewmembers" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipnpccrewmembersitem1.png?v=20260827" alt="NPC 船员" loading="lazy">船员<br/>Ship Crewmembers</a>
+    <a href="https://wiki.uooutlands.com/Ship_Upgrades" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipupgradesitem3.png?v=20260827" alt="船只升级项" loading="lazy">船只升级<br/>Ship Upgrades</a>
+    <a href="https://wiki.uooutlands.com/Ship_Salvaging" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/shipsalvageitem1a.png?v=20260827" alt="船只打捞" loading="lazy">船只打捞<br/>Ship Salvaging</a>
+    <a href="https://wiki.uooutlands.com/Castaways" target="_blank" rel="noopener"><img class="shot" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/ships/castaways_pelicanicon.jpg?v=20260827" alt="漂流者" loading="lazy">漂流者<br/>Castaways</a>
+  </div>
+
+  <p class="backlink"><a href="index.html">← 返回资料库首页</a></p>
+  </div>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto" src="assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+<style>
+.bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.92);border:1px solid #c8ccd1;border-radius:24px;padding:6px 10px 6px 6px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);}
+.bgm-toggle,.bgm-mute{width:36px;height:36px;border-radius:50%;border:1px solid #c8ccd1;background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#36c;flex-shrink:0;transition:background .2s,color .2s;}
+.bgm-toggle:hover,.bgm-mute:hover{background:#eef3fb;}
+.bgm-toggle svg,.bgm-mute svg{width:18px;height:18px;}
+.bgm-toggle.playing{background:#36c;color:#fff;border-color:#36c;}
+.bgm-mute.muted{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.bgm-toggle .icon-pause,.bgm-mute .icon-muted{display:none;}
+.bgm-toggle.playing .icon-play{display:none;}
+.bgm-toggle.playing .icon-pause{display:block;}
+.bgm-mute.muted .icon-sound{display:none;}
+.bgm-mute.muted .icon-muted{display:block;}
+.bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
+@media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
+</style>
+
+</body>
+</html>
