@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>智能配宠向导 | Outlands 中文百科</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260827_3">
 <link rel="stylesheet" href="../assets/theme.css">
 <script src="../assets/theme.js"></script>
 <style>
@@ -55,7 +55,7 @@
 .tb-empty{ padding:30px; text-align:center; color:#999; }
 </style>
 </head>
-<body>
+<body class="side-nav-page">
 <nav class="site-nav">
   <span class="nav-brand">UO Outlands 中文资料库</span>
   <a href="../index.html">首页</a>
@@ -75,7 +75,7 @@
 <div class="mw-body">
   <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：14 类特殊技能</div>
   <h1>智能配宠向导 <span class="cnsub">Team Builder</span></h1>
-  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。算法依据：① 核心宠缺失的战斗维度（AOE / 破甲 / 毒 / Poison / 流血 / 断筋 / 缠绕 / 诅咒 / 背刺 等）反向匹配补位宠；② 每只宠按系别（攻击/辅助/坦克）套用驯兽宝典天赋树推导向点。系别为按特征推断，正式配装请以游戏内为准。</p>
+  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。算法依据：① 核心宠缺失的战斗维度（AOE / 破甲 / 毒 / Poison / 流血 / 断筋 / 缠绕 / 诅咒 / 背刺 等）反向匹配补位宠；② 每只宠按<b>官方系别</b>（攻击/辅助/坦克，取自游戏数据 class 字段）套用驯兽宝典天赋树推导向点——攻击系优先直接增伤天赋，刷图场景伤害拉满，BOSS 场景坦克才转生存向。跟随上限 5 槽（控制槽 Control Slots）。</p>
 
   <div class="tb-controls">
     <div class="tb-field">
@@ -86,15 +86,13 @@
     <div class="tb-field">
       <label>作战场景</label>
       <select id="scenarioSel">
-        <option value="pve">通用清图 / PvE</option>
-        <option value="boss">单挑 BOSS</option>
-        <option value="pvp">PvP 对战</option>
-        <option value="gather">采集护驾</option>
+        <option value="pve">日常刷图（伤害拉满）</option>
+        <option value="boss">单挑 BOSS（坦克转生存）</option>
       </select>
     </div>
     <div class="tb-field tb-slots">
-      <label>总槽位预算</label>
-      <input id="slotsInput" type="number" min="2" max="20" value="8" />
+      <label>跟随上限（控制槽）</label>
+      <input id="slotsInput" type="number" min="1" max="5" value="5" />
     </div>
     <button id="genBtn" class="tb-gen">生成推荐阵容</button>
   </div>
@@ -115,12 +113,10 @@ const AB_CN = window.AB_CN || {};
 
 // 战斗维度权重（互补打分基础值）
 const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5};
-// 场景对维度的权重修正
+// 场景对维度的权重修正（只保留 PvM：刷图 / BOSS）
 const SCEN = {
   pve:   {},
-  boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2},
-  pvp:   {cripple:1.7, web:1.7, curse:1.7, backstab:1.5, poison:1.3},
-  gather:{buff:1.0, cripple:1.3, web:1.3, armor_break:1.2}
+  boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2}
 };
 
 function talentInfo(name){
@@ -145,7 +141,7 @@ function abText(list){
 function pickComplements(core, scenario, totalSlots){
   const coreTags = new Set(core.tags);
   const scenW = SCEN[scenario] || {};
-  const remain0 = Math.max(0, (totalSlots||8) - core.slots);
+  const remain0 = Math.max(0, (totalSlots||5) - core.slots);
   const cands = PETS.filter(p=>p.name!==core.name && p.tags.length>0);
   const selected = [];
   const used = new Set([core.name]);
@@ -181,10 +177,11 @@ function pickComplements(core, scenario, totalSlots){
 }
 
 // ---------- 渲染单卡 ----------
-function renderCard(pet, isCore, reasonDims){
+function renderCard(pet, isCore, reasonDims, scenario){
   const cls = pet.cls;
   const isNative = n => NATIVEMAP[n]===cls;
-  let rows = pet.recommend.map(([nm,lv])=>{
+  const rec = (scenario==='boss') ? (pet.recBoss||pet.rec) : pet.rec;
+  let rows = rec.map(([nm,lv])=>{
     const t = talentInfo(nm);
     if(!t) return '';
     const native = isNative(nm);
@@ -203,12 +200,24 @@ function renderCard(pet, isCore, reasonDims){
     const zh = reasonDims.map(d=>TAGLABELS[d]||d).join('、');
     reasonHtml = `<div class="tb-reason"><b>互补理由：</b>补齐核心宠缺失的 <b>${zh}</b> 维度，弥补短板。</div>`;
   }
+
+  // 场景提示条
+  let tipHtml = '';
+  if(scenario==='pve' && cls==='Tank'){
+    tipHtml = `<div class="tb-reason"><b>刷图提示：</b>坦克系按<b>伤害拉满</b>加点（巨兽 Behemoth / 强壮 Hearty / 肾上腺 Adrenaline 等）；如需生存向，请切换「单挑 BOSS」场景。</div>`;
+  } else if(scenario==='boss' && cls==='Tank'){
+    tipHtml = `<div class="tb-reason"><b>BOSS 提示：</b>坦克系转<b>生存向</b>加点（坚定 Stalwart / 生存 Survival / 守护 Guardian 等），扛住 BOSS 才是第一优先。</div>`;
+  }
+  if(rec.some(([nm])=>nm==='Behemoth') && pet.slots<3){
+    tipHtml += `<div class="tb-reason"><b>槽位注意：</b>巨兽 Behemoth 需随从占 <b>≥3 控制槽</b>才吃满 +40% 伤害；本宠仅 ${pet.slots} 槽，实际只吃到 +15%，收益打折。</div>`;
+  }
+
   const abilitiesAll = [].concat(pet.abilities.cooldown||[], pet.abilities.passive||[], pet.abilities.innate||[]);
 
   return `<div class="tb-card ${isCore?'core':''}">
     <div class="tb-card-head">
       <span class="tb-name">${pet.name}</span><span class="en">${pet.slug}</span>
-      <span class="cls-badge cls-${cls}">${CLSZH[cls]}系</span>
+      <span class="cls-badge cls-${cls}">${CLSZH[cls]}系（官方）</span>
     </div>
     <div class="tb-card-body">
       <div class="tb-stats">
@@ -221,11 +230,12 @@ function renderCard(pet, isCore, reasonDims){
       <div class="tb-row"><span class="lbl">标签：</span>${badges(pet.tags)}</div>
       <div class="tb-row"><span class="lbl">技能：</span>${abText(abilitiesAll)}</div>
       ${reasonHtml}
+      ${tipHtml}
       <table class="tb-table">
         <thead><tr><th>天赋（满级）</th><th>等级</th><th>效果</th><th>类别</th><th>点</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
-      <div class="tb-note">合计 25 点（本系 20 + 跨系 5）。点击名字可在 <a href="simulator.html">模拟器</a> 微调。</div>
+      <div class="tb-note">合计 25 点（${scenario==='boss'?'BOSS':'刷图'}方案：本系为主，必要时 1 个跨系 5 点）。点击名字可在 <a href="simulator.html">模拟器</a> 微调。</div>
     </div>
   </div>`;
 }
@@ -235,7 +245,8 @@ function generate(){
   const core = PETS.find(p=>p.name===document.getElementById('coreSel').value);
   if(!core) return;
   const scenario = document.getElementById('scenarioSel').value;
-  const totalSlots = parseInt(document.getElementById('slotsInput').value)||8;
+  const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
+  document.getElementById('slotsInput').value = totalSlots;
   const {selected, reasons} = pickComplements(core, scenario, totalSlots);
 
   // 阵容总览
@@ -244,16 +255,18 @@ function generate(){
   const covered = new Set();
   all.forEach(p=>p.tags.forEach(t=>{ if(t in W) covered.add(t); }));
   const coveredZh = [...covered].map(t=>TAGLABELS[t]).join('、') || '（无特殊技能标签）';
+  const scenZh = scenario==='boss' ? '单挑 BOSS' : '日常刷图';
 
-  const coreHtml = renderCard(core, true, null);
+  const coreHtml = renderCard(core, true, null, scenario);
   const recHtml = selected.length
     ? `<div class="tb-section-title">推荐补位（互补核心宠短板）</div>
-       <div class="tb-grid">${selected.map(p=>renderCard(p,false,reasons[p.name])).join('')}</div>`
-    : `<div class="tb-section-title">推荐补位</div><div class="tb-empty">在当前槽位预算下没有合适的补位候选（可放宽总槽位）。</div>`;
+       <div class="tb-grid">${selected.map(p=>renderCard(p,false,reasons[p.name],scenario)).join('')}</div>`
+    : `<div class="tb-section-title">推荐补位</div><div class="tb-empty">在 ${totalSlots} 槽跟随上限下没有合适的补位候选（核心宠已占用 ${core.slots} 槽）。</div>`;
 
   const overview = `<div class="tb-overview">
     <span>核心宠：<b>${core.name}</b></span>
-    <span>队伍槽位：<b>${usedSlots}</b> / 预算 ${totalSlots}</span>
+    <span>场景：<b>${scenZh}</b></span>
+    <span>队伍槽位：<b>${usedSlots}</b> / 上限 5</span>
     <span>阵容覆盖标签：<b>${coveredZh}</b></span>
   </div>`;
 
