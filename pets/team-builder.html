@@ -501,16 +501,16 @@ let pickerCtx = null;
 function openTalentPicker(cls, idx, anchor){
   const curName = anchor.dataset.talent;
   const curNative = NATIVEMAP[curName];
-  const isCross = curNative !== cls;
   let list;
-  if(isCross){
-    // 跨系天赋：备选为另外两系（排除当前宠物系别）
+  if(idx < 3){
+    // 前 3 个位置固定本系天赋
+    list = (TALENT[cls] || []).slice();
+  } else {
+    // 第 4 个位置：本系或跨系均可
     list = [];
     for(const c of ['Attack','Utility','Tank']){
-      if(c !== cls) list = list.concat(TALENT[c] || []);
+      list = list.concat(TALENT[c] || []);
     }
-  } else {
-    list = (TALENT[cls] || []).slice();
   }
   list.sort((a,b)=>a.name.localeCompare(b.name));
   const picker = document.getElementById('talentPicker');
@@ -561,11 +561,19 @@ function renderPlaystyle(team){
 // ---------- 槽位 combobox 管理 ----------
 const slotComboState = {}; // idx -> {filtered, index, open}
 function allPetsSorted(){ return [...PETS].sort((a,b)=>a.name.localeCompare(b.name)); }
+function maxSlotForIdx(idx){
+  const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
+  const usedSlots = state.team.filter(Boolean).reduce((s,p)=>s+p.slots,0);
+  const oldSlots = state.team[idx] ? state.team[idx].slots : 0;
+  return totalSlots - usedSlots + oldSlots;
+}
 function filterSlotCombo(idx, q){
   const v = (q || '').trim().toLowerCase();
+  const maxSlots = maxSlotForIdx(idx);
   slotComboState[idx] = slotComboState[idx] || {filtered:allPetsSorted(), index:-1, open:false};
   const st = slotComboState[idx];
   st.filtered = PETS.filter(p=>{
+    if(p.slots > maxSlots) return false;
     if(!v) return true;
     return p.name.toLowerCase().includes(v) || p.slug.includes(v) || (p.tags||[]).some(t=>(TAGLABELS[t]||t).includes(v));
   }).sort((a,b)=>a.name.localeCompare(b.name));
@@ -631,8 +639,7 @@ function bindSlotCombos(){
     const list = document.getElementById('slotList-'+i);
     const combo = document.getElementById('slotCombo-'+i);
     if(!input || !list || !combo) continue;
-    slotComboState[i] = {filtered:allPetsSorted(), index:-1, open:false};
-    renderSlotComboList(i);
+    filterSlotCombo(i, '');
 
     input.addEventListener('focus', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
     input.addEventListener('input', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
