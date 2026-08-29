@@ -4,12 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>智能配宠向导 | Outlands 中文百科</title>
-<link rel="stylesheet" href="style.css?v=20260827_3">
+<link rel="stylesheet" href="style.css?v=20260829_1">
 <link rel="stylesheet" href="../assets/theme.css">
 <script src="../assets/theme.js"></script>
 <style>
-.tb-intro{ color:#444; font-size:.92em; line-height:1.6; background:#f6f8fb; border-left:3px solid #36c; padding:8px 12px; border-radius:4px; margin:10px 0 16px;}
-.tb-controls{ display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; background:#fff; border:1px solid #c8ccd1; border-radius:10px; padding:14px; margin-bottom:18px; }
+/* ===== 页面整体：左右分栏 ===== */
+.tb-app{ display:flex; gap:16px; align-items:flex-start; }
+@media (max-width:860px){ .tb-app{ flex-direction:column; } }
+
+/* 左侧：宠物队伍 */
+.tb-roster{ width:220px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; }
+@media (max-width:860px){ .tb-roster{ width:100%; flex-direction:row; flex-wrap:wrap; } }
+.tb-roster-title{ font-weight:bold; font-size:1.05em; padding:0 4px; }
+.tb-slot{ border:1px solid #d4d8dd; border-radius:10px; background:#fff; padding:10px; cursor:pointer; transition:.15s; position:relative; }
+.tb-slot:hover{ border-color:#36c; box-shadow:0 0 0 2px rgba(51,102,204,.18); }
+.tb-slot.empty{ background:#f8f9fa; border-style:dashed; color:#888; cursor:default; }
+.tb-slot.empty:hover{ border-color:#d4d8dd; box-shadow:none; }
+.tb-slot-head{ display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+.tb-slot-num{ width:22px; height:22px; border-radius:50%; background:#eaecf0; color:#555; font-size:.78em; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.tb-slot-name{ font-weight:600; font-size:.95em; line-height:1.25; }
+.tb-slot-name .en{ display:block; color:#888; font-size:.75em; font-weight:normal; }
+.tb-slot-body{ font-size:.8em; color:#555; line-height:1.5; }
+.tb-slot-body b{ color:#1a4f8a; }
+.tb-slot-dmg{ color:#1e8e3e; font-weight:bold; }
+.tb-slot-dmg .base{ color:#666; font-size:.85em; font-weight:normal; text-decoration:line-through; margin-left:4px; }
+
+/* 右侧主体 */
+.tb-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:16px; }
+.tb-panel{ background:#fff; border:1px solid #d4d8dd; border-radius:10px; padding:12px 14px; }
+.tb-panel-title{ font-size:1em; font-weight:bold; margin:0 0 10px; padding-left:8px; border-left:4px solid #36c; }
+
+/* 标签栏：复用可驯服列表风格 */
+.tb-tags-row{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.tb-tag-empty{ color:#888; font-size:.9em; }
+
+/* 天赋推荐：三栏迷你面板 */
+.tb-talent-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+@media (max-width:760px){ .tb-talent-cols{ grid-template-columns:1fr; } }
+.tb-tcol{ border:1px solid #e4e7eb; border-radius:8px; background:#fcfcfc; padding:10px; }
+.tb-tcol-head{ display:flex; align-items:center; gap:6px; font-weight:bold; margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid #e4e7eb; }
+.tb-tcol-icon{ width:24px; height:24px; }
+.tb-tcol-Attack{ border-top:3px solid #e74c3c; }
+.tb-tcol-Utility{ border-top:3px solid #27ae60; }
+.tb-tcol-Tank{ border-top:3px solid #2980b9; }
+.tb-tcol-empty{ color:#888; font-size:.85em; text-align:center; padding:16px 0; }
+
+.tb-pet-build{ margin-bottom:10px; }
+.tb-pet-build:last-child{ margin-bottom:0; }
+.tb-pb-name{ font-weight:600; font-size:.88em; margin-bottom:4px; }
+.tb-pb-name .en{ color:#888; font-size:.8em; font-weight:normal; }
+.tb-mini-talents{ display:flex; flex-direction:column; gap:4px; }
+.tb-mini-t{ border:1px solid #d4d8dd; border-radius:6px; padding:5px 7px; background:#fff; cursor:pointer; transition:.1s; display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.tb-mini-t:hover{ border-color:#36c; background:#f0f6ff; }
+.tb-mini-t.maxed{ background:#e8f5e9; border-color:#27ae60; }
+.tb-mini-t.cross{ border-style:dashed; }
+.tb-mini-tname{ font-size:.8em; line-height:1.3; }
+.tb-mini-tname .en{ display:block; color:#777; font-size:.78em; }
+.tb-mini-pips{ display:flex; gap:3px; flex-shrink:0; }
+.tb-mini-pips span{ width:7px; height:7px; border-radius:50%; background:#ddd; border:1px solid #bbb; }
+.tb-mini-pips span.on{ background:#27ae60; border-color:#1e8449; }
+
+/* 玩法说明 */
+.tb-playstyle-panel .tb-playstyle{ margin:0; }
+
+/* 控件 */
+.tb-controls{ display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; background:#fff; border:1px solid #c8ccd1; border-radius:10px; padding:14px; margin-bottom:16px; }
 .tb-field{ display:flex; flex-direction:column; gap:4px; min-width:180px; flex:1 1 180px; }
 .tb-field label{ font-size:.8em; font-weight:bold; color:#54595d; }
 .tb-field select, .tb-field input{ padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
@@ -18,46 +77,61 @@
 .tb-gen:hover{ background:#2a8; border-color:#2a8; }
 #petSearch{ margin-bottom:4px; }
 
-.tb-overview{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#eef5ff; border:1px solid #bcd6f5; border-radius:8px; padding:10px 14px; margin-bottom:14px; font-size:.88em; }
+.tb-intro{ color:#444; font-size:.92em; line-height:1.6; background:#f6f8fb; border-left:3px solid #36c; padding:8px 12px; border-radius:4px; margin:10px 0 16px;}
+.tb-overview{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#eef5ff; border:1px solid #bcd6f5; border-radius:8px; padding:10px 14px; font-size:.88em; }
 .tb-overview b{ color:#1a4f8a; }
+.tb-playstyle{ background:#eef7ff; border:1px solid #bcd6f5; border-radius:6px; padding:8px 11px; font-size:.85em; line-height:1.5; color:#22323f; }
+.tb-playstyle .tb-ps-title{ font-weight:bold; color:#1a4f8a; margin-bottom:4px; }
+.tb-playstyle .ps-line{ margin:3px 0; }
 
-.tb-section-title{ font-size:1.05em; font-weight:bold; margin:18px 0 10px; padding-left:10px; border-left:4px solid #36c; }
-
-.tb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-@media (max-width:760px){ .tb-grid{ grid-template-columns:1fr; } }
-.tb-card{ border:1px solid #d4d8dd; border-radius:10px; background:#fff; overflow:hidden; display:flex; flex-direction:column; }
-.tb-card.core{ grid-column:1 / -1; border-color:#36c; box-shadow:0 0 0 2px #36c3; }
-.tb-card-head{ display:flex; align-items:center; gap:8px; padding:10px 12px; background:#f3f5f8; border-bottom:1px solid #e4e7eb; flex-wrap:wrap; }
-.tb-card-head .tb-name{ font-weight:bold; font-size:1.05em; }
-.tb-card-head .en{ color:#888; font-size:.78em; font-weight:normal; }
-.tb-card-body{ padding:10px 12px; font-size:.86em; line-height:1.55; flex:1; }
-.tb-stats{ display:flex; flex-wrap:wrap; gap:4px 14px; margin:6px 0; color:#333; }
-.tb-stats span b{ color:#1a4f8a; }
-.tb-row{ margin:6px 0; }
-.tb-row .lbl{ color:#777; font-size:.82em; }
-.tb-reason{ background:#fff8e6; border:1px solid #f0dca0; border-radius:6px; padding:6px 9px; margin:8px 0; font-size:.85em; color:#7a5a10; }
-.cls-badge{ font-size:.74em; font-weight:bold; color:#fff; padding:2px 8px; border-radius:10px; }
+/* 系别徽章 */
+.cls-badge{ font-size:.72em; font-weight:bold; color:#fff; padding:2px 7px; border-radius:10px; }
 .cls-Attack{ background:#e74c3c; }
 .cls-Utility{ background:#27ae60; }
 .cls-Tank{ background:#2980b9; }
 
-.tb-table{ width:100%; border-collapse:collapse; margin-top:8px; font-size:.82em; }
-.tb-table th{ text-align:left; background:#f0f3f7; color:#555; font-weight:bold; padding:4px 6px; border:1px solid #e0e4e9; }
-.tb-table td{ padding:4px 6px; border:1px solid #e8ebef; vertical-align:top; }
-.tb-table .tl-name{ font-weight:600; color:#1a4f8a; white-space:nowrap; }
-.tb-table .tl-name .en{ color:#999; font-weight:normal; font-size:.85em; }
-.tb-table .tl-eff{ color:#444; line-height:1.4; }
-.tb-table .tl-lv{ color:#c0392b; font-weight:bold; text-align:center; }
-.tb-table .tl-cls{ text-align:center; font-size:.82em; }
-.tb-cross{ color:#a55; }
-.tb-native{ color:#27ae60; }
-.tb-note{ font-size:.8em; color:#888; margin-top:6px; font-style:italic; }
-.tb-playstyle{ background:#eef7ff; border:1px solid #bcd6f5; border-radius:6px; padding:8px 11px; margin:10px 0; font-size:.85em; line-height:1.5; color:#22323f; }
-.tb-playstyle .tb-ps-title{ font-weight:bold; color:#1a4f8a; margin-bottom:4px; }
-.tb-playstyle .ps-line{ margin:3px 0; }
+/* tooltip（参考 simulator） */
+.tooltip { position:fixed; display:none; max-width:340px; background:#222; color:#fff; padding:10px 12px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+.tip-name { font-weight:bold; margin-bottom:5px; color:#ffd866; }
+.tip-name .en{ color:#cdb892; font-size:.8em; font-weight:normal; }
+.tip-row{ margin:3px 0; }
+.tip-row b{ color:#7fb0e8; }
+.tip-dmg{ color:#58d68d; font-weight:bold; }
+.tip-dmg .base{ color:#aaa; font-weight:normal; text-decoration:line-through; margin-left:4px; }
+
+/* 深色模式 */
+html[data-theme="dark"] .tb-intro{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
+html[data-theme="dark"] .tb-overview{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
+html[data-theme="dark"] .tb-overview b{ color:#7fb0e8; }
 html[data-theme="dark"] .tb-playstyle{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
-html[data-theme="dark"] .tb-playstyle .tb-ps-title{ color:#7fb2e6; }
-.tb-empty{ padding:30px; text-align:center; color:#999; }
+html[data-theme="dark"] .tb-playstyle .tb-ps-title{ color:#7fb0e8; }
+html[data-theme="dark"] .tb-controls{ background:#262b32; border-color:#3a414b; }
+html[data-theme="dark"] .tb-field label{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-field select,
+html[data-theme="dark"] .tb-field input{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-slot{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-slot:hover{ border-color:#4d8fe8; box-shadow:0 0 0 2px rgba(77,143,232,.25); }
+html[data-theme="dark"] .tb-slot.empty{ background:#1d2026; color:#9aa3ad; }
+html[data-theme="dark"] .tb-slot-num{ background:#3a414b; color:#9aa3ad; }
+html[data-theme="dark"] .tb-slot-name .en{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-slot-body{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-slot-body b{ color:#7fb0e8; }
+html[data-theme="dark"] .tb-slot-dmg{ color:#58d68d; }
+html[data-theme="dark"] .tb-slot-dmg .base{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-panel{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-panel-title{ border-color:#4d8fe8; color:#eef0f3; }
+html[data-theme="dark"] .tb-tcol{ background:#1d2026; border-color:#3a414b; }
+html[data-theme="dark"] .tb-tcol-head{ border-color:#3a414b; }
+html[data-theme="dark"] .tb-pb-name .en{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-mini-t{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-mini-t:hover{ background:#32383f; border-color:#4d8fe8; }
+html[data-theme="dark"] .tb-mini-t.maxed{ background:#2a4232; border-color:#27ae60; }
+html[data-theme="dark"] .tb-mini-tname .en{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-mini-pips span{ background:#3a414b; border-color:#555b66; }
+html[data-theme="dark"] .tb-mini-pips span.on{ background:#58d68d; border-color:#1e8449; }
+html[data-theme="dark"] .tb-tag-empty{ color:#9aa3ad; }
+
+/* 保留 .dbadge 在深色下的可读性（style.css 已有颜色） */
 </style>
 </head>
 <body class="side-nav-page">
@@ -104,9 +178,9 @@ html[data-theme="dark"] .tb-playstyle .tb-ps-title{ color:#7fb2e6; }
 </nav>
 
 <div class="mw-body">
-  <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：14 类特殊技能</div>
+  <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：16 类特殊技能</div>
   <h1>智能配宠向导 <span class="cnsub">Team Builder</span></h1>
-  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。算法依据：① 核心宠缺失的战斗维度（AOE / 破甲 / 毒 / Poison / 流血 / 断筋 / 缠绕 / 诅咒 / 背刺 等）反向匹配补位宠；② 每只宠按<b>官方系别</b>（攻击/辅助/坦克，取自游戏数据 class 字段）套用驯兽宝典天赋树推导向点——攻击系优先直接增伤天赋，刷图场景伤害拉满，BOSS 场景坦克才转生存向。跟随上限 5 槽（控制槽 Control Slots）。</p>
+  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。左侧为竖排 5 槽队伍，鼠标悬停槽位可查看加成后的宠物详情；右侧展示阵容标签、三系天赋推荐与核心宠玩法说明。跟随上限 5 槽（控制槽 Control Slots）。</p>
 
   <div class="tb-controls">
     <div class="tb-field">
@@ -133,6 +207,8 @@ html[data-theme="dark"] .tb-playstyle .tb-ps-title{ color:#7fb2e6; }
   <p class="backlink"><a href="index.html">← 返回可驯服生物目录</a> · <a href="simulator.html">宠物天赋模拟器</a> · <a href="follower-abilities.html">宠物技能大全</a></p>
 </div>
 
+<div class="tooltip" id="tip"></div>
+
 <script src="team-builder-data.js"></script>
 <script>
 const PETS = window.PET_DATA;
@@ -141,13 +217,13 @@ const NATIVEMAP = window.NATIVEMAP;
 const TAGLABELS = window.TAG_LABELS;
 const CLSZH = window.CLS_ZH;
 const AB_CN = window.AB_CN || {};
+const ICON = {Attack:'images/icon-attackclass.png',Utility:'images/icon-utilityclass.png',Tank:'images/icon-tankclass.png'};
 
 // 战斗维度权重（互补打分基础值）
-const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5};
-// 场景对维度的权重修正（只保留 PvM：刷图 / BOSS）
+const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5, hamstring:1.6, hinder:1.6};
 const SCEN = {
   pve:   {},
-  boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2}
+  boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2, hamstring:1.3, hinder:1.3}
 };
 
 function talentInfo(name){
@@ -179,7 +255,7 @@ function pickComplements(core, scenario, totalSlots){
   const pickedDims = new Set();
   let remain = remain0;
   const reasons = {};
-  for(let i=0;i<3;i++){
+  for(let i=0;i<4;i++){
     let best=null, bestScore=-1e9, bestGot=[];
     for(const p of cands){
       if(used.has(p.name)) continue;
@@ -192,9 +268,8 @@ function pickComplements(core, scenario, totalSlots){
         }
       }
       comp += dims*0.8;
-      // 近战偏好：核心有被动增益（增伤）时，偏好背刺/近战宠
       if(core.abilities && (core.abilities.passive||[]).length && (p.tags.includes('backstab'))) comp += 1.0;
-      const score = comp - p.slots*0.3 + (p.maxdmg||0)*0.02;
+      const score = comp - p.slots*0.3 + (p.maxdmgBoosted||p.maxdmg||0)*0.015;
       if(score>bestScore){ bestScore=score; best=p; bestGot=got; }
     }
     if(!best) break;
@@ -207,69 +282,115 @@ function pickComplements(core, scenario, totalSlots){
   return {selected, reasons};
 }
 
-// ---------- 渲染单卡 ----------
-function renderCard(pet, isCore, reasonDims, scenario){
-  const cls = pet.cls;
-  const isNative = n => NATIVEMAP[n]===cls;
-  const rec = (scenario==='boss') ? (pet.recBoss||pet.rec) : pet.rec;
-  let rows = rec.map(([nm,lv])=>{
-    const t = talentInfo(nm);
-    if(!t) return '';
-    const native = isNative(nm);
-    const clsTag = native ? '<span class="tb-native">本系</span>' : '<span class="tb-cross">跨系</span>';
-    return `<tr>
-      <td class="tl-name">${t.cnname} <span class="en">${nm}</span></td>
-      <td class="tl-lv">${lv}/3</td>
-      <td class="tl-eff">${t.cndesc||''}</td>
-      <td class="tl-cls">${clsTag}</td>
-      <td class="tl-lv">5</td>
-    </tr>`;
-  }).join('');
-
-  let reasonHtml = '';
-  if(!isCore && reasonDims && reasonDims.length){
-    const zh = reasonDims.map(d=>TAGLABELS[d]||d).join('、');
-    reasonHtml = `<div class="tb-reason"><b>互补理由：</b>补齐核心宠缺失的 <b>${zh}</b> 维度，弥补短板。</div>`;
-  }
-
-  // 场景提示条
-  let tipHtml = '';
-  if(scenario==='pve' && cls==='Tank'){
-    tipHtml = `<div class="tb-reason"><b>刷图提示：</b>坦克系按<b>伤害拉满</b>加点（巨兽 Behemoth / 强壮 Hearty / 肾上腺 Adrenaline 等）；如需生存向，请切换「单挑 BOSS」场景。</div>`;
-  } else if(scenario==='boss' && cls==='Tank'){
-    tipHtml = `<div class="tb-reason"><b>BOSS 提示：</b>坦克系转<b>生存向</b>加点（坚定 Stalwart / 生存 Survival / 守护 Guardian 等），扛住 BOSS 才是第一优先。</div>`;
-  }
-  if(rec.some(([nm])=>nm==='Behemoth') && pet.slots<3){
-    tipHtml += `<div class="tb-reason"><b>槽位注意：</b>巨兽 Behemoth 需随从占 <b>≥3 控制槽</b>才吃满 +40% 伤害；本宠仅 ${pet.slots} 槽，实际只吃到 +15%，收益打折。</div>`;
-  }
-
+// ---------- tooltip ----------
+function showTip(e, html){
+  const tip = document.getElementById('tip');
+  tip.innerHTML = html;
+  tip.style.display = 'block';
+  tip.classList.remove('tip-mobile');
+  moveTip(e);
+}
+function moveTip(e){
+  const tip = document.getElementById('tip');
+  if(tip.classList.contains('tip-mobile')) return;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  const rect = tip.getBoundingClientRect();
+  if(x + rect.width + 10 > window.innerWidth) x = e.clientX - rect.width - 10;
+  if(y + rect.height + 10 > window.innerHeight) y = e.clientY - rect.height - 10;
+  if(x < 4) x = 4; if(y < 4) y = 4;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){
+  document.getElementById('tip').style.display = 'none';
+}
+function petTipHtml(pet){
   const abilitiesAll = [].concat(pet.abilities.cooldown||[], pet.abilities.passive||[], pet.abilities.innate||[]);
+  return `<div class="tip-name">${pet.name} <span class="en">${pet.slug}</span></div>
+<div class="tip-row"><b>系别：</b><span class="cls-badge cls-${pet.cls}">${CLSZH[pet.cls]}系</span>　<b>槽位：</b>${pet.slots}　<b>驯兽：</b>${pet.taming}</div>
+<div class="tip-row"><b>生命：</b>${pet.hits}　<b>武术：</b>${pet.wrestling}</div>
+<div class="tip-row"><b>基础伤害：</b><span class="tip-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="base">${pet.mindmg}–${pet.maxdmg}</span>（Underdog +${pet.underdogPct}%）</div>
+<div class="tip-row"><b>标签：</b>${badges(pet.tags)}</div>
+<div class="tip-row"><b>技能：</b>${abText(abilitiesAll)}</div>`;
+}
 
-  return `<div class="tb-card ${isCore?'core':''}">
-    <div class="tb-card-head">
-      <span class="tb-name">${pet.name}</span><span class="en">${pet.slug}</span>
-      <span class="cls-badge cls-${cls}">${CLSZH[cls]}系（官方）</span>
-    </div>
-    <div class="tb-card-body">
-      <div class="tb-stats">
-        <span>槽位 <b>${pet.slots}</b></span>
-        <span>驯兽 <b>${pet.taming}</b></span>
-        <span>生命 <b>${pet.hits}</b></span>
-        <span>伤害 <b>${pet.mindmg}–${pet.maxdmg}</b></span>
-        <span>武术 <b>${pet.wrestling}</b></span>
+// ---------- 渲染左侧队伍 ----------
+function renderRoster(team){
+  let html = '<div class="tb-roster-title">宠物队伍</div>';
+  for(let i=0;i<5;i++){
+    const pet = team[i];
+    if(!pet){
+      html += `<div class="tb-slot empty"><div class="tb-slot-head"><span class="tb-slot-num">${i+1}</span><span class="tb-slot-name">空槽位</span></div></div>`;
+      continue;
+    }
+    const abilitiesShort = [].concat(pet.abilities.cooldown||[], pet.abilities.passive||[], pet.abilities.innate||[]).slice(0,3);
+    html += `<div class="tb-slot" data-idx="${i}">
+      <div class="tb-slot-head">
+        <span class="tb-slot-num">${i+1}</span>
+        <span class="tb-slot-name">${pet.name}<span class="en">${pet.slug}</span></span>
       </div>
-      <div class="tb-row"><span class="lbl">标签：</span>${badges(pet.tags)}</div>
-      <div class="tb-row"><span class="lbl">技能：</span>${abText(abilitiesAll)}</div>
-      ${reasonHtml}
-      ${tipHtml}
-      <table class="tb-table">
-        <thead><tr><th>天赋（满级）</th><th>等级</th><th>效果</th><th>类别</th><th>点</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-      <div class="tb-playstyle"><div class="tb-ps-title">玩法说明</div>${pet.playstyle}</div>
-      <div class="tb-note">合计 25 点（${scenario==='boss'?'BOSS':'刷图'}方案：本系为主，必要时 1 个跨系 5 点）。点击名字可在 <a href="simulator.html">模拟器</a> 微调。</div>
-    </div>
-  </div>`;
+      <div class="tb-slot-body">
+        <div><span class="cls-badge cls-${pet.cls}">${CLSZH[pet.cls]}</span>　槽位 <b>${pet.slots}</b></div>
+        <div>伤害 <span class="tb-slot-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="base">${pet.mindmg}–${pet.maxdmg}</span></div>
+        <div style="margin-top:3px;font-size:.78em;color:#777;">${abText(abilitiesShort)}</div>
+      </div>
+    </div>`;
+  }
+  return `<div class="tb-roster">${html}</div>`;
+}
+
+// ---------- 渲染右侧标签栏 ----------
+function renderTags(team){
+  const covered = new Map();
+  team.forEach(p=>{
+    (p.tags||[]).forEach(t=>{
+      covered.set(t, (covered.get(t)||0)+1);
+    });
+  });
+  if(covered.size===0) return '<div class="tb-tags-row"><span class="tb-tag-empty">当前阵容无特殊技能标签</span></div>';
+  const tagsHtml = [...covered.entries()].map(([t,c])=>`<span class="dbadge db-${t}">${TAGLABELS[t]||t}${c>1?'×'+c:''}</span>`).join(' ');
+  return `<div class="tb-tags-row">${tagsHtml}</div>`;
+}
+
+// ---------- 渲染右侧天赋推荐 ----------
+function renderTalents(team, scenario){
+  const byCls = {Attack:[], Utility:[], Tank:[]};
+  team.forEach(p=>{
+    const rec = (scenario==='boss' && p.cls==='Tank') ? (p.recBoss||p.rec) : p.rec;
+    byCls[p.cls].push({pet:p, rec:rec});
+  });
+  let html = '<div class="tb-talent-cols">';
+  for(const cls of ['Attack','Utility','Tank']){
+    const builds = byCls[cls];
+    html += `<div class="tb-tcol tb-tcol-${cls}">`;
+    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span></div>`;
+    if(builds.length===0){
+      html += `<div class="tb-tcol-empty">本阵容无 ${CLSZH[cls]} 系宠物</div>`;
+    } else {
+      builds.forEach(({pet, rec})=>{
+        html += `<div class="tb-pet-build">
+          <div class="tb-pb-name">${pet.name} <span class="en">${pet.slug}</span></div>
+          <div class="tb-mini-talents">`;
+        rec.forEach(([nm, lv])=>{
+          const t = talentInfo(nm);
+          const isCross = NATIVEMAP[nm] !== cls;
+          const cn = t ? t.cnname : nm;
+          html += `<div class="tb-mini-t ${lv>=3?'maxed':''} ${isCross?'cross':''}" data-talent="${nm}">
+            <div class="tb-mini-tname">${cn} <span class="en">${nm}</span></div>
+            <div class="tb-mini-pips"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>`;
+        });
+        html += '</div></div>';
+      });
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+// ---------- 渲染玩法说明 ----------
+function renderPlaystyle(core){
+  return `<div class="tb-playstyle"><div class="tb-ps-title">核心宠：${core.name} 玩法说明</div>${core.playstyle}</div>`;
 }
 
 // ---------- 生成 ----------
@@ -281,28 +402,54 @@ function generate(){
   document.getElementById('slotsInput').value = totalSlots;
   const {selected, reasons} = pickComplements(core, scenario, totalSlots);
 
-  // 阵容总览
-  const all = [core, ...selected];
-  const usedSlots = all.reduce((s,p)=>s+p.slots,0);
-  const covered = new Set();
-  all.forEach(p=>p.tags.forEach(t=>{ if(t in W) covered.add(t); }));
-  const coveredZh = [...covered].map(t=>TAGLABELS[t]).join('、') || '（无特殊技能标签）';
+  // 如果核心宠超过上限，只保留核心
+  const team = [core, ...selected];
+  const usedSlots = team.reduce((s,p)=>s+p.slots,0);
+
   const scenZh = scenario==='boss' ? '单挑 BOSS' : '日常刷图';
-
-  const coreHtml = renderCard(core, true, null, scenario);
-  const recHtml = selected.length
-    ? `<div class="tb-section-title">推荐补位（互补核心宠短板）</div>
-       <div class="tb-grid">${selected.map(p=>renderCard(p,false,reasons[p.name],scenario)).join('')}</div>`
-    : `<div class="tb-section-title">推荐补位</div><div class="tb-empty">在 ${totalSlots} 槽跟随上限下没有合适的补位候选（核心宠已占用 ${core.slots} 槽）。</div>`;
-
-  const overview = `<div class="tb-overview">
+  const overview = `<div class="tb-overview" style="margin-bottom:14px;">
     <span>核心宠：<b>${core.name}</b></span>
     <span>场景：<b>${scenZh}</b></span>
-    <span>队伍槽位：<b>${usedSlots}</b> / 上限 5</span>
-    <span>阵容覆盖标签：<b>${coveredZh}</b></span>
+    <span>队伍槽位：<b>${usedSlots}</b> / 上限 ${totalSlots}</span>
   </div>`;
 
-  document.getElementById('result').innerHTML = overview + coreHtml + recHtml;
+  document.getElementById('result').innerHTML = overview + `<div class="tb-app">
+    ${renderRoster(team)}
+    <div class="tb-main">
+      <div class="tb-panel">
+        <div class="tb-panel-title">标签栏</div>
+        ${renderTags(team)}
+      </div>
+      <div class="tb-panel">
+        <div class="tb-panel-title">天赋加点推荐</div>
+        ${renderTalents(team, scenario)}
+      </div>
+      <div class="tb-panel tb-playstyle-panel">
+        <div class="tb-panel-title">玩法说明</div>
+        ${renderPlaystyle(core)}
+      </div>
+    </div>
+  </div>`;
+
+  // 绑定队伍槽位 tooltip
+  document.querySelectorAll('.tb-slot[data-idx]').forEach(slot=>{
+    const idx = parseInt(slot.dataset.idx);
+    const pet = team[idx];
+    if(!pet) return;
+    slot.addEventListener('mouseenter', e=>showTip(e, petTipHtml(pet)));
+    slot.addEventListener('mousemove', moveTip);
+    slot.addEventListener('mouseleave', hideTip);
+  });
+
+  // 绑定迷你天赋 tooltip
+  document.querySelectorAll('[data-talent]').forEach(node=>{
+    const nm = node.dataset.talent;
+    const t = talentInfo(nm);
+    if(!t) return;
+    node.addEventListener('mouseenter', e=>showTip(e, `<div class="tip-name">${t.cnname} <span class="en">${nm}</span></div><div class="tip-row">${t.cndesc||''}</div>`));
+    node.addEventListener('mousemove', moveTip);
+    node.addEventListener('mouseleave', hideTip);
+  });
 }
 
 // ---------- 初始化 ----------
@@ -310,7 +457,6 @@ function generate(){
   const sel = document.getElementById('coreSel');
   const sorted = [...PETS].sort((a,b)=>a.name.localeCompare(b.name));
   sel.innerHTML = sorted.map(p=>`<option value="${p.name}">${p.name}（${p.slots}槽 / 驯${p.taming}）${p.tags.length?' #'+p.tags.map(t=>TAGLABELS[t]||t).join(' '):''}</option>`).join('');
-  // 默认 Warpig
   if(PETS.some(p=>p.name==='Warpig')) sel.value='Warpig';
 
   const search = document.getElementById('petSearch');
@@ -322,7 +468,7 @@ function generate(){
   document.getElementById('scenarioSel').addEventListener('change', generate);
   document.getElementById('slotsInput').addEventListener('change', generate);
   sel.addEventListener('change', generate);
-  generate(); // 默认展示 Warpig 样板
+  generate();
 })();
 </script>
 </body>
