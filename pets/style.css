@@ -476,3 +476,9 @@ html[data-theme="dark"] .side-nav-page .site-nav .nav-menu{ background:#27466f !
   margin-top: 2px;
   line-height: 1.25;
 }
+
+/* 基础伤害列：加成后数值(绿/上) + 原数值(斜体小字黑/下)，按 Underdog 加成换算 */
+.dmg-up { display:block; color:#1e8e3e; font-weight:600; }
+.dmg-base { display:block; font-size:.78em; font-style:italic; color:#555; margin-top:2px; line-height:1.2; }
+html[data-theme="dark"] .pet-table .dmg-up { color:#5fbf6a; }
+html[data-theme="dark"] .pet-table .dmg-base { color:#9aa3ad; }
