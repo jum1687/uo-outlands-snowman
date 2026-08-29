@@ -282,3 +282,13 @@ html[data-theme="dark"] .side-nav-page .site-nav .nav-menu{ background:#27466f !
   .side-nav-page .source-link{ max-width:960px; margin:0 auto !important; padding:18px 24px 80px; }
   .side-nav-page #nav-hamburger{ display:none; }
 }
+
+/* 单元格中英文竖排通用约定：中文在上，英文（.val-en）在下；opacity 跟随父文字色，浅色/深色模式自适应。全站表格可复用。 */
+.val-en {
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+  opacity: 0.72;
+  margin-top: 2px;
+  line-height: 1.25;
+}
