@@ -499,7 +499,20 @@ function renderTalents(team, scenario){
 // ---------- 天赋重选浮层 ----------
 let pickerCtx = null;
 function openTalentPicker(cls, idx, anchor){
-  const list = (TALENT[cls] || []).slice().sort((a,b)=>a.name.localeCompare(b.name));
+  const curName = anchor.dataset.talent;
+  const curNative = NATIVEMAP[curName];
+  const isCross = curNative !== cls;
+  let list;
+  if(isCross){
+    // 跨系天赋：备选为另外两系（排除当前宠物系别）
+    list = [];
+    for(const c of ['Attack','Utility','Tank']){
+      if(c !== cls) list = list.concat(TALENT[c] || []);
+    }
+  } else {
+    list = (TALENT[cls] || []).slice();
+  }
+  list.sort((a,b)=>a.name.localeCompare(b.name));
   const picker = document.getElementById('talentPicker');
   picker.innerHTML = list.map(t=>{
     const isCur = t.name === anchor.dataset.talent;
