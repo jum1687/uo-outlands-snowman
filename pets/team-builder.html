@@ -52,6 +52,11 @@
 .tb-cross{ color:#a55; }
 .tb-native{ color:#27ae60; }
 .tb-note{ font-size:.8em; color:#888; margin-top:6px; font-style:italic; }
+.tb-playstyle{ background:#eef7ff; border:1px solid #bcd6f5; border-radius:6px; padding:8px 11px; margin:10px 0; font-size:.85em; line-height:1.5; color:#22323f; }
+.tb-playstyle .tb-ps-title{ font-weight:bold; color:#1a4f8a; margin-bottom:4px; }
+.tb-playstyle .ps-line{ margin:3px 0; }
+html[data-theme="dark"] .tb-playstyle{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
+html[data-theme="dark"] .tb-playstyle .tb-ps-title{ color:#7fb2e6; }
 .tb-empty{ padding:30px; text-align:center; color:#999; }
 </style>
 </head>
@@ -261,6 +266,7 @@ function renderCard(pet, isCore, reasonDims, scenario){
         <thead><tr><th>天赋（满级）</th><th>等级</th><th>效果</th><th>类别</th><th>点</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
+      <div class="tb-playstyle"><div class="tb-ps-title">玩法说明</div>${pet.playstyle}</div>
       <div class="tb-note">合计 25 点（${scenario==='boss'?'BOSS':'刷图'}方案：本系为主，必要时 1 个跨系 5 点）。点击名字可在 <a href="simulator.html">模拟器</a> 微调。</div>
     </div>
   </div>`;
