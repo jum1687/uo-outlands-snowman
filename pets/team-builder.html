@@ -71,6 +71,7 @@
 .tb-pet-build{ margin-bottom:10px; }
 .tb-pet-build:last-child{ margin-bottom:0; }
 .tb-pb-name{ font-weight:600; font-size:.88em; margin-bottom:4px; }
+.tb-pb-note{ font-weight:normal; font-size:.8em; color:#888; margin-left:4px; }
 .tb-pb-name .en{ color:#888; font-size:.8em; font-weight:normal; }
 .tb-mini-talents{ display:flex; flex-direction:column; gap:4px; }
 .tb-mini-t{ border:1px solid #d4d8dd; border-radius:6px; padding:5px 7px; background:#fff; cursor:pointer; transition:.1s; display:flex; align-items:center; justify-content:space-between; gap:6px; }
@@ -119,6 +120,31 @@
 .tip-ability b{ color:#ffd866; }
 .tip-ability .en{ color:#cdb892; font-size:.85em; }
 .tip-ability .tip-ability-desc{ color:#ccc; font-size:.92em; margin-top:2px; }
+
+/* 天赋重选浮层 */
+.tb-talent-picker{ position:fixed; display:none; width:300px; max-height:320px; overflow:auto; background:#fff; border:1px solid #c8ccd1; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.18); z-index:9998; padding:6px; box-sizing:border-box; }
+.tb-talent-picker .tp-item{ padding:7px 9px; border-radius:6px; cursor:pointer; border-bottom:1px solid #eef0f2; }
+.tb-talent-picker .tp-item:last-child{ border-bottom:none; }
+.tb-talent-picker .tp-item:hover{ background:#f0f6ff; }
+.tb-talent-picker .tp-item.active{ background:#eaf3ff; }
+.tb-talent-picker .tp-name{ font-weight:600; font-size:.86em; line-height:1.25; }
+.tb-talent-picker .tp-name .en{ color:#888; font-weight:normal; font-size:.92em; }
+.tb-talent-picker .tp-desc{ font-size:.76em; color:#666; margin-top:3px; line-height:1.4; }
+.tb-tcol-reset{ margin-left:auto; font-size:.72em; color:#666; background:#eaecf0; border:none; border-radius:4px; padding:3px 8px; cursor:pointer; }
+.tb-tcol-reset:hover{ background:#ff4d4f; color:#fff; }
+.tb-mini-t.overridden{ border-color:#f0a020; background:#fff7ec; }
+.tb-mini-t.overridden:hover{ background:#fff0db; }
+.tb-mini-t.modifiable{ cursor:pointer; }
+.tb-mini-t.modifiable:hover{ border-color:#36c; background:#f0f6ff; }
+html[data-theme="dark"] .tb-talent-picker{ background:#262b32; border-color:#3a414b; }
+html[data-theme="dark"] .tb-talent-picker .tp-item:hover{ background:#1c2733; }
+html[data-theme="dark"] .tb-talent-picker .tp-item.active{ background:#1c2733; }
+html[data-theme="dark"] .tb-talent-picker .tp-name .en{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-talent-picker .tp-desc{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-tcol-reset{ background:#3a414b; color:#9aa3ad; }
+html[data-theme="dark"] .tb-tcol-reset:hover{ background:#ff4d4f; color:#fff; }
+html[data-theme="dark"] .tb-mini-t.overridden{ border-color:#f0a020; background:#3a3326; }
+html[data-theme="dark"] .tb-mini-t.overridden:hover{ background:#4a4029; }
 
 /* 深色模式 */
 html[data-theme="dark"] .tb-intro{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
@@ -233,6 +259,7 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 </div>
 
 <div class="tooltip" id="tip"></div>
+<div class="tb-talent-picker" id="talentPicker"></div>
 
 <script src="team-builder-data.js"></script>
 <script>
@@ -251,8 +278,8 @@ const SCEN = {
   boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2, hamstring:1.3, hinder:1.3}
 };
 
-// 页面状态：5 个槽位数组
-const state = { team: [] };
+// 页面状态：5 个槽位数组 + 天赋覆盖
+const state = { team: [], overrides: {} };
 
 function talentInfo(name){
   for(const c of ['Attack','Utility','Tank']){
@@ -408,40 +435,108 @@ function renderTags(team){
   return `<div class="tb-tags-row">${tagsHtml}</div>`;
 }
 
-function renderTalents(team, scenario){
-  const byCls = {Attack:[], Utility:[], Tank:[]};
-  team.forEach(p=>{
-    const rec = (scenario==='boss' && p.cls==='Tank') ? (p.recBoss||p.rec) : p.rec;
-    byCls[p.cls].push({pet:p, rec:rec});
+// 每系按跟随数(slots)取代表宠物：同系多宠只显示一个天赋组
+function repPetByCls(team){
+  const m = {Attack:null, Utility:null, Tank:null};
+  team.filter(Boolean).forEach(p=>{
+    const cur = m[p.cls];
+    if(!cur || p.slots > cur.slots) m[p.cls] = p;
   });
+  return m;
+}
+// 某系默认推荐天赋（名字数组）
+function baseRecNames(cls, pet, scenario){
+  const base = (scenario==='boss' && pet.cls==='Tank') ? (pet.recBoss||pet.rec) : pet.rec;
+  return base.map(x=>x[0]);
+}
+// 当前推荐天赋（考虑用户覆盖）
+function currentRec(cls, pet, scenario){
+  if(state.overrides[cls]) return state.overrides[cls];
+  return baseRecNames(cls, pet, scenario);
+}
+// 惰性初始化某系覆盖数组为默认
+function ensureOverride(cls, pet, scenario){
+  if(!state.overrides[cls]){
+    state.overrides[cls] = baseRecNames(cls, pet, scenario);
+  }
+}
+
+function renderTalents(team, scenario){
+  const rep = repPetByCls(team);
+  const clsCount = {};
+  team.filter(Boolean).forEach(p=>{ clsCount[p.cls]=(clsCount[p.cls]||0)+1; });
   let html = '<div class="tb-talent-cols">';
   for(const cls of ['Attack','Utility','Tank']){
-    const builds = byCls[cls];
+    const pet = rep[cls];
     html += `<div class="tb-tcol tb-tcol-${cls}">`;
-    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span></div>`;
-    if(builds.length===0){
+    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? `<button class="tb-tcol-reset" data-reset="${cls}" title="恢复系统推荐">重置</button>` : ''}</div>`;
+    if(!pet){
       html += `<div class="tb-tcol-empty">本阵容无 ${CLSZH[cls]} 系宠物</div>`;
     } else {
-      builds.forEach(({pet, rec})=>{
-        html += `<div class="tb-pet-build">
-          <div class="tb-pb-name">${pet.name} <span class="en">${pet.slug}</span></div>
-          <div class="tb-mini-talents">`;
-        rec.forEach(([nm, lv])=>{
-          const t = talentInfo(nm);
-          const isCross = NATIVEMAP[nm] !== cls;
-          const cn = t ? t.cnname : nm;
-          html += `<div class="tb-mini-t ${lv>=3?'maxed':''} ${isCross?'cross':''}" data-talent="${nm}">
-            <div class="tb-mini-tname">${cn} <span class="en">${nm}</span></div>
-            <div class="tb-mini-pips"><span class="on"></span><span class="on"></span><span class="on"></span></div>
-          </div>`;
-        });
-        html += '</div></div>';
+      const baseNames = baseRecNames(cls, pet, scenario);
+      const rec = currentRec(cls, pet, scenario);
+      const note = clsCount[cls] > 1 ? `<span class="tb-pb-note">（${clsCount[cls]} 只${CLSZH[cls]}系，按跟随最高 ${pet.name} 推荐）</span>` : '';
+      html += `<div class="tb-pb-name">${pet.name} <span class="en">${pet.slug}</span>${note}</div>`;
+      html += `<div class="tb-mini-talents">`;
+      rec.forEach((nm, idx)=>{
+        const t = talentInfo(nm);
+        const isCross = NATIVEMAP[nm] !== cls;
+        const cn = t ? t.cnname : nm;
+        const overridden = state.overrides[cls] && state.overrides[cls][idx] !== baseNames[idx];
+        html += `<div class="tb-mini-t maxed ${isCross?'cross':''} modifiable ${overridden?'overridden':''}" data-cls="${cls}" data-idx="${idx}" data-talent="${nm}" title="点击重选天赋">
+          <div class="tb-mini-tname">${cn} <span class="en">${nm}</span></div>
+          <div class="tb-mini-pips"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        </div>`;
       });
+      html += '</div>';
     }
     html += '</div>';
   }
   html += '</div>';
   return html;
+}
+
+// ---------- 天赋重选浮层 ----------
+let pickerCtx = null;
+function openTalentPicker(cls, idx, anchor){
+  const list = (TALENT[cls] || []).slice().sort((a,b)=>a.name.localeCompare(b.name));
+  const picker = document.getElementById('talentPicker');
+  picker.innerHTML = list.map(t=>{
+    const isCur = t.name === anchor.dataset.talent;
+    return `<div class="tp-item ${isCur?'active':''}" data-name="${t.name}">
+      <div class="tp-name">${t.cnname} <span class="en">${t.name}</span></div>
+      <div class="tp-desc">${t.cndesc||''}</div>
+    </div>`;
+  }).join('');
+  picker.style.display = 'block';
+  const r = anchor.getBoundingClientRect();
+  let x = r.left, y = r.bottom + 6;
+  if(x + 300 > window.innerWidth) x = window.innerWidth - 306;
+  if(y + 320 > window.innerHeight && r.top > 320) y = r.top - 326;
+  if(x < 4) x = 4; if(y < 4) y = 4;
+  picker.style.left = x + 'px'; picker.style.top = y + 'px';
+  pickerCtx = {cls, idx};
+  bindTalentPickerItems();
+}
+function bindTalentPickerItems(){
+  const picker = document.getElementById('talentPicker');
+  picker.querySelectorAll('.tp-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      if(!pickerCtx) return;
+      const {cls, idx} = pickerCtx;
+      const pet = repPetByCls(state.team)[cls];
+      if(pet) ensureOverride(cls, pet, document.getElementById('scenarioSel').value);
+      state.overrides[cls][idx] = item.dataset.name;
+      closeTalentPicker();
+      hideTip();
+      render();
+    });
+  });
+}
+function closeTalentPicker(){
+  const picker = document.getElementById('talentPicker');
+  if(picker) picker.style.display = 'none';
+  pickerCtx = null;
 }
 
 function renderPlaystyle(team){
@@ -559,6 +654,7 @@ function suggestTeam(){
 // ---------- 渲染 ----------
 function render(){
   hideTip();
+  closeTalentPicker();
   const team = state.team;
   const scenario = document.getElementById('scenarioSel').value;
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
@@ -612,16 +708,37 @@ function render(){
   const suggestBtn = document.getElementById('tbSuggest');
   if(suggestBtn) suggestBtn.addEventListener('click', suggestTeam);
 
-  // 绑定迷你天赋 tooltip
-  document.querySelectorAll('[data-talent]').forEach(node=>{
+  // 绑定迷你天赋：tooltip + 点击重选
+  document.querySelectorAll('.tb-mini-t').forEach(node=>{
     const nm = node.dataset.talent;
     const t = talentInfo(nm);
-    if(!t) return;
-    node.addEventListener('mouseenter', e=>showTip(e, `<div class="tip-name">${t.cnname} <span class="en">${nm}</span></div><div class="tip-row">${t.cndesc||''}</div>`));
-    node.addEventListener('mousemove', moveTip);
-    node.addEventListener('mouseleave', hideTip);
+    if(t){
+      node.addEventListener('mouseenter', e=>showTip(e, `<div class="tip-name">${t.cnname} <span class="en">${nm}</span></div><div class="tip-row">${t.cndesc||''}</div>`));
+      node.addEventListener('mousemove', moveTip);
+      node.addEventListener('mouseleave', hideTip);
+    }
+    node.addEventListener('click', e=>{
+      e.stopPropagation();
+      hideTip();
+      openTalentPicker(node.dataset.cls, parseInt(node.dataset.idx), node);
+    });
+  });
+
+  // 天赋重置按钮
+  document.querySelectorAll('[data-reset]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      delete state.overrides[btn.dataset.reset];
+      render();
+    });
   });
 }
+
+// 点击页面其它区域关闭天赋浮层
+document.addEventListener('mousedown', e=>{
+  const picker = document.getElementById('talentPicker');
+  if(picker && picker.style.display==='block' && !e.target.closest('#talentPicker')) closeTalentPicker();
+});
 
 // 全局 tooltip 安全隐藏：鼠标移动到非触发元素时隐藏
 document.addEventListener('mousemove', e=>{
