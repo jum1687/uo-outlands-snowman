@@ -425,7 +425,7 @@ function renderRoster(team){
 // ---------- 渲染右侧 ----------
 function renderTags(team){
   const covered = new Map();
-  team.forEach(p=>{
+  team.filter(Boolean).forEach(p=>{
     (p.tags||[]).forEach(t=>{
       covered.set(t, (covered.get(t)||0)+1);
     });
@@ -601,6 +601,14 @@ function closeAllSlotCombos(){
 function setSlot(idx, name){
   const pet = PETS.find(p=>p.name===name);
   if(!pet) return;
+  const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
+  const usedSlots = state.team.filter(Boolean).reduce((s,p)=>s+p.slots,0);
+  const oldSlots = state.team[idx] ? state.team[idx].slots : 0;
+  const newUsed = usedSlots - oldSlots + pet.slots;
+  if(newUsed > totalSlots){
+    alert(`加入 ${pet.name}（${pet.slots}槽）后总槽位 ${newUsed} 会超过上限 ${totalSlots}，请调整队伍或上限。`);
+    return;
+  }
   state.team[idx] = pet;
   render();
 }
