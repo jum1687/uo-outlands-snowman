@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>智能配宠向导 | Outlands 中文百科</title>
-<link rel="stylesheet" href="style.css?v=20260829_2">
+<title>智能配宠向导 | Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css?v=20260829_3">
 <link rel="stylesheet" href="../assets/theme.css">
 <script src="../assets/theme.js"></script>
 <style>
@@ -13,19 +13,21 @@
 @media (max-width:860px){ .tb-app{ flex-direction:column; } }
 
 /* 左侧：宠物队伍 */
-.tb-roster{ width:220px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; }
+.tb-roster{ width:240px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; }
 @media (max-width:860px){ .tb-roster{ width:100%; flex-direction:row; flex-wrap:wrap; } }
-.tb-roster-title{ font-weight:bold; font-size:1.05em; padding:0 4px; }
-.tb-slot{ border:1px solid #d4d8dd; border-radius:10px; background:#fff; padding:10px; cursor:pointer; transition:.15s; position:relative; }
-.tb-slot:hover{ border-color:#36c; box-shadow:0 0 0 2px rgba(51,102,204,.18); }
-.tb-slot .tb-remove{ position:absolute; top:6px; right:6px; width:20px; height:20px; border-radius:50%; border:none; background:#eaecf0; color:#666; font-size:14px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:.55; transition:.15s; }
-.tb-slot:hover .tb-remove{ opacity:1; }
-.tb-slot .tb-remove:hover{ background:#ff4d4f; color:#fff; }
 .tb-roster-head{ display:flex; align-items:center; justify-content:space-between; padding:0 4px; }
-.tb-roster-head .tb-clear{ font-size:.78em; color:#666; background:#eaecf0; border:none; border-radius:4px; padding:3px 8px; cursor:pointer; }
+.tb-roster-title{ font-weight:bold; font-size:1.05em; }
+.tb-roster-actions{ display:flex; gap:6px; }
+.tb-roster-head .tb-suggest{ font-size:.78em; color:#fff; background:#36c; border:none; border-radius:4px; padding:4px 9px; cursor:pointer; }
+.tb-roster-head .tb-suggest:hover{ background:#2a8; }
+.tb-roster-head .tb-clear{ font-size:.78em; color:#666; background:#eaecf0; border:none; border-radius:4px; padding:4px 9px; cursor:pointer; }
 .tb-roster-head .tb-clear:hover{ background:#ff4d4f; color:#fff; }
-.tb-slot.empty{ background:#f8f9fa; border-style:dashed; color:#888; cursor:default; }
-.tb-slot.empty:hover{ border-color:#d4d8dd; box-shadow:none; }
+.tb-slot{ border:1px solid #d4d8dd; border-radius:10px; background:#fff; padding:10px; transition:.15s; position:relative; min-height:82px; }
+.tb-slot.empty{ background:#f8f9fa; border-style:dashed; }
+.tb-slot:not(.empty):hover{ border-color:#36c; box-shadow:0 0 0 2px rgba(51,102,204,.18); }
+.tb-slot .tb-remove{ position:absolute; top:6px; right:6px; width:20px; height:20px; border-radius:50%; border:none; background:#eaecf0; color:#666; font-size:14px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:.55; transition:.15s; z-index:2; }
+.tb-slot:not(.empty):hover .tb-remove{ opacity:1; }
+.tb-slot .tb-remove:hover{ background:#ff4d4f; color:#fff; }
 .tb-slot-head{ display:flex; align-items:center; gap:6px; margin-bottom:6px; }
 .tb-slot-num{ width:22px; height:22px; border-radius:50%; background:#eaecf0; color:#555; font-size:.78em; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .tb-slot-name{ font-weight:600; font-size:.95em; line-height:1.25; }
@@ -34,6 +36,17 @@
 .tb-slot-body b{ color:#1a4f8a; }
 .tb-slot-dmg{ color:#1e8e3e; font-weight:bold; }
 .tb-slot-dmg .base{ color:#666; font-size:.85em; font-weight:normal; text-decoration:line-through; margin-left:4px; }
+
+/* 槽位 combobox */
+.tb-slot-combo{ position:relative; }
+.tb-slot-combo input{ width:100%; box-sizing:border-box; padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
+.tb-slot-combo .tb-combo-list{ position:absolute; top:calc(100% + 4px); left:0; right:0; max-height:220px; overflow:auto; background:#fff; border:1px solid #c8ccd1; border-radius:0 0 6px 6px; box-shadow:0 4px 10px rgba(0,0,0,.12); z-index:100; display:none; }
+.tb-slot-combo.open .tb-combo-list{ display:block; }
+.tb-combo-item{ padding:7px 9px; cursor:pointer; border-bottom:1px solid #eef0f2; font-size:.85em; line-height:1.35; }
+.tb-combo-item:hover, .tb-combo-item.active{ background:#f0f6ff; }
+.tb-combo-item .meta{ color:#777; font-size:.9em; }
+.tb-combo-item .tags{ margin-left:4px; }
+.tb-combo-empty{ padding:8px; color:#888; font-size:.85em; }
 
 /* 右侧主体 */
 .tb-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:16px; }
@@ -75,23 +88,10 @@
 
 /* 控件 */
 .tb-controls{ display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; background:#fff; border:1px solid #c8ccd1; border-radius:10px; padding:14px; margin-bottom:16px; }
-.tb-field{ display:flex; flex-direction:column; gap:4px; min-width:180px; flex:1 1 180px; }
+.tb-field{ display:flex; flex-direction:column; gap:4px; min-width:160px; flex:1 1 160px; }
 .tb-field label{ font-size:.8em; font-weight:bold; color:#54595d; }
 .tb-field select, .tb-field input{ padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
 .tb-slots{ max-width:120px; flex:0 0 120px; }
-.tb-gen{ padding:9px 18px; border:1px solid #36c; border-radius:8px; background:#36c; color:#fff; font:inherit; font-weight:bold; cursor:pointer; transition:.15s; }
-.tb-gen:hover{ background:#2a8; border-color:#2a8; }
-
-/* 核心宠 combobox */
-.tb-combo{ position:relative; }
-.tb-combo input{ width:100%; box-sizing:border-box; }
-.tb-combo-list{ position:absolute; top:100%; left:0; right:0; max-height:260px; overflow:auto; background:#fff; border:1px solid #c8ccd1; border-top:none; border-radius:0 0 6px 6px; box-shadow:0 4px 10px rgba(0,0,0,.12); z-index:100; display:none; }
-.tb-combo.open .tb-combo-list{ display:block; }
-.tb-combo-item{ padding:7px 9px; cursor:pointer; border-bottom:1px solid #eef0f2; font-size:.88em; line-height:1.35; }
-.tb-combo-item:hover, .tb-combo-item.active{ background:#f0f6ff; }
-.tb-combo-item .meta{ color:#777; font-size:.85em; }
-.tb-combo-item .tags{ margin-left:4px; }
-.tb-combo-empty{ padding:8px; color:#888; font-size:.85em; }
 
 .tb-intro{ color:#444; font-size:.92em; line-height:1.6; background:#f6f8fb; border-left:3px solid #36c; padding:8px 12px; border-radius:4px; margin:10px 0 16px;}
 .tb-overview{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#eef5ff; border:1px solid #bcd6f5; border-radius:8px; padding:10px 14px; font-size:.88em; }
@@ -107,13 +107,18 @@
 .cls-Tank{ background:#2980b9; }
 
 /* tooltip（参考 simulator） */
-.tooltip { position:fixed; display:none; max-width:340px; background:#222; color:#fff; padding:10px 12px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+.tooltip { position:fixed; display:none; max-width:360px; background:#222; color:#fff; padding:10px 12px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
 .tip-name { font-weight:bold; margin-bottom:5px; color:#ffd866; }
 .tip-name .en{ color:#cdb892; font-size:.8em; font-weight:normal; }
 .tip-row{ margin:3px 0; }
 .tip-row b{ color:#7fb0e8; }
 .tip-dmg{ color:#58d68d; font-weight:bold; }
 .tip-dmg .base{ color:#aaa; font-weight:normal; text-decoration:line-through; margin-left:4px; }
+.tip-ability{ margin:4px 0; padding:4px 0; border-top:1px solid #444; }
+.tip-ability:first-of-type{ border-top:none; }
+.tip-ability b{ color:#ffd866; }
+.tip-ability .en{ color:#cdb892; font-size:.85em; }
+.tip-ability .tip-ability-desc{ color:#ccc; font-size:.92em; margin-top:2px; }
 
 /* 深色模式 */
 html[data-theme="dark"] .tb-intro{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
@@ -126,7 +131,7 @@ html[data-theme="dark"] .tb-field label{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-field select,
 html[data-theme="dark"] .tb-field input{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-slot{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
-html[data-theme="dark"] .tb-slot:hover{ border-color:#4d8fe8; box-shadow:0 0 0 2px rgba(77,143,232,.25); }
+html[data-theme="dark"] .tb-slot:not(.empty):hover{ border-color:#4d8fe8; box-shadow:0 0 0 2px rgba(77,143,232,.25); }
 html[data-theme="dark"] .tb-slot.empty{ background:#1d2026; color:#9aa3ad; }
 html[data-theme="dark"] .tb-slot-num{ background:#3a414b; color:#9aa3ad; }
 html[data-theme="dark"] .tb-slot-name .en{ color:#9aa3ad; }
@@ -154,6 +159,8 @@ html[data-theme="dark"] .tb-slot .tb-remove{ background:#3a414b; color:#9aa3ad; 
 html[data-theme="dark"] .tb-slot .tb-remove:hover{ background:#ff4d4f; color:#fff; }
 html[data-theme="dark"] .tb-roster-head .tb-clear{ background:#3a414b; color:#9aa3ad; }
 html[data-theme="dark"] .tb-roster-head .tb-clear:hover{ background:#ff4d4f; color:#fff; }
+html[data-theme="dark"] .tb-slot-combo input{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 
 /* 保留 .dbadge 在深色下的可读性（style.css 已有颜色） */
 </style>
@@ -204,16 +211,9 @@ html[data-theme="dark"] .tb-roster-head .tb-clear:hover{ background:#ff4d4f; col
 <div class="mw-body">
   <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：16 类特殊技能</div>
   <h1>智能配宠向导 <span class="cnsub">Team Builder</span></h1>
-  <p class="tb-intro">选好你的核心宠（默认 Warpig），一键生成 <b>互补阵容</b> + 每只 <b>满点(25)加点清单</b>。左侧为竖排 5 槽队伍，鼠标悬停槽位可查看加成后的宠物详情；右侧展示阵容标签、三系天赋推荐与核心宠玩法说明。跟随上限 5 槽（控制槽 Control Slots）。</p>
+  <p class="tb-intro">在左侧 5 个队伍槽位中直接搜索并选择宠物，右侧会实时显示阵容标签、三系天赋推荐与玩法说明。点击「补充推荐」可根据当前阵容自动补齐互补宠物。跟随上限 5 槽（控制槽 Control Slots）。</p>
 
   <div class="tb-controls">
-    <div class="tb-field tb-field-core">
-      <label>核心宠</label>
-      <div class="tb-combo" id="coreCombo">
-        <input id="coreInput" placeholder="搜索宠物名…（如 Warpig）" autocomplete="off" />
-        <div class="tb-combo-list" id="coreList"></div>
-      </div>
-    </div>
     <div class="tb-field">
       <label>作战场景</label>
       <select id="scenarioSel">
@@ -225,7 +225,6 @@ html[data-theme="dark"] .tb-roster-head .tb-clear:hover{ background:#ff4d4f; col
       <label>跟随上限（控制槽）</label>
       <input id="slotsInput" type="number" min="1" max="5" value="5" />
     </div>
-    <button id="genBtn" class="tb-gen">生成推荐阵容</button>
   </div>
 
   <div id="result"></div>
@@ -245,15 +244,15 @@ const CLSZH = window.CLS_ZH;
 const AB_CN = window.AB_CN || {};
 const ICON = {Attack:'images/icon-attackclass.png',Utility:'images/icon-utilityclass.png',Tank:'images/icon-tankclass.png'};
 
-// 战斗维度权重（互补打分基础值）
+// 战斗维度权重
 const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5, hamstring:1.6, hinder:1.6};
 const SCEN = {
   pve:   {},
   boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2, hamstring:1.3, hinder:1.3}
 };
 
-// 页面状态
-const state = { core: null, team: [] };
+// 页面状态：5 个槽位数组
+const state = { team: [] };
 
 function talentInfo(name){
   for(const c of ['Attack','Utility','Tank']){
@@ -273,93 +272,113 @@ function abText(list){
   if(!list || !list.length) return '<span style="color:#aaa">无特殊技能</span>';
   return list.map(en=>{
     const info = AB_CN[en];
-    return info ? `${info[0]} <span style="color:#999;font-size:.9em">${en}</span>` : en;
+    return info ? `${info[0]}<span class="en">${en}</span>` : en;
   }).join('、');
 }
 
-// ---------- 互补选宠 ----------
-function pickComplements(core, scenario, totalSlots){
-  const coreTags = new Set(core.tags);
-  const scenW = SCEN[scenario] || {};
-  const remain0 = Math.max(0, (totalSlots||5) - core.slots);
-  const cands = PETS.filter(p=>p.name!==core.name && p.tags.length>0);
+// ---------- 互补选宠（基于现有队伍补全） ----------
+function pickComplements(existingTeam, scenario, totalSlots){
+  const usedNames = new Set(existingTeam.filter(Boolean).map(p=>p.name));
+  const coveredDims = new Set();
+  existingTeam.filter(Boolean).forEach(p=>{
+    (p.tags||[]).forEach(t=>{ if(t in W) coveredDims.add(t); });
+  });
+  const usedSlots = existingTeam.filter(Boolean).reduce((s,p)=>s+p.slots,0);
+  let remain = Math.max(0, totalSlots - usedSlots);
+  const cands = PETS.filter(p=>!usedNames.has(p.name) && p.tags.length>0);
   const selected = [];
-  const used = new Set([core.name]);
-  const pickedDims = new Set();
-  let remain = remain0;
   const reasons = {};
-  for(let i=0;i<4;i++){
+  while(remain > 0 && selected.length < 10){
     let best=null, bestScore=-1e9, bestGot=[];
     for(const p of cands){
-      if(used.has(p.name)) continue;
+      if(usedNames.has(p.name)) continue;
       if(p.slots > remain) continue;
       let comp=0, dims=0; const got=[];
       for(const d of p.tags){
-        if(d in W && !coreTags.has(d) && !pickedDims.has(d)){
-          const w = W[d]*(scenW[d]||1);
+        if(d in W && !coveredDims.has(d)){
+          const w = W[d]*(SCEN[scenario][d]||1);
           comp += w; dims++; got.push(d);
         }
       }
       comp += dims*0.8;
-      if(core.abilities && (core.abilities.passiveability||[]).length && (p.tags.includes('backstab'))) comp += 1.0;
+      // 背刺宠与带背刺增益的宠协同
+      const hasBackstab = existingTeam.some(x=>x && (x.tags||[]).includes('backstab'));
+      if(hasBackstab && (p.tags||[]).includes('buff')) comp += 0.8;
       const score = comp - p.slots*0.3 + (p.maxdmgBoosted||p.maxdmg||0)*0.015;
       if(score>bestScore){ bestScore=score; best=p; bestGot=got; }
     }
     if(!best) break;
     selected.push(best);
     reasons[best.name] = bestGot;
-    used.add(best.name);
-    best.tags.forEach(d=>{ if(d in W) pickedDims.add(d); });
+    usedNames.add(best.name);
+    best.tags.forEach(d=>{ if(d in W) coveredDims.add(d); });
     remain -= best.slots;
   }
   return {selected, reasons};
 }
 
-// ---------- tooltip ----------
+// ---------- tooltip（带安全隐藏） ----------
+const tipEl = document.getElementById('tip');
+let tipTimer = null;
 function showTip(e, html){
-  const tip = document.getElementById('tip');
-  tip.innerHTML = html;
-  tip.style.display = 'block';
-  tip.classList.remove('tip-mobile');
+  hideTip();
+  tipEl.innerHTML = html;
+  tipEl.style.display = 'block';
   moveTip(e);
 }
 function moveTip(e){
-  const tip = document.getElementById('tip');
-  if(tip.classList.contains('tip-mobile')) return;
   let x = e.clientX + 14, y = e.clientY + 14;
-  const rect = tip.getBoundingClientRect();
+  const rect = tipEl.getBoundingClientRect();
   if(x + rect.width + 10 > window.innerWidth) x = e.clientX - rect.width - 10;
   if(y + rect.height + 10 > window.innerHeight) y = e.clientY - rect.height - 10;
   if(x < 4) x = 4; if(y < 4) y = 4;
-  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
 }
 function hideTip(){
-  document.getElementById('tip').style.display = 'none';
+  tipEl.style.display = 'none';
+  if(tipTimer){ clearTimeout(tipTimer); tipTimer=null; }
 }
 function petTipHtml(pet){
   const abilitiesAll = getAbilities(pet);
+  const abilitiesHtml = abilitiesAll.length ? abilitiesAll.map(en=>{
+    const info = AB_CN[en];
+    if(!info) return `<div class="tip-ability"><b>${en}</b></div>`;
+    return `<div class="tip-ability"><b>${info[0]}</b> <span class="en">${en}</span><div class="tip-ability-desc">${info[1]}</div></div>`;
+  }).join('') : '<div class="tip-ability" style="color:#aaa">无特殊技能</div>';
   return `<div class="tip-name">${pet.name} <span class="en">${pet.slug}</span></div>
 <div class="tip-row"><b>系别：</b><span class="cls-badge cls-${pet.cls}">${CLSZH[pet.cls]}系</span>　<b>槽位：</b>${pet.slots}　<b>驯兽：</b>${pet.taming}</div>
 <div class="tip-row"><b>生命：</b>${pet.hits}　<b>武术：</b>${pet.wrestling}</div>
 <div class="tip-row"><b>基础伤害：</b><span class="tip-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="base">${pet.mindmg}–${pet.maxdmg}</span>（Underdog +${pet.underdogPct}%）</div>
 <div class="tip-row"><b>标签：</b>${badges(pet.tags)}</div>
-<div class="tip-row"><b>技能：</b>${abText(abilitiesAll)}</div>`;
+<div class="tip-row"><b>技能：</b></div>${abilitiesHtml}`;
 }
 
 // ---------- 渲染左侧队伍 ----------
+function renderSlotCombo(i){
+  return `<div class="tb-slot-combo" id="slotCombo-${i}">
+    <input id="slotInput-${i}" placeholder="搜索宠物…" autocomplete="off" />
+    <div class="tb-combo-list" id="slotList-${i}"></div>
+  </div>`;
+}
 function renderRoster(team){
   const hasAny = team.some(Boolean);
   let html = `<div class="tb-roster-head">
     <span class="tb-roster-title">宠物队伍</span>
-    ${hasAny ? `<button class="tb-clear" id="tbClearAll" title="清空队伍">清空</button>` : ''}
+    <div class="tb-roster-actions">
+      <button class="tb-suggest" id="tbSuggest" title="根据当前阵容自动补齐">补充推荐</button>
+      ${hasAny ? `<button class="tb-clear" id="tbClearAll" title="清空队伍">清空</button>` : ''}
+    </div>
   </div>`;
   for(let i=0;i<5;i++){
     const pet = team[i];
     if(!pet){
-      html += `<div class="tb-slot empty"><div class="tb-slot-head"><span class="tb-slot-num">${i+1}</span><span class="tb-slot-name">空槽位</span></div></div>`;
+      html += `<div class="tb-slot empty" data-idx="${i}">
+        <div class="tb-slot-head"><span class="tb-slot-num">${i+1}</span><span class="tb-slot-name">空槽位</span></div>
+        ${renderSlotCombo(i)}
+      </div>`;
       continue;
     }
-    const abilitiesShort = getAbilities(pet).slice(0,3);
+    const abilitiesShort = getAbilities(pet).slice(0,2);
     html += `<div class="tb-slot" data-idx="${i}">
       <button class="tb-remove" data-remove="${i}" title="移除 ${pet.name}">×</button>
       <div class="tb-slot-head">
@@ -376,7 +395,7 @@ function renderRoster(team){
   return `<div class="tb-roster">${html}</div>`;
 }
 
-// ---------- 渲染右侧标签栏 ----------
+// ---------- 渲染右侧 ----------
 function renderTags(team){
   const covered = new Map();
   team.forEach(p=>{
@@ -389,7 +408,6 @@ function renderTags(team){
   return `<div class="tb-tags-row">${tagsHtml}</div>`;
 }
 
-// ---------- 渲染右侧天赋推荐 ----------
 function renderTalents(team, scenario){
   const byCls = {Attack:[], Utility:[], Tank:[]};
   team.forEach(p=>{
@@ -426,87 +444,128 @@ function renderTalents(team, scenario){
   return html;
 }
 
-// ---------- 渲染玩法说明 ----------
-function renderPlaystyle(core){
-  return `<div class="tb-playstyle"><div class="tb-ps-title">核心宠：${core.name} 玩法说明</div>${core.playstyle}</div>`;
+function renderPlaystyle(team){
+  const core = team.find(Boolean);
+  if(!core) return '<div class="tb-playstyle">请先在左侧队伍槽位中选择宠物。</div>';
+  return `<div class="tb-playstyle"><div class="tb-ps-title">${core.name} 玩法说明</div>${core.playstyle}</div>`;
 }
 
-// ---------- combobox ----------
-let comboFiltered = [];
-let comboIndex = -1;
-function comboFilter(q){
+// ---------- 槽位 combobox 管理 ----------
+const slotComboState = {}; // idx -> {filtered, index, open}
+function allPetsSorted(){ return [...PETS].sort((a,b)=>a.name.localeCompare(b.name)); }
+function filterSlotCombo(idx, q){
   const v = (q || '').trim().toLowerCase();
-  comboFiltered = PETS.filter(p=>{
+  slotComboState[idx] = slotComboState[idx] || {filtered:allPetsSorted(), index:-1, open:false};
+  const st = slotComboState[idx];
+  st.filtered = PETS.filter(p=>{
     if(!v) return true;
     return p.name.toLowerCase().includes(v) || p.slug.includes(v) || (p.tags||[]).some(t=>(TAGLABELS[t]||t).includes(v));
   }).sort((a,b)=>a.name.localeCompare(b.name));
-  comboIndex = -1;
-  renderComboList();
+  st.index = -1;
+  renderSlotComboList(idx);
 }
-function renderComboList(){
-  const list = document.getElementById('coreList');
-  if(comboFiltered.length===0){
+function renderSlotComboList(idx){
+  const list = document.getElementById('slotList-'+idx);
+  const st = slotComboState[idx] || {filtered:[], index:-1};
+  if(!list) return;
+  if(st.filtered.length===0){
     list.innerHTML = '<div class="tb-combo-empty">无匹配宠物</div>';
     return;
   }
-  list.innerHTML = comboFiltered.map((p,i)=>{
+  list.innerHTML = st.filtered.map((p,i)=>{
     const tagStr = p.tags.length ? ' #' + p.tags.map(t=>TAGLABELS[t]||t).join(' ') : '';
-    return `<div class="tb-combo-item ${i===comboIndex?'active':''}" data-name="${p.name}" data-i="${i}">
+    return `<div class="tb-combo-item ${i===st.index?'active':''}" data-name="${p.name}" data-i="${i}">
       <div>${p.name} <span class="meta">（${p.slots}槽 / 驯${p.taming}）</span><span class="tags">${tagStr}</span></div>
     </div>`;
   }).join('');
 }
-function setCore(name){
+function openSlotCombo(idx){ 
+  const combo = document.getElementById('slotCombo-'+idx);
+  if(combo) combo.classList.add('open');
+}
+function closeSlotCombo(idx){ 
+  const combo = document.getElementById('slotCombo-'+idx);
+  if(combo) combo.classList.remove('open');
+}
+function closeAllSlotCombos(){
+  for(let i=0;i<5;i++) closeSlotCombo(i);
+}
+function setSlot(idx, name){
   const pet = PETS.find(p=>p.name===name);
   if(!pet) return;
-  state.core = pet;
-  document.getElementById('coreInput').value = pet.name;
-  document.getElementById('coreCombo').classList.remove('open');
+  state.team[idx] = pet;
+  render();
 }
-function openCombo(){ document.getElementById('coreCombo').classList.add('open'); }
-function closeCombo(){ setTimeout(()=>document.getElementById('coreCombo').classList.remove('open'), 160); }
-
-// ---------- 队伍操作 ----------
-function removePet(idx){
-  if(idx < 0 || idx >= state.team.length || !state.team[idx]) return;
-  state.team.splice(idx, 1);
-  // 核心宠被移除时，由下一顺位递补
-  if(state.team.length > 0 && state.core && !state.team.includes(state.core)){
-    state.core = state.team[0];
-    document.getElementById('coreInput').value = state.core.name;
-  }
+function removeSlot(idx){
+  hideTip();
+  if(idx < 0 || idx >= state.team.length) return;
+  state.team[idx] = null;
   render();
 }
 function clearTeam(){
+  hideTip();
   state.team = [];
   render();
 }
 
-// ---------- 生成 ----------
-function generate(){
-  const core = state.core;
-  if(!core) return;
+function bindSlotCombos(){
+  for(let i=0;i<5;i++){
+    if(state.team[i]) continue; // 已填充槽位不需要 combobox
+    const input = document.getElementById('slotInput-'+i);
+    const list = document.getElementById('slotList-'+i);
+    const combo = document.getElementById('slotCombo-'+i);
+    if(!input || !list || !combo) continue;
+    slotComboState[i] = {filtered:allPetsSorted(), index:-1, open:false};
+    renderSlotComboList(i);
+
+    input.addEventListener('focus', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
+    input.addEventListener('input', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
+    input.addEventListener('blur', ()=>{ setTimeout(()=>closeSlotCombo(i), 160); });
+    input.addEventListener('keydown', e=>{
+      const st = slotComboState[i];
+      if(!st || !st.filtered.length) return;
+      if(e.key==='ArrowDown'){ e.preventDefault(); st.index = Math.min(st.index+1, st.filtered.length-1); renderSlotComboList(i); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); st.index = Math.max(st.index-1, -1); renderSlotComboList(i); }
+      else if(e.key==='Enter'){
+        e.preventDefault();
+        if(st.index >= 0) setSlot(i, st.filtered[st.index].name);
+        else if(st.filtered.length===1) setSlot(i, st.filtered[0].name);
+      } else if(e.key==='Escape'){ closeSlotCombo(i); }
+    });
+    list.addEventListener('mousedown', e=>{
+      const item = e.target.closest('.tb-combo-item');
+      if(!item) return;
+      const name = item.dataset.name;
+      if(name) setSlot(i, name);
+    });
+  }
+}
+
+// ---------- 补充推荐 ----------
+function suggestTeam(){
   const scenario = document.getElementById('scenarioSel').value;
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
   document.getElementById('slotsInput').value = totalSlots;
-  const {selected, reasons} = pickComplements(core, scenario, totalSlots);
-
-  // 如果核心宠超过上限，只保留核心
-  state.team = [core, ...selected];
+  const {selected} = pickComplements(state.team, scenario, totalSlots);
+  // 依次填入第一个空槽
+  for(const p of selected){
+    const emptyIdx = state.team.findIndex(x=>!x);
+    if(emptyIdx === -1) break;
+    state.team[emptyIdx] = p;
+  }
   render();
 }
 
 // ---------- 渲染 ----------
 function render(){
+  hideTip();
   const team = state.team;
-  const core = state.core;
   const scenario = document.getElementById('scenarioSel').value;
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
-  const usedSlots = team.reduce((s,p)=>s+p.slots,0);
+  const usedSlots = team.filter(Boolean).reduce((s,p)=>s+p.slots,0);
 
   const scenZh = scenario==='boss' ? '单挑 BOSS' : '日常刷图';
   const overview = `<div class="tb-overview" style="margin-bottom:14px;">
-    <span>核心宠：<b>${core ? core.name : '—'}</b></span>
     <span>场景：<b>${scenZh}</b></span>
     <span>队伍槽位：<b>${usedSlots}</b> / 上限 ${totalSlots}</span>
   </div>`;
@@ -524,10 +583,12 @@ function render(){
       </div>
       <div class="tb-panel tb-playstyle-panel">
         <div class="tb-panel-title">玩法说明</div>
-        ${core ? renderPlaystyle(core) : '<div class="tb-playstyle">请先选择核心宠</div>'}
+        ${renderPlaystyle(team)}
       </div>
     </div>
   </div>`;
+
+  bindSlotCombos();
 
   // 绑定队伍槽位 tooltip
   document.querySelectorAll('.tb-slot[data-idx]').forEach(slot=>{
@@ -543,11 +604,13 @@ function render(){
   document.querySelectorAll('[data-remove]').forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
-      removePet(parseInt(btn.dataset.remove));
+      removeSlot(parseInt(btn.dataset.remove));
     });
   });
   const clearBtn = document.getElementById('tbClearAll');
   if(clearBtn) clearBtn.addEventListener('click', clearTeam);
+  const suggestBtn = document.getElementById('tbSuggest');
+  if(suggestBtn) suggestBtn.addEventListener('click', suggestTeam);
 
   // 绑定迷你天赋 tooltip
   document.querySelectorAll('[data-talent]').forEach(node=>{
@@ -560,46 +623,19 @@ function render(){
   });
 }
 
+// 全局 tooltip 安全隐藏：鼠标移动到非触发元素时隐藏
+document.addEventListener('mousemove', e=>{
+  if(tipEl.style.display==='none') return;
+  const target = e.target;
+  const insideTrigger = target.closest && (target.closest('.tb-slot') || target.closest('[data-talent]'));
+  if(!insideTrigger) hideTip();
+});
+
 // ---------- 初始化 ----------
 (function init(){
-  comboFiltered = [...PETS].sort((a,b)=>a.name.localeCompare(b.name));
-  if(PETS.some(p=>p.name==='Warpig')) setCore('Warpig');
-  else setCore(comboFiltered[0].name);
-
-  const input = document.getElementById('coreInput');
-  const combo = document.getElementById('coreCombo');
-  const list = document.getElementById('coreList');
-
-  input.addEventListener('focus', ()=>{ openCombo(); comboFilter(input.value); });
-  input.addEventListener('input', ()=>{ openCombo(); comboFilter(input.value); });
-  input.addEventListener('blur', closeCombo);
-  input.addEventListener('keydown', e=>{
-    if(!comboFiltered.length) return;
-    if(e.key==='ArrowDown'){ e.preventDefault(); comboIndex = Math.min(comboIndex+1, comboFiltered.length-1); renderComboList(); }
-    else if(e.key==='ArrowUp'){ e.preventDefault(); comboIndex = Math.max(comboIndex-1, -1); renderComboList(); }
-    else if(e.key==='Enter'){
-      e.preventDefault();
-      if(comboIndex >= 0){
-        setCore(comboFiltered[comboIndex].name);
-        generate();
-      } else if(comboFiltered.length===1){
-        setCore(comboFiltered[0].name);
-        generate();
-      }
-    } else if(e.key==='Escape'){ combo.classList.remove('open'); }
-  });
-  list.addEventListener('mousedown', e=>{
-    const item = e.target.closest('.tb-combo-item');
-    if(!item) return;
-    const name = item.dataset.name;
-    setCore(name);
-    generate();
-  });
-
-  document.getElementById('genBtn').addEventListener('click', generate);
-  document.getElementById('scenarioSel').addEventListener('change', generate);
-  document.getElementById('slotsInput').addEventListener('change', generate);
-  generate();
+  document.getElementById('scenarioSel').addEventListener('change', render);
+  document.getElementById('slotsInput').addEventListener('change', render);
+  render();
 })();
 </script>
 </body>
