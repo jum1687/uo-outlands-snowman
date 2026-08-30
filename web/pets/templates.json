@@ -25,9 +25,12 @@
     "note": "接口自测",
     "createdAt": "2026-08-30T13:16:47.876Z",
     "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
+      "sum": 8,
+      "count": 1,
+      "voters": {
+        "b174b6f13cac": 8
+      },
+      "avg": 8
     }
   }
 ]
