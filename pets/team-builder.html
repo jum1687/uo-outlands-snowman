@@ -132,6 +132,7 @@
 .tb-talent-picker .tp-name .en{ color:#888; font-weight:normal; font-size:.92em; }
 .tb-talent-picker .tp-desc{ font-size:.76em; color:#666; margin-top:3px; line-height:1.4; }
 .tb-tcol-reset{ margin-left:auto; font-size:.72em; color:#666; background:#eaecf0; border:none; border-radius:4px; padding:3px 8px; cursor:pointer; }
+.tb-user-pref{ margin-left:auto; font-size:.7em; color:#b8860b; background:#fff7e0; border:1px solid #f0d090; border-radius:10px; padding:1px 7px; }
 .tb-tcol-reset:hover{ background:#ff4d4f; color:#fff; }
 .tb-mini-t.overridden{ border-color:#f0a020; background:#fff7ec; }
 .tb-mini-t.overridden:hover{ background:#fff0db; }
@@ -282,6 +283,30 @@ const SCEN = {
 
 // 页面状态：5 个槽位数组 + 天赋覆盖
 const state = { team: [], overrides: {} };
+
+// 天赋偏好持久化（本机 localStorage）：用户改过的某系天赋，下次打开自动沿用
+const LS_OVERRIDES = 'tb_talent_overrides_v1';
+function loadOverrides(){
+  try{
+    const raw = localStorage.getItem(LS_OVERRIDES);
+    if(raw) state.overrides = JSON.parse(raw) || {};
+  }catch(e){ state.overrides = {}; }
+}
+function saveOverrides(){
+  try{ localStorage.setItem(LS_OVERRIDES, JSON.stringify(state.overrides)); }catch(e){}
+}
+// 与系统默认完全一致则视为未覆盖（避免误标“你的偏好”）
+function normalizeOverride(cls, scenario){
+  const pet = repPetByCls(state.team)[cls];
+  if(!pet) return;
+  const def = baseRecNames(cls, pet, scenario);
+  if(arraysEqual(state.overrides[cls], def)) delete state.overrides[cls];
+}
+function arraysEqual(a, b){
+  if(!a || !b || a.length !== b.length) return false;
+  return a.every((v,i)=>v === b[i]);
+}
+loadOverrides();
 
 function talentInfo(name){
   for(const c of ['Attack','Utility','Tank']){
@@ -473,7 +498,7 @@ function renderTalents(team, scenario){
   for(const cls of ['Attack','Utility','Tank']){
     const pet = rep[cls];
     html += `<div class="tb-tcol tb-tcol-${cls}">`;
-    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? `<button class="tb-tcol-reset" data-reset="${cls}" title="恢复系统推荐">重置</button>` : ''}</div>`;
+    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? (state.overrides[cls] ? ` <span class="tb-user-pref" title="已按你本机保存的偏好">★你的偏好</span><button class="tb-tcol-reset" data-reset="${cls}" title="清除你的偏好，恢复系统推荐">清除</button>` : `<button class="tb-tcol-reset" data-reset="${cls}" title="恢复系统推荐">重置</button>`) : ''}</div>`;
     if(!pet){
       html += `<div class="tb-tcol-empty">本阵容无 ${CLSZH[cls]} 系宠物</div>`;
     } else {
@@ -542,8 +567,11 @@ function bindTalentPickerItems(){
       if(!pickerCtx) return;
       const {cls, idx} = pickerCtx;
       const pet = repPetByCls(state.team)[cls];
-      if(pet) ensureOverride(cls, pet, document.getElementById('scenarioSel').value);
+      const scenario = document.getElementById('scenarioSel').value;
+      if(pet) ensureOverride(cls, pet, scenario);
       state.overrides[cls][idx] = item.dataset.name;
+      normalizeOverride(cls, scenario);
+      saveOverrides();
       closeTalentPicker();
       hideTip();
       render();
@@ -761,6 +789,7 @@ function render(){
     btn.addEventListener('click', e=>{
       e.stopPropagation();
       delete state.overrides[btn.dataset.reset];
+      saveOverrides();
       render();
     });
   });
