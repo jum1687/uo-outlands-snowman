@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "mtfy65gyew90",
+    "team": [
+      "Harvestman",
+      "Corpse Eater",
+      "Corpse Eater",
+      "Corpse Eater",
+      null
+    ],
+    "talents": {
+      "Attack": [
+        "Punishment",
+        "Scour",
+        "Beast Sting",
+        "Behemoth"
+      ],
+      "Utility": [
+        "Contagion",
+        "Carrion",
+        "Toxic",
+        "Primal"
+      ],
+      "Tank": []
+    },
+    "scenario": "pve",
+    "slots": 5,
+    "createdAt": "2026-08-30T15:11:24.466Z",
+    "name": "疾病流，1收割者+3食尸鬼",
+    "author": "Snowman Liang",
+    "note": "",
+    "mine": true,
+    "updatedAt": "2026-08-30T15:11:24.466Z"
+  }
+]
