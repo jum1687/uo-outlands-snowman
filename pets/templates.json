@@ -1,2 +1,19 @@
 [
+  {
+    "id": "__selftest__",
+    "name": "自测临时项-火焰蚁",
+    "author": "小凤",
+    "team": [
+      "Hell Hound"
+    ],
+    "talents": {},
+    "scenario": "pve",
+    "slots": 5,
+    "mine": true,
+    "ratings": {
+      "sum": 0,
+      "count": 0
+    },
+    "createdAt": "2026-08-30T14:42:40.781Z"
+  }
 ]
