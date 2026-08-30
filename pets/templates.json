@@ -1,7 +1,7 @@
 [
   {
     "id": "ratetest01",
-    "name": "评分测试队",
+    "name": "示例：火蚁刷图队",
     "author": "小凤",
     "scenario": "pve",
     "slots": 5,
@@ -22,7 +22,7 @@
       "Utility": [],
       "Tank": []
     },
-    "note": "接口自测",
+    "note": "悬停看阵容 · 点套用可恢复 · 可打分",
     "createdAt": "2026-08-30T13:16:47.876Z",
     "ratings": {
       "sum": 9,
