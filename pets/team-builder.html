@@ -192,6 +192,48 @@ html[data-theme="dark"] .tb-slot-combo input{ background:#262b32; border-color:#
 html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 
 /* 保留 .dbadge 在深色下的可读性（style.css 已有颜色） */
+
+/* 模板区 */
+.tb-tpl-bar{ display:flex; gap:8px; margin:0 0 14px; flex-wrap:wrap; }
+.tb-tpl-bar button{ font-size:.82em; padding:6px 12px; border-radius:6px; border:1px solid #c8ccd1; background:#fff; cursor:pointer; }
+.tb-tpl-bar .tb-save-tpl{ background:#36c; color:#fff; border-color:#36c; }
+.tb-tpl-bar .tb-save-tpl:hover{ background:#2a8; }
+.tb-tpl-bar .tb-toggle-tpl{ background:#fff; }
+.tb-tpl-bar .tb-toggle-tpl:hover{ border-color:#36c; color:#36c; }
+.tb-tpl-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+.tb-tpl-card{ border:1px solid #e4e7eb; border-radius:8px; padding:10px; background:#fcfcfc; position:relative; }
+.tb-tpl-card h4{ margin:0 0 4px; font-size:.92em; display:flex; align-items:center; gap:6px; }
+.tb-tpl-card .tb-tpl-tag{ font-size:.68em; padding:1px 6px; border-radius:8px; }
+.tb-tpl-card .tb-tpl-tag.community{ background:#e8f0ff; color:#2a6; }
+.tb-tpl-card .tb-tpl-tag.mine{ background:#fff3e0; color:#b8860b; }
+.tb-tpl-card .meta{ font-size:.76em; color:#888; margin-bottom:6px; }
+.tb-tpl-card .pets{ font-size:.8em; color:#555; margin-bottom:8px; line-height:1.4; }
+.tb-tpl-card .apply{ font-size:.78em; background:#27ae60; color:#fff; border:none; border-radius:4px; padding:4px 12px; cursor:pointer; }
+.tb-tpl-card .apply:hover{ background:#1e8449; }
+.tb-tpl-empty{ color:#888; font-size:.88em; }
+.tb-tpl-err{ color:#c0392b; font-size:.82em; }
+
+/* 存为模板弹窗 */
+.tb-tpl-modal-mask{ position:fixed; inset:0; background:rgba(0,0,0,.4); display:none; z-index:9997; align-items:center; justify-content:center; }
+.tb-tpl-modal-mask.open{ display:flex; }
+.tb-tpl-modal{ background:#fff; border-radius:10px; padding:18px; width:340px; max-width:92vw; box-sizing:border-box; }
+.tb-tpl-modal h3{ margin:0 0 6px; font-size:1.05em; }
+.tb-tpl-modal label{ font-size:.8em; font-weight:bold; display:block; margin:10px 0 3px; }
+.tb-tpl-modal input, .tb-tpl-modal textarea{ width:100%; box-sizing:border-box; padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; }
+.tb-tpl-modal .row{ display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+.tb-tpl-modal .row button{ padding:6px 14px; border-radius:6px; border:1px solid #c8ccd1; cursor:pointer; }
+.tb-tpl-modal .row .ok{ background:#36c; color:#fff; border-color:#36c; }
+.tb-tpl-modal .hint{ font-size:.74em; color:#999; margin-top:4px; }
+html[data-theme="dark"] .tb-tpl-bar button{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-tpl-bar .tb-save-tpl{ background:#36c; color:#fff; }
+html[data-theme="dark"] .tb-tpl-list .tb-tpl-card{ background:#1d2026; border-color:#3a414b; }
+html[data-theme="dark"] .tb-tpl-card .meta, html[data-theme="dark"] .tb-tpl-card .pets{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.community{ background:#1c2733; color:#58d68d; }
+html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.mine{ background:#3a3326; color:#f0a020; }
+html[data-theme="dark"] .tb-tpl-modal{ background:#262b32; color:#d6dbe2; }
+html[data-theme="dark"] .tb-tpl-modal input, html[data-theme="dark"] .tb-tpl-modal textarea{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-tpl-modal .row button{ background:#3a414b; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
 </style>
 </head>
 <body class="side-nav-page">
@@ -263,6 +305,26 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 
 <div class="tooltip" id="tip"></div>
 <div class="tb-talent-picker" id="talentPicker"></div>
+
+<!-- 存为模板弹窗 -->
+<div class="tb-tpl-modal-mask" id="tplModal">
+  <div class="tb-tpl-modal">
+    <h3>保存为配宠模板</h3>
+    <div class="meta" style="font-size:.78em;color:#888;">将当前队伍与加点存成模板，方便一键套用。勾选「发布到社区」会让所有访客都能看到（需后端已部署）。</div>
+    <label>模板名称</label>
+    <input id="tplName" placeholder="如：日常刷图暴力队" maxlength="40" />
+    <label>作者名</label>
+    <input id="tplAuthor" placeholder="你的昵称" maxlength="20" value="羊哥" />
+    <label>备注（可选）</label>
+    <textarea id="tplNote" rows="2" maxlength="120" placeholder="一句话说明思路"></textarea>
+    <label style="display:flex;align-items:center;gap:6px;font-weight:normal;"><input type="checkbox" id="tplPublish" style="width:auto;padding:0;" /> 发布到社区模板库</label>
+    <div class="hint" id="tplHint"></div>
+    <div class="row">
+      <button id="tplCancel">取消</button>
+      <button class="ok" id="tplOk">保存</button>
+    </div>
+  </div>
+</div>
 
 <script src="team-builder-data.js"></script>
 <script>
@@ -726,7 +788,16 @@ function render(){
     <span>队伍槽位：<b>${usedSlots}</b> / 上限 ${totalSlots}</span>
   </div>`;
 
-  document.getElementById('result').innerHTML = overview + `<div class="tb-app">
+  const tplBar = `<div class="tb-tpl-bar">
+    <button class="tb-save-tpl" id="tbSaveTpl">💾 存为模板</button>
+    <button class="tb-toggle-tpl" id="tbToggleTpl">📚 模板库${tplPanelOpen?' ▲':' ▼'}</button>
+  </div>`;
+  const tplPanel = tplPanelOpen ? `<div class="tb-panel">
+    <div class="tb-panel-title">模板库</div>
+    <div id="tplList" class="tb-tpl-list"><div class="tb-tpl-empty">加载中…</div></div>
+  </div>` : '';
+
+  document.getElementById('result').innerHTML = overview + tplBar + `<div class="tb-app">
     ${renderRoster(team)}
     <div class="tb-main">
       <div class="tb-panel">
@@ -741,6 +812,7 @@ function render(){
         <div class="tb-panel-title">玩法说明</div>
         ${renderPlaystyle(team)}
       </div>
+      ${tplPanel}
     </div>
   </div>`;
 
@@ -767,6 +839,13 @@ function render(){
   if(clearBtn) clearBtn.addEventListener('click', clearTeam);
   const suggestBtn = document.getElementById('tbSuggest');
   if(suggestBtn) suggestBtn.addEventListener('click', suggestTeam);
+
+  // 模板：存为 / 切换面板
+  const saveTplBtn = document.getElementById('tbSaveTpl');
+  if(saveTplBtn) saveTplBtn.addEventListener('click', ()=>{ hideTip(); openSaveModal(); });
+  const toggleTplBtn = document.getElementById('tbToggleTpl');
+  if(toggleTplBtn) toggleTplBtn.addEventListener('click', ()=>{ tplPanelOpen = !tplPanelOpen; render(); });
+  if(tplPanelOpen) loadTemplates();
 
   // 绑定迷你天赋：tooltip + 点击重选
   document.querySelectorAll('.tb-mini-t').forEach(node=>{
@@ -800,6 +879,148 @@ document.addEventListener('mousedown', e=>{
   const picker = document.getElementById('talentPicker');
   if(picker && picker.style.display==='block' && !e.target.closest('#talentPicker')) closeTalentPicker();
 });
+
+// ---------- 模板区（GitHub 当库：API 读写 + 本机兜底） ----------
+let tplPanelOpen = false;
+const TEMPLATE_API = 'https://uo-tb-templates.workers.dev/'; // 轻函数地址（部署后替换）
+const LS_MY_TPL = 'tb_my_templates_v1';
+function getMyTemplates(){
+  try{ return JSON.parse(localStorage.getItem(LS_MY_TPL)) || []; }catch(e){ return []; }
+}
+function setMyTemplates(arr){
+  try{ localStorage.setItem(LS_MY_TPL, JSON.stringify(arr)); }catch(e){}
+}
+function tplFromState(){
+  const scenario = document.getElementById('scenarioSel').value;
+  const slots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
+  // 确保 overrides 已按当前队伍初始化
+  ['Attack','Utility','Tank'].forEach(c=>{ const p = repPetByCls(state.team)[c]; if(p) ensureOverride(c, p, scenario); });
+  return {
+    id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+    team: state.team.map(p=>p ? p.name : null),
+    talents: {Attack: state.overrides.Attack||[], Utility: state.overrides.Utility||[], Tank: state.overrides.Tank||[]},
+    scenario, slots,
+    createdAt: new Date().toISOString()
+  };
+}
+function openSaveModal(){
+  const modal = document.getElementById('tplModal');
+  document.getElementById('tplName').value = '';
+  document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
+  document.getElementById('tplNote').value = '';
+  document.getElementById('tplPublish').checked = false;
+  document.getElementById('tplHint').textContent = '';
+  modal.classList.add('open');
+  document.getElementById('tplName').focus();
+}
+function closeSaveModal(){ document.getElementById('tplModal').classList.remove('open'); }
+function buildTemplateMeta(name, author, note){
+  const t = tplFromState();
+  t.name = name; t.author = author; t.note = note; t.mine = true;
+  return t;
+}
+async function saveTemplate(){
+  const name = document.getElementById('tplName').value.trim();
+  const author = document.getElementById('tplAuthor').value.trim() || '匿名';
+  const note = document.getElementById('tplNote').value.trim();
+  const publish = document.getElementById('tplPublish').checked;
+  const hint = document.getElementById('tplHint');
+  if(!name){ hint.textContent = '请填写模板名称'; return; }
+  if(state.team.filter(Boolean).length === 0){ hint.textContent = '队伍是空的，先选宠物'; return; }
+  localStorage.setItem('tb_tpl_author', author);
+  const t = buildTemplateMeta(name, author, note);
+  // 本机永远存一份
+  const mine = getMyTemplates();
+  mine.unshift(t);
+  setMyTemplates(mine.slice(0, 50));
+  // 社区发布
+  if(publish){
+    try{
+      const r = await fetch(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(t)});
+      if(r.ok){ hint.textContent = '已发布到社区模板库 ✓'; }
+      else { hint.textContent = '社区后端返回 ' + r.status + '，已存到本机'; }
+    }catch(e){ hint.textContent = '社区后端不可达（未部署？），已存到本机'; }
+  } else {
+    hint.textContent = '已存到本机模板 ✓';
+  }
+  setTimeout(closeSaveModal, 900);
+  if(tplPanelOpen) loadTemplates();
+}
+async function loadTemplates(){
+  const listEl = document.getElementById('tplList');
+  if(!listEl) return;
+  let community = [];
+  try{
+    const r = await fetch(TEMPLATE_API + '?t=' + Date.now());
+    if(r.ok) community = await r.json();
+  }catch(e){ /* 后端未部署，忽略 */ }
+  const mine = getMyTemplates();
+  if(!community.length && !mine.length){
+    listEl.innerHTML = '<div class="tb-tpl-empty">还没有模板。点「存为模板」保存你的第一套方案吧。</div>';
+    return;
+  }
+  const cards = [].concat(
+    mine.map(t=>({...t, _tag:'mine'})),
+    community.map(t=>({...t, _tag:'community'}))
+  );
+  listEl.innerHTML = cards.map(t=>{
+    const petNames = (t.team||[]).map(n=>n||'—').join('、');
+    const scenZh = t.scenario==='boss' ? '单挑BOSS' : '日常刷图';
+    const tagHtml = t._tag==='mine'
+      ? '<span class="tb-tpl-tag mine">本机</span>'
+      : '<span class="tb-tpl-tag community">社区</span>';
+    return `<div class="tb-tpl-card">
+      <h4>${escapeHtml(t.name||'未命名')} ${tagHtml}</h4>
+      <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
+      <div class="pets">${escapeHtml(petNames)}</div>
+      <button class="apply" data-apply="${t.id}">套用</button>
+    </div>`;
+  }).join('');
+  listEl.querySelectorAll('[data-apply]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.apply;
+      const all = [].concat(getMyTemplates(), community);
+      const t = all.find(x=>x.id===id);
+      if(t) applyTemplate(t);
+    });
+  });
+}
+function applyTemplate(t){
+  const scenario = t.scenario || 'pve';
+  const slots = t.slots || 5;
+  // 队伍：按名字找宠物，槽位合法性由 setSlot 兜底
+  state.team = [];
+  (t.team||[]).forEach((nm, i)=>{
+    if(!nm) { state.team[i] = null; return; }
+    const pet = PETS.find(p=>p.name===nm);
+    state.team[i] = pet || null;
+  });
+  while(state.team.length < 5) state.team.push(null);
+  // 天赋覆盖
+  state.overrides = {};
+  ['Attack','Utility','Tank'].forEach(c=>{
+    if(t.talents && t.talents[c] && t.talents[c].length){
+      state.overrides[c] = t.talents[c].slice();
+    }
+  });
+  saveOverrides();
+  document.getElementById('scenarioSel').value = scenario;
+  document.getElementById('slotsInput').value = slots;
+  tplPanelOpen = false;
+  render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// 模板弹窗事件
+(function bindTplModal(){
+  const modal = document.getElementById('tplModal');
+  document.getElementById('tplCancel').addEventListener('click', closeSaveModal);
+  document.getElementById('tplOk').addEventListener('click', saveTemplate);
+  modal.addEventListener('mousedown', e=>{ if(e.target === modal) closeSaveModal(); });
+})();
 
 // 全局 tooltip 安全隐藏：鼠标移动到非触发元素时隐藏
 document.addEventListener('mousemove', e=>{
