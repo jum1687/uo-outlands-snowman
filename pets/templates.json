@@ -64,12 +64,12 @@
     "note": "悬停看阵容 · 点套用可恢复 · 可打分",
     "createdAt": "2026-08-30T13:16:47.876Z",
     "ratings": {
-      "sum": 9,
+      "sum": 8,
       "count": 1,
       "voters": {
-        "b174b6f13cac": 9
+        "b174b6f13cac": 8
       },
-      "avg": 9
+      "avg": 8
     }
   }
 ]
