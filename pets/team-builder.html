@@ -35,7 +35,8 @@
 .tb-slot-body{ font-size:.8em; color:#555; line-height:1.5; }
 .tb-slot-body b{ color:#1a4f8a; }
 .tb-slot-dmg{ color:#1e8e3e; font-weight:bold; }
-.tb-slot-dmg .base{ color:#666; font-size:.85em; font-weight:normal; text-decoration:line-through; margin-left:4px; }
+.tb-slot-dmg .underdog-note{ color:#1e8e3e; font-size:.85em; font-weight:normal; margin-left:4px; }
+.tb-slot-base{ color:#666; font-size:.85em; font-style:italic; margin-top:1px; }
 
 /* 槽位 combobox */
 .tb-slot-combo{ position:relative; }
@@ -164,7 +165,8 @@ html[data-theme="dark"] .tb-slot-name .en{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-slot-body{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-slot-body b{ color:#7fb0e8; }
 html[data-theme="dark"] .tb-slot-dmg{ color:#58d68d; }
-html[data-theme="dark"] .tb-slot-dmg .base{ color:#9aa3ad; }
+html[data-theme="dark"] .tb-slot-dmg .underdog-note{ color:#58d68d; }
+html[data-theme="dark"] .tb-slot-base{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-panel{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-panel-title{ border-color:#4d8fe8; color:#eef0f3; }
 html[data-theme="dark"] .tb-tcol{ background:#1d2026; border-color:#3a414b; }
@@ -375,7 +377,8 @@ function petTipHtml(pet){
   return `<div class="tip-name">${pet.name} <span class="en">${pet.slug}</span></div>
 <div class="tip-row"><b>系别：</b><span class="cls-badge cls-${pet.cls}">${CLSZH[pet.cls]}系</span>　<b>槽位：</b>${pet.slots}　<b>驯兽：</b>${pet.taming}</div>
 <div class="tip-row"><b>生命：</b>${pet.hits}　<b>武术：</b>${pet.wrestling}</div>
-<div class="tip-row"><b>基础伤害：</b><span class="tip-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="base">${pet.mindmg}–${pet.maxdmg}</span>（Underdog +${pet.underdogPct}%）</div>
+<div class="tip-row"><b>伤害：</b><span class="tip-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span>（Underdog +${pet.underdogPct}%）</div>
+<div class="tip-row"><b>基础伤害：</b><span style="font-style:italic;color:#aaa">${pet.mindmg}–${pet.maxdmg}</span></div>
 <div class="tip-row"><b>标签：</b>${badges(pet.tags)}</div>
 <div class="tip-row"><b>技能：</b></div>${abilitiesHtml}`;
 }
@@ -414,7 +417,8 @@ function renderRoster(team){
       </div>
       <div class="tb-slot-body">
         <div><span class="cls-badge cls-${pet.cls}">${CLSZH[pet.cls]}</span>　槽位 <b>${pet.slots}</b></div>
-        <div>伤害 <span class="tb-slot-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="base">${pet.mindmg}–${pet.maxdmg}</span></div>
+        <div>伤害 <span class="tb-slot-dmg">${pet.mindmgBoosted}–${pet.maxdmgBoosted}</span><span class="underdog-note">（Underdog +${pet.underdogPct}%）</span></div>
+        <div class="tb-slot-base">基础伤害 ${pet.mindmg}–${pet.maxdmg}</div>
         <div style="margin-top:3px;font-size:.78em;color:#777;">${abText(abilitiesShort)}</div>
       </div>
     </div>`;
