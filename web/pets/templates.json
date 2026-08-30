@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "id": "ratetest01",
+    "name": "评分测试队",
+    "author": "小凤",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Fire Ant",
+      "Cave Gorger",
+      "Harvestman",
+      null,
+      null
+    ],
+    "talents": {
+      "Attack": [
+        "Punishment",
+        "Scour",
+        "Beast Sting",
+        "Behemoth"
+      ],
+      "Utility": [],
+      "Tank": []
+    },
+    "note": "接口自测",
+    "createdAt": "2026-08-30T13:16:47.876Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  }
+]
