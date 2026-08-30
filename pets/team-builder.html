@@ -1170,6 +1170,7 @@ async function doSave(name, author, note, publish, okBtn){
   setMyTemplates(mine.slice(0, 50));
 
   let needReload = true;
+  let freshList = null; // 发布成功后从 GitHub 读回的最新社区列表
   if(publish){
     const pat = getGhPat();
     if(!pat){
@@ -1180,12 +1181,7 @@ async function doSave(name, author, note, publish, okBtn){
         const i = list.findIndex(x=>x.id===t.id);
         if(i>=0) list[i] = t; else list.unshift(t);
         await ghWriteTemplates(list, sha);
-        // 用内存最新列表直接渲染，绕过 Pages CDN 缓存延迟
-        const merged = [].concat(
-          getMyTemplates().map(x=>({...x, _tag:'mine'})),
-          list.map(x=>({...x, _tag:'community'}))
-        );
-        renderTplCards(merged);
+        freshList = list;
         needReload = false;
         toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
       }catch(e){
@@ -1201,7 +1197,30 @@ async function doSave(name, author, note, publish, okBtn){
   }
   editContext = null;
   if(okBtn) okBtn.disabled = false;
-  if(needReload && tplPanelOpen) loadTemplates();
+  // 保存/发布后一律展开模板库面板并滚过去，让用户立刻看到结果（此前面板折叠时渲染了也看不见）
+  if(freshList){
+    const merged = [].concat(
+      getMyTemplates().map(x=>({...x, _tag:'mine'})),
+      freshList.map(x=>({...x, _tag:'community'}))
+    );
+    openTplPanelWith(merged);
+  } else {
+    if(!tplPanelOpen){ tplPanelOpen = true; render(); }
+    if(needReload) loadTemplates();
+    scrollToTplPanel();
+  }
+}
+// 展开模板库面板并渲染指定卡片，然后滚动过去
+function openTplPanelWith(cards){
+  if(!tplPanelOpen){ tplPanelOpen = true; render(); }
+  renderTplCards(cards);
+  scrollToTplPanel();
+}
+function scrollToTplPanel(){
+  setTimeout(()=>{
+    const panel = document.querySelector('.tb-tpl-panel');
+    if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
 }
 // （LS_RATED / getRated / setRated 已上移至社区后端常量区）
 function tplAvg(t){
@@ -1379,10 +1398,24 @@ async function loadTemplates(){
   if(!listEl) return;
   let community = [];
   let loadErr = false;
-  try{
-    const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
-    if(r.ok) community = await r.json();
-  }catch(e){ loadErr = true; /* 同源读取失败（网络/后端不可达），降级 */ }
+  // 有 PAT 时优先走 GitHub API 直读（实时，无 Pages CDN 缓存延迟）；
+  // 无 PAT 或失败时回退同源 templates.json 静态读取。
+  if(getGhPat()){
+    try{
+      const { arr } = await ghReadTemplates();
+      community = arr;
+    }catch(e){
+      try{
+        const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
+        if(r.ok) community = await r.json(); else loadErr = true;
+      }catch(e2){ loadErr = true; }
+    }
+  } else {
+    try{
+      const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
+      if(r.ok) community = await r.json();
+    }catch(e){ loadErr = true; /* 同源读取失败（网络/后端不可达），降级 */ }
+  }
   const mine = getMyTemplates();
   renderTplCards([].concat(
     mine.map(t=>({...t, _tag:'mine'})),
