@@ -882,7 +882,7 @@ document.addEventListener('mousedown', e=>{
 
 // ---------- 模板区（GitHub 当库：API 读写 + 本机兜底） ----------
 let tplPanelOpen = false;
-const TEMPLATE_API = 'https://uo-tb-templates.workers.dev/'; // 轻函数地址（部署后替换）
+const TEMPLATE_API = 'https://uo-tb-templates.l18665011268.workers.dev/';
 const LS_MY_TPL = 'tb_my_templates_v1';
 function getMyTemplates(){
   try{ return JSON.parse(localStorage.getItem(LS_MY_TPL)) || []; }catch(e){ return []; }
