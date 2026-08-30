@@ -1,5 +1,41 @@
 [
   {
+    "id": "mtfuhljx4frh",
+    "team": [
+      "Harvestman",
+      "Corpse Eater",
+      "Corpse Eater",
+      "Corpse Eater"
+    ],
+    "talents": {
+      "Attack": [
+        "Immolate",
+        "Primal",
+        "Swarm",
+        "Lethality"
+      ],
+      "Utility": [
+        "Contagion",
+        "Carrion",
+        "Toxic",
+        "Primal"
+      ],
+      "Tank": []
+    },
+    "scenario": "pve",
+    "slots": 5,
+    "createdAt": "2026-08-30T13:28:20.061Z",
+    "name": "疾病流，1收割+3食尸鬼",
+    "author": "Snowman Liang",
+    "note": "5食尸鬼太脆，换个2格的收割者。",
+    "mine": true,
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "ratetest01",
     "name": "示例：火蚁刷图队",
     "author": "小凤",
