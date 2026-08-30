@@ -211,16 +211,19 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 .tb-tpl-bar .tb-save-tpl:hover{ background:#2a8; }
 .tb-tpl-bar .tb-toggle-tpl{ background:#fff; }
 .tb-tpl-bar .tb-toggle-tpl:hover{ border-color:#36c; color:#36c; }
-.tb-tpl-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
-.tb-tpl-card{ border:1px solid #e4e7eb; border-radius:8px; padding:10px; background:#fcfcfc; position:relative; }
-.tb-tpl-card h4{ margin:0 0 4px; font-size:.92em; display:flex; align-items:center; gap:6px; }
-.tb-tpl-card .tb-tpl-tag{ font-size:.68em; padding:1px 6px; border-radius:8px; }
+.tb-tpl-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; }
+.tb-tpl-card{ border:1px solid #e4e7eb; border-radius:7px; padding:7px 8px; background:#fcfcfc; position:relative; }
+.tb-tpl-card h4{ margin:0 0 3px; font-size:.82em; display:flex; align-items:center; gap:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tb-tpl-card .tb-tpl-tag{ font-size:.66em; padding:1px 5px; border-radius:8px; flex:none; }
 .tb-tpl-card .tb-tpl-tag.community{ background:#e8f0ff; color:#2a6; }
 .tb-tpl-card .tb-tpl-tag.mine{ background:#fff3e0; color:#b8860b; }
-.tb-tpl-card .meta{ font-size:.76em; color:#888; margin-bottom:6px; }
-.tb-tpl-card .pets{ font-size:.8em; color:#555; margin-bottom:8px; line-height:1.4; }
-.tb-tpl-card .apply{ font-size:.78em; background:#27ae60; color:#fff; border:none; border-radius:4px; padding:4px 12px; cursor:pointer; }
+.tb-tpl-card .meta{ font-size:.68em; color:#888; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tb-tpl-card .pets{ font-size:.74em; color:#555; margin-bottom:5px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.tb-tpl-card .apply{ font-size:.72em; background:#27ae60; color:#fff; border:none; border-radius:4px; padding:3px 10px; cursor:pointer; }
 .tb-tpl-card .apply:hover{ background:#1e8449; }
+.tb-tpl-foot{ display:flex; align-items:center; gap:6px; margin-top:2px; }
+.tb-tpl-del{ margin-left:auto; border:1px solid #e6c3c3; background:#fff; color:#c0392b; font-size:.72em; border-radius:4px; padding:3px 9px; cursor:pointer; line-height:1.2; }
+.tb-tpl-del:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 .tb-tpl-empty{ color:#888; font-size:.88em; }
 .tb-tpl-err{ color:#c0392b; font-size:.82em; }
 
@@ -240,7 +243,7 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 .tb-tpl-rate.muted{ color:#aaa; font-style:italic; }
 .tb-rate-row{ display:flex; gap:2px; margin-top:4px; width:100%; }
 .tb-rate-btn{
-  flex:1; min-width:0; padding:3px 0; font-size:.72em; line-height:1.3;
+  flex:1; min-width:0; padding:2px 0; font-size:.6em; line-height:1.3;
   border:1px solid #d5d9de; background:#fff; color:#666; border-radius:3px; cursor:pointer;
 }
 .tb-rate-btn:hover{ background:#36c; border-color:#36c; color:#fff; }
@@ -273,6 +276,8 @@ html[data-theme="dark"] .tb-rate-btn:hover{ background:#36c; border-color:#36c; 
 html[data-theme="dark"] .tb-tpl-card .meta, html[data-theme="dark"] .tb-tpl-card .pets{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.community{ background:#1c2733; color:#58d68d; }
 html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.mine{ background:#3a3326; color:#f0a020; }
+html[data-theme="dark"] .tb-tpl-del{ background:#2a2024; border-color:#5a3a3a; color:#ff7a7a; }
+html[data-theme="dark"] .tb-tpl-del:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 html[data-theme="dark"] .tb-tpl-modal{ background:#262b32; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal input, html[data-theme="dark"] .tb-tpl-modal textarea{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal .row button{ background:#3a414b; border-color:#3a414b; color:#d6dbe2; }
@@ -1061,16 +1066,23 @@ function renderTplCards(cards){
       <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
       <div class="pets">${escapeHtml(petNames)}</div>
       ${rateHtml(t)}
-      <button class="apply" data-apply="${t.id}">套用</button>
+      <div class="tb-tpl-foot">
+        <button class="apply" data-apply="${t.id}">套用</button>
+        ${t._tag==='mine' ? `<button class="tb-tpl-del" data-del="${t.id}" title="删除本机模板">✕</button>` : ''}
+      </div>
     </div>`;
   }).join('');
 
-  // 悬停显示队伍信息
+  // 悬停显示队伍信息（打分区域不显示，避免遮挡）
   listEl.querySelectorAll('.tb-tpl-card[data-tpl]').forEach(card=>{
     const t = cards.find(x=>x.id===card.dataset.tpl);
     if(!t) return;
     card.addEventListener('mouseenter', e=>showTip(e, tplTipHtml(t)));
-    card.addEventListener('mousemove', moveTip);
+    card.addEventListener('mousemove', e=>{
+      if(e.target.closest('.tb-tpl-rate')){ hideTip(); return; }
+      if(tipEl.style.display!=='block'){ showTip(e, tplTipHtml(t)); }
+      else moveTip(e);
+    });
     card.addEventListener('mouseleave', hideTip);
   });
   // 套用
@@ -1078,6 +1090,19 @@ function renderTplCards(cards){
     btn.addEventListener('click', ()=>{
       const t = lastTplCards.find(x=>x.id===btn.dataset.apply);
       if(t) applyTemplate(t);
+    });
+  });
+  // 删除本机模板
+  listEl.querySelectorAll('[data-del]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const id = btn.dataset.del;
+      const t = lastTplCards.find(x=>x.id===id);
+      const nm = t ? (t.name||'未命名') : '该模板';
+      if(confirm('确定删除本机模板「'+nm+'」？此操作不可撤销。')){
+        setMyTemplates(getMyTemplates().filter(x=>x.id!==id));
+        renderTplCards(lastTplCards.filter(x=>x.id!==id));
+      }
     });
   });
   // 评分
