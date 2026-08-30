@@ -939,7 +939,16 @@ document.addEventListener('mousedown', e=>{
 // ---------- 模板区（GitHub 当库：API 读写 + 本机兜底） ----------
 let tplPanelOpen = false;
 const TEMPLATE_API = 'https://uo-tb-templates.l18665011268.workers.dev/';
+// 读取社区模板改走同源 GitHub Pages 路径（pets/templates.json），
+// 不依赖 workers.dev 域名可达性（大陆常不可达），避免「加载中」永久挂起。
+const TEMPLATE_READ = 'pets/templates.json';
 const LS_MY_TPL = 'tb_my_templates_v1';
+async function fetchWithTimeout(url, opts = {}, ms = 8000){
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), ms);
+  try { return await fetch(url, {...opts, signal: ctrl.signal}); }
+  finally { clearTimeout(tid); }
+}
 function getMyTemplates(){
   try{ return JSON.parse(localStorage.getItem(LS_MY_TPL)) || []; }catch(e){ return []; }
 }
@@ -1023,7 +1032,7 @@ async function saveTemplate(){
     try{
       const body = {...t};
       if(editContext && editContext.token) body.editToken = editContext.token;
-      const r = await fetch(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      const r = await fetchWithTimeout(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
       const d = await r.json().catch(()=>({}));
       if(r.ok && d.ok){
         const toks = getTplTokens();
@@ -1094,12 +1103,14 @@ function rateHtml(t){
   </div>`;
 }
 let lastTplCards = [];
-function renderTplCards(cards){
+function renderTplCards(cards, loadErr){
   const listEl = document.getElementById('tplList');
   if(!listEl) return;
   lastTplCards = cards;
   if(!cards.length){
-    listEl.innerHTML = '<div class="tb-tpl-empty">还没有模板。点「存为模板」保存你的第一套方案吧。</div>';
+    listEl.innerHTML = loadErr
+      ? '<div class="tb-tpl-empty">社区模板加载失败（网络或后端不可达），仅显示本机模板。可稍后重试，或改用本机「存为模板」。</div>'
+      : '<div class="tb-tpl-empty">还没有模板。点「存为模板」保存你的第一套方案吧。</div>';
     return;
   }
   listEl.innerHTML = cards.map(t=>{
@@ -1182,7 +1193,7 @@ function renderTplCards(cards){
       if(!confirm('确定删除社区模板「'+nm+'」？此操作不可撤销。')) return;
       btn.disabled = true;
       try{
-        const r = await fetch(TEMPLATE_API, {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id, editToken: toks[id]})});
+        const r = await fetchWithTimeout(TEMPLATE_API, {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id, editToken: toks[id]})});
         const d = await r.json().catch(()=>({}));
         if(r.ok && d.ok){
           const nt = {...toks}; delete nt[id]; setTplTokens(nt);
@@ -1191,6 +1202,7 @@ function renderTplCards(cards){
           alert('删除失败：' + (d.error||r.status));
         }
       }catch(err){ alert('删除后端不可达，请稍后再试'); }
+      finally{ btn.disabled = false; }
     });
   });
   // 评分
@@ -1203,7 +1215,7 @@ function renderTplCards(cards){
       const t = lastTplCards.find(x=>x.id===id);
       if(!t) return;
       try{
-        const r = await fetch(TEMPLATE_API + 'rate', {
+        const r = await fetchWithTimeout(TEMPLATE_API + 'rate', {
           method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({id, score})
         });
@@ -1225,15 +1237,16 @@ async function loadTemplates(){
   const listEl = document.getElementById('tplList');
   if(!listEl) return;
   let community = [];
+  let loadErr = false;
   try{
-    const r = await fetch(TEMPLATE_API + '?t=' + Date.now());
+    const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
     if(r.ok) community = await r.json();
-  }catch(e){ /* 后端未部署，忽略 */ }
+  }catch(e){ loadErr = true; /* 同源读取失败（网络/后端不可达），降级 */ }
   const mine = getMyTemplates();
   renderTplCards([].concat(
     mine.map(t=>({...t, _tag:'mine'})),
     community.map(t=>({...t, _tag:'community'}))
-  ));
+  ), loadErr);
 }
 function applyTemplate(t, closePanel){
   const scenario = t.scenario || 'pve';
