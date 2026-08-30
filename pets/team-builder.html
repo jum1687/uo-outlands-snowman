@@ -288,6 +288,11 @@ html[data-theme="dark"] .tb-tpl-del-com{ background:#2a2024; border-color:#5a3a3
 html[data-theme="dark"] .tb-tpl-del-com:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 .tb-pat-row{ margin-top:6px; }
 .tb-pat-row input{ width:100%; box-sizing:border-box; padding:7px 9px; border:1px solid #e0e0e0; border-radius:6px; font-size:.9em; }
+.tb-pat-status{ font-size:.78em; margin-top:4px; display:flex; align-items:center; gap:8px; color:#666; }
+.tb-pat-status.ok{ color:#27ae60; }
+.tb-pat-status.err{ color:#c0392b; }
+.tb-pat-row button{ font-size:.78em; padding:3px 8px; border-radius:4px; border:1px solid #ccc; background:#f5f5f5; cursor:pointer; }
+.tb-pat-row button:hover{ background:#e8e8e8; }
 .tb-toast{ position:fixed; left:50%; bottom:30px; transform:translateX(-50%) translateY(10px); background:rgba(25,25,25,.94); color:#fff; padding:10px 18px; border-radius:8px; font-size:.9em; z-index:9999; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; max-width:92vw; text-align:center; box-shadow:0 4px 18px rgba(0,0,0,.25); }
 .tb-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
 html[data-theme="dark"] .tb-toast{ background:rgba(235,235,235,.96); color:#111; }
@@ -295,6 +300,11 @@ html[data-theme="dark"] .tb-tpl-modal{ background:#262b32; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal input, html[data-theme="dark"] .tb-tpl-modal textarea{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal .row button{ background:#3a414b; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
+html[data-theme="dark"] .tb-pat-row input{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-pat-status{ color:#aaa; }
+html[data-theme="dark"] .tb-pat-status.ok{ color:#58d68d; }
+html[data-theme="dark"] .tb-pat-status.err{ color:#ff7a7a; }
+html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a515b; color:#d6dbe2; }
 </style>
 </head>
 <body class="side-nav-page">
@@ -381,6 +391,7 @@ html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
     <label style="display:flex;align-items:center;gap:6px;font-weight:normal;"><input type="checkbox" id="tplPublish" style="width:auto;padding:0;" /> 发布到社区模板库</label>
     <div class="tb-pat-row">
       <input id="tplPat" type="password" placeholder="GitHub 发布令牌（可选，仅存本机）" autocomplete="off" />
+      <div class="tb-pat-status" id="tplPatStatus"></div>
     </div>
     <div class="hint" id="tplHint"></div>
     <div class="row">
@@ -1044,11 +1055,34 @@ function tplFromState(){
     createdAt: new Date().toISOString()
   };
 }
+function updatePatStatus(){
+  const el = document.getElementById('tplPatStatus');
+  const inp = document.getElementById('tplPat');
+  if(!el || !inp) return;
+  const pat = getGhPat();
+  const visible = inp.value.trim();
+  if(visible){
+    el.className = 'tb-pat-status';
+    el.innerHTML = `已输入 ${visible.length} 位 · 点保存时会先检测令牌`;
+    return;
+  }
+  if(pat){
+    el.className = 'tb-pat-status ok';
+    el.innerHTML = `本机已保存令牌（${pat.length} 位）<button type="button" id="tplClearPat">清除重填</button>`;
+    const clearBtn = document.getElementById('tplClearPat');
+    if(clearBtn) clearBtn.onclick = ()=>{ localStorage.removeItem(LS_GH_PAT); inp.value=''; updatePatStatus(); toast('本机令牌已清除'); };
+    return;
+  }
+  el.className = 'tb-pat-status';
+  el.innerHTML = '未保存令牌 · 若勾选「发布到社区」需先填写';
+}
 function openSaveModal(t){
   const modal = document.getElementById('tplModal');
   const okBtn = document.getElementById('tplOk');
   if(okBtn) okBtn.disabled = false;
-  document.getElementById('tplPat').value = getGhPat(); // 预填（掩码），留空则保留已有令牌
+  const patInp = document.getElementById('tplPat');
+  patInp.value = getGhPat(); // 预填（掩码），留空则保留已有令牌
+  updatePatStatus();
   if(t){ // 编辑模式：预填社区模板信息，强制发布
     document.getElementById('tplName').value = t.name || '';
     document.getElementById('tplAuthor').value = t.author || localStorage.getItem('tb_tpl_author') || '羊哥';
@@ -1065,13 +1099,18 @@ function openSaveModal(t){
   modal.classList.add('open');
   document.getElementById('tplName').focus();
 }
+// 输入令牌时实时更新状态提示
+(function bindPatInput(){
+  const inp = document.getElementById('tplPat');
+  if(inp) inp.addEventListener('input', updatePatStatus);
+})();
 function closeSaveModal(){ document.getElementById('tplModal').classList.remove('open'); }
 function buildTemplateMeta(name, author, note){
   const t = tplFromState();
   t.name = name; t.author = author; t.note = note; t.mine = true;
   return t;
 }
-function saveTemplate(){
+async function saveTemplate(){
   const name = document.getElementById('tplName').value.trim();
   const author = document.getElementById('tplAuthor').value.trim() || '匿名';
   const note = document.getElementById('tplNote').value.trim();
@@ -1081,7 +1120,30 @@ function saveTemplate(){
   const okBtn = document.getElementById('tplOk');
   if(!name){ hint.textContent = '请填写模板名称'; return; }
   if(state.team.filter(Boolean).length === 0){ hint.textContent = '队伍是空的，先选宠物'; return; }
-  if(patInput.value.trim()) setGhPat(patInput.value.trim()); // 保存新令牌
+
+  // 保存新令牌（如填写）
+  if(patInput.value.trim()) setGhPat(patInput.value.trim());
+  updatePatStatus();
+
+  // 若勾选发布，先检测令牌是否有效，避免走到写入才报 401
+  if(publish){
+    const pat = getGhPat();
+    if(!pat){ hint.textContent = '勾选发布到社区，但未填写发布令牌'; return; }
+    toast('正在检测令牌…');
+    try{
+      const test = await fetchWithTimeout(`${GH_API}/repos/${GH_REPO}`, {
+        headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json' }
+      });
+      if(!test.ok){
+        const j = await test.json().catch(()=>({}));
+        const msg = test.status===401 ? '令牌无效或已过期（401）' : ('检测失败(' + test.status + (j.message?': '+j.message:'') + ')');
+        hint.textContent = msg + '，请清除后重填令牌';
+        toast(msg);
+        return;
+      }
+    }catch(e){ hint.textContent = '令牌检测时网络超时，请重试'; return; }
+  }
+
   localStorage.setItem('tb_tpl_author', author);
 
   // —— 立即关闭弹窗 + 禁用按钮，转入后台，避免网络慢导致重复点击存多套 ——
@@ -1096,6 +1158,7 @@ async function doSave(name, author, note, publish, okBtn){
   let t = tplFromState();
   if(editContext && editContext.id) t.id = editContext.id;
   t.name = name; t.author = author; t.note = note; t.mine = true;
+  t.updatedAt = new Date().toISOString();
 
   // 本机永远存一份（同名/同 id 覆盖，避免重复点击产生多套）
   const mine = getMyTemplates();
@@ -1126,7 +1189,11 @@ async function doSave(name, author, note, publish, okBtn){
         needReload = false;
         toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
       }catch(e){
-        toast('社区发布失败：' + e.message + '（已存本机）');
+        const msg = e.message || String(e);
+        const friendly = msg.includes('NO_PAT') ? '未填发布令牌' :
+                         msg.includes('401') ? '令牌无效/已过期（401），请清除后重填' :
+                         ('发布失败：' + msg);
+        toast(friendly + '（已存本机）');
       }
     }
   } else {
