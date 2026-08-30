@@ -286,6 +286,11 @@ html[data-theme="dark"] .tb-tpl-edit{ background:#16241c; border-color:#2f4d3d; 
 html[data-theme="dark"] .tb-tpl-edit:hover{ background:#2a6; color:#fff; border-color:#2a6; }
 html[data-theme="dark"] .tb-tpl-del-com{ background:#2a2024; border-color:#5a3a3a; color:#ff7a7a; }
 html[data-theme="dark"] .tb-tpl-del-com:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
+.tb-pat-row{ margin-top:6px; }
+.tb-pat-row input{ width:100%; box-sizing:border-box; padding:7px 9px; border:1px solid #e0e0e0; border-radius:6px; font-size:.9em; }
+.tb-toast{ position:fixed; left:50%; bottom:30px; transform:translateX(-50%) translateY(10px); background:rgba(25,25,25,.94); color:#fff; padding:10px 18px; border-radius:8px; font-size:.9em; z-index:9999; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; max-width:92vw; text-align:center; box-shadow:0 4px 18px rgba(0,0,0,.25); }
+.tb-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+html[data-theme="dark"] .tb-toast{ background:rgba(235,235,235,.96); color:#111; }
 html[data-theme="dark"] .tb-tpl-modal{ background:#262b32; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal input, html[data-theme="dark"] .tb-tpl-modal textarea{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal .row button{ background:#3a414b; border-color:#3a414b; color:#d6dbe2; }
@@ -366,7 +371,7 @@ html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
 <div class="tb-tpl-modal-mask" id="tplModal">
   <div class="tb-tpl-modal">
     <h3>保存为配宠模板</h3>
-    <div class="meta" style="font-size:.78em;color:#888;">将当前队伍与加点存成模板，方便一键套用。勾选「发布到社区」会让所有访客都能看到（需后端已部署）。</div>
+    <div class="meta" style="font-size:.78em;color:#888;">将当前队伍与加点存成模板，方便一键套用。勾选「发布到社区」会写入 GitHub 仓库，所有访客都能看到。</div>
     <label>模板名称</label>
     <input id="tplName" placeholder="如：日常刷图暴力队" maxlength="40" />
     <label>作者名</label>
@@ -374,6 +379,9 @@ html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
     <label>备注（可选）</label>
     <textarea id="tplNote" rows="2" maxlength="120" placeholder="一句话说明思路"></textarea>
     <label style="display:flex;align-items:center;gap:6px;font-weight:normal;"><input type="checkbox" id="tplPublish" style="width:auto;padding:0;" /> 发布到社区模板库</label>
+    <div class="tb-pat-row">
+      <input id="tplPat" type="password" placeholder="GitHub 发布令牌（可选，仅存本机）" autocomplete="off" />
+    </div>
     <div class="hint" id="tplHint"></div>
     <div class="row">
       <button id="tplCancel">取消</button>
@@ -381,6 +389,7 @@ html[data-theme="dark"] .tb-tpl-modal .row .ok{ background:#36c; color:#fff; }
     </div>
   </div>
 </div>
+<div id="tbToast" class="tb-toast"></div>
 
 <script src="team-builder-data.js"></script>
 <script>
@@ -937,12 +946,20 @@ document.addEventListener('mousedown', e=>{
 });
 
 // ---------- 模板区（GitHub 当库：API 读写 + 本机兜底） ----------
+// ---------- 社区模板后端：浏览器直连 GitHub Contents API（国内最稳，同 GitHub Pages 生态） ----------
 let tplPanelOpen = false;
-const TEMPLATE_API = 'https://uo-tb-templates.l18665011268.workers.dev/';
-// 读取社区模板改走同源 GitHub Pages 路径（pets/templates.json），
-// 不依赖 workers.dev 域名可达性（大陆常不可达），避免「加载中」永久挂起。
+const GH_REPO = 'jum1687/uo-outlands-snowman';
+const GH_PATH = 'pets/templates.json';
+const GH_API = 'https://api.github.com';
+// 读取社区模板走同源 GitHub Pages（pets/templates.json），不依赖 workers.dev（大陆常不可达）
 const TEMPLATE_READ = 'pets/templates.json';
 const LS_MY_TPL = 'tb_my_templates_v1';
+const LS_GH_PAT = 'tb_gh_pat_v1';
+const LS_RATED = 'tb_rated_v1';
+
+function getGhPat(){ try{ return localStorage.getItem(LS_GH_PAT) || ''; }catch(e){ return ''; } }
+function setGhPat(v){ try{ if(v) localStorage.setItem(LS_GH_PAT, v); }catch(e){} }
+
 async function fetchWithTimeout(url, opts = {}, ms = 8000){
   const ctrl = new AbortController();
   const tid = setTimeout(() => ctrl.abort(), ms);
@@ -955,13 +972,63 @@ function getMyTemplates(){
 function setMyTemplates(arr){
   try{ localStorage.setItem(LS_MY_TPL, JSON.stringify(arr)); }catch(e){}
 }
-// 社区模板编辑令牌（方案A）：按 id 存本机，仅本机可编辑/删除自己发布的社区模板
-const LS_TPL_TOKENS = 'tb_tpl_tokens_v1';
-function getTplTokens(){
-  try{ return JSON.parse(localStorage.getItem(LS_TPL_TOKENS)) || {}; }catch(e){ return {}; }
+function getRated(){ try{ return JSON.parse(localStorage.getItem(LS_RATED)) || {}; }catch(e){ return {}; } }
+function setRated(obj){ try{ localStorage.setItem(LS_RATED, JSON.stringify(obj)); }catch(e){} }
+
+// 轻提示 toast
+let toastTimer = null;
+function toast(msg){
+  let el = document.getElementById('tbToast');
+  if(!el){ el = document.createElement('div'); el.id = 'tbToast'; el.className = 'tb-toast'; document.body.appendChild(el); }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 2600);
 }
-function setTplTokens(obj){
-  try{ localStorage.setItem(LS_TPL_TOKENS, JSON.stringify(obj)); }catch(e){}
+
+// 读取社区模板（同源 GitHub Pages，站点能开就能读到）
+async function fetchCommunity(){
+  try{
+    const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
+    if(r.ok) return await r.json();
+  }catch(e){}
+  return [];
+}
+// 读取社区模板（GitHub API 实时，带 sha，用于写入前对齐）
+async function ghReadTemplates(){
+  const pat = getGhPat();
+  if(!pat) throw new Error('NO_PAT');
+  const url = `${GH_API}/repos/${GH_REPO}/contents/${GH_PATH}`;
+  const meta = await fetchWithTimeout(url, { headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json' } });
+  if(!meta.ok) throw new Error('读取失败(' + meta.status + ')');
+  const j = await meta.json();
+  let arr = [];
+  try{ arr = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))))); }catch(e){ arr = []; }
+  return { arr: Array.isArray(arr)?arr:[], sha: j.sha };
+}
+function b64encodeUnicode(str){ return btoa(unescape(encodeURIComponent(str))); }
+// 写社区模板（直连 GitHub Contents API，需 PAT）
+async function ghWriteTemplates(arr, sha){
+  const pat = getGhPat();
+  if(!pat) throw new Error('NO_PAT');
+  const url = `${GH_API}/repos/${GH_REPO}/contents/${GH_PATH}`;
+  if(!sha){
+    const meta = await fetchWithTimeout(url, { headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json' } });
+    if(!meta.ok) throw new Error('读取文件失败(' + meta.status + ')');
+    sha = (await meta.json()).sha;
+  }
+  const content = b64encodeUnicode(JSON.stringify(arr, null, 2));
+  const put = await fetchWithTimeout(url, {
+    method: 'PUT',
+    headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: 'update pet team templates', content, sha, branch: 'main' })
+  });
+  if(!put.ok){
+    let msg = '写入失败(' + put.status + ')';
+    try{ const j = await put.json(); if(j && j.message) msg += ': ' + j.message; }catch(e){}
+    throw new Error(msg);
+  }
+  return put.json();
 }
 let editContext = null; // {id, token} 编辑社区模板时的上下文
 function tplFromState(){
@@ -979,12 +1046,15 @@ function tplFromState(){
 }
 function openSaveModal(t){
   const modal = document.getElementById('tplModal');
+  const okBtn = document.getElementById('tplOk');
+  if(okBtn) okBtn.disabled = false;
+  document.getElementById('tplPat').value = getGhPat(); // 预填（掩码），留空则保留已有令牌
   if(t){ // 编辑模式：预填社区模板信息，强制发布
     document.getElementById('tplName').value = t.name || '';
     document.getElementById('tplAuthor').value = t.author || localStorage.getItem('tb_tpl_author') || '羊哥';
     document.getElementById('tplNote').value = t.note || '';
     document.getElementById('tplPublish').checked = true;
-    document.getElementById('tplHint').textContent = '正在编辑你发布的社区模板（需本机编辑令牌）';
+    document.getElementById('tplHint').textContent = '正在编辑社区模板（需本机发布令牌）';
   } else { // 新建
     document.getElementById('tplName').value = '';
     document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
@@ -1001,63 +1071,72 @@ function buildTemplateMeta(name, author, note){
   t.name = name; t.author = author; t.note = note; t.mine = true;
   return t;
 }
-async function saveTemplate(){
+function saveTemplate(){
   const name = document.getElementById('tplName').value.trim();
   const author = document.getElementById('tplAuthor').value.trim() || '匿名';
   const note = document.getElementById('tplNote').value.trim();
   const publish = document.getElementById('tplPublish').checked;
+  const patInput = document.getElementById('tplPat');
   const hint = document.getElementById('tplHint');
+  const okBtn = document.getElementById('tplOk');
   if(!name){ hint.textContent = '请填写模板名称'; return; }
   if(state.team.filter(Boolean).length === 0){ hint.textContent = '队伍是空的，先选宠物'; return; }
+  if(patInput.value.trim()) setGhPat(patInput.value.trim()); // 保存新令牌
   localStorage.setItem('tb_tpl_author', author);
 
-  // 编辑模式复用原 id + 令牌；否则新建
-  let t;
-  if(editContext && editContext.id){
-    t = tplFromState();
-    t.id = editContext.id;
-    t.name = name; t.author = author; t.note = note; t.mine = true;
-  } else {
-    t = buildTemplateMeta(name, author, note);
-  }
+  // —— 立即关闭弹窗 + 禁用按钮，转入后台，避免网络慢导致重复点击存多套 ——
+  okBtn.disabled = true;
+  closeSaveModal();
+  toast('正在保存…');
+  doSave(name, author, note, publish, okBtn);
+}
 
-  // 本机永远存一份
+async function doSave(name, author, note, publish, okBtn){
+  // 组装模板对象（编辑模式复用原 id）
+  let t = tplFromState();
+  if(editContext && editContext.id) t.id = editContext.id;
+  t.name = name; t.author = author; t.note = note; t.mine = true;
+
+  // 本机永远存一份（同名/同 id 覆盖，避免重复点击产生多套）
   const mine = getMyTemplates();
   const idx = mine.findIndex(x=>x.id===t.id);
-  if(idx>=0) mine[idx] = t; else mine.unshift(t);
+  const sameName = mine.findIndex(x=>x.name===name);
+  if(idx>=0) mine[idx] = t;
+  else if(sameName>=0) mine[sameName] = t;
+  else mine.unshift(t);
   setMyTemplates(mine.slice(0, 50));
 
-  // 社区发布 / 更新
+  let needReload = true;
   if(publish){
-    try{
-      const body = {...t};
-      if(editContext && editContext.token) body.editToken = editContext.token;
-      const r = await fetchWithTimeout(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
-      const d = await r.json().catch(()=>({}));
-      if(r.ok && d.ok){
-        const toks = getTplTokens();
-        toks[t.id] = d.editToken;
-        setTplTokens(toks);
-        hint.textContent = (editContext ? '已更新社区模板 ✓' : '已发布到社区模板库 ✓') + '（编辑令牌已存本机）';
-      } else {
-        hint.textContent = '社区后端返回 ' + (d.error||r.status) + '，已存到本机';
+    const pat = getGhPat();
+    if(!pat){
+      toast('未填发布令牌，已存本机（展开弹窗填令牌可发社区）');
+    } else {
+      try{
+        const { arr: list, sha } = await ghReadTemplates();
+        const i = list.findIndex(x=>x.id===t.id);
+        if(i>=0) list[i] = t; else list.unshift(t);
+        await ghWriteTemplates(list, sha);
+        // 用内存最新列表直接渲染，绕过 Pages CDN 缓存延迟
+        const merged = [].concat(
+          getMyTemplates().map(x=>({...x, _tag:'mine'})),
+          list.map(x=>({...x, _tag:'community'}))
+        );
+        renderTplCards(merged);
+        needReload = false;
+        toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
+      }catch(e){
+        toast('社区发布失败：' + e.message + '（已存本机）');
       }
-    }catch(e){ hint.textContent = '社区后端不可达（未部署？），已存到本机'; }
+    }
   } else {
-    hint.textContent = '已存到本机模板 ✓';
+    toast('已存到本机 ✓');
   }
   editContext = null;
-  setTimeout(closeSaveModal, 900);
-  if(tplPanelOpen) loadTemplates();
+  if(okBtn) okBtn.disabled = false;
+  if(needReload && tplPanelOpen) loadTemplates();
 }
-// 已评分记录（本机），用于高亮我打过的分
-const LS_RATED = 'tb_rated_v1';
-function getRated(){
-  try{ return JSON.parse(localStorage.getItem(LS_RATED)) || {}; }catch(e){ return {}; }
-}
-function setRated(obj){
-  try{ localStorage.setItem(LS_RATED, JSON.stringify(obj)); }catch(e){}
-}
+// （LS_RATED / getRated / setRated 已上移至社区后端常量区）
 function tplAvg(t){
   const r = t.ratings;
   if(!r || !r.count) return null;
@@ -1119,8 +1198,7 @@ function renderTplCards(cards, loadErr){
     const tagHtml = t._tag==='mine'
       ? '<span class="tb-tpl-tag mine">本机</span>'
       : '<span class="tb-tpl-tag community">社区</span>';
-    const toks = getTplTokens();
-    const canEdit = t._tag==='community' && toks[t.id];
+    const canEdit = t._tag==='community' && !!getGhPat();
     return `<div class="tb-tpl-card" data-tpl="${t.id}">
       <h4>${escapeHtml(t.name||'未命名')} ${tagHtml}</h4>
       <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
@@ -1167,45 +1245,41 @@ function renderTplCards(cards, loadErr){
       }
     });
   });
-  // 编辑社区模板（需本机令牌）
+  // 编辑社区模板（需本机发布令牌）
   listEl.querySelectorAll('[data-edit]').forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
       const id = btn.dataset.edit;
       const t = lastTplCards.find(x=>x.id===id);
       if(!t) return;
-      const toks = getTplTokens();
-      if(!toks[id]){ alert('本机未保存该模板的编辑令牌，无法在线编辑（可重新发布为新模板）'); return; }
-      editContext = { id, token: toks[id] };
+      if(!getGhPat()){ alert('需先填「发布令牌」才能编辑社区模板（在保存弹窗里填）'); return; }
+      editContext = { id };
       applyTemplate(t, false); // 载入主区但不关面板
       openSaveModal(t);
     });
   });
-  // 删除社区模板（需本机令牌）
+  // 删除社区模板（需本机发布令牌，直连 GitHub 删除）
   listEl.querySelectorAll('[data-delcom]').forEach(btn=>{
     btn.addEventListener('click', async e=>{
       e.stopPropagation();
       const id = btn.dataset.delcom;
       const t = lastTplCards.find(x=>x.id===id);
       const nm = t ? (t.name||'未命名') : '该模板';
-      const toks = getTplTokens();
-      if(!toks[id]){ alert('本机未保存该模板的编辑令牌，无法在线删除（可到本机模板里删除本地副本）'); return; }
+      if(!getGhPat()){ alert('需先填「发布令牌」才能删除社区模板'); return; }
       if(!confirm('确定删除社区模板「'+nm+'」？此操作不可撤销。')) return;
       btn.disabled = true;
       try{
-        const r = await fetchWithTimeout(TEMPLATE_API, {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id, editToken: toks[id]})});
-        const d = await r.json().catch(()=>({}));
-        if(r.ok && d.ok){
-          const nt = {...toks}; delete nt[id]; setTplTokens(nt);
-          renderTplCards(lastTplCards.filter(x=>x.id!==id));
-        } else {
-          alert('删除失败：' + (d.error||r.status));
-        }
-      }catch(err){ alert('删除后端不可达，请稍后再试'); }
+        const { arr: list } = await ghReadTemplates();
+        const nt = list.filter(x=>x.id!==id);
+        if(nt.length === list.length){ toast('社区库未找到该模板'); return; }
+        await ghWriteTemplates(nt);
+        toast('已删除社区模板 ✓');
+        renderTplCards(lastTplCards.filter(x=>x.id!==id));
+      }catch(err){ alert('删除失败：' + err.message); }
       finally{ btn.disabled = false; }
     });
   });
-  // 评分
+  // 评分（直连 GitHub 写回，本机去重防自己重复刷；跨用户去重需后端，暂不做）
   listEl.querySelectorAll('[data-rate]').forEach(btn=>{
     btn.addEventListener('click', async e=>{
       e.stopPropagation();
@@ -1214,22 +1288,22 @@ function renderTplCards(cards, loadErr){
       const score = parseInt(btn.dataset.score, 10);
       const t = lastTplCards.find(x=>x.id===id);
       if(!t) return;
+      if(!getGhPat()){ toast('需先填发布令牌才能评分'); return; }
       try{
-        const r = await fetchWithTimeout(TEMPLATE_API + 'rate', {
-          method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({id, score})
-        });
-        const d = await r.json().catch(()=>({}));
-        if(r.ok && d.ok){
-          t.ratings = { sum: d.avg * d.count, count: d.count };
-          const rr = getRated(); rr[id] = score; setRated(rr);
-          renderTplCards(lastTplCards);
-        } else {
-          alert('评分失败：' + (d.error || r.status));
-        }
-      }catch(err){
-        alert('评分后端不可达，请稍后再试');
-      }
+        const { arr: list } = await ghReadTemplates();
+        const ct = list.find(x=>x.id===id);
+        if(!ct){ toast('模板不存在'); return; }
+        ct.ratings = ct.ratings || {sum:0, count:0};
+        const rated = getRated();
+        if(rated[id] != null){ ct.ratings.sum -= rated[id]; ct.ratings.count -= 1; }
+        ct.ratings.sum += score; ct.ratings.count += 1;
+        await ghWriteTemplates(list);
+        rated[id] = score; setRated(rated);
+        const ct2 = lastTplCards.find(x=>x.id===id);
+        if(ct2) ct2.ratings = ct.ratings;
+        renderTplCards(lastTplCards);
+        toast('评分成功 ✓');
+      }catch(err){ toast('评分失败：' + err.message); }
     });
   });
 }
