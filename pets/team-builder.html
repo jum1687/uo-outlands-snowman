@@ -211,6 +211,13 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 .tb-tpl-bar .tb-save-tpl:hover{ background:#2a8; }
 .tb-tpl-bar .tb-toggle-tpl{ background:#fff; }
 .tb-tpl-bar .tb-toggle-tpl:hover{ border-color:#36c; color:#36c; }
+.tb-login-bar{ display:none; align-items:center; gap:8px; margin:0 0 12px; padding:8px 10px; background:#f4f7fb; border:1px solid #e0e6ee; border-radius:8px; font-size:.85em; flex-wrap:wrap; }
+.tb-login-bar input{ padding:6px 8px; border:1px solid #c8ccd1; border-radius:6px; font-size:.95em; min-width:180px; }
+.tb-login-bar button{ padding:6px 12px; border-radius:6px; border:1px solid #36c; background:#36c; color:#fff; cursor:pointer; }
+.tb-login-bar .tb-login-state b{ color:#36c; }
+.tb-login-bar .tb-login-hint{ color:#888; }
+html[data-theme="dark"] .tb-login-bar{ background:#1c2026; border-color:#3a414b; }
+html[data-theme="dark"] .tb-login-bar input{ background:#11141a; border-color:#3a414b; color:#d6dbe2; }
 .tb-tpl-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; }
 .tb-tpl-card{ border:1px solid #e4e7eb; border-radius:7px; padding:7px 8px; background:#fcfcfc; position:relative; }
 .tb-tpl-card h4{ margin:0 0 3px; font-size:.82em; display:flex; align-items:center; gap:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -870,6 +877,7 @@ function render(){
   </div>`;
   const tplPanel = tplPanelOpen ? `<div class="tb-panel tb-tpl-panel">
     <div class="tb-panel-title">📚 模板库 <span class="tb-tpl-title-hint">悬停看阵容 · 点击「套用」一键恢复</span></div>
+    <div id="tbLoginBar" class="tb-login-bar"></div>
     <div id="tplList" class="tb-tpl-list"><div class="tb-tpl-empty">加载中…</div></div>
   </div>` : '';
 
@@ -893,6 +901,8 @@ function render(){
   </div>`;
 
   bindSlotCombos();
+  updateLoginBar();
+  if(tplPanelOpen && BACKEND_API) refreshMe();
 
   // 绑定队伍槽位 tooltip
   document.querySelectorAll('.tb-slot[data-idx]').forEach(slot=>{
@@ -964,6 +974,10 @@ const GH_PATH = 'pets/templates.json';
 const GH_API = 'https://api.github.com';
 // 读取社区模板走同源 GitHub Pages（pets/templates.json），不依赖 workers.dev（大陆常不可达）
 const TEMPLATE_READ = 'pets/templates.json';
+// 社区后端地址（腾讯云）。留空 = 沿用旧的「本机令牌直连 GitHub」方式（仅 owner 可发）；
+// 一旦填入真实后端地址，即启用昵称登录，所有人都能发模板/评分/删自己的模板。
+const BACKEND_API = '';
+let currentUser = null; // {name, id} 来自后端 /api/me
 const LS_MY_TPL = 'tb_my_templates_v1';
 const LS_GH_PAT = 'tb_gh_pat_v1';
 const LS_RATED = 'tb_rated_v1';
@@ -985,6 +999,55 @@ function setMyTemplates(arr){
 }
 function getRated(){ try{ return JSON.parse(localStorage.getItem(LS_RATED)) || {}; }catch(e){ return {}; } }
 function setRated(obj){ try{ localStorage.setItem(LS_RATED, JSON.stringify(obj)); }catch(e){} }
+
+// ---------- 昵称登录（后端 /api/me、/auth/nickname） ----------
+async function refreshMe(){
+  if(!BACKEND_API) return;
+  try{
+    const r = await fetch(BACKEND_API + '/api/me', { credentials: 'include' });
+    if(r.ok){ const d = await r.json(); currentUser = d.user || null; }
+    else currentUser = null;
+  }catch(e){ currentUser = null; }
+  updateLoginBar();
+}
+async function loginNickname(name){
+  name = (name||'').trim();
+  if(!name || !BACKEND_API) return false;
+  try{
+    const r = await fetch(BACKEND_API + '/auth/nickname', {
+      method:'POST', credentials:'include',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ nickname: name })
+    });
+    if(r.ok){ const d = await r.json(); currentUser = d.user || null; updateLoginBar(); return true; }
+  }catch(e){}
+  return false;
+}
+function logout(){
+  currentUser = null;
+  try{ document.cookie = 'tb_sid=; Path=/; Max-Age=0; SameSite=None; Secure'; }catch(e){}
+  updateLoginBar();
+}
+function updateLoginBar(){
+  const el = document.getElementById('tbLoginBar');
+  if(!el) return;
+  if(!BACKEND_API){ el.style.display = 'none'; return; }
+  el.style.display = 'flex';
+  if(currentUser){
+    el.innerHTML = `<span class="tb-login-state">已登录为 <b>${escapeHtml(currentUser.name)}</b></span>
+      <button type="button" id="tbLogout">退出</button>`;
+    const lo = document.getElementById('tbLogout');
+    if(lo) lo.onclick = logout;
+  } else {
+    el.innerHTML = `<input id="tbNick" placeholder="填昵称登录后就能发模板/评分" maxlength="24" />
+      <button type="button" id="tbLoginBtn">登录</button>
+      <span class="tb-login-hint">游客只能看，登录后可发布/评分/删除自己的模板</span>`;
+    const b = document.getElementById('tbLoginBtn');
+    const inp = document.getElementById('tbNick');
+    if(b) b.onclick = async ()=>{ const ok = await loginNickname(inp.value); if(!ok) toast('登录失败（后端未上线？）'); };
+    if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter' && b) b.click(); });
+  }
+}
 
 // 轻提示 toast
 let toastTimer = null;
@@ -1081,14 +1144,16 @@ function openSaveModal(t){
   const okBtn = document.getElementById('tplOk');
   if(okBtn) okBtn.disabled = false;
   const patInp = document.getElementById('tplPat');
-  patInp.value = getGhPat(); // 预填（掩码），留空则保留已有令牌
-  updatePatStatus();
+  if(patInp){
+    if(BACKEND_API){ const row = patInp.closest('.tb-pat-row'); if(row) row.style.display = 'none'; }
+    else { patInp.value = getGhPat(); updatePatStatus(); }
+  }
   if(t){ // 编辑模式：预填社区模板信息，强制发布
     document.getElementById('tplName').value = t.name || '';
     document.getElementById('tplAuthor').value = t.author || localStorage.getItem('tb_tpl_author') || '羊哥';
     document.getElementById('tplNote').value = t.note || '';
     document.getElementById('tplPublish').checked = true;
-    document.getElementById('tplHint').textContent = '正在编辑社区模板（需本机发布令牌）';
+    document.getElementById('tplHint').textContent = BACKEND_API ? '正在编辑社区模板（需登录后发布）' : '正在编辑社区模板（需本机发布令牌）';
   } else { // 新建
     document.getElementById('tplName').value = '';
     document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
@@ -1125,23 +1190,27 @@ async function saveTemplate(){
   if(patInput.value.trim()) setGhPat(patInput.value.trim());
   updatePatStatus();
 
-  // 若勾选发布，先检测令牌是否有效，避免走到写入才报 401
+  // 发布前检查：后端模式需登录；旧模式需填本机令牌
   if(publish){
-    const pat = getGhPat();
-    if(!pat){ hint.textContent = '勾选发布到社区，但未填写发布令牌'; return; }
-    toast('正在检测令牌…');
-    try{
-      const test = await fetchWithTimeout(`${GH_API}/repos/${GH_REPO}`, {
-        headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json' }
-      });
-      if(!test.ok){
-        const j = await test.json().catch(()=>({}));
-        const msg = test.status===401 ? '令牌无效或已过期（401）' : ('检测失败(' + test.status + (j.message?': '+j.message:'') + ')');
-        hint.textContent = msg + '，请清除后重填令牌';
-        toast(msg);
-        return;
-      }
-    }catch(e){ hint.textContent = '令牌检测时网络超时，请重试'; return; }
+    if(BACKEND_API){
+      if(!currentUser){ hint.textContent = '发布到社区需先登录（填昵称）→ 见模板库上方登录条'; return; }
+    } else {
+      const pat = getGhPat();
+      if(!pat){ hint.textContent = '勾选发布到社区，但未填写发布令牌'; return; }
+      toast('正在检测令牌…');
+      try{
+        const test = await fetchWithTimeout(`${GH_API}/repos/${GH_REPO}`, {
+          headers: { Authorization: 'Bearer ' + pat, Accept: 'application/vnd.github+json' }
+        });
+        if(!test.ok){
+          const j = await test.json().catch(()=>({}));
+          const msg = test.status===401 ? '令牌无效或已过期（401）' : ('检测失败(' + test.status + (j.message?': '+j.message:'') + ')');
+          hint.textContent = msg + '，请清除后重填令牌';
+          toast(msg);
+          return;
+        }
+      }catch(e){ hint.textContent = '令牌检测时网络超时，请重试'; return; }
+    }
   }
 
   localStorage.setItem('tb_tpl_author', author);
@@ -1170,26 +1239,39 @@ async function doSave(name, author, note, publish, okBtn){
   setMyTemplates(mine.slice(0, 50));
 
   let needReload = true;
-  let freshList = null; // 发布成功后从 GitHub 读回的最新社区列表
+  let freshList = null;
   if(publish){
-    const pat = getGhPat();
-    if(!pat){
-      toast('未填发布令牌，已存本机（展开弹窗填令牌可发社区）');
-    } else {
+    if(BACKEND_API){
+      // 后端模式：昵称登录后发布，服务端持令牌写入仓库
       try{
-        const { arr: list, sha } = await ghReadTemplates();
-        const i = list.findIndex(x=>x.id===t.id);
-        if(i>=0) list[i] = t; else list.unshift(t);
-        await ghWriteTemplates(list, sha);
-        freshList = list;
-        needReload = false;
-        toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
-      }catch(e){
-        const msg = e.message || String(e);
-        const friendly = msg.includes('NO_PAT') ? '未填发布令牌' :
-                         msg.includes('401') ? '令牌无效/已过期（401），请清除后重填' :
-                         ('发布失败：' + msg);
-        toast(friendly + '（已存本机）');
+        const body = { name: t.name, note: t.note, scenario: t.scenario, slots: t.slots, team: t.team, talents: t.talents };
+        const r = await fetch(BACKEND_API + '/api/templates', {
+          method:'POST', credentials:'include',
+          headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+        });
+        if(r.ok){ needReload = false; toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓（待 Pages 刷新后可见）'); }
+        else { const d = await r.json().catch(()=>({})); toast('发布失败：' + (d.error||r.status) + '（已存本机）'); }
+      }catch(e){ toast('发布失败：后端不可达（已存本机）'); }
+    } else {
+      const pat = getGhPat();
+      if(!pat){
+        toast('未填发布令牌，已存本机（展开弹窗填令牌可发社区）');
+      } else {
+        try{
+          const { arr: list, sha } = await ghReadTemplates();
+          const i = list.findIndex(x=>x.id===t.id);
+          if(i>=0) list[i] = t; else list.unshift(t);
+          await ghWriteTemplates(list, sha);
+          freshList = list;
+          needReload = false;
+          toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
+        }catch(e){
+          const msg = e.message || String(e);
+          const friendly = msg.includes('NO_PAT') ? '未填发布令牌' :
+                           msg.includes('401') ? '令牌无效/已过期（401），请清除后重填' :
+                           ('发布失败：' + msg);
+          toast(friendly + '（已存本机）');
+        }
       }
     }
   } else {
@@ -1284,7 +1366,7 @@ function renderTplCards(cards, loadErr){
     const tagHtml = t._tag==='mine'
       ? '<span class="tb-tpl-tag mine">本机</span>'
       : '<span class="tb-tpl-tag community">社区</span>';
-    const canEdit = t._tag==='community' && !!getGhPat();
+    const canEdit = t._tag==='community' && (BACKEND_API ? !!currentUser : !!getGhPat());
     return `<div class="tb-tpl-card" data-tpl="${t.id}">
       <h4>${escapeHtml(t.name||'未命名')} ${tagHtml}</h4>
       <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
@@ -1338,7 +1420,11 @@ function renderTplCards(cards, loadErr){
       const id = btn.dataset.edit;
       const t = lastTplCards.find(x=>x.id===id);
       if(!t) return;
-      if(!getGhPat()){ alert('需先填「发布令牌」才能编辑社区模板（在保存弹窗里填）'); return; }
+      if(BACKEND_API){
+        if(!currentUser){ alert('编辑社区模板需先登录（填昵称）'); return; }
+      } else {
+        if(!getGhPat()){ alert('需先填「发布令牌」才能编辑社区模板（在保存弹窗里填）'); return; }
+      }
       editContext = { id };
       applyTemplate(t, false); // 载入主区但不关面板
       openSaveModal(t);
@@ -1351,6 +1437,19 @@ function renderTplCards(cards, loadErr){
       const id = btn.dataset.delcom;
       const t = lastTplCards.find(x=>x.id===id);
       const nm = t ? (t.name||'未命名') : '该模板';
+      if(BACKEND_API){
+        if(!currentUser){ alert('删除社区模板需先登录（填昵称）'); return; }
+        if(!confirm('确定删除社区模板「'+nm+'」？此操作不可撤销。')) return;
+        btn.disabled = true;
+        try{
+          const r = await fetch(BACKEND_API + '/api/templates/' + encodeURIComponent(id), { method:'DELETE', credentials:'include' });
+          const d = await r.json().catch(()=>({}));
+          if(r.ok){ toast('已删除社区模板 ✓'); renderTplCards(lastTplCards.filter(x=>x.id!==id)); }
+          else { alert('删除失败：' + (d.error||r.status)); }
+        }catch(err){ alert('删除失败：后端不可达'); }
+        finally{ btn.disabled = false; }
+        return;
+      }
       if(!getGhPat()){ alert('需先填「发布令牌」才能删除社区模板'); return; }
       if(!confirm('确定删除社区模板「'+nm+'」？此操作不可撤销。')) return;
       btn.disabled = true;
@@ -1374,6 +1473,19 @@ function renderTplCards(cards, loadErr){
       const score = parseInt(btn.dataset.score, 10);
       const t = lastTplCards.find(x=>x.id===id);
       if(!t) return;
+      if(BACKEND_API){
+        if(!currentUser){ toast('评分需先登录（填昵称）'); return; }
+        try{
+          const r = await fetch(BACKEND_API + '/api/templates/' + encodeURIComponent(id) + '/rate', {
+            method:'POST', credentials:'include',
+            headers:{'Content-Type':'application/json'}, body: JSON.stringify({score})
+          });
+          const d = await r.json().catch(()=>({}));
+          if(r.ok){ const rated = getRated(); rated[id] = score; setRated(rated); loadTemplates(); toast('评分成功 ✓'); }
+          else { toast('评分失败：' + (d.error||r.status)); }
+        }catch(err){ toast('评分失败：后端不可达'); }
+        return;
+      }
       if(!getGhPat()){ toast('需先填发布令牌才能评分'); return; }
       try{
         const { arr: list } = await ghReadTemplates();
