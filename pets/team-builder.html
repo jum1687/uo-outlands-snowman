@@ -224,6 +224,10 @@ html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
 .tb-tpl-foot{ display:flex; align-items:center; gap:6px; margin-top:2px; }
 .tb-tpl-del{ margin-left:auto; border:1px solid #e6c3c3; background:#fff; color:#c0392b; font-size:.72em; border-radius:4px; padding:3px 9px; cursor:pointer; line-height:1.2; }
 .tb-tpl-del:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
+.tb-tpl-edit{ margin-left:auto; border:1px solid #bcd5ff; background:#fff; color:#2a6; font-size:.72em; border-radius:4px; padding:3px 9px; cursor:pointer; line-height:1.2; }
+.tb-tpl-edit:hover{ background:#2a6; color:#fff; border-color:#2a6; }
+.tb-tpl-del-com{ border:1px solid #e6c3c3; background:#fff; color:#c0392b; font-size:.72em; border-radius:4px; padding:3px 9px; cursor:pointer; line-height:1.2; }
+.tb-tpl-del-com:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 .tb-tpl-empty{ color:#888; font-size:.88em; }
 .tb-tpl-err{ color:#c0392b; font-size:.82em; }
 
@@ -278,6 +282,10 @@ html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.community{ background:#1c2733; 
 html[data-theme="dark"] .tb-tpl-card .tb-tpl-tag.mine{ background:#3a3326; color:#f0a020; }
 html[data-theme="dark"] .tb-tpl-del{ background:#2a2024; border-color:#5a3a3a; color:#ff7a7a; }
 html[data-theme="dark"] .tb-tpl-del:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
+html[data-theme="dark"] .tb-tpl-edit{ background:#16241c; border-color:#2f4d3d; color:#58d68d; }
+html[data-theme="dark"] .tb-tpl-edit:hover{ background:#2a6; color:#fff; border-color:#2a6; }
+html[data-theme="dark"] .tb-tpl-del-com{ background:#2a2024; border-color:#5a3a3a; color:#ff7a7a; }
+html[data-theme="dark"] .tb-tpl-del-com:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 html[data-theme="dark"] .tb-tpl-modal{ background:#262b32; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal input, html[data-theme="dark"] .tb-tpl-modal textarea{ background:#1d2026; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-tpl-modal .row button{ background:#3a414b; border-color:#3a414b; color:#d6dbe2; }
@@ -938,6 +946,15 @@ function getMyTemplates(){
 function setMyTemplates(arr){
   try{ localStorage.setItem(LS_MY_TPL, JSON.stringify(arr)); }catch(e){}
 }
+// 社区模板编辑令牌（方案A）：按 id 存本机，仅本机可编辑/删除自己发布的社区模板
+const LS_TPL_TOKENS = 'tb_tpl_tokens_v1';
+function getTplTokens(){
+  try{ return JSON.parse(localStorage.getItem(LS_TPL_TOKENS)) || {}; }catch(e){ return {}; }
+}
+function setTplTokens(obj){
+  try{ localStorage.setItem(LS_TPL_TOKENS, JSON.stringify(obj)); }catch(e){}
+}
+let editContext = null; // {id, token} 编辑社区模板时的上下文
 function tplFromState(){
   const scenario = document.getElementById('scenarioSel').value;
   const slots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
@@ -951,13 +968,21 @@ function tplFromState(){
     createdAt: new Date().toISOString()
   };
 }
-function openSaveModal(){
+function openSaveModal(t){
   const modal = document.getElementById('tplModal');
-  document.getElementById('tplName').value = '';
-  document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
-  document.getElementById('tplNote').value = '';
-  document.getElementById('tplPublish').checked = false;
-  document.getElementById('tplHint').textContent = '';
+  if(t){ // 编辑模式：预填社区模板信息，强制发布
+    document.getElementById('tplName').value = t.name || '';
+    document.getElementById('tplAuthor').value = t.author || localStorage.getItem('tb_tpl_author') || '羊哥';
+    document.getElementById('tplNote').value = t.note || '';
+    document.getElementById('tplPublish').checked = true;
+    document.getElementById('tplHint').textContent = '正在编辑你发布的社区模板（需本机编辑令牌）';
+  } else { // 新建
+    document.getElementById('tplName').value = '';
+    document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
+    document.getElementById('tplNote').value = '';
+    document.getElementById('tplPublish').checked = false;
+    document.getElementById('tplHint').textContent = '';
+  }
   modal.classList.add('open');
   document.getElementById('tplName').focus();
 }
@@ -976,21 +1001,43 @@ async function saveTemplate(){
   if(!name){ hint.textContent = '请填写模板名称'; return; }
   if(state.team.filter(Boolean).length === 0){ hint.textContent = '队伍是空的，先选宠物'; return; }
   localStorage.setItem('tb_tpl_author', author);
-  const t = buildTemplateMeta(name, author, note);
+
+  // 编辑模式复用原 id + 令牌；否则新建
+  let t;
+  if(editContext && editContext.id){
+    t = tplFromState();
+    t.id = editContext.id;
+    t.name = name; t.author = author; t.note = note; t.mine = true;
+  } else {
+    t = buildTemplateMeta(name, author, note);
+  }
+
   // 本机永远存一份
   const mine = getMyTemplates();
-  mine.unshift(t);
+  const idx = mine.findIndex(x=>x.id===t.id);
+  if(idx>=0) mine[idx] = t; else mine.unshift(t);
   setMyTemplates(mine.slice(0, 50));
-  // 社区发布
+
+  // 社区发布 / 更新
   if(publish){
     try{
-      const r = await fetch(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(t)});
-      if(r.ok){ hint.textContent = '已发布到社区模板库 ✓'; }
-      else { hint.textContent = '社区后端返回 ' + r.status + '，已存到本机'; }
+      const body = {...t};
+      if(editContext && editContext.token) body.editToken = editContext.token;
+      const r = await fetch(TEMPLATE_API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      const d = await r.json().catch(()=>({}));
+      if(r.ok && d.ok){
+        const toks = getTplTokens();
+        toks[t.id] = d.editToken;
+        setTplTokens(toks);
+        hint.textContent = (editContext ? '已更新社区模板 ✓' : '已发布到社区模板库 ✓') + '（编辑令牌已存本机）';
+      } else {
+        hint.textContent = '社区后端返回 ' + (d.error||r.status) + '，已存到本机';
+      }
     }catch(e){ hint.textContent = '社区后端不可达（未部署？），已存到本机'; }
   } else {
     hint.textContent = '已存到本机模板 ✓';
   }
+  editContext = null;
   setTimeout(closeSaveModal, 900);
   if(tplPanelOpen) loadTemplates();
 }
@@ -1061,6 +1108,8 @@ function renderTplCards(cards){
     const tagHtml = t._tag==='mine'
       ? '<span class="tb-tpl-tag mine">本机</span>'
       : '<span class="tb-tpl-tag community">社区</span>';
+    const toks = getTplTokens();
+    const canEdit = t._tag==='community' && toks[t.id];
     return `<div class="tb-tpl-card" data-tpl="${t.id}">
       <h4>${escapeHtml(t.name||'未命名')} ${tagHtml}</h4>
       <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
@@ -1069,6 +1118,8 @@ function renderTplCards(cards){
       <div class="tb-tpl-foot">
         <button class="apply" data-apply="${t.id}">套用</button>
         ${t._tag==='mine' ? `<button class="tb-tpl-del" data-del="${t.id}" title="删除本机模板">✕</button>` : ''}
+        ${canEdit ? `<button class="tb-tpl-edit" data-edit="${t.id}" title="编辑你发布的社区模板">编辑</button>` : ''}
+        ${canEdit ? `<button class="tb-tpl-del-com" data-delcom="${t.id}" title="删除社区模板">删除</button>` : ''}
       </div>
     </div>`;
   }).join('');
@@ -1103,6 +1154,43 @@ function renderTplCards(cards){
         setMyTemplates(getMyTemplates().filter(x=>x.id!==id));
         renderTplCards(lastTplCards.filter(x=>x.id!==id));
       }
+    });
+  });
+  // 编辑社区模板（需本机令牌）
+  listEl.querySelectorAll('[data-edit]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const id = btn.dataset.edit;
+      const t = lastTplCards.find(x=>x.id===id);
+      if(!t) return;
+      const toks = getTplTokens();
+      if(!toks[id]){ alert('本机未保存该模板的编辑令牌，无法在线编辑（可重新发布为新模板）'); return; }
+      editContext = { id, token: toks[id] };
+      applyTemplate(t, false); // 载入主区但不关面板
+      openSaveModal(t);
+    });
+  });
+  // 删除社区模板（需本机令牌）
+  listEl.querySelectorAll('[data-delcom]').forEach(btn=>{
+    btn.addEventListener('click', async e=>{
+      e.stopPropagation();
+      const id = btn.dataset.delcom;
+      const t = lastTplCards.find(x=>x.id===id);
+      const nm = t ? (t.name||'未命名') : '该模板';
+      const toks = getTplTokens();
+      if(!toks[id]){ alert('本机未保存该模板的编辑令牌，无法在线删除（可到本机模板里删除本地副本）'); return; }
+      if(!confirm('确定删除社区模板「'+nm+'」？此操作不可撤销。')) return;
+      btn.disabled = true;
+      try{
+        const r = await fetch(TEMPLATE_API, {method:'DELETE', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id, editToken: toks[id]})});
+        const d = await r.json().catch(()=>({}));
+        if(r.ok && d.ok){
+          const nt = {...toks}; delete nt[id]; setTplTokens(nt);
+          renderTplCards(lastTplCards.filter(x=>x.id!==id));
+        } else {
+          alert('删除失败：' + (d.error||r.status));
+        }
+      }catch(err){ alert('删除后端不可达，请稍后再试'); }
     });
   });
   // 评分
@@ -1147,7 +1235,7 @@ async function loadTemplates(){
     community.map(t=>({...t, _tag:'community'}))
   ));
 }
-function applyTemplate(t){
+function applyTemplate(t, closePanel){
   const scenario = t.scenario || 'pve';
   const slots = t.slots || 5;
   // 队伍：按名字找宠物，槽位合法性由 setSlot 兜底
@@ -1168,9 +1256,9 @@ function applyTemplate(t){
   saveOverrides();
   document.getElementById('scenarioSel').value = scenario;
   document.getElementById('slotsInput').value = slots;
-  tplPanelOpen = false;
+  if(closePanel !== false) tplPanelOpen = false;
   render();
-  window.scrollTo({top:0, behavior:'smooth'});
+  if(closePanel !== false) window.scrollTo({top:0, behavior:'smooth'});
 }
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
