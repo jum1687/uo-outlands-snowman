@@ -30,9 +30,12 @@
     "note": "5食尸鬼太脆，换个2格的收割者。",
     "mine": true,
     "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
+      "sum": 8,
+      "count": 1,
+      "voters": {
+        "961125bd839b": 8
+      },
+      "avg": 8
     }
   },
   {
