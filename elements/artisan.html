@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,7 +49,6 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">元素精通</a> › <span>工匠 Artisan</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Artisan_Aspect" target="_blank" rel="noopener">wiki.uooutlands.com/Artisan_Aspect</a></div>
 <div class="mw-body">
@@ -71,15 +69,12 @@
   </ol></div>
   <div class="mw-content">
 
-
     <h2 id="overview">概要 <span class="en-h">Overview</span></h2>
     <p>工匠（Artisan）是 Outlands 的元素精通（Aspect Mastery）之一，其特性围绕<strong>制造（Crafting）</strong>与<strong>团队增益</strong>展开。该元素的特殊特效名为「强化（Fortify）」，可对目标造成伤害，并为周围友好的玩家提供伤害与减伤加成。在武器与魔法书上，工匠元素强化命中、战术、法力返还与伤害；在护甲上则提升护甲值、制造系装备加成（对穿戴的可制造装备生效）以及卓越制造（Exceptional）几率。</p>
-
     <h2 id="special">特殊特效 <span class="en-h">Special Effect</span></h2>
     <p>工匠元素的激活特殊特效为 <strong>强化（Fortify）</strong>：对目标造成（500 + 50 × 阶位等级）点伤害，并为 12 格半径范围内的所有友好玩家提供（5% + 0.5% × 阶位等级）的伤害与减伤加成，持续 30 秒（不叠加）。</p>
     <div class="formula">Fortify 伤害 = 500 + 50 × Tier Level
 友方增益 = 伤害 + 减伤 各 (5% + 0.5% × Tier Level)，范围 12 格，持续 30 秒（不叠加）</div>
-
     <h2 id="weapon">武器特效 <span class="en-h">Weapon Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/artisan-weapon.jpg" alt="武器截图" loading="lazy"/><div class="img-caption">武器截图</div></div>
     <p>激活工匠元素武器后，提供以下加成（数值随玩家的工匠阶位等级提升）：</p>
@@ -90,7 +85,6 @@
       <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随武器速度缩放)</span></td><td>0.5% + 每阶位 0.05%</td></tr>
     </table>
     <p>特殊特效同样为 <strong>强化（Fortify）</strong>（数值与上方特殊特效一致）。</p>
-
     <h2 id="spellbook">魔法书特效 <span class="en-h">Spellbook Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/artisan-spellbook.jpg" alt="魔法书截图" loading="lazy"/><div class="img-caption">魔法书截图</div></div>
     <p>激活工匠元素魔法书后，提供以下加成（数值随玩家的工匠阶位等级提升）：</p>
@@ -101,7 +95,6 @@
       <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随法术环缩放)</span></td><td>4% + 每阶位 0.4%</td></tr>
     </table>
     <p>特殊特效同样为 <strong>强化（Fortify）</strong>（数值与上方特殊特效一致）。</p>
-
     <h2 id="armor">护甲特效 <span class="en-h">Armor Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/artisan-armor.jpg" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>激活工匠元素护甲后，提供以下加成（数值随玩家的工匠阶位等级提升）：</p>
@@ -111,15 +104,12 @@
       <tr><td>制造系装备加成<br><span class="en-cell">(Crafting Skill Worn Equipment Bonus)</span></td><td>40% + 每阶位 13%</td></tr>
       <tr><td>卓越制造几率加成<br><span class="en-cell">(Exceptional Crafting Chance Bonus)</span></td><td>5% + 每阶位 1.5%</td></tr>
     </table>
-
     <h3 id="armor-craft">制造系装备加成 <span class="en-h">Crafting Skill Worn Equipment Bonuses</span></h3>
 <div class="aspect-img"><img src="../data/images/elements/artisan-armor.jpg" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>为玩家<strong>具备对应制造技能所能制作的</strong>护甲 / 盾牌提供护甲值加成、为武器提供伤害加成、为乐器提供有效的吟游增益（Barding）加成。该物品<strong>不一定要亲手制作</strong>（可以是 NPC 购买或魔法产物），只要该类型物品「可被制造」即可生效。</p>
-
     <h3 id="armor-exceptional">卓越制造几率加成 <span class="en-h">Exceptional Crafting Chance Bonus</span></h3>
 <div class="aspect-img"><img src="../data/images/elements/artisan-armor.jpg" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>提升以卓越（Exceptional）品质制造物品的几率；该加成是<strong>乘以</strong>玩家对某物品的基础卓越几率，而非直接相加。</p>
-
     <h2 id="experience">工匠经验 <span class="en-h">Artisan Experience</span></h2>
     <ul class="plain">
       <li>成功制造物品时可获得工匠元素经验，经验多少由<strong>制造该物品所使用的材料</strong>决定；使用价值更高的材料可换取更多工匠经验。</li>
@@ -129,7 +119,6 @@
       <li>玩家可使用 <code>[Artisan</code> 命令切换是否从制造中获取工匠经验，该切换也会<strong>阻止制造消耗奥术精华</strong>。</li>
       <li>当玩家已达到工匠元素的最高阶位时，不会再消耗奥术精华（因为无法再获得该元素的经验）。</li>
     </ul>
-
     <h2 id="cloth">
 布料 <span class="en-h">Cloth</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/artisan-extra-1.png" alt="工匠元素制作图标" loading="lazy"/><div class="img-caption">工匠元素制作图标</div></div>
@@ -144,29 +133,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -230,7 +206,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -250,6 +225,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
