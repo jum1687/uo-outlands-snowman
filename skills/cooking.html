@@ -44,7 +44,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -56,10 +55,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 制造类 › <span>烹饪 Cooking</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Cooking" target="_blank" rel="noopener">wiki.uooutlands.com/Cooking</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">烹饪 <span class="cnsub">Cooking</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -75,45 +72,27 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
-    
     <p>烹饪技能让玩家将肉类烹饪成可食用食物，并制作其他物品如染料、烤炉、植物培育增强物。烹饪需要使用平底锅（skillet）以及附近的火源。食用烹饪食物可提供即时的属性恢复，以及被动法力回复与攻击速度加成。</p>
     <ul class="plain">
-      
       <li>玩家可用从 NPC 购买或玩家制作的平底锅，并借助炉灶或营火等热源来烹饪食物与制作各种物品。</li>
-      
       <li>卓越（Exceptional）制作的平底锅有 200 次使用次数。</li>
-      
       <li>食用更高质量的食物，玩家可提升被动法力回复与攻击速度加成（但仅对 PvM 有效，不影响 PvP）。</li>
     </ul>
-    
     <p>玩家正常被动回复为：生命值每 4 秒 1 点，耐力每 2 秒 1 点，法力每 2 秒 1 点。</p>
-
     <h2 id="pvm">PvM 加成 <span class="en-h">PvM Bonuses</span></h2>
     <ul class="plain">
-      
       <li>食用食物的玩家会获得持续 60 分钟的食物满足（Food Satisfaction）效果。</li>
-      
       <li>玩家每 60 秒最多只能食用一次食物。</li>
-      
       <li>食物满足在玩家被动生成法力时，提供额外生成法力的几率。</li>
-      
       <li>食物满足分为 6 个等级（Measly 微薄、Paltry 贫乏、Meager 勉强、Adequate 充足、Appetizing 诱人、Delectable 美味）。</li>
-      
       <li>商店购买的食物或召唤的"制造食物（Create Food）"永远是 Measly 级；而烹饪食物介于 Paltry 到 Delectable 之间。</li>
-      
       <li>若玩家在过去 2 分钟内处于 PvP 状态，则不会获得任何食物满足加成（PvP 结束后重新获得）。</li>
     </ul>
-
     <h2 id="pvp">PvP 加成 <span class="en-h">PvP Bonuses</span></h2>
-    
     <p>处于 PvP 状态时，食物满足对攻击速度与法力回复几率的基础加成仍然生效，但来自味觉鉴定（Taste ID）或烹饪的技能加成在 PvP 状态下不生效。</p>
-
     <h2 id="food-satisfaction">食物满足 <span class="en-h">Food Satisfaction</span></h2>
-    
     <p>玩家每 60 秒可进食一次，并将食物满足升级到更高的加成类型。食物提供的满足加成取玩家烹饪技能与味觉鉴定（Taste Identification）技能中的较高者。该附加加成在 PvP 状态下不生效。</p>
-
     <h2 id="mana-regen">法力回复 <span class="en-h">Mana Regen</span></h2>
-    
     <p>食物满足加成由味觉鉴定与烹饪中的较高技能计算。</p>
     <table class="craft-table">
       <thead><tr><th>类型 Type</th><th>2 点法力回复几率 % Chance for 2 Mana Regen</th><th>附加加成 Add. Bonus</th></tr></thead>
@@ -126,11 +105,8 @@
         <tr><td>Delectable</td><td>25%</td><td>+ 50% × (较高技能 / 100)</td></tr>
       </tbody>
     </table>
-    
     <p>若玩家正在主动冥想（Meditating），该几率降低为正常的 50%。</p>
-
     <h2 id="swing-speed">攻速加成 <span class="en-h">Swing Speed Bonus</span></h2>
-    
     <p>食物满足加成由味觉鉴定与烹饪中的较高技能计算。注意：这仅适用于拥有这些技能的食用者本人，而非由拥有这些技能的角色为他人制作的食物。</p>
     <table class="craft-table">
       <thead><tr><th>类型 Type</th><th>攻速加成 Swing Speed Bonus</th><th>附加加成 Add. Bonus</th></tr></thead>
@@ -143,19 +119,14 @@
         <tr><td>Delectable</td><td>+5%</td><td>+ 10% × (较高技能 / 100)</td></tr>
       </tbody>
     </table>
-
     <h2 id="restoration">Restoration Effect (i.e. Snacking) <span class="en-h">恢复效果（即加餐）</span></h2>
-    
     <p>食用食物会立即提供以下恢复（除正常满足增益外）：</p>
     <div class="formula">生命恢复 = 30 × 食物倍率 × (烹饪技能 / 100%)
 法力恢复 = 20 × 食物倍率 × (烹饪技能 / 100%)
 耐力恢复 = (25 × 食物倍率) + (25 × 食物倍率 × (烹饪技能 / 100%))</div>
-    
     <p>食物恢复倍率：Measly 1.0x、Paltry 1.1x、Meagre 1.2x、Adequate 1.3x、Appetizing 1.4x、Delectable 1.5x。</p>
     <h3 id="restoration-pvp">PvP</h3>
-    
     <p>处于 PvP 状态时食用食物获得的恢复量降低为正常的 50%。</p>
-
     <h2 id="craftables">可造物 <span class="en-h">Craftables</span></h2>
     <table class="craft-table">
       <thead><tr><th>类别 Category</th><th>物品 Item</th><th>材料 Ingredients</th><th>技能 Skill</th></tr></thead>
@@ -184,11 +155,8 @@
       </tbody>
     </table>
     <p>注：26 种元素染发剂（Aspect Hair Dye）与 26 种元素染须剂（Aspect Facial Hair Dye）均按相同配比覆盖全部 26 个元素，上表以"覆盖说明 + 范例"呈现。活动物品含 Spring 2021 / Halloween 2022 / Valentines 2023 / Christmas 2023 / Halloween 2024 / Lunar New Year 2024 / Mid-Sea 2026 等多款。</p>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>升到 120 大约需要 18,000–20,000 块肋骨（Ribs）。</p>
-    
     <p>0–50 向 NPC 训练 | 50–100 烹饪单个肋骨/鸡腿/鱼排 | 100–120 烹饪肋骨/鸡腿/鱼排篮（Baskets）</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -197,29 +165,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -283,7 +238,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -303,6 +257,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
