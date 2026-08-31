@@ -22,5 +22,13 @@
     "salt": "69b7a5e01a5ed7ca62e26fa90d38318d",
     "hash": "705c8dcead7686e501835d31e3c999ffd37e2f57566fb9e2d213a290ed639bfe",
     "createdAt": "2026-08-31T05:59:21.719Z"
+  },
+  {
+    "id": "0fb2c7be-f717-4211-a9f6-491968fbf57e",
+    "name": "小凤自测",
+    "nameLower": "小凤自测",
+    "salt": "f7b6a33eb102c2dfe2de9124e9a31055",
+    "hash": "01b9cfb152e481dc3d2fc197d35da9309a7fd222782f00cc5d26f65ad52d0968",
+    "createdAt": "2026-08-31T06:04:37.623Z"
   }
 ]
