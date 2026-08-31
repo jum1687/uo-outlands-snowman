@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,7 +49,6 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 战斗类 › <span>治愈 Healing</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Healing" target="_blank" rel="noopener">wiki.uooutlands.com/Healing</a></div>
 <div class="mw-body">
@@ -86,22 +84,18 @@
     </ul>
     <div class="formula">绷带治疗量 = (Healing / 100) × (Random(40, 60) × (1 + 0.2 × Anatomy / 100))
 包扎时间 = 15 − (5 × (Dex − 25) / 75) 秒</div>
-
     <h2 id="stationary">静止包扎 <span class="en-h">Stationary Bandaging</span></h2>
     <ul class="plain">
       <li>静止（stationary）超过 5 秒的玩家，可对至多 2 格外的目标进行包扎。</li>
       <li>若在包扎完成前 5 秒内移动，治疗范围将恢复为 1 格。</li>
     </ul>
-
     <h2 id="resurrection">复活 <span class="en-h">Resurrection</span></h2>
     <ul class="plain">
       <li>玩家需要 80 点治愈与 80 点解剖学，才能有几率用绷带成功复活目标。</li>
       <li>治愈 100 且解剖学 80 的玩家，用绷带复活目标时必定 100% 成功。</li>
       <li>治愈低于 100 时的复活几率，从 80 治愈时的 24% 提升至 99 治愈时的 62%（前提是满足最低 80 解剖学要求）。</li>
     </ul>
-
     <h2 id="curing">解毒 <span class="en-h">Curing Poison</span></h2>
-
     <h3 id="progressive">递进解毒 <span class="en-h">Progressive Curing</span></h3>
     <p>每次连续失败的解毒尝试，都会使下一次尝试的基础解毒几率提升 100%（此前为 50%）。</p>
     <div class="example">
@@ -129,11 +123,9 @@
       <li>玩家施加的毒药（武器与法术）有 (25% × (味觉辨识技能 / 100)) 的解毒几率惩罚。</li>
     </ul>
     <p>例如：正常情况下解毒几率为 50% 的玩家，若毒药由 100 毒药 + 100 味觉辨识的玩家施加，则解毒几率仅为 25%。</p>
-
     <h3 id="curechances">包扎解毒几率 <span class="en-h">Bandaging Cure Chances</span></h3>
     <div class="formula">对玩家解毒几率 = ((125% − (毒药等级 × 25%)) × (治愈技能 / 100)) − (滑脱次数 × 2%)
 对怪物解毒几率 = ((125% − (毒药等级 × 25%)) × (兽医技能 / 100)) − (滑脱次数 × 2%)</div>
-
     <h2 id="pvm">PvM</h2>
     <p>对中毒目标包扎时，无论解毒成败，都会治疗其伤害。在 PvM 中，对中毒目标的包扎治疗量如下：</p>
     <table class="craft-table">
@@ -146,7 +138,6 @@
         <tr><td>致命毒 Lethal</td><td>25% 正常治疗量</td></tr>
       </tbody>
     </table>
-
     <h2 id="crossover">包扎技能交叉 <span class="en-h">Bandaging Skills Crossover</span></h2>
     <ul class="plain">
       <li>用绷带包扎目标时，玩家可选择性「交叉（Crossover）」使用通常不允许用于该目标类型的包扎技能，例如对玩家使用兽医（Veterinary）+ 动物学识（Animal Lore），或对随从使用治愈 + 解剖学。</li>
@@ -155,7 +146,6 @@
       <li>若玩家同时拥有对目标使用「常规」或「交叉」技能的资格，包扎将采用治疗量更高、或解毒/复活成功率更高的那组技能。</li>
       <li>包扎的技能提升始终默认为目标的常规技能：包扎玩家始终提升治愈 + 解剖学，包扎怪物始终提升兽医 + 动物学识。</li>
     </ul>
-
     <h2 id="codex">治愈者法典 <span class="en-h">Healer's Codex</span></h2>
     <ul class="plain">
       <li>治愈者法典（Healer's Codex）需要 80 治愈与 80 解剖学才能使用。</li>
@@ -175,7 +165,6 @@
         <tr><td>无界 Without Borders</td><td>1 / 2 / 2</td><td>病人范围增加 (1 / 2 / 3)，并使病人治疗量及解毒/复活几率提升正常的 (2% / 6% / 10%)</td></tr>
       </tbody>
     </table>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
     <table class="craft-table">
       <thead><tr><th>技能区间 Skill</th><th>方式 Activity</th></tr></thead>
@@ -192,29 +181,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -278,7 +254,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -298,6 +273,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
