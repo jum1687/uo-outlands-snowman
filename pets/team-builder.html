@@ -57,6 +57,29 @@
 /* 标签栏：复用可驯服列表风格 */
 .tb-tags-row{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
 .tb-tag-empty{ color:#888; font-size:.9em; }
+.tb-follow-sum{ font-size:.82em; color:#1a4f8a; font-weight:600; margin-left:6px; }
+html[data-theme="dark"] .tb-follow-sum{ color:#7fb0e8; }
+/* 需求4：标签栏缩短到约 1/3，玩法推荐移到其右方 */
+.tb-tags-play-wrap{ display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap; }
+.tb-tags-side{ flex:0 0 33%; max-width:33%; min-width:220px; }
+.tb-tags-side .tb-tags-row{ max-height:210px; overflow:auto; align-content:flex-start; padding-right:4px; }
+.tb-play-side{ flex:1 1 280px; min-width:0; }
+.tb-play-side .tb-playstyle{ margin:0; }
+/* 需求1：天赋点数 UI */
+.tb-tcol-pts{ font-size:.78em; color:#1a4f8a; font-weight:600; margin-left:auto; white-space:nowrap; }
+.tb-mini-t{ position:relative; }
+.tb-mini-t .tb-lvl-row{ display:flex; align-items:center; gap:5px; margin-top:3px; }
+.tb-lvl-btn{ width:18px; height:18px; border-radius:4px; border:1px solid #c8ccd1; background:#fff; cursor:pointer; font-size:.82em; line-height:1; display:inline-flex; align-items:center; justify-content:center; padding:0; color:#334; }
+.tb-lvl-btn:hover:not(:disabled){ background:#eef5ff; border-color:#36c; color:#124; }
+.tb-lvl-btn:disabled{ opacity:.32; cursor:not-allowed; }
+.tb-mini-pips{ display:flex; gap:3px; flex-shrink:0; }
+.tb-mini-pips span{ width:9px; height:9px; border-radius:50%; background:#dfe3e8; display:inline-block; }
+.tb-mini-pips span.on{ background:#27ae60; }
+html[data-theme="dark"] .tb-tcol-pts{ color:#7fb0e8; }
+html[data-theme="dark"] .tb-lvl-btn{ background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-lvl-btn:hover:not(:disabled){ background:#32383f; border-color:#4d8fe8; }
+html[data-theme="dark"] .tb-mini-pips span{ background:#3a414b; }
+html[data-theme="dark"] .tb-mini-pips span.on{ background:#27ae60; }
 
 /* 天赋推荐：三栏迷你面板 */
 .tb-talent-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
@@ -434,8 +457,10 @@ const SCEN = {
   boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2, hamstring:1.3, hinder:1.3}
 };
 
-// 页面状态：5 个槽位数组 + 天赋覆盖
-const state = { team: [], overrides: {} };
+// 页面状态：5 个槽位数组 + 天赋覆盖 + 天赋点数
+const state = { team: [], overrides: {}, points: {}, manualPts: {} };
+const COSTS = [1,3,5];            // 天赋等级 1/2/3 对应花费点数
+const MAX_PTS = 20;               // 每系天赋点数上限
 
 // 天赋偏好持久化（本机 localStorage）：用户改过的某系天赋，下次打开自动沿用
 const LS_OVERRIDES = 'tb_talent_overrides_v1';
@@ -460,6 +485,62 @@ function arraysEqual(a, b){
   return a.every((v,i)=>v === b[i]);
 }
 loadOverrides();
+// ---------- 天赋点数：自动分配 + 用户调整 ----------
+const LS_POINTS = 'tb_talent_points_v1';
+function loadPrefs(){
+  try{
+    const raw = localStorage.getItem(LS_POINTS);
+    if(raw){ const o = JSON.parse(raw); state.points = o.points || {}; state.manualPts = o.manualPts || {}; }
+  }catch(e){ state.points = {}; state.manualPts = {}; }
+}
+function savePoints(){
+  try{ localStorage.setItem(LS_POINTS, JSON.stringify({points:state.points, manualPts:state.manualPts})); }catch(e){}
+}
+// 某系已用点数
+function colPts(cls){
+  const pts = state.points[cls] || {};
+  let s = 0;
+  for(const k in pts) s += COSTS[pts[k]-1];
+  return s;
+}
+// 按代表宠 rec 自动满级分配（预算 20 点）
+function autoAllocate(cls, scenario){
+  const pet = repPetByCls(state.team)[cls];
+  if(!pet) return {};
+  const rec = baseRecNames(cls, pet, scenario);
+  const pts = {}; let budget = MAX_PTS;
+  for(const nm of rec){
+    if(budget <= 0) break;
+    let lvl = 3;
+    while(lvl > 0 && COSTS[lvl-1] > budget) lvl--;
+    if(lvl > 0){ pts[nm] = lvl; budget -= COSTS[lvl-1]; }
+  }
+  return pts;
+}
+// 队伍变更时，未手动改过的系自动重算；手动系保留用户加点
+function syncPoints(scenario){
+  for(const cls of ['Attack','Utility','Tank']){
+    const pet = repPetByCls(state.team)[cls];
+    if(!pet){ state.points[cls] = {}; continue; }
+    if(!state.manualPts[cls]) state.points[cls] = autoAllocate(cls, scenario);
+  }
+}
+// 调整某天赋等级（delta=-1/+1），受 3 级与 20 点预算约束
+function adjustLevel(cls, name, delta){
+  const pts = state.points[cls] || (state.points[cls] = {});
+  const cur = pts[name] || 0;
+  let nv = cur + delta;
+  if(nv < 0) nv = 0; if(nv > 3) nv = 3;
+  if(nv === cur) return;
+  const curCost = cur > 0 ? COSTS[cur-1] : 0;
+  const nextCost = COSTS[nv>0 ? nv-1 : 0];
+  if(nv > 0 && (colPts(cls) - curCost + nextCost) > MAX_PTS) return; // 超预算忽略
+  if(nv === 0) delete pts[name]; else pts[name] = nv;
+  state.manualPts[cls] = true;
+  savePoints();
+  render();
+}
+loadPrefs();
 
 function talentInfo(name){
   for(const c of ['Attack','Utility','Tank']){
@@ -568,12 +649,14 @@ function renderSlotCombo(i){
     <div class="tb-combo-list" id="slotList-${i}"></div>
   </div>`;
 }
-function renderRoster(team){
+function renderRoster(team, totalSlots){
   const hasAny = team.some(Boolean);
+  const followStr = team.filter(Boolean).map(p=>`${p.slots}/${totalSlots}`).join(', ');
   let html = `<div class="tb-roster-head">
     <span class="tb-roster-title">宠物队伍</span>
+    ${followStr ? `<span class="tb-follow-sum" title="各宠物跟随数 / 上限">（${followStr}）</span>` : ''}
     <div class="tb-roster-actions">
-      <button class="tb-suggest" id="tbSuggest" title="根据当前阵容自动补齐">补充推荐</button>
+      <button class="tb-suggest" id="tbSuggest" title="智能补满队伍并把天赋重置为AI推荐">AI推荐</button>
       ${hasAny ? `<button class="tb-clear" id="tbClearAll" title="清空队伍">清空</button>` : ''}
     </div>
   </div>`;
@@ -651,7 +734,7 @@ function renderTalents(team, scenario){
   for(const cls of ['Attack','Utility','Tank']){
     const pet = rep[cls];
     html += `<div class="tb-tcol tb-tcol-${cls}">`;
-    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? (state.overrides[cls] ? ` <span class="tb-user-pref" title="已按你本机保存的偏好">★你的偏好</span><button class="tb-tcol-reset" data-reset="${cls}" title="清除你的偏好，恢复系统推荐">清除</button>` : `<button class="tb-tcol-reset" data-reset="${cls}" title="恢复系统推荐">重置</button>`) : ''}</div>`;
+    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? `<span class="tb-tcol-pts">点数 ${colPts(cls)}/${MAX_PTS}</span>` : ''}${pet ? (state.manualPts[cls] ? ` <span class="tb-user-pref" title="已按你本机保存的偏好">★你的偏好</span><button class="tb-tcol-reset" data-reset="${cls}" title="清除你的偏好，恢复系统推荐">清除</button>` : `<button class="tb-tcol-reset" data-reset="${cls}" title="恢复系统推荐">重置</button>`) : ''}</div>`;
     if(!pet){
       html += `<div class="tb-tcol-empty">本阵容无 ${CLSZH[cls]} 系宠物</div>`;
     } else {
@@ -665,9 +748,17 @@ function renderTalents(team, scenario){
         const isCross = NATIVEMAP[nm] !== cls;
         const cn = t ? t.cnname : nm;
         const overridden = state.overrides[cls] && state.overrides[cls][idx] !== baseNames[idx];
-        html += `<div class="tb-mini-t maxed ${isCross?'cross':''} modifiable ${overridden?'overridden':''}" data-cls="${cls}" data-idx="${idx}" data-talent="${nm}" title="点击重选天赋">
+        const lvl = (state.points[cls] && state.points[cls][nm] != null) ? state.points[cls][nm] : 3;
+        const curCost = lvl > 0 ? COSTS[lvl-1] : 0;
+        const incDisabled = lvl >= 3 || (colPts(cls) - curCost + COSTS[lvl>0?lvl:0]) > MAX_PTS;
+        const pips = [1,2,3].map(k=>`<span class="${k<=lvl?'on':''}"></span>`).join('');
+        html += `<div class="tb-mini-t ${isCross?'cross':''} modifiable ${overridden?'overridden':''}" data-cls="${cls}" data-idx="${idx}" data-talent="${nm}" title="点击重选天赋">
           <div class="tb-mini-tname">${cn} <span class="en">${nm}</span></div>
-          <div class="tb-mini-pips"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          <div class="tb-lvl-row">
+            <button class="tb-lvl-btn lvl-dec" data-dec="${cls}|${nm}" ${lvl<=0?'disabled':''} title="降一级">−</button>
+            <div class="tb-mini-pips">${pips}</div>
+            <button class="tb-lvl-btn lvl-inc" data-inc="${cls}|${nm}" ${incDisabled?'disabled':''} title="升一级">+</button>
+          </div>
         </div>`;
       });
       html += '</div>';
@@ -722,9 +813,19 @@ function bindTalentPickerItems(){
       const pet = repPetByCls(state.team)[cls];
       const scenario = document.getElementById('scenarioSel').value;
       if(pet) ensureOverride(cls, pet, scenario);
+      const oldName = state.overrides[cls] ? state.overrides[cls][idx] : null;
       state.overrides[cls][idx] = item.dataset.name;
+      // 同步点数：移除旧天赋等级，新天赋按预算给满级或降级
+      if(!state.points[cls]) state.points[cls] = {};
+      if(oldName) delete state.points[cls][oldName];
+      const used = colPts(cls);
+      const newName = item.dataset.name;
+      if(used + 5 <= MAX_PTS) state.points[cls][newName] = 3;
+      else if(used + 1 <= MAX_PTS) state.points[cls][newName] = 1;
+      else state.points[cls][newName] = 0;
+      state.manualPts[cls] = true;
       normalizeOverride(cls, scenario);
-      saveOverrides();
+      saveOverrides(); savePoints();
       closeTalentPicker();
       hideTip();
       render();
@@ -850,17 +951,25 @@ function bindSlotCombos(){
 }
 
 // ---------- 补充推荐 ----------
-function suggestTeam(){
+function aiRecommend(){
   const scenario = document.getElementById('scenarioSel').value;
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
   document.getElementById('slotsInput').value = totalSlots;
+  // 优先度最高：先补满队伍，再清空所有用户加点，重置为 AI（rec）推荐
   const {selected} = pickComplements(state.team, scenario, totalSlots);
-  // 依次填入第一个空槽
   for(const p of selected){
     const emptyIdx = state.team.findIndex(x=>!x);
     if(emptyIdx === -1) break;
     state.team[emptyIdx] = p;
   }
+  if(!confirm('AI推荐将自动补满队伍，并把所有天赋加点重置为系统推荐（现有加点会被清空）。是否确认？')){
+    render();   // 用户取消：保留已补满的队伍，不加点点清空
+    return;
+  }
+  state.overrides = {};
+  state.points = {};
+  state.manualPts = {};
+  saveOverrides(); savePoints();
   render();
 }
 
@@ -870,6 +979,7 @@ function render(){
   closeTalentPicker();
   const team = state.team;
   const scenario = document.getElementById('scenarioSel').value;
+  syncPoints(scenario);   // 队伍变更后自动分配/保留天赋点数
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
   const usedSlots = team.filter(Boolean).reduce((s,p)=>s+p.slots,0);
 
@@ -892,20 +1002,19 @@ function render(){
   </div>` : '';
 
   document.getElementById('result').innerHTML = overview + tplBar + `<div class="tb-app">
-    ${renderRoster(team)}
+    ${renderRoster(team, totalSlots)}
     <div class="tb-main">
       ${tplPanel}
       <div class="tb-panel">
-        <div class="tb-panel-title">标签栏</div>
-        ${renderTags(team)}
+        <div class="tb-panel-title">标签栏 · 玩法推荐</div>
+        <div class="tb-tags-play-wrap">
+          <div class="tb-tags-side">${renderTags(team)}</div>
+          <div class="tb-play-side">${renderPlaystyle(team)}</div>
+        </div>
       </div>
       <div class="tb-panel">
         <div class="tb-panel-title">天赋加点推荐</div>
         ${renderTalents(team, scenario)}
-      </div>
-      <div class="tb-panel tb-playstyle-panel">
-        <div class="tb-panel-title">玩法说明</div>
-        ${renderPlaystyle(team)}
       </div>
     </div>
   </div>`;
@@ -934,7 +1043,7 @@ function render(){
   const clearBtn = document.getElementById('tbClearAll');
   if(clearBtn) clearBtn.addEventListener('click', clearTeam);
   const suggestBtn = document.getElementById('tbSuggest');
-  if(suggestBtn) suggestBtn.addEventListener('click', suggestTeam);
+  if(suggestBtn) suggestBtn.addEventListener('click', aiRecommend);
 
   // 模板：存为 / 切换面板
   const saveTplBtn = document.getElementById('tbSaveTpl');
@@ -969,14 +1078,24 @@ function render(){
     });
   });
 
-  // 天赋重置按钮
+  // 天赋重置按钮：恢复系统推荐（清空用户加点与重选）
   document.querySelectorAll('[data-reset]').forEach(btn=>{
     btn.addEventListener('click', e=>{
       e.stopPropagation();
-      delete state.overrides[btn.dataset.reset];
-      saveOverrides();
+      const cls = btn.dataset.reset;
+      delete state.overrides[cls];
+      delete state.manualPts[cls];
+      delete state.points[cls];
+      saveOverrides(); savePoints();
       render();
     });
+  });
+  // 天赋等级 +/−
+  document.querySelectorAll('[data-inc]').forEach(btn=>{
+    btn.addEventListener('click', e=>{ e.stopPropagation(); const [c,n]=btn.dataset.inc.split('|'); adjustLevel(c,n,1); });
+  });
+  document.querySelectorAll('[data-dec]').forEach(btn=>{
+    btn.addEventListener('click', e=>{ e.stopPropagation(); const [c,n]=btn.dataset.dec.split('|'); adjustLevel(c,n,-1); });
   });
 }
 
