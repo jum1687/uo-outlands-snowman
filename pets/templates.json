@@ -1,5 +1,32 @@
 [
   {
+    "id": "t_3274a13cmtgo6zk8",
+    "name": "小凤自动测试模板",
+    "author": "羊爸测试",
+    "authorId": "df549b25-547a-4092-bf79-fe5286ec74e0",
+    "note": "链路自测,稍后删除",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "龙",
+      "虎",
+      null,
+      null,
+      null
+    ],
+    "talents": {
+      "Attack": [],
+      "Utility": [],
+      "Tank": []
+    },
+    "createdAt": "2026-08-31T03:19:53.480Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "mtfy65gyew90",
     "team": [
       "Harvestman",
