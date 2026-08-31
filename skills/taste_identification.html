@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 杂项类 › <span>味觉鉴定 Taste Identification</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Taste_Identification" target="_blank" rel="noopener">wiki.uooutlands.com/Taste_Identification</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">味觉鉴定 <span class="cnsub">Taste Identification</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -68,78 +65,50 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">描述 <span class="en-h">Description</span></h2>
-    
     <p>味觉鉴定（Taste Identification）技能强化所施加毒药的效果，提升"食物满足（Food Satisfaction）"增益，并帮助识别种植植物的最佳条件。味觉鉴定还通过减少来自流血、中毒与疾病的伤害，提供防御性收益。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>用于判断食物是否被下毒</li>
-      
       <li>也用于种植系统：玩家使用味觉鉴定技能与种植铲（Planter's Spade）尝试判定热量、水分与土壤的理想值</li>
-      
       <li>当玩家因进食获得食物满足时，会获得更高的法力回复与挥击速度</li>
-      
       <li>对食物使用味觉鉴定技能（TasteID）的技能冷却为 2 秒</li>
     </ul>
-
     <h2 id="poisoning">下毒与味觉鉴定 <span class="en-h">Poisoning and Taste ID</span></h2>
     <ul class="plain">
-      
       <li>玩家施加于生物的毒药（来自法术或武器）其伤害提高 (100% × (味觉鉴定技能 / 100)) [2020年2月14日补丁]</li>
-      
       <li>味觉鉴定技能不再降低目标生物的毒抗（玩家仍可通过毒药工具升级 / 精通连锁等环节降低毒抗）</li>
-      
       <li>将玩家毒术法术被抵抗的几率降低至正常的 (50% × (味觉鉴定技能 / 100))（可与下毒技能效果叠加）</li>
-      
       <li>味觉鉴定技能将目标解毒的几率降低 (50% × (味觉鉴定技能 / 100))</li>
-      
       <li>详见下毒（Poisoning）页面了解该主题的更多内容</li>
     </ul>
     <div class="formula">施加毒药伤害提升 = 100% × (味觉鉴定技能 / 100)
 毒术法术被抵抗几率 = 正常的 50% × (味觉鉴定技能 / 100)
 目标解毒几率降低 = 50% × (味觉鉴定技能 / 100)</div>
-
     <h2 id="foodsat">食物满足 <span class="en-h">Food Satisfaction</span></h2>
     <ul class="plain">
-      
       <li>玩家每 60 秒可进食一次，并将食物满足升级到更高的加成类型</li>
-      
       <li>从食物获得的食物满足加成，现在取玩家烹饪（Cooking）技能与味觉鉴定技能中较高者</li>
-      
       <li>附加加成在 PvP 红名状态下不生效</li>
     </ul>
-
     <h2 id="manaregen">法力回复 <span class="en-h">Mana Regen</span></h2>
-    
     <p>食物满足加成由味觉鉴定与烹饪中较高的技能计算。</p>
-    
     <p>类型 / 获得 2 点法力回复附加加成的几率：微薄（Measly）2.5% + 5% × (较高技能 / 100)；贫乏（Paltry）5% + 10% × (较高技能 / 100)；稀少（Meager）10% + 20% × (较高技能 / 100)；充足（Adequate）15% + 30% × (较高技能 / 100)；开胃（Appetizing）20% + 40% × (较高技能 / 100)；美味（Delectable）25% + 50% × (较高技能 / 100)</p>
     <div class="formula">2 点法力回复附加加成触发几率 = 基础值% + 系数% × (较高技能 / 100)
 例：美味(Delectable) = 25% + 50% × (较高技能 / 100)
 若玩家 actively 冥想中，几率降低为正常的 50%</div>
-
     <h2 id="swingspeed">挥击速度加成 <span class="en-h">Swing Speed Bonus</span></h2>
-    
     <p>食物满足加成由味觉鉴定与烹饪中较高的技能计算。注意这仅适用于拥有这些技能的进食者本人，而非由拥有这些技能的角色为其他角色制作的食物。</p>
-    
     <p>类型 / 挥击速度加成：微薄（Measly）+0.5% + 1% × (较高技能 / 100)；贫乏（Paltry）+1% + 2% × (较高技能 / 100)；稀少（Meager）+2% + 4% × (较高技能 / 100)；充足（Adequate）+3% + 6% × (较高技能 / 100)；开胃（Appetizing）+4% + 8% × (较高技能 / 100)；美味（Delectable）+5% + 10% × (较高技能 / 100)</p>
     <div class="formula">挥击速度加成 = 基础值% + 系数% × (较高技能 / 100)
 例：美味(Delectable) = +5% + 10% × (较高技能 / 100)</div>
-
     <h2 id="herbal">草药膏加成 <span class="en-h">Herbal Poultice Bonus</span></h2>
     <ul class="plain">
-      
       <li>拥有味觉鉴定的玩家获得草药膏（Herbal Poultice）加成：有 (50% × (味觉鉴定技能 / 100)) 的几率无视一次来自中毒、流血或疾病的持续伤害（tick）</li>
-      
       <li>目前遗憾的是无法查看该增益是否处于激活状态</li>
-      
       <li>自 1 月 26 日补丁起，不能再将该增益施加给其他玩家，且使用味觉鉴定时不再能选取地面（Ground）为目标</li>
     </ul>
     <div class="formula">草药膏无视中毒/流血/疾病持续伤害几率 = 50% × (味觉鉴定技能 / 100)</div>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）中对食物使用味觉鉴定 | 80–120 对食物使用味觉鉴定</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -148,29 +117,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -234,7 +190,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -254,6 +209,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
