@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 吟游类 › <span>音乐造诣 Musicianship</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Musicianship" target="_blank" rel="noopener">wiki.uooutlands.com/Musicianship</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">音乐造诣 <span class="cnsub">Musicianship</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -67,117 +64,75 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">描述 <span class="en-h">Description</span></h2>
-    
     <p>音乐造诣（Musicianship）技能是所有吟游技能——压制（Discordance）、和平（Peacemaking）、挑衅（Provocation）——的技能上限。实质上，玩家的压制、和平、挑衅技能都受音乐造诣限制。所有吟游技能都需要玩家背包中携带一件乐器，且每次尝试吟游行为时乐器都会损耗耐久。</p>
     <div class="note">音乐造诣是所有吟游技能的上限：压制 / 和平 / 挑衅的实际可用数值都不会超过音乐造诣。例如：挑衅 50、音乐造诣 25 的玩家，其挑衅视为 25。</div>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
-    
     <p>使用音乐造诣、挑衅、压制与和平技能都需要乐器。乐器可通过以下方式获得：向吟游诗人 NPC 购买；用木匠（Carpentry）技能制作；从生物掉落的魔法战利品中获得；制作的乐器加成与魔法乐器加成可在此处查阅。</p>
-    
     <p>乐器种类：竹笛（Bamboo Flute）、鼓（Drums）、竖琴（Harp）、鲁特琴（Lute）、立式竖琴（Standing Harp）、铃鼓（Tambourine）、 Gem 号角（Gemshorn）、手摇琴（Hurdy-Gurdy）、竖琴式潘琴（Psaltery）、萨克布号（Sackbut）、肖姆管（Shawm）、维埃尔琴（Vielle）。</p>
-
     <h2 id="more_details">更多细节 <span class="en-h">More Details</span></h2>
     <ul class="plain">
-      
       <li>玩家的基础吟游技能上限受音乐造诣限制（即：挑衅 50、音乐造诣 25 = 挑衅 25）</li>
-      
       <li>玩家有效吟游技能的加成不能超过其音乐造诣（即：音乐造诣 25 的玩家，其有效吟游技能最多只能从补充技能加成、歌词系护甲等获得 25 点）</li>
-      
       <li>玩家的有效吟游技能 = 基础吟游技能 + 乐器技能加成 + 乐器屠戮加成 + 技能屠戮加成 + 歌词系护甲加成 + 精通链环加成</li>
-      
       <li>玩家来自歌词系护甲、精通链环或屠戮加成的技能加成总和，上限为其音乐造诣（即：玩家从乐器/歌词系护甲/屠戮加成共获得 +50 吟游技能，但音乐造诣只有 25，则实际只能获得 +25 吟游技能）</li>
-      
       <li>吟游成功几率 = (有效吟游技能 / 100%) - (生物难度值 × 1.0%) [详见 2020 年 4 月 7 日补丁示例]</li>
-      
       <li>任何吟游行为的「最低成功几率」为 (33% × (有效吟游技能 / 100)) [详见 2020 年 4 月 7 日补丁示例]</li>
-      
       <li>Boss 吟游效果会使该生物的近战攻击速度与施法速度降低 25%，并使其技能冷却延迟增加 25%</li>
     </ul>
     <div class="formula">有效吟游技能 = 基础吟游技能 + 乐器技能加成 + 乐器屠戮加成 + 技能屠戮加成 + 歌词系护甲加成 + 精通链环加成
 （有效吟游技能的加成总和上限 = 音乐造诣）
-
 吟游成功几率 = (Effective Barding Skill / 100%) - (CreatureDifficultyValue × 1.0%)
 最低成功几率 = 33% × (Effective Barding Skill / 100)
-
 吟游减益持续时间：
   压制  = (有效吟游技能 / 100) × 60 秒
   和平  = (有效吟游技能 / 100) × 30 秒
   挑衅  = (有效吟游技能 / 100) × 30 秒</div>
     <div class="note">上方「吟游成功几率」「最低成功几率」与「减益持续时间」为所有吟游技能（压制/和平/挑衅）共用的通用公式，源自本页 Musicianship；各技能详情页中的数值以此为准。</div>
-
     <h2 id="bard_songs">吟游之歌 <span class="en-h">Bard Songs</span></h2>
     <ul class="plain">
-      
       <li>玩家在使用吟游技能时，可以指向地面以激活一首吟游之歌</li>
-      
       <li>当玩家激活吟游之歌时，效果仅授予自己，以及对自己显示为绿色（Green）或同队伍的其他玩家或生物</li>
-      
       <li>玩家要享受吟游之歌（挑衅/和平/压制之歌）的增益，需要处于制造该增益的玩家 50 格以内（若附近多人激活吟游之歌，则始终采用 50 格内任意玩家中数值最高的一版）</li>
-      
       <li>用于决定歌曲效果的有效吟游技能，上限为其音乐造诣（即：音乐造诣 70、挑衅 90 = 有效挑衅 70）</li>
-      
       <li>演奏吟游之歌有 10 秒冷却，独立于普通吟游技能使用</li>
     </ul>
     <div class="formula">压制之歌：伤害抗性加成 = 5% × (Effective Barding Skill / 100)（对自己/随从）
 和平之歌：接受治疗量加成 = 5% × (Effective Barding Skill / 100)
 挑衅之歌：伤害加成 = 5% × (Effective Barding Skill / 100)
 所有 AoE 吟游之歌持续 15 分钟；演奏冷却 10 秒</div>
-
     <h2 id="barding_breaks">吟游中断 <span class="en-h">Barding Breaks</span></h2>
     <ul class="plain">
-      
       <li>当一只非 Boss 生物处于被挑衅或被和平状态时，每经过 1 秒，就有 (生物难度 / 100 × 1%) 的几率遭受「吟游中断（Barding Break）」效果，持续 (生物难度 / 10) 秒</li>
     </ul>
-    
     <p>当生物遭受吟游中断时：</p>
     <ul class="plain">
-      
       <li>其头顶会出现「Barding Break」提示并播放音效</li>
-      
       <li>其挑衅与和平效果（不含压制）会立即结束</li>
-      
       <li>在吟游中断期间，其对挑衅与和平免疫</li>
-      
       <li>在吟游中断期间，该生物承受 -50% 攻击速度、-50% 施法速度、+50% 技能间隔延迟（即此前所述的 Boss 吟游效果概念）</li>
-      
       <li>当生物（非 Boss）的吟游中断效果结束时，在接下来 10 秒内，该生物会对最初对其施加吟游效果的吟游诗人产生中等程度的仇恨加成</li>
     </ul>
-    
     <p>只要玩家在过去 60 秒内至少对该目标吟游过一次，就会对当前正在经历吟游中断的任何生物获得「中断屏障（Break Barrier）」：</p>
     <ul class="plain">
-      
       <li>中断屏障提供对该生物的伤害加成 = 20% × (最高显示吟游技能)</li>
-      
       <li>中断屏障提供对该生物的伤害抗性加成 = 20% × (最高显示吟游技能)</li>
-      
       <li>对 Boss 的中断屏障加成降低为正常的 50%</li>
     </ul>
-
     <h2 id="defensive_barding">防御型吟游 <span class="en-h">Defensive Barding</span></h2>
     <ul class="plain">
-      
       <li>防御型吟游仅在玩家处于 PvP 标记状态时生效</li>
-      
       <li>若玩家未处于「战斗热潮（Heat of Battle）」状态（即近期未对其他玩家做出攻击行为），即可获得防御型吟游</li>
-      
       <li>当防御型吟游激活时，玩家会自动获得有效 wrestle（Wrestling）技能值与有效魔法抵抗（Magic Resist）技能值，但仅用于防御攻击/法术，数值基于其吟游技能</li>
-      
       <li>有效 wrestle 技能值 = ((压制技能 + 和平技能 + 挑衅技能) / 2)，最高 100 技能值</li>
-      
       <li>有效魔法抵抗技能值 = ((压制技能 + 和平技能 + 挑衅技能) / 2)，最高 100 技能值</li>
-      
       <li>防御型吟游获得的 wrestle/魔法抵抗，不计入满足典籍（Codex）/魔典（Grimoire）等所需的技能要求，玩家也不会从中获得 wrestle/魔法抵抗的任何独特 PvM 加成（如 wrestle 法力返还几率、魔法抵抗汲取法术伤害等）</li>
-      
       <li>若玩家角色已有的显示 wrestle 或魔法抵抗技能高于从防御型吟游获得的该技能有效值，则始终以玩家自身显示技能为准。[2020 年 9 月 28 日补丁]</li>
     </ul>
     <div class="formula">防御型吟游（仅 PvP 标记、无战斗热潮时）：
 有效 Wrestling = (压制 + 和平 + 挑衅) / 2（上限 100）
 有效 Magic Resist = (压制 + 和平 + 挑衅) / 2（上限 100）
 （不计入典籍/魔典技能要求，无 PvM 独特加成）</div>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）演奏任意乐器或对生物使用吟游技能 | 80–120 在 Prevalia 动物园 / Battletrainer 演奏任意乐器或对生物使用吟游技能</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -186,29 +141,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -272,7 +214,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -292,6 +233,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
