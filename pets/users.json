@@ -6,5 +6,13 @@
     "salt": "43edc46b1bac705964e505ab37e04e5c",
     "hash": "97f60dfe4cdc206f11d576868a0d3ac056c7e2be4290eacad8189806367d0f43",
     "createdAt": "2026-08-31T05:56:44.114Z"
+  },
+  {
+    "id": "4120bb72-afaf-4996-8d4a-159e0f3389cc",
+    "name": "链路自测5828",
+    "nameLower": "链路自测5828",
+    "salt": "f78b4cac83df87a68f1548927ef20631",
+    "hash": "47a08744f398867c02557e90c1f37baea88bca973eee7c3aa53c60c9d21b006c",
+    "createdAt": "2026-08-31T05:57:09.821Z"
   }
 ]
