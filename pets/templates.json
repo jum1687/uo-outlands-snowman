@@ -17,9 +17,11 @@
     "talents": {},
     "createdAt": "2026-08-31T05:57:13.519Z",
     "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
+      "sum": 9,
+      "count": 1,
+      "voters": {
+        "4120bb72-afaf-4996-8d4a-159e0f3389cc": 9
+      }
     }
   },
   {
