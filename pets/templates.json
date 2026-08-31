@@ -1,30 +1,5 @@
 [
   {
-    "id": "t_838a8183mtgor492",
-    "name": "小凤自测2",
-    "author": "羊爸测试",
-    "authorId": "97c333fc-0eb0-42a5-850e-e7e0053963ab",
-    "note": "链路自测,稍后删除",
-    "scenario": "pve",
-    "slots": 5,
-    "team": [
-      "龙",
-      "虎",
-      null,
-      null,
-      null
-    ],
-    "talents": {},
-    "createdAt": "2026-08-31T03:35:32.678Z",
-    "ratings": {
-      "sum": 8,
-      "count": 1,
-      "voters": {
-        "97c333fc-0eb0-42a5-850e-e7e0053963ab": 8
-      }
-    }
-  },
-  {
     "id": "t_3274a13cmtgo6zk8",
     "name": "小凤自动测试模板",
     "author": "羊爸测试",
