@@ -652,10 +652,10 @@ function renderSlotCombo(i){
 }
 function renderRoster(team, totalSlots){
   const hasAny = team.some(Boolean);
-  const followStr = team.filter(Boolean).map(p=>`${p.slots}/${totalSlots}`).join(', ');
+  const followStr = `${team.filter(Boolean).length}/${totalSlots}`;
   let html = `<div class="tb-roster-head">
     <span class="tb-roster-title">宠物队伍</span>
-    ${followStr ? `<span class="tb-follow-sum" title="各宠物跟随数 / 上限">（${followStr}）</span>` : ''}
+    ${followStr ? `<span class="tb-follow-sum" title="已选宠物数 / 跟随上限">（${followStr}）</span>` : ''}
     <div class="tb-roster-actions">
       <button class="tb-suggest" id="tbSuggest" title="智能补满队伍并把天赋重置为AI推荐">AI推荐</button>
       ${hasAny ? `<button class="tb-clear" id="tbClearAll" title="清空队伍">清空</button>` : ''}
