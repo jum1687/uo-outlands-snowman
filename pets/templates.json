@@ -1,42 +1,5 @@
 [
   {
-    "id": "t_6ec4a9b1mtgud3c5",
-    "name": "吞噬者+2火蚁",
-    "author": "Snowman Liang",
-    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
-    "note": "吞噬者定身后+100%伤害，火蚁地火补刀。",
-    "scenario": "pve",
-    "slots": 5,
-    "team": [
-      "Cave Gorger",
-      "Fire Ant",
-      "Fire Ant",
-      null,
-      null
-    ],
-    "talents": {
-      "Attack": [
-        "Immolate",
-        "Primal",
-        "Swarm",
-        "Lethality"
-      ],
-      "Utility": [
-        "Beast Sting",
-        "Opportunity",
-        "Toxic",
-        "Primal"
-      ],
-      "Tank": []
-    },
-    "createdAt": "2026-08-31T06:12:36.005Z",
-    "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
-    }
-  },
-  {
     "id": "t_593d9c39mtgpmsvc",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
