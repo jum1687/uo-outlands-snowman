@@ -1,5 +1,32 @@
 [
   {
+    "id": "t_f8061a9dmtgoq3w5",
+    "name": "小凤自动测试模板",
+    "author": "羊爸测试",
+    "authorId": "a64b84a9-e468-4e9f-9817-db8c327ae37b",
+    "note": "链路自测,稍后删除",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "龙",
+      "虎",
+      null,
+      null,
+      null
+    ],
+    "talents": {
+      "Attack": [],
+      "Utility": [],
+      "Tank": []
+    },
+    "createdAt": "2026-08-31T03:34:45.557Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_3274a13cmtgo6zk8",
     "name": "小凤自动测试模板",
     "author": "羊爸测试",
