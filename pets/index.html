@@ -36,7 +36,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -48,7 +47,6 @@
     </div>
   </div>
 </nav>
-
 <div class="mw-body">
   <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Category:Tameable_Creatures" target="_blank" rel="noopener">wiki.uooutlands.com/Category:Tameable_Creatures</a></div>
   <h1>可驯服生物目录 <span class="cnsub">Tameable Creatures</span></h1>
@@ -2893,7 +2891,6 @@
   var curSort = 'taming';   // 当前排序列 key
   var curDesc = true;       // 是否降序
   var STORE_KEY = 'petsIdxFilters';  // sessionStorage 持久化筛选+排序
-
   // 提取某行某字段的排序键值
   function fieldVal(row, key) {
     if (key === 'taming') return parseInt(row.children[1].getAttribute('data-taming'), 10) || 0;
@@ -2903,7 +2900,6 @@
     }
     return 0;
   }
-
   function sortRowsBy(key, desc) {
     rows.sort(function(a, b) {
       var va = fieldVal(a, key), vb = fieldVal(b, key);
@@ -2912,13 +2908,11 @@
     var tb = document.getElementById('tbody');
     rows.forEach(function(r){ tb.appendChild(r); });
   }
-
   function applySort() {
     sortRowsBy(curSort, curDesc);
     document.getElementById('th-taming').textContent = '最低驯服 ' + (curSort==='taming' ? (curDesc?'▼':'▲') : '▼');
     document.getElementById('th-dmg').textContent    = '基础伤害 ' + (curSort==='dmg'    ? (curDesc?'▼':'▲') : '▼');
   }
-
   function persist() {
     var dbChecked = [];
     var cbs = document.querySelectorAll('.db-filter:checked');
@@ -2933,7 +2927,6 @@
       sort: curSort, desc: curDesc
     }));
   }
-
   // 页面初始化：从 sessionStorage 还原筛选+排序
   try {
     var saved = JSON.parse(sessionStorage.getItem(STORE_KEY) || 'null');
@@ -2953,13 +2946,11 @@
       if (typeof saved.desc === 'boolean') curDesc = saved.desc;
     }
   } catch(e){}
-
   window.clearDb = function() {
     var cbs = document.querySelectorAll('.db-filter');
     for (var i = 0; i < cbs.length; i++) cbs[i].checked = false;
     filter();
   };
-
   window.filter = function() {
     var q = document.getElementById('q').value.toLowerCase().trim();
     var cls = document.getElementById('cls').value;
@@ -2967,12 +2958,10 @@
     var slots = document.getElementById('slots').value;
     var tv = document.getElementById('taming').value;
     var taming = tv ? parseInt(tv, 10) : 0;
-
     // 收集所有勾选的特殊技能（AND 逻辑：必须全部满足）
     var dbChecked = [];
     var cbs = document.querySelectorAll('.db-filter:checked');
     for (var i = 0; i < cbs.length; i++) dbChecked.push(cbs[i].value);
-
     var n = 0;
     for (var i = 0; i < rows.length; i++) {
       var r = rows[i];
@@ -2982,7 +2971,6 @@
       var rs = r.children[4].getAttribute('data-slots') || '';
       var rt = parseInt(r.children[1].getAttribute('data-taming'), 10) || 0;
       var rd = (r.children[8].getAttribute('data-debuff') || '');
-
       var ok = true;
       // 名称搜索
       if (q && name.indexOf(q) === -1) ok = false;
@@ -3009,7 +2997,6 @@
     document.getElementById('cnt').textContent = hint;
     persist();
   };
-
   document.getElementById('th-taming').addEventListener('click', function() {
     if (curSort === 'taming') curDesc = !curDesc;
     else { curSort = 'taming'; curDesc = true; }
@@ -3022,7 +3009,6 @@
     applySort();
     persist();
   });
-
   applySort();
   filter();
 })();
