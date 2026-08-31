@@ -1,5 +1,25 @@
 [
   {
+    "id": "t_143a5455mtgvvuyu",
+    "name": "nickmatch-test",
+    "author": "NickTest-A",
+    "authorId": "bc0fa4b0-a288-480f-9f46-4bd97c0c90e0",
+    "note": "",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "a",
+      "b"
+    ],
+    "talents": {},
+    "createdAt": "2026-08-31T06:55:11.238Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_593d9c39mtgpmsvc",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
