@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,12 +49,10 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">元素精通</a> › <span>时空 Temporal</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Temporal_Aspect" target="_blank" rel="noopener">wiki.uooutlands.com/Temporal_Aspect</a></div>
 <div class="mw-body">
   <h1 class="mw-page-title-main">时空 <span class="cnsub">Temporal</span></h1>
-
   <div class="toc"><div class="toctitle">目录</div><ol>
     <li><a href="#overview">概要 / Overview</a></li>
     <li><a href="#weapon">武器特效 / Weapon Effects</a></li>
@@ -66,15 +63,11 @@
     <li><a href="#cloth">布料 / Cloth</a></li>
     <li><a href="#notes">备注 / Notes</a></li>
   </ol></div>
-
   <div class="mw-content">
-
-
 
 
     <h2 id="overview">概要 <span class="en-h">Overview</span></h2>
     <p>时空（Temporal）是 Outlands 26 种元素之一，围绕使用「时空计时器（Temporal Chronometer）」生成「时空力场（Temporal Field）」展开：身处力场半径内可获得伤害与防御加成。武器与魔法书可触发「静止 Stasis」造成直接伤害并定身目标。</p>
-
     <h2 id="weapon">武器特效 <span class="en-h">Weapon Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/temporal-weapon.png" alt="武器截图" loading="lazy"/><div class="img-caption">武器截图</div></div>
     <p>时空元素武器（Temporal Aspect Weapon）提供以下加成：</p>
@@ -88,7 +81,6 @@
     <div class="formula">静止（Stasis）
 对目标造成 (700 + 70 × Tier Level) 点伤害；
 并使其被定身（Hinder）(5 + 0.5 × Tier Level) 秒。</div>
-
     <h2 id="spellbook">魔法书特效 <span class="en-h">Spellbook Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/temporal-spellbook.png" alt="魔法书截图" loading="lazy"/><div class="img-caption">魔法书截图</div></div>
     <p>时空元素魔法书（Temporal Aspect Spellbook）提供以下加成：</p>
@@ -102,7 +94,6 @@
     <div class="formula">静止（Stasis）
 对目标造成 (700 + 70 × Tier Level) 点伤害；
 并使其被定身（Hinder）(5 + 0.5 × Tier Level) 秒。</div>
-
     <h2 id="armor">
 护甲特效 <span class="en-h">Armor Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/temporal-extra-1.png" alt="时空护甲激活效果（含计时器道具）" loading="lazy"/><div class="img-caption">时空护甲激活效果（含计时器道具）</div>
@@ -116,7 +107,6 @@
       <tr><td>伤害减免与伤害延迟（2 秒）</td><td>5% + 每阶位 1.5%</td></tr>
       <tr><td>躲避移动效果的几率<br><span class="en-cell">(Chance to Avoid Movement Effects)</span></td><td>15% + 每阶位 4%</td></tr>
     </table>
-
     <h2 id="pvp">PvP 说明 <span class="en-h">PvP Effects</span></h2>
     <p>时空元素在 PvP 旗帜状态下：停用（Deactivated）无变化；启用（Activated）无变化。</p>
     <ul class="plain">
@@ -124,55 +114,46 @@
       <li>玩家脱离 PvP 60 秒后，这些效果会重新激活。</li>
       <li>列在「PvP Activated Effects」下的加成，是玩家当前处于 PvP 旗帜状态、对怪物时生效的加成。</li>
     </ul>
-
     <h2 id="mechanics">
 时空机制 <span class="en-h">Temporal Mechanics</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/temporal-extra-3.png" alt="时空战斗特效（伤害数字与力场）" loading="lazy"/><div class="img-caption">时空战斗特效（伤害数字与力场）</div></div>
     <p>时空元素围绕使用「时空计时器 Chronometer」生成「时空力场 Temporal Field」展开，身处力场半径内可获得伤害与防御（Damage Resistance）加成。</p>
-
     <h3>时空计时器 <span class="en-h">Temporal Chronometer</span></h3>
     <ul class="plain">
       <li>当玩家激活时空元素护甲时，背包中会获得一个时空计时器（Temporal Chronometer）。</li>
       <li>该物品被祝福（Blessed），但若被丢弃或移出角色（类似地图册 Atlas Books）则会被删除。</li>
     </ul>
-
     <h3>时空力场 <span class="en-h">Temporal Field</span></h3>
     <ul class="plain">
       <li>双击时空计时器，或使用 <code>[Temporal</code> / <code>[TemporalField</code> 命令，可在原地生成时空力场。</li>
       <li>身处该力场 12 格范围内时，玩家获得伤害加成、伤害减免与伤害延迟效果。</li>
       <li>时空力场持续 10 秒，过期前玩家无法再次生成新的力场。</li>
     </ul>
-
     <h3>伤害加成（2 秒内阶梯式提升）</h3>
     <ul class="plain">
       <li>身处自身生成的力场 12 格内，对造成的一切伤害获得 (10% + (3.5% × 阶位)) 的加成。</li>
       <li>该加成在力场生成时从 0% 起步，每秒提升正常值的 50%，2 秒后达到 100% 正常值，并持续至力场结束。</li>
     </ul>
-
     <h3>伤害减免与伤害延迟</h3>
     <ul class="plain">
       <li>身处自身生成的力场 12 格内，获得 (5% + (1.5% × 阶位)) 的伤害减免与伤害延迟效果。</li>
       <li>伤害延迟会在结算减伤后，将减伤量（向下取整）延后 2 秒，以伤害形式返还给玩家。</li>
     </ul>
-
     <h3>躲避移动效果的几率</h3>
     <ul class="plain">
       <li>身处自身生成的力场 12 格内，有 (15% + (4.0% × 阶位)) 的几率免疫使玩家麻痹（Paralyze）、定身（Hinder）或缠绕（Entangle）的效果。</li>
       <li>注：此加成原先归属疾风（Air）元素护甲，现属时空元素护甲。</li>
     </ul>
-
     <h3>时空设置 <span class="en-h">Temporal Settings</span></h3>
     <ul class="plain">
       <li>玩家可使用 <code>[TemporalSettings</code> 命令，选择激活时不自动生成时空计时器。</li>
       <li>玩家可在 <code>[Commands</code> 页面的元素（Aspect）分类下查看时空设置。</li>
     </ul>
-
     <h2 id="cloth">布料 <span class="en-h">Cloth</span></h2>
     <ul class="plain">
       <li>色相（Hue）：4211</li>
       <li>制作（To Craft）：裁缝 120 级 + 1 时空蒸馏物（Temporal Distillation）+ 1 羊毛（Wool）</li>
     </ul>
-
     <h2 id="notes">备注 <span class="en-h">Notes</span></h2>
     <p>本页所有数值均随玩家自身的时空阶位（Temporal Tier Level）变化。具体阶位数值以官方 Discord 补丁公告为准。</p>
   </div>
@@ -182,29 +163,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -268,7 +236,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -288,6 +255,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
