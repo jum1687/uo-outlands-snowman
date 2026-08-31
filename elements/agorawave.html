@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,7 +49,6 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">元素精通</a> › <span>声波 Agorawave</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Agorawave_Aspect" target="_blank" rel="noopener">wiki.uooutlands.com/Agorawave_Aspect</a></div>
 <div class="mw-body">
@@ -70,7 +68,6 @@
   <div class="mw-content">
     <h2 id="overview">概要 <span class="en-h">Overview</span></h2>
     <p>声波（Agorawave）是 Outlands 的元素精通（Aspect Mastery）之一，其特性围绕<strong>范围（AoE）法术</strong>与<strong>移动法阵（Moving Field）</strong>展开。该元素的特殊特效名为「织焰者（Flameweaver）」，可对周围最多 8 格内的怪物造成范围法术伤害，命中目标越多，总伤害越高。在武器与魔法书上，声波元素会强化法术伤害与法力返还；在护甲上则强化护甲值、法术伤害（对 AoE 与法阵法术翻倍）、移动法阵距离，以及施法期间的伤害减免。</p>
-
     <h2 id="weapon">武器特效 <span class="en-h">Weapon Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/agorawave-weapon.png" alt="武器截图" loading="lazy"/><div class="img-caption">武器截图</div></div>
     <p>激活声波元素武器后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
@@ -84,7 +81,6 @@
     <div class="formula">Flameweaver 伤害 = 1250 + 125 × Tier Level（Tier Level）
 范围 = 8 格
 总伤害加成 = 每命中 1 个目标 +10%</div>
-
     <h2 id="spellbook">魔法书特效 <span class="en-h">Spellbook Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/agorawave-spellbook.png" alt="魔法书截图" loading="lazy"/><div class="img-caption">魔法书截图</div></div>
     <p>激活声波元素魔法书后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
@@ -95,7 +91,6 @@
       <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随法术环缩放)</span></td><td>4% + 每阶位 0.4%</td></tr>
     </table>
     <p>特殊特效同样为 <strong>织焰者（Flameweaver）</strong>（数值与武器特效一致）：对 8 格范围内的怪物造成（1250 + 125 × 阶位等级）点伤害均摊，命中目标越多总伤害越高。</p>
-
     <h2 id="armor">护甲特效 <span class="en-h">Armor Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/agorawave-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>激活声波元素护甲后，提供以下加成（数值随玩家的声波阶位等级提升）：</p>
@@ -106,22 +101,17 @@
       <tr><td>移动法阵距离<br><span class="en-cell">(Moving Field Distance)</span></td><td>7 + 每 4 阶位 +1</td></tr>
       <tr><td>施法期间减伤<br><span class="en-cell">(Damage Resistance While Casting)</span></td><td>7.5% + 每阶位 2.5%</td></tr>
     </table>
-
     <h2 id="aoe">范围法术机制 <span class="en-h">AoE Spell Mechanics</span></h2>
     <p>当玩家穿着声波元素护甲时，施放的<strong>流星雨（Meteor Swarm）</strong>、<strong>连锁闪电（Chain Lightning）</strong>与<strong>地震（Earthquake）</strong>法术只会伤害怪物，而不会伤害任何玩家或随从（包括在 PvP 中也如此）。</p>
-
     <h2 id="spelldmg">法术伤害加成（对 AoE 与法阵法术翻倍） <span class="en-h">Spell Damage Bonus (doubled for AOE and Field Spells)</span></h2>
     <p>法术伤害提升（12% + 4% × 阶位等级）的常规数值；对于<strong>任意 AoE 法术</strong>（含流星雨、连锁闪电、地震）以及<strong>任意移动法阵</strong>（含火焰法阵 Fire Field、毒气法阵 Poison Field、麻痹法阵 Paralyze Field），该伤害加成会<strong>翻倍</strong>。</p>
     <div class="formula">法术伤害加成 = 12% + 4% × Tier Level
 对 AoE 法术与移动法阵 = (12% + 4% × Tier Level) × 2</div>
-
     <h2 id="field">移动法阵距离 <span class="en-h">Moving Field Distance</span></h2>
     <p>由火焰法阵、毒气法阵、麻痹法阵法术所创建的移动法阵的<strong>行进距离</strong>为（7 + 每 4 个阶位 +1）。</p>
     <div class="formula">移动法阵距离 = 7 + (每 4 阶位 +1)</div>
-
     <h2 id="drcast">施法期间减伤 <span class="en-h">Damage Resistance While Casting</span></h2>
     <p>玩家在<strong>施法动作进行期间</strong>（即施法动画播放时）会获得伤害减免。</p>
-
     <h2 id="pvp">PvP 效果 <span class="en-h">PvP Effects</span></h2>
     <p>声波元素在 PvP 中的表现如下：</p>
     <table class="aspect-data-table">
@@ -134,7 +124,6 @@
       <li>玩家脱离 PvP 满 60 秒后，这些效果会重新激活。</li>
       <li>列在「PvP 激活效果（PvP Activated Effects）」之下的加成，是在玩家当前处于 PvP 标记状态下、针对怪物（Creatures）时生效的额外加成。</li>
     </ul>
-
     <h2 id="cloth">布料 <span class="en-h">Cloth</span></h2>
     <ul class="plain">
       <li>色相（Hue）：4221</li>
@@ -147,29 +136,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -233,7 +209,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -253,6 +228,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
