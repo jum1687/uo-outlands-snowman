@@ -11,7 +11,6 @@
 /* ===== 页面整体：左右分栏 ===== */
 .tb-app{ display:flex; gap:16px; align-items:flex-start; }
 @media (max-width:860px){ .tb-app{ flex-direction:column; } }
-
 /* 左侧：宠物队伍 */
 .tb-roster{ width:240px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; background:#fff; border:1px solid #d4d8dd; border-radius:10px; padding:12px 14px; }
 @media (max-width:860px){ .tb-roster{ width:100%; flex-direction:row; flex-wrap:wrap; } }
@@ -41,7 +40,6 @@
 .tb-slot-dmg{ color:#1e8e3e; font-weight:bold; }
 .tb-slot-dmg .underdog-note{ color:#1e8e3e; font-size:.85em; font-weight:normal; margin-left:4px; }
 .tb-slot-base{ color:#666; font-size:.85em; font-style:italic; margin-top:1px; }
-
 /* 槽位 combobox */
 .tb-slot-combo{ position:relative; }
 .tb-slot-combo input{ width:100%; box-sizing:border-box; padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
@@ -52,12 +50,10 @@
 .tb-combo-item .meta{ color:#777; font-size:.9em; }
 .tb-combo-item .tags{ margin-left:4px; }
 .tb-combo-empty{ padding:8px; color:#888; font-size:.85em; }
-
 /* 右侧主体 */
 .tb-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:16px; }
 .tb-panel{ background:#fff; border:1px solid #d4d8dd; border-radius:10px; padding:12px 14px; }
 .tb-panel-title{ font-size:1em; font-weight:bold; margin:0 0 10px; padding-left:8px; border-left:4px solid #36c; }
-
 /* 标签栏：复用可驯服列表风格 */
 .tb-tags-row{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
 .tb-tag-empty{ color:#888; font-size:.9em; }
@@ -69,6 +65,27 @@ html[data-theme="dark"] .tb-follow-sum{ color:#7fb0e8; }
 .tb-tags-side .tb-tags-row{ max-height:210px; overflow:auto; align-content:flex-start; padding-right:4px; }
 .tb-play-side{ flex:1 1 280px; min-width:0; }
 .tb-play-side .tb-playstyle{ margin:0; }
+/* 玩法说明 + 伤害汇总：左右各 50% */
+.tb-play-dmg-wrap{ display:flex; gap:16px; align-items:stretch; flex-wrap:wrap; }
+.tb-play-dmg-wrap .tb-play-side,
+.tb-play-dmg-wrap .tb-dmg-side{ flex:1 1 calc(50% - 8px); min-width:260px; box-sizing:border-box; }
+.tb-play-dmg-wrap .tb-dmg-side{ background:#fff; border:1px solid #d4d8dd; border-radius:8px; overflow:hidden; }
+.tb-play-dmg-wrap .tb-dmg-side .tb-dmg-panel-body{ padding:8px 12px; max-height:220px; overflow-y:auto; }
+.tb-dmg-side-head{ display:flex; align-items:center; justify-content:space-between; padding:6px 12px; border-bottom:1px solid #eaecf0; background:#f7f8f9; }
+.tb-dmg-side-title{ font-weight:600; font-size:.85em; color:#555; }
+.tb-dmg-copy{ border:1px solid #c8ccd1; background:#fff; color:#333; border-radius:5px; padding:2px 10px; font-size:.8em; cursor:pointer; transition:border-color .15s,color .15s; }
+.tb-dmg-copy:hover:not(:disabled){ border-color:#36c; color:#36c; }
+.tb-dmg-copy:active:not(:disabled){ background:#eef4ff; }
+.tb-dmg-copy:disabled{ opacity:.5; cursor:not-allowed; }
+html[data-theme="dark"] .tb-dmg-side-head{ background:#32383f; border-bottom-color:#3a414b; }
+html[data-theme="dark"] .tb-dmg-side-title{ color:#c6ccd4; }
+html[data-theme="dark"] .tb-dmg-copy{ background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
+html[data-theme="dark"] .tb-dmg-copy:hover:not(:disabled){ border-color:#7fb0e8; color:#7fb0e8; }
+/* 天赋表各列顶部标签 */
+.tb-col-tags{ margin:-2px 0 6px; }
+.tb-col-tags .tb-tags-row{ gap:3px; }
+.tb-col-tags .dbadge{ font-size:.62em; padding:1px 5px; border-radius:8px; }
+.tb-col-tags .tb-tag-empty{ font-size:.65em; color:#999; }
 /* 需求1：天赋点数 UI */
 .tb-tcol-pts{ font-size:.78em; color:#1a4f8a; font-weight:600; margin-left:auto; white-space:nowrap; }
 .tb-mini-t{ position:relative; }
@@ -84,7 +101,6 @@ html[data-theme="dark"] .tb-lvl-btn{ background:#2b3038; border-color:#3a414b; c
 html[data-theme="dark"] .tb-lvl-btn:hover:not(:disabled){ background:#32383f; border-color:#4d8fe8; }
 html[data-theme="dark"] .tb-mini-pips span{ background:#3a414b; }
 html[data-theme="dark"] .tb-mini-pips span.on{ background:#27ae60; }
-
 /* 天赋推荐：三栏迷你面板 */
 .tb-talent-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 @media (max-width:760px){ .tb-talent-cols{ grid-template-columns:1fr; } }
@@ -95,7 +111,12 @@ html[data-theme="dark"] .tb-mini-pips span.on{ background:#27ae60; }
 .tb-tcol-Utility{ border-top:3px solid #27ae60; }
 .tb-tcol-Tank{ border-top:3px solid #2980b9; }
 .tb-tcol-empty{ color:#888; font-size:.85em; text-align:center; padding:16px 0; }
-
+.tb-tcol-icon{ flex-shrink:0; }
+/* 队伍里有该系宠物 → 高亮该列 */
+.tb-tcol.pet-active{ border-color:#36c; box-shadow:0 0 0 2px rgba(51,102,204,.22); }
+.tb-tcol-rep{ font-size:.7em; font-weight:normal; color:#1a4f8a; background:#eaf2ff; border:1px solid #cfe0f8; border-radius:9px; padding:1px 6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:96px; }
+.tb-tcol-nopet{ font-size:.7em; font-weight:normal; color:#999; font-style:italic; white-space:nowrap; }
+.tb-dmg-teffect{ margin-right:4px; }
 .tb-pet-build{ margin-bottom:10px; }
 .tb-pet-build:last-child{ margin-bottom:0; }
 .tb-pb-name{ font-weight:600; font-size:.88em; margin-bottom:4px; }
@@ -111,7 +132,6 @@ html[data-theme="dark"] .tb-mini-pips span.on{ background:#27ae60; }
 .tb-mini-pips{ display:flex; gap:3px; flex-shrink:0; }
 .tb-mini-pips span{ width:7px; height:7px; border-radius:50%; background:#ddd; border:1px solid #bbb; }
 .tb-mini-pips span.on{ background:#27ae60; border-color:#1e8449; }
-
 /* ===== 天赋模拟器（完整天赋树） ===== */
 .tb-tcol-head{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; border-bottom:1px solid #eaecf0; padding-bottom:6px; margin-bottom:8px; }
 .tb-tcol-rep{ font-size:.72em; color:#888; margin-left:2px; }
@@ -144,46 +164,41 @@ html[data-theme="dark"] .tb-mini-pips span.on{ background:#27ae60; }
 .tb-t-btn-minus:disabled, .tb-t-btn-minus[disabled]{ color:#ccc; border-color:#ddd; cursor:not-allowed; background:#fafafa; }
 .tb-t-btn-info{ color:#36c; border-color:#36c; }
 .tb-t-btn-info:hover{ background:#36c; color:#fff; }
-
 /* 伤害加成汇总面板 */
 .tb-dmg-panel{ border:1px solid #c8ccd1; border-radius:8px; background:#fefefe; margin-top:10px; overflow:hidden; }
 .tb-dmg-panel-head{ background:#f0f0f0; padding:7px 12px; font-weight:bold; font-size:.85em; border-bottom:1px solid #eaecf0; display:flex; align-items:center; gap:6px; }
-.tb-dmg-panel-body{ padding:8px 12px; max-height:260px; overflow-y:auto; }
+.tb-dmg-panel-body{ padding:4px 0; max-height:260px; overflow-y:auto; }
 .tb-dmg-empty{ color:#888; font-size:.82em; font-style:italic; }
 .tb-dmg-item{ display:flex; gap:8px; padding:4px 0; font-size:.8em; line-height:1.5; border-bottom:1px dotted #eee; align-items:flex-start; }
 .tb-dmg-item:last-child{ border-bottom:none; }
-.tb-dmg-head{ flex-shrink:0; min-width:80px; }
+.tb-dmg-head{ flex-shrink:0; min-width:80px; display:flex; flex-direction:column; gap:1px; }
+.tb-dmg-line1{ display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
 .tb-dmg-tname{ font-weight:600; color:#36c; white-space:nowrap; }
-.tb-dmg-en{ display:block; font-size:.82em; color:#888; font-weight:normal; white-space:nowrap; }
-.tb-dmg-lv{ display:inline-block; font-size:.72em; color:#c0392b; background:#fbeaea; padding:0 4px; border-radius:3px; margin-top:2px; }
+.tb-dmg-en{ font-size:.82em; color:#888; font-weight:normal; white-space:nowrap; }
+.tb-dmg-lv{ font-size:.72em; color:#c0392b; background:#fbeaea; padding:0 4px; border-radius:3px; }
 .tb-dmg-body{ flex:1 1 auto; min-width:0; }
 .tb-dmg-val{ color:#c0392b; font-weight:bold; white-space:nowrap; }
 .tb-dmg-sub{ color:#999; font-style:italic; font-size:.85em; }
 .tb-dmg-sub-val{ color:#888; font-weight:normal; font-style:normal; }
-
 /* 玩法说明 */
 .tb-playstyle-panel .tb-playstyle{ margin:0; }
-
 /* 控件 */
 .tb-controls{ display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; background:#fff; border:1px solid #c8ccd1; border-radius:10px; padding:14px; margin-bottom:16px; }
 .tb-field{ display:flex; flex-direction:column; gap:4px; min-width:160px; flex:1 1 160px; }
 .tb-field label{ font-size:.8em; font-weight:bold; color:#54595d; }
 .tb-field select, .tb-field input{ padding:7px 9px; border:1px solid #c8ccd1; border-radius:6px; font:inherit; background:#fff; }
 .tb-slots{ max-width:120px; flex:0 0 120px; }
-
 .tb-intro{ color:#444; font-size:.92em; line-height:1.6; background:#f6f8fb; border-left:3px solid #36c; padding:8px 12px; border-radius:4px; margin:10px 0 16px;}
 .tb-overview{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; background:#eef5ff; border:1px solid #bcd6f5; border-radius:8px; padding:10px 14px; font-size:.88em; }
 .tb-overview b{ color:#1a4f8a; }
 .tb-playstyle{ background:#eef7ff; border:1px solid #bcd6f5; border-radius:6px; padding:8px 11px; font-size:.85em; line-height:1.5; color:#22323f; }
 .tb-playstyle .tb-ps-title{ font-weight:bold; color:#1a4f8a; margin-bottom:4px; }
 .tb-playstyle .ps-line{ margin:3px 0; }
-
 /* 系别徽章 */
 .cls-badge{ font-size:.72em; font-weight:bold; color:#fff; padding:2px 7px; border-radius:10px; }
 .cls-Attack{ background:#e74c3c; }
 .cls-Utility{ background:#27ae60; }
 .cls-Tank{ background:#2980b9; }
-
 /* tooltip（参考 simulator） */
 .tooltip { position:fixed; display:none; max-width:360px; background:#222; color:#fff; padding:10px 12px; border-radius:6px; font-size:.82em; line-height:1.5; z-index:9999; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,.35); }
 .tip-name { font-weight:bold; margin-bottom:5px; color:#ffd866; }
@@ -202,7 +217,6 @@ html[data-theme="dark"] .tip-mobile{ background:#1d2026; }
 .tip-ability b{ color:#ffd866; }
 .tip-ability .en{ color:#cdb892; font-size:.85em; }
 .tip-ability .tip-ability-desc{ color:#ccc; font-size:.92em; margin-top:2px; }
-
 /* 模板卡片 tooltip：队伍信息 */
 .tip-tpl-team{ margin-top:6px; border-top:1px solid #4a4a4a; padding-top:6px; }
 .tip-tpl-pet{ margin-bottom:8px; padding-bottom:6px; border-bottom:1px dashed #3f3f3f; }
@@ -213,7 +227,6 @@ html[data-theme="dark"] .tip-mobile{ background:#1d2026; }
 .tip-tpl-pet-head .en{ color:#cdb892; font-size:.8em; font-weight:normal; }
 .tip-tpl-pet-head .slots{ font-size:.85em; color:#9ad0f5; font-weight:normal; }
 .tip-tpl-pet .skills{ color:#d0d0d0; }
-
 /* 天赋重选浮层 */
 .tb-talent-picker{ position:fixed; display:none; width:300px; max-height:320px; overflow:auto; background:#fff; border:1px solid #c8ccd1; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.18); z-index:9998; padding:6px; box-sizing:border-box; }
 .tb-talent-picker .tp-item{ padding:7px 9px; border-radius:6px; cursor:pointer; border-bottom:1px solid #eef0f2; }
@@ -239,7 +252,6 @@ html[data-theme="dark"] .tb-tcol-reset{ background:#3a414b; color:#9aa3ad; }
 html[data-theme="dark"] .tb-tcol-reset:hover{ background:#ff4d4f; color:#fff; }
 html[data-theme="dark"] .tb-mini-t.overridden{ border-color:#f0a020; background:#3a3326; }
 html[data-theme="dark"] .tb-mini-t.overridden:hover{ background:#4a4029; }
-
 /* 深色模式 */
 html[data-theme="dark"] .tb-intro{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
 html[data-theme="dark"] .tb-overview{ background:#1c2733; border-color:#2f4456; color:#cdd6e0; }
@@ -287,6 +299,9 @@ html[data-theme="dark"] .tb-follow-sum{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-tcol-head{ border-bottom-color:#3a414b; }
 html[data-theme="dark"] .tb-tcol-pts{ color:#7fb0e8; }
 html[data-theme="dark"] .tb-tcol-pts.warn{ color:#e57373; }
+html[data-theme="dark"] .tb-tcol.pet-active{ border-color:#4d8fe8; box-shadow:0 0 0 2px rgba(77,143,232,.3); }
+html[data-theme="dark"] .tb-tcol-rep{ color:#7fb0e8; background:#1c2733; border-color:#2f4a6b; }
+html[data-theme="dark"] .tb-tcol-nopet{ color:#8b939d; }
 html[data-theme="dark"] .tb-cross-label{ color:#e57373; border-top-color:#3a414b; }
 html[data-theme="dark"] .tb-talent{ background:#2b3038; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-talent:hover{ background:#32383f; border-color:#4d8fe8; }
@@ -311,14 +326,14 @@ html[data-theme="dark"] .tb-dmg-panel-head{ background:#32383f; border-bottom-co
 html[data-theme="dark"] .tb-dmg-empty{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-dmg-item{ border-bottom-color:#3a414b; }
 html[data-theme="dark"] .tb-dmg-tname{ color:#7fb0e8; }
+html[data-theme="dark"] .tb-play-dmg-wrap .tb-dmg-side{ background:#2b3038; border-color:#3a414b; }
+html[data-theme="dark"] .tb-col-tags .tb-tag-empty{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-dmg-en{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-dmg-lv{ color:#e57373; background:#3a2323; }
 html[data-theme="dark"] .tb-dmg-val{ color:#e57373; }
 html[data-theme="dark"] .tb-dmg-sub{ color:#9aa3ad; }
 html[data-theme="dark"] .tb-dmg-sub-val{ color:#9aa3ad; }
-
 /* 保留 .dbadge 在深色下的可读性（style.css 已有颜色） */
-
 /* 模板区 */
 .tb-tpl-bar{ display:flex; gap:8px; margin:0 0 14px; flex-wrap:wrap; }
 .tb-tpl-bar button{ font-size:.82em; padding:6px 12px; border-radius:6px; border:1px solid #c8ccd1; background:#fff; cursor:pointer; }
@@ -360,7 +375,6 @@ html[data-theme="dark"] .tb-reg-btn:hover{ background:#1c2733 !important; }
 .tb-tpl-del-com:hover{ background:#c0392b; color:#fff; border-color:#c0392b; }
 .tb-tpl-empty{ color:#888; font-size:.88em; }
 .tb-tpl-err{ color:#c0392b; font-size:.82em; }
-
 /* 模板库面板：置顶醒目 */
 .tb-tpl-panel{
   border:2px solid #36c;
@@ -369,7 +383,6 @@ html[data-theme="dark"] .tb-reg-btn:hover{ background:#1c2733 !important; }
 }
 .tb-tpl-panel .tb-panel-title{ border-left-color:#36c; font-size:1.06em; }
 .tb-tpl-title-hint{ font-size:.72em; font-weight:normal; color:#888; margin-left:6px; }
-
 /* 模板评分 */
 .tb-tpl-rate{ margin:6px 0 8px; font-size:.76em; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
 .tb-tpl-rate .avg b{ color:#e67e22; font-size:1.15em; }
@@ -383,7 +396,6 @@ html[data-theme="dark"] .tb-reg-btn:hover{ background:#1c2733 !important; }
 .tb-rate-btn:hover{ background:#36c; border-color:#36c; color:#fff; }
 .tb-rate-btn.mine{ background:#e67e22; border-color:#e67e22; color:#fff; }
 .tb-rate-btn:disabled{ opacity:.55; cursor:default; }
-
 /* 存为模板弹窗 */
 .tb-tpl-modal-mask{ position:fixed; inset:0; background:rgba(0,0,0,.4); display:none; z-index:9997; align-items:center; justify-content:center; }
 .tb-tpl-modal-mask.open{ display:flex; }
@@ -467,7 +479,6 @@ html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a
     <div class="nav-menu">
       <a href="index.html">可驯服宠物</a>
       <a href="follower-abilities.html">宠物技能大全</a>
-      <a href="simulator.html">宠物天赋模拟器</a>
       <a href="team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -479,12 +490,10 @@ html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a
     </div>
   </div>
 </nav>
-
 <div class="mw-body">
   <div class="source-link">数据来源：官方 TameableCreatureData / Taming_Bestiary（本地镜像）· 标签体系：16 类特殊技能</div>
   <h1>智能配宠向导 <span class="cnsub">Team Builder</span></h1>
   <p class="tb-intro">在左侧 5 个队伍槽位中直接搜索并选择宠物，右侧会实时显示阵容标签、三系天赋推荐与玩法说明。点击「补充推荐」可根据当前阵容自动补齐互补宠物。跟随上限 5 槽（控制槽 Control Slots）。</p>
-
   <div class="tb-controls">
     <div class="tb-field">
       <label>作战场景</label>
@@ -498,14 +507,10 @@ html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a
       <input id="slotsInput" type="number" min="1" max="5" value="5" />
     </div>
   </div>
-
   <div id="result"></div>
-
-  <p class="backlink"><a href="index.html">← 返回可驯服生物目录</a> · <a href="simulator.html">宠物天赋模拟器</a> · <a href="follower-abilities.html">宠物技能大全</a></p>
+  <p class="backlink"><a href="index.html">← 返回可驯服生物目录</a> · <a href="follower-abilities.html">宠物技能大全</a></p>
 </div>
-
 <div class="tooltip" id="tip"></div>
-
 <!-- 存为模板弹窗 -->
 <div class="tb-tpl-modal-mask" id="tplModal">
   <div class="tb-tpl-modal">
@@ -530,7 +535,6 @@ html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a
   </div>
 </div>
 <div id="tbToast" class="tb-toast"></div>
-
 <script src="team-builder-data.js"></script>
 <script>
 const PETS = window.PET_DATA;
@@ -540,35 +544,16 @@ const TAGLABELS = window.TAG_LABELS;
 const CLSZH = window.CLS_ZH;
 const AB_CN = window.AB_CN || {};
 const ICON = {Attack:'images/icon-attackclass.png',Utility:'images/icon-utilityclass.png',Tank:'images/icon-tankclass.png'};
-
 // 战斗维度权重
 const W = {aoe:3, armor_break:2.5, poison:2, bleed:2, cripple:1.8, web:1.8, curse:1.2, backstab:1.5, fire:1.0, frost:0.8, disease:1.5, hamstring:1.6, hinder:1.6};
 const SCEN = {
   pve:   {},
   boss:  {armor_break:1.5, cripple:1.6, curse:1.3, web:1.2, hamstring:1.3, hinder:1.3}
 };
-
-// 页面状态：5 个槽位数组 + 天赋覆盖 + 天赋点数
-const state = { team: [], overrides: {}, points: {}, manualPts: {} };
+// 页面状态：5 个槽位数组 + 天赋点数（完整模拟器：每系独立加点）
+const state = { team: [], points: {}, manualPts: {} };
 const COSTS = [1,3,5];            // 天赋等级 1/2/3 对应花费点数
 const MAX_PTS = 20;               // 每系天赋点数上限
-
-// 天赋偏好持久化（本机 localStorage）：用户改过的某系天赋，下次打开自动沿用
-const LS_OVERRIDES = 'tb_talent_overrides_v1';
-function loadOverrides(){
-  try{
-    const raw = localStorage.getItem(LS_OVERRIDES);
-    if(raw) state.overrides = JSON.parse(raw) || {};
-  }catch(e){ state.overrides = {}; }
-}
-function saveOverrides(){
-  try{ localStorage.setItem(LS_OVERRIDES, JSON.stringify(state.overrides)); }catch(e){}
-}
-function arraysEqual(a, b){
-  if(!a || !b || a.length !== b.length) return false;
-  return a.every((v,i)=>v === b[i]);
-}
-loadOverrides();
 // ---------- 天赋点数：自动分配 + 用户调整 ----------
 const LS_POINTS = 'tb_talent_points_v1';
 function loadPrefs(){
@@ -601,12 +586,13 @@ function autoAllocate(cls, scenario){
   }
   return pts;
 }
-// 队伍变更时，未手动改过的系自动重算；手动系保留用户加点
+// 队伍/场景变更时，未手动改过的系自动重算；手动系一律保留用户加点
+// 注意：三系始终可加点（无宠的系也能预演），所以手动过的系即使是空系也不清空
 function syncPoints(scenario){
   for(const cls of ['Attack','Utility','Tank']){
+    if(state.manualPts[cls]) continue;          // 用户手动改过 → 保留
     const pet = repPetByCls(state.team)[cls];
-    if(!pet){ state.points[cls] = {}; continue; }
-    if(!state.manualPts[cls]) state.points[cls] = autoAllocate(cls, scenario);
+    state.points[cls] = pet ? autoAllocate(cls, scenario) : {};
   }
 }
 // 跨系已用点数（native = 本系天赋；其余计为跨系）
@@ -616,6 +602,14 @@ function colCross(cls){
   for(const k in pts){ if(NATIVEMAP[k] !== cls) s += COSTS[pts[k]-1]; }
   return s;
 }
+// 点数触顶提示：短暂高亮该系计数（1.3 秒后恢复），与天赋模拟器一致
+let flashCol = null, flashTimer = null;
+function flashTalentCol(cls, msg){
+  flashCol = {cls, msg};
+  clearTimeout(flashTimer);
+  render();
+  flashTimer = setTimeout(()=>{ flashCol = null; render(); }, 1300);
+}
 // 加 1 级（点击卡片 / + 按钮），受 3 级、本系 20 点、跨系 ≤5 点约束
 function allocate(cls, name){
   const pts = state.points[cls] || (state.points[cls] = {});
@@ -623,8 +617,8 @@ function allocate(cls, name){
   if(cur >= 3) return;
   const cost = cur === 0 ? COSTS[0] : COSTS[cur] - COSTS[cur-1];
   const nat = NATIVEMAP[name];
-  if(colPts(cls) + cost > MAX_PTS){ toast('本系点数已满（20）'); return; }
-  if(nat !== cls && colCross(cls) + cost > 5){ toast('跨系点数已满（5）'); return; }
+  if(colPts(cls) + cost > MAX_PTS){ flashTalentCol(cls, '本系点数已满（20）'); return; }
+  if(nat !== cls && colCross(cls) + cost > 5){ flashTalentCol(cls, '跨系点数已满（5）'); return; }
   pts[name] = cur + 1;
   state.manualPts[cls] = true;
   savePoints();
@@ -642,7 +636,6 @@ function deallocate(cls, name){
   render();
 }
 loadPrefs();
-
 function talentInfo(name){
   for(const c of ['Attack','Utility','Tank']){
     const t = TALENT[c].find(x=>x.name===name);
@@ -664,7 +657,6 @@ function abText(list){
     return info ? `${info[0]}<span class="en">${en}</span>` : en;
   }).join('、');
 }
-
 // ---------- 互补选宠（基于现有队伍补全） ----------
 function pickComplements(existingTeam, scenario, totalSlots){
   const usedNames = new Set(existingTeam.filter(Boolean).map(p=>p.name));
@@ -705,7 +697,6 @@ function pickComplements(existingTeam, scenario, totalSlots){
   }
   return {selected, reasons};
 }
-
 // ---------- tooltip（带安全隐藏） ----------
 const tipEl = document.getElementById('tip');
 let tipTimer = null;
@@ -727,6 +718,14 @@ function hideTip(){
   tipEl.style.display = 'none';
   if(tipTimer){ clearTimeout(tipTimer); tipTimer=null; }
 }
+// 桌面端判定：主要用来区分「点击卡片直接加点」还是「只显示 ± 按钮」。
+// 优先用 pointer:fine 判断是否有精细指针（鼠标/触控板）；回退到窗口宽度。
+function isDesktopMode(){
+  try{
+    if(window.matchMedia && window.matchMedia('(pointer: fine)').matches) return true;
+  }catch(e){}
+  return window.innerWidth > 900;
+}
 function petTipHtml(pet){
   const abilitiesAll = getAbilities(pet);
   const abilitiesHtml = abilitiesAll.length ? abilitiesAll.map(en=>{
@@ -742,7 +741,6 @@ function petTipHtml(pet){
 <div class="tip-row"><b>标签：</b>${badges(pet.tags)}</div>
 <div class="tip-row"><b>技能：</b></div>${abilitiesHtml}`;
 }
-
 // ---------- 渲染左侧队伍 ----------
 function renderSlotCombo(i){
   return `<div class="tb-slot-combo" id="slotCombo-${i}">
@@ -752,11 +750,14 @@ function renderSlotCombo(i){
 }
 function renderRoster(team, totalSlots){
   const hasAny = team.some(Boolean);
-  const followStr = `${team.filter(Boolean).length}/${totalSlots}`;
+  // 队伍槽位占用：每只宠各占若干控制槽（上限 5）
+  const usedSlots = team.filter(Boolean).reduce((s,p)=>s+(p.slots||0),0);
+  const petCount  = team.filter(Boolean).length;
+  const followStr = `${usedSlots}/${totalSlots}`;
   let html = `<div class="tb-roster-head">
     <div class="tb-roster-title-wrap">
       <span class="tb-roster-title">宠物队伍</span>
-      ${followStr ? `<span class="tb-follow-sum" title="已选宠物数 / 跟随上限">（${followStr}）</span>` : ''}
+      ${followStr ? `<span class="tb-follow-sum" title="${petCount} 只宠  占 ${usedSlots}/${totalSlots} 控制槽">（${followStr}）</span>` : ''}
     </div>
     <div class="tb-roster-actions">
       <button class="tb-suggest" id="tbSuggest" title="智能补满队伍并把天赋重置为AI推荐">AI推荐</button>
@@ -789,20 +790,19 @@ function renderRoster(team, totalSlots){
   }
   return `<div class="tb-roster">${html}</div>`;
 }
-
 // ---------- 渲染右侧 ----------
-function renderTags(team){
+function renderTags(team, clsFilter){
   const covered = new Map();
   team.filter(Boolean).forEach(p=>{
+    if(clsFilter && p.cls !== clsFilter) return;
     (p.tags||[]).forEach(t=>{
       covered.set(t, (covered.get(t)||0)+1);
     });
   });
-  if(covered.size===0) return '<div class="tb-tags-row"><span class="tb-tag-empty">当前阵容无特殊技能标签</span></div>';
+  if(covered.size===0) return `<div class="tb-tags-row"><span class="tb-tag-empty">${clsFilter?'无':'当前阵容无特殊技能标签'}</span></div>`;
   const tagsHtml = [...covered.entries()].map(([t,c])=>`<span class="dbadge db-${t}">${TAGLABELS[t]||t}${c>1?'×'+c:''}</span>`).join(' ');
   return `<div class="tb-tags-row">${tagsHtml}</div>`;
 }
-
 // 每系按跟随数(slots)取代表宠物：同系多宠只显示一个天赋组
 function repPetByCls(team){
   const m = {Attack:null, Utility:null, Tank:null};
@@ -812,44 +812,46 @@ function repPetByCls(team){
   });
   return m;
 }
-// 某系默认推荐天赋（名字数组）
+// 某系默认推荐天赋（名字数组，基于宠物 rec 字段）
 function baseRecNames(cls, pet, scenario){
   const base = (scenario==='boss' && pet.cls==='Tank') ? (pet.recBoss||pet.rec) : pet.rec;
-  return base.map(x=>x[0]);
+  return (base||[]).map(x=>x[0]);
 }
-// 当前推荐天赋名（自动分配用，基于宠物 rec 字段）
-function baseRecNames(cls, pet, scenario){
-  const base = (scenario==='boss' && pet.cls==='Tank') ? (pet.recBoss||pet.rec) : pet.rec;
-  return base.map(x=>x[0]);
-}
-
+// 完整模拟器：三系始终展开全部天赋（本系 14 + 另两系跨系 28），与天赋模拟器页面一致
+// 队伍里有该系宠物 → 高亮该列并显示代表宠；没有 → 仍可手动预演加点
 function renderTalents(team, scenario){
   const rep = repPetByCls(team);
   let html = '<div class="tb-talent-cols">';
   for(const cls of ['Attack','Utility','Tank']){
     const pet = rep[cls];
     const pts = colPts(cls), cross = colCross(cls);
-    const ptsCls = (pts>=MAX_PTS || cross>=5) ? ' warn' : '';
-    html += `<div class="tb-tcol tb-tcol-${cls}">`;
-    html += `<div class="tb-tcol-head"><img class="tb-tcol-icon" src="${ICON[cls]}"><span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>${pet ? `<span class="tb-tcol-rep">代表 ${pet.name}</span>` : ''}<span class="tb-tcol-pts${ptsCls}">已用 ${pts}/${MAX_PTS}　跨系 ${cross}/5</span>${pet ? `<button class="tb-tcol-reset" data-reset-col="${cls}" title="重置本系（清空后按队伍恢复推荐）">重置</button>` : ''}</div>`;
-    if(!pet){
-      html += `<div class="tb-tcol-empty">本阵容无 ${CLSZH[cls]} 系宠物</div>`;
-    } else {
-      // 本系全部天赋
-      html += `<div class="tb-talents">`;
-      html += TALENT[cls].map(name=>talentCardHTML(cls, name)).join('');
-      html += `</div>`;
-      // 跨系天赋（其他两系全部天赋）
-      html += `<div class="tb-cross-label">跨系天赋 Cross-Class（≤5）</div>`;
-      html += `<div class="tb-talents">`;
-      html += ['Attack','Utility','Tank'].filter(c=>c!==cls).map(oc=>TALENT[oc].map(name=>talentCardHTML(cls, name)).join('')).join('');
-      html += `</div>`;
-    }
+    const isFlash = flashCol && flashCol.cls === cls;
+    const ptsCls = isFlash ? ' warn' : '';
+    const ptsText = isFlash ? flashCol.msg : `已用 ${pts}/${MAX_PTS}　跨系 ${cross}/5`;
+    html += `<div class="tb-tcol tb-tcol-${cls}${pet ? ' pet-active' : ''}">`;
+    html += '<div class="tb-tcol-head">'
+      + `<img class="tb-tcol-icon" src="${ICON[cls]}">`
+      + `<span>${CLSZH[cls]}系 <span class="en">${cls}</span></span>`
+      + (pet ? `<span class="tb-tcol-rep" title="本系代表宠（取该系跟随数最高的一只）">代表 ${pet.name}</span>`
+             : '<span class="tb-tcol-nopet">本阵容无该系宠物</span>')
+      + `<span class="tb-tcol-pts${ptsCls}">${ptsText}</span>`
+      + `<button class="tb-tcol-reset" data-reset-col="${cls}" title="清空本系所有天赋点">重置</button>`
+      + '</div>';
+    // 本系标签（移到天赋表顶部）
+    html += `<div class="tb-col-tags">${renderTags(team, cls)}</div>`;
+    // 本系全部天赋
+    html += '<div class="tb-talents">';
+    html += TALENT[cls].map(t=>talentCardHTML(cls, t.name)).join('');
+    html += '</div>';
+    // 跨系天赋（其他两系全部天赋，合计 ≤5 点）
+    html += '<div class="tb-cross-label">跨系天赋 Cross-Class（≤5）</div>';
+    html += '<div class="tb-talents">';
+    html += ['Attack','Utility','Tank'].filter(c=>c!==cls)
+              .map(oc=>TALENT[oc].map(t=>talentCardHTML(cls, t.name)).join('')).join('');
+    html += '</div>';
     html += '</div>';
   }
   html += '</div>';
-  // 伤害加成汇总面板
-  html += `<div class="tb-dmg-panel"><div class="tb-dmg-panel-head">⚔️ 当前加点伤害加成汇总</div><div class="tb-dmg-panel-body" id="tbDmgBody"></div></div>`;
   return html;
 }
 // 单个天赋卡片 HTML（桌面端点击卡片=加点；移动端用 [+]/[−]/详情 按钮）
@@ -859,8 +861,7 @@ function talentCardHTML(cls, name){
   const cn = t ? t.cnname : name;
   const isCross = NATIVEMAP[name] !== cls;
   const pips = [1,2,3].map(k=>`<span class="${k<=lvl?'on':''}"></span>`).join('');
-  const tip = (t && t.cndesc) ? t.cndesc.replace(/"/g,'&quot;') : '';
-  return `<div class="tb-talent ${lvl>=3?'maxed':''} ${isCross?'cross':''}" data-cls="${cls}" data-name="${name}" title="${tip}">
+  return `<div class="tb-talent ${lvl>=3?'maxed':''} ${isCross?'cross':''}" data-cls="${cls}" data-name="${name}">
     <div class="tb-t-name">${cn}<span class="en">${name}</span></div>
     <div class="tb-talent-row">
       <div class="tb-pips">${pips}</div>
@@ -889,10 +890,8 @@ function shortenForPanel(clause, val){
   if(s.length>40) s = s.substring(0,37)+'…';
   return s;
 }
-// 伤害加成汇总：列出所有已分配天赋的当前等级效果数值
-function updateDmgStats(){
-  const body = document.getElementById('tbDmgBody');
-  if(!body) return;
+// 收集当前所有已分配天赋（渲染与一键复制共用）
+function collectDmgRows(){
   const rows = [];
   for(const cls of ['Attack','Utility','Tank']){
     const pts = state.points[cls] || {};
@@ -912,10 +911,23 @@ function updateDmgStats(){
       rows.push({cnname:t.cnname, enname:name, lvl, main, val, subs});
     }
   }
-  if(rows.length===0){ body.innerHTML = '<div class="tb-dmg-empty">尚未分配天赋点，点击天赋开始加点</div>'; return; }
+  return rows;
+}
+// 伤害加成汇总：列出所有已分配天赋的当前等级效果数值
+function updateDmgStats(){
+  const body = document.getElementById('tbDmgBody');
+  const copyBtn = document.getElementById('tbDmgCopy');
+  if(!body) return;
+  const rows = collectDmgRows();
+  if(rows.length===0){
+    body.innerHTML = '<div class="tb-dmg-empty">尚未分配天赋点，点击天赋开始加点</div>';
+    if(copyBtn){ copyBtn.disabled = true; copyBtn.title = '暂无加点可复制'; }
+    return;
+  }
+  if(copyBtn){ copyBtn.disabled = false; copyBtn.title = '复制当前加点汇总文本'; }
   let html = '';
   for(const r of rows){
-    html += `<div class="tb-dmg-item"><div class="tb-dmg-head"><span class="tb-dmg-tname">${r.cnname}</span><span class="tb-dmg-en">${r.enname}</span><span class="tb-dmg-lv">Lv.${r.lvl}</span></div><div class="tb-dmg-body"><span class="tb-dmg-teffect">${shortenForPanel(r.main, r.val)}</span>${r.val?`<span class="tb-dmg-val">${r.val}</span>`:''}`;
+    html += `<div class="tb-dmg-item"><div class="tb-dmg-head"><div class="tb-dmg-line1"><span class="tb-dmg-tname">${r.cnname}</span><span class="tb-dmg-lv">Lv.${r.lvl}</span></div><span class="tb-dmg-en">${r.enname}</span></div><div class="tb-dmg-body"><span class="tb-dmg-teffect">${shortenForPanel(r.main, r.val)}</span>${r.val?`<span class="tb-dmg-val">${r.val}</span>`:''}`;
     for(const sub of r.subs){
       const subVal = extractVal(sub, r.lvl-1) || '';
       html += ` <span class="tb-dmg-sub">（${shortenForPanel(sub, subVal)}${subVal?` <span class="tb-dmg-sub-val">${subVal}</span>`:''}）</span>`;
@@ -924,16 +936,48 @@ function updateDmgStats(){
   }
   body.innerHTML = html;
 }
-
+// 一键复制：把当前加点汇总格式化为纯文本
+function dmgSummaryText(){
+  const rows = collectDmgRows();
+  if(rows.length===0) return '';
+  const lines = ['⚔️ 天赋加点伤害汇总：'];
+  for(const r of rows){
+    const subsText = r.subs.map(s=>{
+      const sv = extractVal(s, r.lvl-1) || '';
+      return shortenForPanel(s, sv) + (sv ? ' ' + sv : '');
+    }).join('；');
+    const mainText = shortenForPanel(r.main, r.val) + (r.val ? ' ' + r.val : '');
+    lines.push(`· ${r.cnname} ${r.enname} Lv.${r.lvl}：${mainText}${subsText ? '（' + subsText + '）' : ''}`);
+  }
+  return lines.join('\n');
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+}
+function copyDmgSummary(){
+  const text = dmgSummaryText();
+  if(!text){ toast('暂无加点可复制'); return; }
+  const done = ()=>toast('已复制加点汇总，可直接粘贴');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(()=>{ fallbackCopy(text); done(); });
+  } else {
+    fallbackCopy(text); done();
+  }
+}
 // ---------- 天赋重选浮层（已废弃：完整模拟器下所有天赋均可直接点选） ----------
-
 
 function renderPlaystyle(team){
   const core = team.find(Boolean);
   if(!core) return '<div class="tb-playstyle">请先在左侧队伍槽位中选择宠物。</div>';
   return `<div class="tb-playstyle"><div class="tb-ps-title">${core.name} 玩法说明</div>${core.playstyle}</div>`;
 }
-
 // ---------- 槽位 combobox 管理 ----------
 const slotComboState = {}; // idx -> {filtered, index, open}
 function allPetsSorted(){ return [...PETS].sort((a,b)=>a.name.localeCompare(b.name)); }
@@ -1007,7 +1051,6 @@ function clearTeam(){
   state.team = [];
   render();
 }
-
 function bindSlotCombos(){
   for(let i=0;i<5;i++){
     if(state.team[i]) continue; // 已填充槽位不需要 combobox
@@ -1016,7 +1059,6 @@ function bindSlotCombos(){
     const combo = document.getElementById('slotCombo-'+i);
     if(!input || !list || !combo) continue;
     filterSlotCombo(i, '');
-
     input.addEventListener('focus', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
     input.addEventListener('input', ()=>{ openSlotCombo(i); filterSlotCombo(i, input.value); });
     input.addEventListener('blur', ()=>{ setTimeout(()=>closeSlotCombo(i), 160); });
@@ -1039,7 +1081,6 @@ function bindSlotCombos(){
     });
   }
 }
-
 // ---------- 补充推荐 ----------
 function aiRecommend(){
   const scenario = document.getElementById('scenarioSel').value;
@@ -1061,7 +1102,6 @@ function aiRecommend(){
   savePoints();
   render();
 }
-
 // ---------- 渲染 ----------
 function render(){
   hideTip();
@@ -1070,13 +1110,11 @@ function render(){
   syncPoints(scenario);   // 队伍变更后自动分配/保留天赋点数
   const totalSlots = Math.min(5, Math.max(1, parseInt(document.getElementById('slotsInput').value)||5));
   const usedSlots = team.filter(Boolean).reduce((s,p)=>s+p.slots,0);
-
   const scenZh = scenario==='boss' ? '单挑 BOSS' : '日常刷图';
   const overview = `<div class="tb-overview" style="margin-bottom:14px;">
     <span>场景：<b>${scenZh}</b></span>
     <span>队伍槽位：<b>${usedSlots}</b> / 上限 ${totalSlots}</span>
   </div>`;
-
   const tplBar = `<div class="tb-tpl-bar">
     <button class="tb-save-tpl" id="tbSaveTpl">💾 存为模板</button>
     <button class="tb-toggle-tpl" id="tbToggleTpl">📚 模板库${tplPanelOpen?' ▲':' ▼'}</button>
@@ -1088,16 +1126,21 @@ function render(){
     </div>
     <div id="tplList" class="tb-tpl-list"><div class="tb-tpl-empty">加载中…</div></div>
   </div>` : '';
-
   document.getElementById('result').innerHTML = overview + tplBar + `<div class="tb-app">
     ${renderRoster(team, totalSlots)}
     <div class="tb-main">
       ${tplPanel}
-      <div class="tb-panel">
-        <div class="tb-panel-title">标签栏 · 玩法推荐</div>
-        <div class="tb-tags-play-wrap">
-          <div class="tb-tags-side">${renderTags(team)}</div>
+      <div class="tb-panel tb-play-dmg-panel">
+        <div class="tb-panel-title">玩法说明 · 伤害汇总</div>
+        <div class="tb-play-dmg-wrap">
           <div class="tb-play-side">${renderPlaystyle(team)}</div>
+          <div class="tb-dmg-side">
+            <div class="tb-dmg-side-head">
+              <span class="tb-dmg-side-title">伤害加成汇总</span>
+              <button type="button" class="tb-dmg-copy" id="tbDmgCopy" disabled title="暂无加点可复制">一键复制</button>
+            </div>
+            <div class="tb-dmg-panel-body" id="tbDmgBody"></div>
+          </div>
         </div>
       </div>
       <div class="tb-panel">
@@ -1106,11 +1149,9 @@ function render(){
       </div>
     </div>
   </div>`;
-
   bindSlotCombos();
   updateLoginBar();
   if(tplPanelOpen && BACKEND_API) refreshMe();
-
   // 绑定队伍槽位 tooltip
   document.querySelectorAll('.tb-slot[data-idx]').forEach(slot=>{
     const idx = parseInt(slot.dataset.idx);
@@ -1120,7 +1161,6 @@ function render(){
     slot.addEventListener('mousemove', moveTip);
     slot.addEventListener('mouseleave', hideTip);
   });
-
   // 绑定移除按钮
   document.querySelectorAll('[data-remove]').forEach(btn=>{
     btn.addEventListener('click', e=>{
@@ -1132,7 +1172,6 @@ function render(){
   if(clearBtn) clearBtn.addEventListener('click', clearTeam);
   const suggestBtn = document.getElementById('tbSuggest');
   if(suggestBtn) suggestBtn.addEventListener('click', aiRecommend);
-
   // 模板：存为 / 切换面板
   const saveTplBtn = document.getElementById('tbSaveTpl');
   if(saveTplBtn) saveTplBtn.addEventListener('click', ()=>{ hideTip(); openSaveModal(); });
@@ -1149,22 +1188,22 @@ function render(){
     if(templatesLoaded) renderTplCards(mergeTplCards(getMyTemplates(), lastCommunityList), false);
     else loadTemplates();
   }
-
   // 绑定天赋卡片：tooltip + 点击加点 / 等级按钮 / 详情 / 重置列
   const bindTalentCards = ()=>{
     document.querySelectorAll('.tb-talent').forEach(node=>{
       const cls = node.dataset.cls, name = node.dataset.name;
       const t = talentInfo(name);
       if(t){
+        // 光标跟随 tooltip：只要触发鼠标事件就显示（桌面/混合设备通用；纯触摸不会触发 mouseenter）
         node.addEventListener('mouseenter', e=>{
-          if(window.innerWidth > 768) showTip(e, `<div class="tip-name">${t.cnname} <span class="en">${name}</span></div><div class="tip-row">${t.cndesc||''}</div>`);
+          showTip(e, `<div class="tip-name">${t.cnname} <span class="en">${name}</span></div><div class="tip-row">${t.cndesc||''}</div>`);
         });
         node.addEventListener('mousemove', moveTip);
-        node.addEventListener('mouseleave', ()=>{ if(window.innerWidth > 768) hideTip(); });
+        node.addEventListener('mouseleave', hideTip);
       }
       // 桌面端：点卡片=加点（移动端靠按钮避免误触）
       node.addEventListener('click', e=>{
-        if(window.innerWidth > 768 && !e.target.closest('.tb-talent-btns')){
+        if(isDesktopMode() && !e.target.closest('.tb-talent-btns')){
           e.stopPropagation(); hideTip(); allocate(cls, name);
         }
       });
@@ -1178,17 +1217,16 @@ function render(){
       btn.addEventListener('click', e=>{
         e.stopPropagation();
         const cls = btn.dataset.resetCol;
-        delete state.points[cls];
-        delete state.manualPts[cls];
+        state.points[cls] = {};
+        state.manualPts[cls] = true;
         savePoints();
-        syncPoints(document.getElementById('scenarioSel').value);
         render();
+        toast(`${CLSZH[cls]}系天赋已清空，可自由加点`);
       });
     });
   };
   bindTalentCards();
   updateDmgStats();
-
   // 移动端天赋详情：居中 + 遮罩
   function showTipCentered(html){
     const tip = document.getElementById('tip');
@@ -1200,13 +1238,11 @@ function render(){
     bg.onclick = hideTip;
   }
 }
-
 // 点击页面其它区域关闭天赋 tooltip（移动端遮罩）
 document.addEventListener('mousedown', e=>{
   const tip = document.getElementById('tip');
   if(tip && tip.classList.contains('tip-mobile') && !e.target.closest('.tip-mobile') && !e.target.closest('.tb-t-btn-info')) hideTip();
 });
-
 // ---------- 模板区（GitHub 当库：API 读写 + 本机兜底） ----------
 // ---------- 社区模板后端：浏览器直连 GitHub Contents API（国内最稳，同 GitHub Pages 生态） ----------
 let tplPanelOpen = false;
@@ -1225,10 +1261,8 @@ let pendingOwnTemplates = []; // 本次会话发布/编辑过的模板；读回�
 const LS_MY_TPL = 'tb_my_templates_v1';
 const LS_GH_PAT = 'tb_gh_pat_v1';
 const LS_RATED = 'tb_rated_v1';
-
 function getGhPat(){ try{ return localStorage.getItem(LS_GH_PAT) || ''; }catch(e){ return ''; } }
 function setGhPat(v){ try{ if(v) localStorage.setItem(LS_GH_PAT, v); }catch(e){} }
-
 async function fetchWithTimeout(url, opts = {}, ms = 8000){
   const ctrl = new AbortController();
   const tid = setTimeout(() => ctrl.abort(), ms);
@@ -1243,7 +1277,6 @@ function setMyTemplates(arr){
 }
 function getRated(){ try{ return JSON.parse(localStorage.getItem(LS_RATED)) || {}; }catch(e){ return {}; } }
 function setRated(obj){ try{ localStorage.setItem(LS_RATED, JSON.stringify(obj)); }catch(e){} }
-
 // ---------- 账号登录（注册 / 登录，带密码） ----------
 async function refreshMe(){
   if(!BACKEND_API) return;
@@ -1315,7 +1348,6 @@ function updateLoginBar(){
     [inp, pw].forEach(x=>{ if(x) x.addEventListener('keydown', e=>{ if(e.key==='Enter' && b) b.click(); }); });
   }
 }
-
 // 轻提示 toast
 let toastTimer = null;
 function toast(msg){
@@ -1326,7 +1358,6 @@ function toast(msg){
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=>el.classList.remove('show'), 2600);
 }
-
 // 读取社区模板（同源 GitHub Pages，站点能开就能读到）
 async function fetchCommunity(){
   try{
@@ -1458,11 +1489,9 @@ async function saveTemplate(){
   const okBtn = document.getElementById('tplOk');
   if(!name){ hint.textContent = '请填写模板名称'; return; }
   if(state.team.filter(Boolean).length === 0){ hint.textContent = '队伍是空的，先选宠物'; return; }
-
   // 保存新令牌（如填写）
   if(patInput.value.trim()) setGhPat(patInput.value.trim());
   updatePatStatus();
-
   // 发布前检查：后端模式需登录；旧模式需填本机令牌
   if(publish){
     if(BACKEND_API){
@@ -1485,23 +1514,19 @@ async function saveTemplate(){
       }catch(e){ hint.textContent = '令牌检测时网络超时，请重试'; return; }
     }
   }
-
   localStorage.setItem('tb_tpl_author', author);
-
   // —— 立即关闭弹窗 + 禁用按钮，转入后台，避免网络慢导致重复点击存多套 ——
   okBtn.disabled = true;
   closeSaveModal();
   toast('正在保存…');
   doSave(name, author, note, publish, okBtn);
 }
-
 async function doSave(name, author, note, publish, okBtn){
   // 组装模板对象（编辑模式复用原 id）
   let t = tplFromState();
   if(editContext && editContext.id) t.id = editContext.id;
   t.name = name; t.author = author; t.note = note; t.mine = true;
   t.updatedAt = new Date().toISOString();
-
   // 本机永远存一份（同名/同 id 覆盖，避免重复点击产生多套）
   const mine = getMyTemplates();
   const idx = mine.findIndex(x=>x.id===t.id);
@@ -1510,7 +1535,6 @@ async function doSave(name, author, note, publish, okBtn){
   else if(sameName>=0) mine[sameName] = t;
   else mine.unshift(t);
   setMyTemplates(mine.slice(0, 50));
-
   let needReload = true;
   let freshList = null;
   if(publish){
@@ -1675,7 +1699,6 @@ function renderTplCards(cards, loadErr){
       </div>
     </div>`;
   }).join('');
-
   // 悬停显示队伍信息（打分区域 + 底部按钮区不显示，避免遮挡按钮 + 体感一致）
   listEl.querySelectorAll('.tb-tpl-card[data-tpl]').forEach(card=>{
     const t = cards.find(x=>x.id===card.dataset.tpl);
@@ -1887,7 +1910,6 @@ function applyTemplate(t, closePanel){
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-
 // 模板弹窗事件
 (function bindTplModal(){
   const modal = document.getElementById('tplModal');
@@ -1895,19 +1917,22 @@ function escapeHtml(s){
   document.getElementById('tplOk').addEventListener('click', saveTemplate);
   modal.addEventListener('mousedown', e=>{ if(e.target === modal) closeSaveModal(); });
 })();
-
 // 全局 tooltip 安全隐藏：鼠标移动到非触发元素时隐藏
 document.addEventListener('mousemove', e=>{
   if(tipEl.style.display==='none') return;
   const target = e.target;
-  const insideTrigger = target.closest && (target.closest('.tb-slot') || target.closest('[data-talent]') || target.closest('.tb-tpl-card'));
+  const insideTrigger = target.closest && (target.closest('.tb-slot') || target.closest('.tb-talent') || target.closest('.tb-tpl-card'));
   if(!insideTrigger) hideTip();
 });
-
 // ---------- 初始化 ----------
 (function init(){
   document.getElementById('scenarioSel').addEventListener('change', render);
   document.getElementById('slotsInput').addEventListener('change', render);
+  // 一键复制（事件委托：result 内部每轮重建，委托在父容器上只绑一次）
+  document.getElementById('result').addEventListener('click', e=>{
+    const b = e.target.closest('#tbDmgCopy');
+    if(b) copyDmgSummary();
+  });
   render();
 })();
 </script>
