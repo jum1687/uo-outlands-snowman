@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 吟游类 › <span>压制 Discordance</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Discordance" target="_blank" rel="noopener">wiki.uooutlands.com/Discordance</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">压制 <span class="cnsub">Discordance</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -68,106 +65,67 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">描述 <span class="en-h">Description</span></h2>
-    
     <p>压制（Discordance）技能允许吟游诗人「压制」生物，使其造成的伤害降低，并放大它们受到玩家及其盟友的伤害。玩家也可以通过对自身使用技能来演奏一首压制「吟游之歌」，为自己、其随从与盟友提供伤害抗性加成。玩家的压制技能上限受音乐造诣（Musicianship）技能限制。压制需要玩家背包中携带一件乐器。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>使用压制技能会大幅降低被锁定生物的各项数值</li>
-      
       <li>玩家可同时对多个生物施放压制</li>
-      
       <li>技能使用冷却：成功或失败均为 5 秒；使用技能后，挑衅（Provocation）与和平（Peacemaking）也会受到 5 秒冷却。</li>
-      
       <li>吟游典籍（Bard Codex）会大幅强化压制技能</li>
     </ul>
-
     <h2 id="more_details">更多细节 <span class="en-h">More Details</span></h2>
     <ul class="plain">
-      
       <li>玩家的基础压制技能上限受音乐造诣限制（即：压制 50、音乐造诣 25 的玩家，其压制被视为 25）</li>
-      
       <li>玩家的有效压制技能 = 压制技能 + 乐器技能加成 + 适用的乐器屠戮加成 + 补充技能加成 + 歌词系护甲加成</li>
-      
       <li>玩家可通过法医鉴定（Forensic Eval）与追踪（Tracking）技能提升有效压制技能，在上式中列为「补充技能加成」（详见法医鉴定与追踪技能条目）</li>
-      
       <li>玩家来自乐器、补充技能或歌词系护甲的有效压制加成总和，不能超过其音乐造诣（即：音乐造诣 25 的玩家，其乐器/补充技能/歌词系护甲最多只能提供 25 点有效压制）</li>
-      
       <li>压制判定成功时，技能提升几率翻倍</li>
-      
       <li>压制效果持续时间 = ((60 秒 - 生物难度值) × (有效吟游技能 / 100))，最短持续时间为 15 × (音乐造诣 / 100) 秒</li>
-      
       <li>若对一只已被挑衅或已被和平的生物使用压制，压制尝试将获得 25 点有效吟游技能加成</li>
-      
       <li>任何吟游行为的「最低成功几率」为 (33% × (有效吟游技能 / 100))</li>
     </ul>
     <div class="formula">压制成功几率（通用吟游公式，详见 Musicianship）：
 Barding Success Chance = (Effective Barding Skill / 100%) - (CreatureDifficultyValue × 1.0%)
 最低成功几率 = 33% × (Effective Barding Skill / 100)
-
 压制效果持续时间：
 = (60 - 生物难度值) × (有效吟游技能 / 100) 秒
 最短 = 15 × (音乐造诣 / 100) 秒</div>
     <div class="note">压制技能上限由音乐造诣决定；来自乐器/补充技能/歌词系护甲的有效压制加成总和同样不得超过音乐造诣。</div>
-
     <h2 id="barding_songs">吟游之歌 <span class="en-h">Barding Songs</span></h2>
-    
     <p>吟游之歌包括：压制——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的伤害抗性加成。和平——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的接受治疗量加成。挑衅——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的伤害加成。</p>
     <ul class="plain">
-      
       <li>演奏吟游之歌有 10 秒冷却，独立于普通的吟游技能使用</li>
-      
       <li>所有范围型（AoE）吟游之歌持续 15 分钟</li>
     </ul>
     <div class="formula">压制之歌（对自身演奏）伤害抗性加成 = 5% × (Effective Barding Skill / 100)</div>
-
     <h2 id="discorded_creatures">被压制的生物 <span class="en-h">Discorded Creatures</span></h2>
     <ul class="plain">
-      
       <li>被压制的生物受到来自所有来源的伤害增加 25%。Boss 受到的增伤与其 Boss 难度相关，例如全知 Boss（omni boss）受到 10% 增伤。</li>
-      
       <li>被压制的生物其造成的伤害降低 25%</li>
-      
       <li>压制对生物的效果强度，现按 (吟游诗人显示压制技能 / 120) % 进行缩放 [2023 年 6 月 23 日补丁]</li>
-      
       <li>同时被和平或挑衅的压制生物，受到来自所有来源的伤害额外增加 15%</li>
-      
       <li>被压制的生物周围会有旋转动画特效；使用 AllNames 时，其头顶文字会显示 *discorded Xs*，其中 X 为压制效果剩余的秒数</li>
     </ul>
     <div class="formula">被压制生物受到增伤：+25%（基础）
 叠加上已被和平/挑衅：再 +15%（合计 +40%）
 Boss 增伤：依 Boss 难度而定（例如全知 Boss = +10%）
 效果强度缩放 = 显示压制技能 / 120（相对标准值）</div>
-
     <h2 id="area_discordance">范围压制 <span class="en-h">Area Discordance</span></h2>
     <ul class="plain">
-      
       <li>选择压制目标时，玩家可以对自己施放，以制造范围压制效果</li>
-      
       <li>范围压制具有与普通压制相同的冷却</li>
-      
       <li>范围压制会对吟游诗人周围 8 格内每只非驯服生物分别进行一次压制技能判定</li>
-      
       <li>每次判定成功，该生物被压制 5 秒</li>
-      
       <li>玩家在受保护区域（guarded area）中无法进行范围压制或范围和平</li>
     </ul>
-
     <h2 id="miscellaneous">其他 <span class="en-h">Miscellaneous</span></h2>
     <ul class="plain">
-      
       <li>对驯服生物的压制效果，持续时间始终最多 15 秒</li>
-      
       <li>若对已被挑衅或已被和平的生物使用压制，压制尝试将获得 25 点有效吟游技能加成</li>
-      
       <li>被挑衅的生物不会因压制而承受造成伤害的惩罚</li>
-      
       <li>同时被压制的挑衅/和平生物，受到来自所有来源的额外 15% 伤害（即这些生物合计受到额外 40% 伤害）</li>
     </ul>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）对生物使用压制 | 80–120 在 Prevalia 动物园 / Battletrainer 对生物使用压制</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -176,29 +134,16 @@ Boss 增伤：依 Boss 难度而定（例如全知 Boss = +10%）
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -262,7 +207,6 @@ Boss 增伤：依 Boss 难度而定（例如全知 Boss = +10%）
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -282,6 +226,5 @@ Boss 增伤：依 Boss 难度而定（例如全知 Boss = +10%）
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
