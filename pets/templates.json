@@ -1,29 +1,9 @@
 [
   {
-    "id": "t_143a5455mtgvvuyu",
-    "name": "nickmatch-test",
-    "author": "NickTest-A",
-    "authorId": "bc0fa4b0-a288-480f-9f46-4bd97c0c90e0",
-    "note": "",
-    "scenario": "pve",
-    "slots": 5,
-    "team": [
-      "a",
-      "b"
-    ],
-    "talents": {},
-    "createdAt": "2026-08-31T06:55:11.238Z",
-    "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
-    }
-  },
-  {
     "id": "t_593d9c39mtgpmsvc",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
-    "authorId": "8aeac307-8818-41d5-b70b-3f4e5d93b03a",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
     "note": "吞噬者定身后+100%伤害，火蚁核心放地火。",
     "scenario": "pve",
     "slots": 5,
@@ -60,7 +40,7 @@
     "id": "t_f93ca159mtgp70rx",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
-    "authorId": "8aeac307-8818-41d5-b70b-3f4e5d93b03a",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
     "note": "吞噬者定身后+100%攻击力，火蚁放地火",
     "scenario": "pve",
     "slots": 5,
@@ -97,7 +77,7 @@
     "id": "t_a402a2bdmtgp59hh",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
-    "authorId": "8aeac307-8818-41d5-b70b-3f4e5d93b03a",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
     "note": "",
     "scenario": "pve",
     "slots": 5,
@@ -163,6 +143,7 @@
     "ratings": {
       "sum": 8,
       "count": 1
-    }
+    },
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4"
   }
 ]
