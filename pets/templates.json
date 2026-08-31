@@ -1,5 +1,25 @@
 [
   {
+    "id": "t_a43c3e4cmtgwrmhz",
+    "name": "delprobe-check",
+    "author": "DelProbe-A",
+    "authorId": "5f22153c-56c6-4510-b94e-d3404de9785c",
+    "note": "",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "wolf",
+      "bear"
+    ],
+    "talents": {},
+    "createdAt": "2026-08-31T07:19:53.255Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_771e1ee8mtgw47fn",
     "name": "疾病流-收割者+3食尸鬼",
     "author": "Snowman Liang",
