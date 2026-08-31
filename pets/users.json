@@ -38,5 +38,13 @@
     "salt": "8a0b03a3096c3ca72a815aa61037f75c",
     "hash": "c82785da65540f553b2cdd2728c07c22084b3ac59510f5207ef2ecd89d1ebe3c",
     "createdAt": "2026-08-31T06:11:37.692Z"
+  },
+  {
+    "id": "6afc544a-f879-4d09-a6ee-fb9a3c662b14",
+    "name": "Snowman Liang",
+    "nameLower": "snowman liang",
+    "salt": "78ba4121c7789007cf57d1b181a6e77f",
+    "hash": "6e58292cd860cb2be6401ffc5180a2af42e3ff21e6035378741af44db51cbecc",
+    "createdAt": "2026-08-31T06:11:39.358Z"
   }
 ]
