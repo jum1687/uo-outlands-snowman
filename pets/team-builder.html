@@ -1431,6 +1431,12 @@ function renderTplCards(cards, loadErr){
       ? '<span class="tb-tpl-tag mine">本机</span>'
       : '<span class="tb-tpl-tag community">社区</span>';
     const canEdit = t._tag==='community' && (BACKEND_API ? !!currentUser : !!getGhPat());
+    // 删除按钮仅作者本人可见（id 一致 OR 昵称一致），其他人看不到 → 避免无谓的 forbidden
+    const me = currentUser || {};
+    const canDelCom = t._tag==='community' && BACKEND_API && me && (
+      (t.authorId && t.authorId === me.id) ||
+      (t.author && me.name && t.author.toLowerCase() === me.name.toLowerCase())
+    );
     return `<div class="tb-tpl-card" data-tpl="${t.id}">
       <h4>${escapeHtml(t.name||'未命名')} ${tagHtml}</h4>
       <div class="meta">${escapeHtml(t.author||'匿名')} · ${scenZh} · ${t.slots||5}槽${t.note?` · ${escapeHtml(t.note)}`:''}</div>
@@ -1440,18 +1446,21 @@ function renderTplCards(cards, loadErr){
         <button class="apply" data-apply="${t.id}">套用</button>
         ${t._tag==='mine' ? `<button class="tb-tpl-del" data-del="${t.id}" title="删除本机模板">✕</button>` : ''}
         ${canEdit ? `<button class="tb-tpl-edit" data-edit="${t.id}" title="编辑你发布的社区模板">编辑</button>` : ''}
-        ${canEdit ? `<button class="tb-tpl-del-com" data-delcom="${t.id}" title="删除社区模板">删除</button>` : ''}
+        ${canDelCom ? `<button class="tb-tpl-del-com" data-delcom="${t.id}" title="删除社区模板">删除</button>` : ''}
       </div>
     </div>`;
   }).join('');
 
-  // 悬停显示队伍信息（打分区域不显示，避免遮挡）
+  // 悬停显示队伍信息（打分区域 + 底部按钮区不显示，避免遮挡按钮 + 体感一致）
   listEl.querySelectorAll('.tb-tpl-card[data-tpl]').forEach(card=>{
     const t = cards.find(x=>x.id===card.dataset.tpl);
     if(!t) return;
-    card.addEventListener('mouseenter', e=>showTip(e, tplTipHtml(t)));
+    card.addEventListener('mouseenter', e=>{
+      if(e.target.closest('.tb-tpl-rate') || e.target.closest('.tb-tpl-foot')) return;
+      showTip(e, tplTipHtml(t));
+    });
     card.addEventListener('mousemove', e=>{
-      if(e.target.closest('.tb-tpl-rate')){ hideTip(); return; }
+      if(e.target.closest('.tb-tpl-rate') || e.target.closest('.tb-tpl-foot')){ hideTip(); return; }
       if(tipEl.style.display!=='block'){ showTip(e, tplTipHtml(t)); }
       else moveTip(e);
     });
@@ -1509,7 +1518,14 @@ function renderTplCards(cards, loadErr){
           const r = await fetch(BACKEND_API + '/api/templates/' + encodeURIComponent(id), { method:'DELETE', credentials:'include' });
           const d = await r.json().catch(()=>({}));
           if(r.ok){ toast('已删除社区模板 ✓'); renderTplCards(lastTplCards.filter(x=>x.id!==id)); }
-          else { alert('删除失败：' + (d.error||r.status)); }
+          else {
+            const me = currentUser && currentUser.name ? currentUser.name : '（未登录）';
+            const author = t && t.author ? t.author : '（未知）';
+            const hint = (d.error === 'forbidden')
+              ? '\n你当前登录昵称：' + me + '\n模板作者昵称：' + author + '\n（昵称不一致：要么用「' + author + '」登录，要么联系管理员用 ADMIN_KEY 删除）'
+              : '';
+            alert('删除失败：' + (d.error || r.status) + hint);
+          }
         }catch(err){ alert('删除失败：后端不可达'); }
         finally{ btn.disabled = false; }
         return;
