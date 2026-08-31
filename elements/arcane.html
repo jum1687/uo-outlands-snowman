@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,7 +49,6 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">元素精通</a> › <span>奥术 Arcane</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Arcane_Aspect" target="_blank" rel="noopener">wiki.uooutlands.com/Arcane_Aspect</a></div>
 <div class="mw-body">
@@ -73,13 +71,11 @@
   <div class="mw-content">
     <h2 id="overview">概要 <span class="en-h">Overview</span></h2>
     <p>奥术（Arcane）是 Outlands 的元素精通（Aspect Mastery）之一，其特性围绕<strong>奥术法杖（Arcane Staff）</strong>的<strong>奥术蓄力（Arcane Buildup）</strong>机制展开。该元素的特殊特效名为「窃魔者（Mana Thief）」，可对周围怪物造成范围伤害，并在接下来一段时间内让奥术法杖的命中有几率返还法力。在武器与魔法书上，奥术元素强化命中、战术、法力返还与伤害；在护甲上则进一步提升奥术蓄力加成、奥术法力回复几率，以及施放伤害法术时按法力消耗回复生命。</p>
-
     <h2 id="special">特殊特效 <span class="en-h">Special Effect</span></h2>
     <p>奥术元素的激活特殊特效为 <strong>窃魔者（Mana Thief）</strong>：对 3 格半径范围内的怪物造成（500 + 50 × 阶位等级）点伤害均摊；此外，在接下来的 60 秒内，奥术法杖的任意命中有（12% + 4% × 阶位等级）的几率返还 10 点法力（该效果可叠加）。</p>
     <div class="formula">Mana Thief 伤害 = 500 + 50 × Tier Level
 范围 = 3 格半径
 奥术法杖命中返还法力几率 = 12% + 4% × Tier Level（每次返还 10 点法力，持续 60 秒，可叠加）</div>
-
     <h2 id="weapon">武器特效 <span class="en-h">Weapon Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/arcane-weapon.png" alt="武器截图" loading="lazy"/><div class="img-caption">武器截图</div></div>
     <p>激活奥术元素武器后，提供以下加成（数值随玩家的奥术阶位等级提升）：</p>
@@ -90,7 +86,6 @@
       <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随武器速度缩放)</span></td><td>0.5% + 每阶位 0.05%</td></tr>
     </table>
     <p>特殊特效同样为 <strong>窃魔者（Mana Thief）</strong>（数值与上方特殊特效一致）。</p>
-
     <h2 id="spellbook">魔法书特效 <span class="en-h">Spellbook Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/arcane-spellbook.png" alt="魔法书截图" loading="lazy"/><div class="img-caption">魔法书截图</div></div>
     <p>激活奥术元素魔法书后，提供以下加成（数值随玩家的奥术阶位等级提升）：</p>
@@ -101,7 +96,6 @@
       <tr><td>元素特殊触发几率<br><span class="en-cell">(Aspect Special Chance，随法术环缩放)</span></td><td>4% + 每阶位 0.4%</td></tr>
     </table>
     <p>特殊特效同样为 <strong>窃魔者（Mana Thief）</strong>（数值与上方特殊特效一致）。</p>
-
     <h2 id="armor">护甲特效 <span class="en-h">Armor Effects</span></h2>
 <div class="aspect-img"><img src="../data/images/elements/arcane-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>激活奥术元素护甲后，提供以下加成（数值随玩家的奥术阶位等级提升）：</p>
@@ -112,20 +106,16 @@
       <tr><td>奥术法力回复几率加成<br><span class="en-cell">(Arcane Mana Recovery Chance Bonus)</span></td><td>2.5% + 每阶位 0.75%</td></tr>
       <tr><td>每点伤害法术法力消耗回复生命<br><span class="en-cell">(HP Recovered Per Mana Cost of Damaging Spell)</span></td><td>10% + 每阶位 3%</td></tr>
     </table>
-
     <h3 id="armor-buildup">奥术蓄力加成提升 <span class="en-h">Increase to Arcane Buildup Bonuses</span></h3>
 <div class="aspect-img"><img src="../data/images/elements/arcane-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>提升来自<strong>奥术蓄力（Arcane Buildup）</strong>的法术伤害与伤害减免加成。该加成是<strong>按玩家当前奥术蓄力加成的百分比计算</strong>的，而非直接叠加到加成上。</p>
-
     <h3 id="armor-hp">每点伤害法术法力消耗回复生命 <span class="en-h">HP Recovered Per Mana Cost of Damaging Spell</span></h3>
 <div class="aspect-img"><img src="../data/images/elements/arcane-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>每当玩家施放一个伤害法术时，会回复相当于（法力消耗 × (10% + 3% × 阶位等级)）的生命值，无论玩家是否获得了法力返还。</p>
     <div class="formula">回复生命 = 法力消耗 × (10% + 3% × Tier Level)</div>
-
     <h3 id="armor-decay">忽略奥术蓄力衰减几率 <span class="en-h">Chance to Ignore Arcane Buildup Decay</span></h3>
 <div class="aspect-img"><img src="../data/images/elements/arcane-armor.png" alt="护甲截图" loading="lazy"/><div class="img-caption">护甲截图</div></div>
     <p>有几率忽略<strong>奥术蓄力衰减（Arcane Buildup Decay）</strong>——该机制会在玩家不挥动法杖的每 10 秒内，使玩家的奥术蓄力加成逐渐下降。</p>
-
     <h2 id="pvp">PvP 效果 <span class="en-h">PvP Effects</span></h2>
     <p>奥术元素在 PvP 中的表现如下：</p>
     <table class="aspect-data-table">
@@ -138,7 +128,6 @@
       <li>玩家脱离 PvP 满 60 秒后，这些效果会重新激活。</li>
       <li>任何补充性的 PvP 激活效果（PvP Activated Effects），是在玩家当前处于 PvP 标记状态下、针对怪物（Creatures）时生效的额外加成。</li>
     </ul>
-
     <h2 id="cloth">布料 <span class="en-h">Cloth</span></h2>
     <ul class="plain">
       <li>色相（Hue）：1560</li>
@@ -151,29 +140,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -237,7 +213,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -257,6 +232,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
