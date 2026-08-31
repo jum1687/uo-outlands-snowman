@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 盗窃类 › <span>偷窃 Stealing</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Stealing" target="_blank" rel="noopener">wiki.uooutlands.com/Stealing</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">偷窃 <span class="cnsub">Stealing</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -72,154 +69,92 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">简介 <span class="en-h">Description</span></h2>
-    
     <p>偷窃（Stealing）技能允许盗贼工会（Thieves Guild）“红手（Red Hand）”成员从其他玩家的背包中偷取物品。玩家需拥有 80 点以上的偷窃与窥探技能才能加入盗贼工会，可在任意盗贼 NPC 处加入。玩家可选择成为盗贼工会的“灰手（Grey Hand）”成员，获得多种用于对抗生物的工具与能力，包括强化背刺攻击，以及“打劫（Mugging）”生物以获取额外战利品。玩家可通过扒手训练桩（Pickpocket Dip）练习偷窃技能。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>玩家可使用偷窃技能从其他玩家处拿走特定物品</li>
-      
       <li>要偷窃无辜者，玩家必须加入红手（Red Hand）盗贼工会</li>
-      
       <li>偷取物品的基础成功几率为 (1 × (偷窃技能 / 100))</li>
-      
       <li>进行任何偷窃尝试至少需 80 点窥探技能</li>
-      
       <li>玩家死亡后 2 分钟内无法进行偷窃或窥探尝试</li>
-      
       <li>偷取物品被视为“使用”物品，因此之后再用或移动其他物品会有标准的 500 毫秒延迟</li>
-      
       <li>对先攻击自己的玩家进行偷窃，玩家不会被永久标记（Perma-Flagged）</li>
-      
       <li>被盗物品在 30 秒内无法被任何玩家拾起</li>
-      
       <li>进行偷窃尝试（成功或失败）的玩家，5 秒内无法使用房屋的驱逐（Eject）或求助／卡住（Help/Stuck）功能</li>
-      
       <li>玩家可加入灰手（Grey Hand）盗贼工会，对生物进行打劫（Mugging）与扒窃（Pilfering）。盗贼法典（Thieves Codex）会进一步强化用于 PvM 的偷窃技能。</li>
-      
       <li>对生物偷窃的规则：每名玩家对单个生物最多偷取 1000 金币；每名玩家对同一生物只能成功偷窃一次；当有 3 名玩家成功偷窃后，该生物将变得贫瘠（barren），阻止后续玩家再偷任何东西；从典范（Paragon）怪物偷窃必定获得黑货（Black Goods）</li>
-      
       <li>玩家执行偷窃动作不再需要空手</li>
-      
       <li>使用偷窃技能的技能冷却已缩短至 5 秒（此前为 10 秒）（补丁：2024 年 6 月 22 日）</li>
-      
       <li>玩家可通过“盗窃之书（Book of Grifts）”追踪自己的偷窃尝试</li>
     </ul>
-
     <h2 id="improving">提升偷窃几率 <span class="en-h">Improving Stealing Chance</span></h2>
     <ul class="plain">
-      
       <li>佩戴伪装工具包（Disguise Kit）的玩家不再获得 +25% 的偷窃成功几率加成</li>
-      
       <li>对已被缴械（Disarmed）的目标进行偷窃尝试，获得 +25% 偷窃成功几率加成</li>
-      
       <li>对已被废腿（Hamstrung）的目标进行偷窃尝试，获得 +25% 偷窃成功几率加成</li>
     </ul>
-
     <h2 id="weights">可偷重量 <span class="en-h">Stealing Weights</span></h2>
     <ul class="plain">
-      
       <li>物品重量不影响偷窃成功几率，但玩家单次可偷取的单个物品最大重量为 (10 × (偷窃技能 / 100))  stones（石的）</li>
-      
       <li>若物品为堆叠物（如金币或试剂），成功的偷窃尝试偷取的数量为 ( (5 × (偷窃技能 / 100)) / 单个物品重量 × (0.9 到 1.1 之间的随机值) )</li>
-      
       <li>例如，在 100 偷窃技能时，一次偷窃尝试平均可从堆叠中偷取 50 个试剂或 250 金币</li>
     </ul>
     <div class="formula">单个物品最大可偷重量 = 10 × (偷窃技能 / 100) stones
 堆叠物偷取数量 = (5 × (偷窃技能 / 100)) / 单个物品重量 × (0.9 ~ 1.1 随机值)
 Base success chance = 1 × (Stealing Skill / 100)</div>
-
     <h3 id="from_containers">Stealing from Containers</h3>
     <ul class="plain">
-      
       <li>从堆叠中可偷取的物品最大总重量不再减少 50%</li>
-      
       <li>从箭袋（Quiver）中可偷取的箭／弩箭最大总重量，会按箭袋的重量减免系数向下缩放</li>
-      
       <li>从法师背包（Wizard's Satchel）中可偷取的试剂与卷轴最大总重量，会按该背包对该物品类型的重量减免系数减少</li>
-      
       <li>从玩家处可偷取的金币最大总重量，会按盗贼已解锁的保险箱（Strong Box）定制金币重量减免进行缩放</li>
     </ul>
-
     <h2 id="noticed">被察觉 <span class="en-h">Being Noticed</span></h2>
     <ul class="plain">
-      
       <li>当玩家进行犯罪性偷窃尝试（针对蓝名目标）时，有几率被其他玩家与人类 NPC 察觉</li>
-      
       <li>若盗贼在城外被玩家或人类 NPC 察觉，仅生成系统消息通知（无其他后果）</li>
-      
       <li>若盗贼在城镇内被任何人类 NPC 察觉，NPC 会呼叫卫兵，盗贼将被击杀</li>
-      
       <li>若盗贼在城镇内被任何玩家察觉，该玩家若在动作发生后 30 秒内呼叫卫兵，盗贼将被击杀。呼叫卫兵的玩家必须位于盗贼 14 格以内。</li>
-      
       <li>盗贼 8 格内每名非友好玩家（非其公会成员）使察觉几率提高 10%（若不在盗贼视线内则降为 5%）</li>
-      
       <li>盗贼 8 格内每名人类 NPC 使察觉几率提高 5%（若不在盗贼视线内则降为 2.5%）</li>
-      
       <li>若玩家在某个城镇积累了任何“嫌疑值（Suspicion）”，也可能提高被察觉的几率（见下文）</li>
     </ul>
-
     <h2 id="suspicion">嫌疑值 <span class="en-h">Suspicion</span></h2>
     <ul class="plain">
-      
       <li>当玩家在城镇中偷窃尝试后被察觉，其在那个特定城镇的“嫌疑值（Suspicion）”会提升</li>
-      
       <li>玩家在某个城镇每次偷窃尝试后被察觉，在接下来 12 小时内，于同一城镇进行后续偷窃尝试时被察觉的几率会累积提高 10%（玩家须在该城镇 12 小时内无与卫兵相关的死亡，才能清除其嫌疑值）</li>
-      
       <li>玩家可通过说出“I must consider my sins”或输入 [ConsiderSins 查看各城镇当前的嫌疑值等级</li>
     </ul>
-
     <h2 id="restricted">受限物品 <span class="en-h">Restricted Items</span></h2>
-    
     <p>以下物品拥有“禁止非友好拾取（Prevent Non-Friendly Lift）”状态，除房屋好友外，任何玩家在屋内都无法移动／拾取它们。无论地点或与目标玩家的关系如何，玩家都无法偷窃带有此状态的物品。</p>
     <ul class="plain">
-      
       <li>房屋契约、船只契约、储物架、资源堆、衣柜、Prevalia 箱、魔法物品保险库、花园架、奥术符文典籍、专精物品典籍、染料典籍、钓鱼地图典籍、传说页典籍、木材地图典籍、精通链环典籍、矿石地图典籍、Outlands 收藏卡典籍、稀有布料典籍、技能精通典籍、法术卷轴典籍、藏宝图典籍</li>
     </ul>
-
     <h2 id="locked">上锁容器 <span class="en-h">Locked Containers</span></h2>
     <ul class="plain">
-      
       <li>玩家现在可对他人背包中的上锁容器（Locked Containers）使用开锁（Lockpicking）</li>
-      
       <li>玩家将无法再拖拽／放入／堆叠物品到自己背包中的上锁容器内</li>
     </ul>
-
     <h2 id="pvm">对生物偷窃 <span class="en-h">PvM Stealing</span></h2>
-    
     <p>详见盗贼工会（Thieves Guild）。</p>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
     <h3 id="pickpocket">Pickpocket Dip</h3>
     <ul class="plain">
-      
       <li>扒手训练桩（Pickpocket dip）可同时训练偷窃与窥探至 100</li>
-      
       <li>只需设置一个每 5 秒双击训练桩的宏</li>
-      
       <li>骑马时无法使用</li>
     </ul>
-    
     <p>若有扒手训练桩，这是最简单的训练方式：</p>
     <ul class="plain">
-      
       <li>0–50 向 NPC 训练</li>
-      
       <li>50–80 在庇护岛（Shelter Island）使用扒手训练桩</li>
-      
       <li>80–100 在庇护岛外使用扒手训练桩</li>
     </ul>
-    
     <p>（详见 Outlands Discord 中 #thieves-pvm 频道的置顶消息）</p>
-
     <h3 id="pack_animal">Pack Animal</h3>
-    
     <p>从马厩管理员（Stablemaster）处购买驮羊（Pack Llama）或驮马（Pack Horse），在其身上训练偷窃。</p>
     <ul class="plain">
-      
       <li>0–50 向 NPC 训练</li>
-      
       <li>50–100 在庇护岛外，从驮兽或其他玩家／角色身上偷窃</li>
     </ul>
   </div>
@@ -229,29 +164,16 @@ Base success chance = 1 × (Stealing Skill / 100)</div>
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -315,7 +237,6 @@ Base success chance = 1 × (Stealing Skill / 100)</div>
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -335,6 +256,5 @@ Base success chance = 1 × (Stealing Skill / 100)</div>
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
