@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 盗窃类 › <span>下毒 Poisoning</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Poisoning" target="_blank" rel="noopener">wiki.uooutlands.com/Poisoning</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">下毒 <span class="cnsub">Poisoning</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -90,24 +87,15 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">简介 <span class="en-h">Description</span></h2>
-    
     <p>下毒（Poisoning）技能允许玩家对生物与玩家施加不同等级的毒。中毒可通过使用毒武器，或经由魔法（Magery）技能施放毒系法术实现。拥有下毒技能的玩家可将毒涂在所有 fencing（穿刺）武器以及部分 swordsmanship（剑术）武器上。毒会对目标造成持续伤害，除非目标能将自身解毒。</p>
-
     <h2 id="overview">毒药总览 <span class="en-h">Poison Overview</span></h2>
-
     <h3 id="damage">Poison Damage</h3>
     <ul class="plain">
-      
       <li>玩家同时对生物生效的毒效果上限为 8 个</li>
-      
       <li>若玩家已达上限仍尝试对额外生物下毒，会收到系统消息提示该限制</li>
-      
       <li>玩家造成的毒（法术或武器）对生物伤害提升 50%</li>
-      
       <li>玩家造成的毒（法术或武器）伤害额外提升 (100% × (Taste ID 技能 / 100))（仅 PvM）</li>
-      
       <li>当非驯服生物受到毒伤害时，若对其下毒的生物／玩家距离超过 18 格，毒伤害会降级为 Lesser Poison（次级毒）</li>
-      
       <li>在以下任一情况下，玩家下毒的毒跳（Poison Tick）伤害会按 Lesser Poison 结算：玩家已死亡；玩家距离生物超过 18 格；若玩家处于隐藏状态且同时对多个生物保有中毒效果，则其中某个生物每次毒跳有 (33% × (中毒生物总数 − 1)) 的几率将毒伤害按 Lesser Poison 结算，而非实际毒等级</li>
     </ul>
     <table style="border-collapse:collapse;width:100%;max-width:560px;font-size:13.5px;">
@@ -125,43 +113,26 @@
       </tbody>
     </table>
     <p class="cn" style="font-size:13px;color:var(--muted);">注：施加 Lethal（绝命）毒需 95 点下毒技能（武器）或 100 点下毒 + 100 点魔法（法术）。</p>
-
     <h3 id="stacking">Poison Stacking</h3>
     <ul class="plain">
-      
       <li>每个非驯服／非召唤的生物现在可叠加多个毒效果，规则如下</li>
-      
       <li>生物同一时间只会保有 1 种毒类型（即 Lesser、Regular、Greater、Deadly、Lethal 之一）</li>
-      
       <li>每位玩家可在已中毒生物上施加毒，只要毒等级相同</li>
-      
       <li>每位玩家也可让自己的一个跟随者（follower）在已中毒生物上施加毒，只要毒等级相同</li>
-      
       <li>若玩家或跟随者施加了高于生物当前等级的毒，将清除其上当前所有其他玩家／跟随者叠加的毒</li>
-      
       <li>中毒生物会为每位下毒的玩家／生物分别记录剩余毒跳次数（从 Tick 0 开始，到 Tick 10 结束）</li>
-      
       <li>中毒生物使用单一计时器同时结算所有毒跳</li>
-      
       <li>只要任意生物／玩家对其仍有毒跳剩余，该生物即被视为中毒，并显示绿色状态血条</li>
-      
       <li>玩家／跟随者任何提升毒伤害或强化毒效果的加成，仅作用于其自身毒跳的结算</li>
     </ul>
-
     <h3 id="resistance">Poison Resistance (Creature)</h3>
     <ul class="plain">
-      
       <li>许多生物拥有毒抗（Poison Resistance）属性（以百分比 % 显示），但不会抵抗玩家施放的毒，仅按几率抵抗每次毒跳伤害</li>
-      
       <li>玩家可通过 Taste ID 等技能及各类物品效果临时获得毒抗</li>
-      
       <li>生物的毒抗按“每次毒跳”判定，因此一次性结算多次毒跳的能力／效果会对每次毒跳分别进行毒抗判定</li>
-      
       <li>多数拥有毒抗的生物现在拥有最低毒抗下限，无法通过效果降低至其下</li>
     </ul>
-
     <h3 id="tolerance">Poison Tolerance (Player)</h3>
-    
     <p>当玩家或驯服／召唤生物对另一名玩家施加 Greater（强效）及以上等级的毒时，会给受害者施加一层持续 5 分钟的累积毒耐受（Poison Tolerance）效果。玩家可叠加多层毒耐受，每层有独立的持续时间计时器。毒耐受会降低任何敌对玩家对其“升级毒法术”或“施加近战武器毒”的几率。玩家最多可通过叠加效果获得 50% 毒耐受。毒耐受在竞技场（Arena）中无效。</p>
     <table style="border-collapse:collapse;width:100%;max-width:480px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -174,81 +145,47 @@
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Lethal</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+15%</td></tr>
       </tbody>
     </table>
-
     <h2 id="weapons">毒武器 <span class="en-h">Poisoned Weapons</span></h2>
     <ul class="plain">
-      
       <li>毒可涂在任何穿刺类武器上，包括所有 fencing（穿刺）武器与所有剑（swords），但不包括斧（axes）、长柄武器（polearms）与锤（maces）。</li>
-      
       <li>PvP 中施加毒的几率为固定的 25%（所有毒类型）</li>
-      
       <li>PvM 中施加毒的几率为 25% + (有效下毒技能 / 4%)（所有毒类型）</li>
-      
       <li>通过武器施加 Lethal（绝命）毒需 95 点（印刷）下毒技能或以上</li>
-      
       <li>施加判定失败时仍不消耗毒充能的几率为 (50% × (下毒技能 / 100))</li>
-      
       <li>玩家解毒由下毒玩家所施毒的几率降低 (25% × (下毒技能 / 100))</li>
-      
       <li>若生物被毒武器击中，但其已中的毒等级不低于武器上的毒，则不会进行武器下毒尝试（也不消耗毒充能）</li>
-      
       <li>拥有下毒技能的玩家用武器对生物下毒时，消耗小数形式的毒充能</li>
-      
       <li>玩家用武器对生物下毒时，会消耗 (1 − (0.50 × (有效下毒技能 / 100))) 点毒充能</li>
-      
       <li>每次下毒尝试至少消耗 0.20 点毒充能</li>
-      
       <li>玩家可在背包中有毒药水时，单击武器来尝试涂毒，可用毒类型会列在右键菜单中。</li>
     </ul>
-
     <h3 id="sting">Melee Poison Sting</h3>
     <ul class="plain">
-      
       <li>当玩家用毒武器近战命中一个已用同种毒毒过的生物时，有几率对其触发近战毒刺（Melee Poison Sting），立即结算 1 次毒跳</li>
-      
       <li>近战毒刺触发几率取玩家有效下毒技能与有效炼金（Alchemy）技能中的较高者</li>
-      
       <li>近战毒刺触发几率 = (50% × (较高有效技能 / 100))，并进一步受武器速度（Weapon Speed）缩放</li>
-      
       <li>每 5 秒只能触发一次近战毒刺</li>
     </ul>
-
     <h2 id="spellcasting">下毒法术 <span class="en-h">Poison Spellcasting</span></h2>
     <ul class="plain">
-      
       <li>生物施放的毒系法术为 Lesser（次级）毒</li>
-      
       <li>玩家施放的毒（Poison）与毒云（Poison Field）法术默认为 Regular（普通）毒</li>
-      
       <li>玩家施法时的有效下毒技能受魔法（Magery）技能上限限制（但在 100 魔法时可将下毒提升至 100 以上）</li>
-      
       <li>升级至 Greater（强效）毒至少需 60 点下毒</li>
-      
       <li>升级至 Deadly（致命）毒至少需 80 点下毒</li>
-      
       <li>升级至 Lethal（绝命）毒至少需 100 点下毒及 100 点魔法</li>
-      
       <li>升级 Greater 毒需额外消耗 1 株颠茄（nightshade），Deadly 毒需额外 2 株（若不足则毒不会升级）</li>
-      
       <li>玩家可对生物与玩家施放 Lethal（绝命）毒</li>
-      
       <li>要升级至 Lethal 毒，玩家背包中必须持有 Lethal 毒药水</li>
-      
       <li>成功施放升级 Lethal 毒时，背包中 Lethal 毒药水有 20% 几率被消耗（PvP 中提高至 40%）</li>
-      
       <li>若施法无需消耗 Lethal 毒药水，施放 Lethal 毒需额外消耗 3 株颠茄</li>
     </ul>
-
     <h3 id="spellsting">Spellbased Poison Sting / Failure to Upgrade</h3>
-    
     <p>若毒系法术命中已中毒目标，且未能将目标毒等级升级至高于其当前等级（当目标已是 Lethal 毒时必定如此），则目标改为受到 10 × (((施法者下毒技能 + 施法者 Taste ID 技能) × 0.5) / 100) 的伤害，对于毒法师模板而言大致相当于火球（Fireball）的伤害。</p>
     <div class="formula">法术毒刺伤害 = 10 × (((施法者下毒技能 + 施法者 Taste ID 技能) × 0.5) / 100)
 Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 0.5) / 100)</div>
-    
     <p>我们将此伤害称为“法术毒刺伤害”。法术毒刺伤害本身不会造成打断，但毒系法术常规的打断处理依旧有效。法术毒刺机制在对生物与玩家施法时均适用。</p>
-
     <h3 id="pvm">PvM Bonuses (Spells)</h3>
-    
     <p>玩家对生物升级法术毒等级的几率：</p>
     <table style="border-collapse:collapse;width:100%;max-width:480px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -261,9 +198,7 @@ Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Lethal</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">(20% × (有效下毒技能 / 100))</td></tr>
       </tbody>
     </table>
-
     <h3 id="pvp">PvP Bonuses (Spells)</h3>
-    
     <p>玩家对其他玩家升级法术毒等级的几率（含距离）：</p>
     <table style="border-collapse:collapse;width:100%;max-width:520px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -277,19 +212,14 @@ Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Lethal</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">(10% × (下毒技能 / 100))</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">0–4 格</td></tr>
       </tbody>
     </table>
-
     <h2 id="curing">解毒 <span class="en-h">Curing Poison</span></h2>
-
     <h3 id="progressive">Progressive Curing</h3>
     <ul class="plain">
-      
       <li>玩家每 30 秒内喝下的第一瓶解毒药水现在为免费消耗（玩家会收到系统消息提示）</li>
-      
       <li>每次连续解毒失败，都会使下一次尝试的几率按该毒类型未修正的基础解毒几率的固定值提升</li>
     </ul>
     <div class="example">
       <div class="ex-title">示例 1 — curing Deadly Poison (GM Poisoning, GM Taste ID)</div>
-      
       <p>通过高级解毒药水或 GM 魔法解除 Deadly（致命）毒的基础几率为 50%。若解毒失败，下一次尝试获得固定 50% 加成。由 GM 下毒与 GM Taste ID 造成的毒，初始解毒几率降低 50%（即 50% 基础变为 25%）。后续尝试仍按未修正的基础几率以固定百分比递增。</p>
       <table style="border-collapse:collapse;width:100%;max-width:320px;font-size:13.5px;">
         <thead><tr style="background:#f8f9fa;"><th style="border:1px solid #a2a9b1;padding:6px 10px;">Attempt / 次数</th><th style="border:1px solid #a2a9b1;padding:6px 10px;">Cure Chance / 解毒几率</th></tr></thead>
@@ -302,7 +232,6 @@ Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 
     </div>
     <div class="example">
       <div class="ex-title">示例 2 — curing Lethal Poison (120 Poisoning, 120 Taste ID)</div>
-      
       <p>通过高级解毒药水或 GM 魔法解除 Lethal（绝命）毒的基础几率为 25%。若解毒失败，下一次尝试获得固定 25% 加成。由 120 下毒与 120 Taste ID 造成的毒，初始解毒几率降低 60%（即 25% 基础变为 10%）。后续尝试仍按未修正的基础几率以固定百分比递增。</p>
       <table style="border-collapse:collapse;width:100%;max-width:320px;font-size:13.5px;">
         <thead><tr style="background:#f8f9fa;"><th style="border:1px solid #a2a9b1;padding:6px 10px;">Attempt / 次数</th><th style="border:1px solid #a2a9b1;padding:6px 10px;">Cure Chance / 解毒几率</th></tr></thead>
@@ -315,7 +244,6 @@ Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 
         </tbody>
       </table>
     </div>
-
     <h3 id="potion">Potion Cure Chances</h3>
     <table style="border-collapse:collapse;width:100%;max-width:560px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -332,71 +260,49 @@ Poison Sting damage = 10 * (((Caster Poisoning Skill + Caster Taste ID Skill) * 
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Greater Cure (高级)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">125%</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">100%</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">75%</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">50%</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">25%</td></tr>
       </tbody>
     </table>
-
     <h3 id="bandaging">Bandaging Cure Chances</h3>
     <div class="formula">玩家解毒几率 = ((150% − (毒等级 × 25%)) × (疗伤 Healing 技能 / 100)) − (失误次数 × 2%)
 生物解毒几率 = ((150% − (毒等级 × 25%)) × (兽医 Veterinary 技能 / 100)) − (失误次数 × 2%)
 Chance to Cure Player = ((150% - (Poison Level * 25%)) * (Healing Skill / 100)) - (Slips * 2%)
 Chance to Cure Creature = ((150% - (Poison Level * 25%)) * (Veterinary Skill / 100)) - (Slips * 2%)</div>
-
     <h3 id="curespell">Cure and Arch Cure Spell Chances</h3>
     <ul class="plain">
-      
       <li>解毒几率 = ((150% − (毒等级 × 25%)) × (魔法 Magery 技能 / 100))</li>
     </ul>
-
     <h2 id="kit">毒药工具包 <span class="en-h">Poison Kit</span></h2>
-    
     <p>玩家可用炼金（Alchemy）技能制作毒药工具包（Poison Kits），这是一种受祝福（Blessed）物品，可让玩家自定义对生物毒效果的处理方式（这些加成永不影响玩家）。</p>
-
     <h2 id="visuals">毒文案显示 <span class="en-h">Poison Text Visuals</span></h2>
     <h3 id="singleclick">Creature Poison Single Click</h3>
     <ul class="plain">
-      
       <li>玩家可通过输入 [SingleClickPoisonTicks，或在纸娃娃 → 帮助 → 命令 → 机制 → SingleClickPoisonTicks 中，切换是否在单击生物时显示头顶毒文案</li>
-      
       <li>玩家可通过单击生物或使用“全部名称（All Names）”，查看自己在某生物上所下毒的类型及剩余毒跳次数</li>
-      
       <li>若生物当前中毒，但玩家自己并未对其下毒，单击或使用“全部名称”只会显示当前生效的毒类型</li>
     </ul>
-
     <h3 id="overhead">Creature Poison Overhead Messages</h3>
     <h4 id="applying">Applying Poison</h4>
     <ul class="plain">
-      
       <li>当对生物施加毒时，仅对下毒的玩家显示“Creature X is wracked in extreme pain”类型的头顶消息</li>
-      
       <li>但被驯服／召唤的生物中毒时，始终会向其控制者显示这些消息</li>
     </ul>
     <h4 id="resolving">Resolving Poison Ticks</h4>
     <ul class="plain">
-      
       <li>生物毒跳结算时出现的“Creature X is wracked in extreme pain”类型消息，现在仅对在该生物上保有中毒效果的玩家显示</li>
-      
       <li>但被驯服／召唤的中毒生物，始终会向其控制者显示这些消息</li>
     </ul>
     <h4 id="overriding">Creature Poison Overriding</h4>
     <ul class="plain">
-      
       <li>若其他玩家或生物施加了高于目标当前等级的毒，之前在该生物上保有较低等级毒效果的所有其他玩家，会看到生物头顶显示“*poison overridden*”消息</li>
     </ul>
     <h4 id="completion">Creature Poison Tick Completion</h4>
     <ul class="plain">
-      
       <li>当玩家在某生物上的第 10 次（最后一次）毒跳结算时，会看到生物头顶显示“***poison complete***”消息</li>
     </ul>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
     <ul class="plain">
-      
       <li>在庇护岛（Shelter Island）／新手地牢中，下毒技能不会提升更快</li>
-      
       <li>将对应等级的毒涂在刃器上以训练该技能</li>
-      
       <li>约 100 瓶毒药水可练至 50–60</li>
-      
       <li>约 750 瓶 Greater 毒药水可练至 60–80</li>
-      
       <li>约 1100 瓶 Deadly 毒药水可练至 80–100</li>
     </ul>
     <table style="border-collapse:collapse;width:100%;max-width:480px;font-size:13.5px;">
@@ -419,29 +325,16 @@ Chance to Cure Creature = ((150% - (Poison Level * 25%)) * (Veterinary Skill / 1
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -505,7 +398,6 @@ Chance to Cure Creature = ((150% - (Poison Level * 25%)) * (Veterinary Skill / 1
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -525,6 +417,5 @@ Chance to Cure Creature = ((150% - (Poison Level * 25%)) * (Veterinary Skill / 1
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
