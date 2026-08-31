@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 盗窃类 › <span>潜行 Stealth</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Stealth" target="_blank" rel="noopener">wiki.uooutlands.com/Stealth</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">潜行 <span class="cnsub">Stealth</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -68,102 +65,62 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">简介 <span class="en-h">Description</span></h2>
-    
     <p>潜行（Stealth）技能允许已通过隐藏（Hiding）技能隐身的玩家，在短距离行走中保持隐身。玩家在隐藏后须等待片刻，才有资格开始“潜行步数（Stealth Steps）”。当隐藏状态下对生物进行武器攻击时，若玩家的隐藏与潜行技能均达到 80 以上，便可发动“背刺（Backstab）”攻击，造成大幅提升的伤害。奔跑（Running）总会揭示隐身玩家。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>至少需要 80 点隐藏才能使用潜行</li>
-      
       <li>每次发动潜行，玩家获得 (5 + (10 × (潜行技能 / 100))) 点潜行步数</li>
-      
       <li>隐藏技能使用计时器（Hiding Skill Use Timer）结束后，你会收到系统消息提示“You feel comfortable enough to begin stealthing.”（你已可开始潜行）</li>
-      
       <li>隐藏满 10 秒后，玩家成功潜行的几率为 100% × (潜行技能 / 100)；失败则被揭示</li>
-      
       <li>潜行期间，若在潜行技能使用计时器（10 秒）到期前你已移动超过可用步数，则需要等待才能继续潜行。当你可在不暴露的情况下继续时，会看到系统消息“You feel ready to continue stealthing”（你已可继续潜行）</li>
-      
       <li>魔法巫师帽（Magical Wizards Hat）可用于消耗耐力，防止因踩到其他怪物或玩家而意外暴露。可从 NPC 法师商处购得。</li>
     </ul>
     <div class="formula">每次潜行步数 = 5 + (10 × (潜行技能 / 100))
 潜行成功率（隐藏满 10 秒后）= 100% × (潜行技能 / 100)</div>
-
     <h2 id="auto">Auto-Stealth Command <span class="en-h">自动潜行命令</span></h2>
     <ul class="plain">
-      
       <li>若玩家启用了自动潜行（Auto-Stealth），当距上次潜行使用（技能冷却）已过 10 秒且仍有潜行步数剩余时，会收到“You will automatically stealth when out of steps”（步数耗尽时将自动潜行）消息</li>
-      
       <li>若玩家启用了自动潜行且潜行步数已耗尽，若其可立即继续潜行（即距上次潜行使用已过 10 秒），会收到“You feel ready to continue stealthing”消息</li>
-      
       <li>输入“[AutoStealth”切换自动潜行</li>
     </ul>
-
     <h2 id="backstabbing">背刺 <span class="en-h">Backstabbing</span></h2>
-    
     <p>处于潜行状态的玩家可对生物发动背刺攻击，且必须满足：</p>
     <ul class="plain">
-      
       <li>处于武器攻击范围内</li>
-      
       <li>至少 80 点潜行技能，以及 80 点当前装备武器对应技能</li>
     </ul>
-    
     <p>背刺攻击具有以下修正：</p>
     <ul class="plain">
-      
       <li>背刺攻击命中率 +25%</li>
-      
       <li>施加毒的几率提高 +25%</li>
-      
       <li>背刺命中时无法触发武器特技（Weapon Specials）或武器能力（Weapon Abilities）</li>
     </ul>
-
     <h3 id="moreinfo">More Info</h3>
     <ul class="plain">
-      
       <li>潜行背刺的伤害倍率约为 +800% 到 +1600%，依武器速度缩放</li>
-      
       <li>背刺伤害还按 (背刺伤害 × (潜行技能 / 100)) 缩放</li>
-      
       <li>背刺伤害还可通过精通链环（Mastery Chain Links）或暗影专精（Shadow Aspect）进一步提升。</li>
-      
       <li>潜行背刺的伤害骰现在额外多掷一次并取最佳结果（可与其他来源的额外投掷叠加）</li>
-      
       <li>进行背刺尝试的玩家，接下来 30 秒获得 50% 专精特技（Aspect Special）几率加成（显示在 状态 → 近战 中，标注其持续时间）。若背刺是通过暗影专精特技（Shadow Aspect Special）的潜行发动，则该加成不适用</li>
-      
       <li>从潜行状态攻击其他玩家会发出同样的背刺音效，但不会获得任何攻击加成。</li>
-      
       <li>发动背刺攻击时，相关技能获得技能提升的几率是其正常几率的 10 倍。</li>
     </ul>
     <div class="formula">背刺伤害倍率 = +800% ~ +1600%（依武器速度缩放）
 背刺伤害 = 背刺伤害 × (潜行技能 / 100)</div>
-
     <h2 id="penalty">背刺接战惩罚 <span class="en-h">Stealth Backstab Engagement Penalty</span></h2>
-    
     <p>对当前仇恨锁定在其他玩家或玩家跟随者身上的生物发动潜行背刺（含打劫／扒窃）的玩家，会受到 50% 伤害惩罚，除非满足以下任一条件：</p>
     <ul class="plain">
-      
       <li>该生物为 Boss 类型</li>
-      
       <li>被仇恨锁定的玩家／跟随者对背刺玩家显示为绿名（Green）</li>
-      
       <li>被仇恨锁定的玩家／跟随者与背刺玩家同处一个队伍（Party）</li>
-      
       <li>该玩家已对同一生物成功发动过一次潜行背刺</li>
-      
       <li>背刺玩家对该生物造成的累计总伤害高于任何其他玩家（及其跟随者）</li>
-      
       <li>若潜行背刺被施加了接战惩罚，玩家会收到系统消息通知</li>
     </ul>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
     <ul class="plain">
-      
       <li>0–50 向 NPC 训练</li>
-      
       <li>50–80 在新手地牢（New Player Dungeon）先隐藏再使用潜行</li>
-      
       <li>80–120 继续隐藏并使用潜行</li>
     </ul>
   </div>
@@ -173,29 +130,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -259,7 +203,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -279,6 +222,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
