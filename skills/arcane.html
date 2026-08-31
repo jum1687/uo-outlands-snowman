@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 魔法类 › <span>奥术 Arcane</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Arcane" target="_blank" rel="noopener">wiki.uooutlands.com/Arcane</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">奥术 <span class="cnsub">Arcane</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -66,35 +63,22 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
-    
     <p>奥术（Arcane）技能决定玩家在使用名为「奥术法杖（Arcane Staff）」的奥术类武器时的命中或闪避几率。玩家用奥术法杖命中生物时，会累积「奥术蓄能（Arcane Buildup）」，为玩家提供大量的法术伤害与伤害减免加成。但是，只要玩家控制任何追随者或使用了任何吟游技能，奥术蓄能便会全部丢失。奥术技能还提供施法时避免被打断的几率。奥术、摔跤、魔法均达到 80 的玩家，可手持奥术法杖继续施法。</p>
     <ul class="plain">
-      
       <li>拥有奥术技能的玩家可装备奥术法杖——一类专为支持「纯法师」流派设计的新武器</li>
-      
       <li>在最近 60 秒内拥有追随者或使用过吟游技能的玩家将失去：奥术蓄能、奥术法典姿态与奥术法典终结技、奥术法杖的武器能力</li>
-      
       <li>拥有奥术技能的玩家可在纸娃娃（Paperdoll）中选择「Arcanist（奥术师）」作为技能称号</li>
-      
       <li>奥术技能会强化玩家从奥术符文（Arcane Runes）与奥术蓄能获得的收益</li>
-      
       <li>玩家用奥术法杖命中/防御的几率基于其奥术技能，但同时被魔法或摔跤中较低的面板值所限制</li>
-      
       <li>奥术、摔跤、魔法均达到 80 的玩家可在装备奥术法杖时施法</li>
-      
       <li>玩家必须保持静止 0.5 秒才能射击（与其敏捷无关）</li>
     </ul>
     <div class="formula">站定延迟在 PvP 中随敏捷缩放：
 从 1.0 秒（敏捷 ≤ 25）降至 0.5 秒（敏捷 ≥ 100）</div>
-
     <h2 id="pvm">打怪加成 <span class="en-h">PvM Bonuses</span></h2>
-    
     <p>装备奥术法杖施法时，玩家有（有效奥术技能 / 100%）的几率避免来自生物/环境的伤害导致的施法打断。</p>
-    
     <p>拥有奥术技能的玩家对附近奥术符文的效果可获得（25% * (奥术技能 / 100)）的加成。</p>
-
     <h3 id="weaponsetup">Weapon Setup Bonus</h3>
-    
     <p>玩家将根据双手所持武器/盾牌的「配置」获得对抗生物的加成。这些加成会在属性页以（Setup）形式列出。这些加成仅适用于非祝福（non blessed）的武器/法术书。</p>
     <div class="formula">单手 (1H)：
 近战无盾：+20% 命中
@@ -103,61 +87,43 @@
 远程配盾：+10% 命中，+25% 近战伤害，+10% 伤害减免
 法术书无盾：+30% 冥想回复
 法术书配盾：+15% 冥想回复，+10% 伤害减免
-
 双手 (2H)：
 近战：+25% 近战伤害
 远程：+50% 近战伤害
 奥术法杖：+10% 奥术法力回复几率
-
 成对 (Pa) 双持、摔跤：+10 攻击速度</div>
-
     <h2 id="pvp">PvP 站定效果与要求 <span class="en-h">PvP Stationary Effects and Requirements</span></h2>
-    
     <p>站定延迟（Stationary Delays）是指玩家必须停留在同一格上、远程武器才会发射的时长。</p>
     <h3>Weapon Swing Delay in PvP</h3>
-    
     <p>在 PvP 中，弓与奥术武器的站定延迟随玩家敏捷缩放，从 1.0 秒（敏捷 ≤ 25）降至 0.5 秒（敏捷 ≥ 100）[此前为固定的 0.5 秒]。</p>
     <div class="example">
       <div class="ex-title">Example</div>
-      
       <p>敏捷 25 的玩家须静止 1.0 秒才能发射弓/奥术武器；敏捷 63 的玩家须静止 0.75 秒；敏捷 100 的玩家须静止 0.5 秒。</p>
     </div>
     <h3>Damage Delays in PvP</h3>
-    
     <p>在 PvP 中使用远程武器攻击时，命中伤害现在会有随机延迟，并随敏捷缩放：最大延迟从 0 秒（敏捷 ≥ 100）到 0.5 秒（敏捷 ≤ 25）。</p>
     <div class="example">
       <div class="ex-title">Example</div>
-      
       <p>敏捷 25 的玩家远程武器伤害有 0 至 0.5 秒的随机延迟；敏捷 63 的玩家为 0 至 0.25 秒；敏捷 100 的玩家无延迟。</p>
     </div>
-
     <h2 id="codex">奥术法典 <span class="en-h">Codex</span></h2>
-    
     <p>奥术法杖可受益于奥术法典（Arcane Codex）提供的姿态与终结技。使用奥术法典需要奥术、摔跤、魔法均达到 80。</p>
-    
     <p>奥术法典姿态、终结技与能力：</p>
     <div class="formula">姿态 Leech：奥术法力回复几率每级 +1.5%
 姿态 Shield：挥击使伤害减免每级 +3%，奥术法力回复几率每级 +1%（持续 5 秒，不叠加）
 姿态 Scatter：对 3 格内额外 2 个随机目标造成每级 +1% 伤害，每多命中一个目标奥术法力回复几率每级 +1.25%
 姿态 Fracture：目标每有 25 点护甲值（上限 100），伤害每级 +2%，奥术法力回复几率每级 +0.75%
 姿态 Surge：若玩家在最后 15 秒内触发过元素特效（Aspect Special），则伤害每级 +8%，奥术法力回复几率每级 +2.5%
-
 终结技 Clarity：对目标造成 300% 伤害，随后 15 秒内所有元素近战特效触发几率 +20%（不叠加），奥术法力回复几率 +10%（不叠加）
 终结技 Catalyst：对目标造成 300% 伤害，消耗全部奥术蓄能，伤害增加 (7% × 消耗的奥术蓄能)，回复 (30 × 消耗的奥术蓄能) 法力
-
 武器能力 Seeking：随后 15 秒命中 +25%，攻击速度 +15%
 武器能力 Leyline：随后 15 秒每 3 秒回复 5 点法力
 武器能力 Soulfire：随后 15 秒奥术蓄能对法术伤害的加成提高 50%，但奥术蓄能对伤害减免的加成降低 100%</div>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>玩家在进行近战攻击或施法时获得奥术技能。</p>
     <ul class="plain">
-      
       <li>0–50 向 NPC 训练</li>
-      
       <li>50–80 用奥术法杖攻击或施法时被动获得（无论是否装备奥术法杖）—— 新手地牢</li>
-      
       <li>80–100 用奥术法杖攻击或施法时被动获得（无论是否装备奥术法杖）</li>
     </ul>
   </div>
@@ -167,29 +133,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -253,7 +206,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -273,6 +225,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
