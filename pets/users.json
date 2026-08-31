@@ -14,5 +14,13 @@
     "salt": "f78b4cac83df87a68f1548927ef20631",
     "hash": "47a08744f398867c02557e90c1f37baea88bca973eee7c3aa53c60c9d21b006c",
     "createdAt": "2026-08-31T05:57:09.821Z"
+  },
+  {
+    "id": "55a6795e-b62c-4234-95d4-e00785e5e7b0",
+    "name": "清理员5959",
+    "nameLower": "清理员5959",
+    "salt": "69b7a5e01a5ed7ca62e26fa90d38318d",
+    "hash": "705c8dcead7686e501835d31e3c999ffd37e2f57566fb9e2d213a290ed639bfe",
+    "createdAt": "2026-08-31T05:59:21.719Z"
   }
 ]
