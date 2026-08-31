@@ -46,5 +46,13 @@
     "salt": "78ba4121c7789007cf57d1b181a6e77f",
     "hash": "6e58292cd860cb2be6401ffc5180a2af42e3ff21e6035378741af44db51cbecc",
     "createdAt": "2026-08-31T06:11:39.358Z"
+  },
+  {
+    "id": "bc0fa4b0-a288-480f-9f46-4bd97c0c90e0",
+    "name": "NickTest-A",
+    "nameLower": "nicktest-a",
+    "salt": "38c7bfe164caa8669e6476fbea86a88b",
+    "hash": "03fe1751c11f9df2ff5584e1e1801099f2f3c08fe13d4fe29ce83c3a824c62ec",
+    "createdAt": "2026-08-31T06:55:04.877Z"
   }
 ]
