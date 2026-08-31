@@ -940,8 +940,18 @@ function render(){
   const saveTplBtn = document.getElementById('tbSaveTpl');
   if(saveTplBtn) saveTplBtn.addEventListener('click', ()=>{ hideTip(); openSaveModal(); });
   const toggleTplBtn = document.getElementById('tbToggleTpl');
-  if(toggleTplBtn) toggleTplBtn.addEventListener('click', ()=>{ tplPanelOpen = !tplPanelOpen; render(); });
-  if(tplPanelOpen) loadTemplates();
+  if(toggleTplBtn) toggleTplBtn.addEventListener('click', ()=>{
+    tplPanelOpen = !tplPanelOpen;
+    render();
+    // 只在「展开」这一刻拉一次最新；后端模式走实时接口，可绕过 Pages CDN 缓存
+    if(tplPanelOpen) loadTemplates();
+  });
+  if(tplPanelOpen){
+    // 关键：已有缓存就直接用缓存渲染，绝不在这里重新 fetch。
+    // 否则刚发布的模板会被 Pages CDN 里的旧 templates.json 覆盖掉，表现为"显示几秒后消失"。
+    if(templatesLoaded) renderTplCards(mergeTplCards(getMyTemplates(), lastCommunityList), false);
+    else loadTemplates();
+  }
 
   // 绑定迷你天赋：tooltip + 点击重选
   document.querySelectorAll('.tb-mini-t').forEach(node=>{
@@ -988,7 +998,9 @@ const TEMPLATE_READ = 'pets/templates.json';
 // 一旦填入真实后端地址，即启用昵称登录，所有人都能发模板/评分/删自己的模板。
 const BACKEND_API = 'https://1465370421-ixagq951tp.ap-guangzhou.tencentscf.com';
 let currentUser = null;
-let lastCommunityList = []; // {name, id} 来自后端 /api/me
+let lastCommunityList = [];   // 最近一次读回的社区模板列表（渲染缓存，避免重复 fetch 覆盖刚发布的内容）
+let templatesLoaded = false;  // 社区列表是否已成功加载过（render 时据此决定用缓存还是去拉）
+let pendingOwnTemplates = []; // 本次会话发布/编辑过的模板；读回列表若因缓存还没它，强制补回，防止"显示几秒后消失"
 const LS_MY_TPL = 'tb_my_templates_v1';
 const LS_GH_PAT = 'tb_gh_pat_v1';
 const LS_RATED = 'tb_rated_v1';
@@ -1291,6 +1303,10 @@ async function doSave(name, author, note, publish, okBtn){
           const data = await r.json().catch(()=>({}));
           const newTpl = data.t;
           if(newTpl){
+            // 保护队列：本次会话发布/编辑过的模板，读回列表若因缓存缺失，loadTemplates 会强制补回
+            const pi = pendingOwnTemplates.findIndex(x=>x.id===newTpl.id);
+            if(pi>=0) pendingOwnTemplates[pi] = newTpl; else pendingOwnTemplates.push(newTpl);
+            if(pendingOwnTemplates.length > 20) pendingOwnTemplates.shift();
             const i = lastCommunityList.findIndex(x=>x.id===newTpl.id);
             if(i>=0) lastCommunityList[i] = newTpl; else lastCommunityList.unshift(newTpl);
             freshList = lastCommunityList.slice();
@@ -1311,6 +1327,11 @@ async function doSave(name, author, note, publish, okBtn){
           await ghWriteTemplates(list, sha);
           freshList = list;
           needReload = false;
+          // 保护队列同步（与后端模式一致）
+          const pi = pendingOwnTemplates.findIndex(x=>x.id===t.id);
+          if(pi>=0) pendingOwnTemplates[pi] = t; else pendingOwnTemplates.push(t);
+          if(pendingOwnTemplates.length > 20) pendingOwnTemplates.shift();
+          lastCommunityList = list.slice();
           toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
         }catch(e){
           const msg = e.message || String(e);
@@ -1561,26 +1582,40 @@ async function loadTemplates(){
   if(!listEl) return;
   let community = [];
   let loadErr = false;
-  // 有 PAT 时优先走 GitHub API 直读（实时，无 Pages CDN 缓存延迟）；
-  // 无 PAT 或失败时回退同源 templates.json 静态读取。
-  if(getGhPat()){
+  // 回退方案：同源静态文件（GitHub Pages，有 CDN 缓存，内容可能滞后于刚发布的）
+  async function fallbackRead(){
+    try{
+      const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now(), {}, 8000);
+      if(r.ok){ const j = await r.json(); if(Array.isArray(j)) return j; }
+    }catch(e){ /* 网络/后端不可达，降级 */ }
+    loadErr = true;
+    return null;
+  }
+  if(BACKEND_API){
+    // 后端模式：走自建后端实时读仓库（服务端直连 GitHub，不受 Pages CDN 缓存影响）
+    try{
+      const r = await fetchWithTimeout(BACKEND_API + '/api/templates', {}, 15000);
+      if(r.ok){ const j = await r.json(); community = Array.isArray(j) ? j : []; }
+      else { const f = await fallbackRead(); community = f || []; }
+    }catch(e){ const f = await fallbackRead(); community = f || []; }
+  } else if(getGhPat()){
+    // 有 PAT 时走 GitHub API 直读（实时，无 Pages CDN 缓存延迟）
     try{
       const { arr } = await ghReadTemplates();
       community = arr;
-    }catch(e){
-      try{
-        const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
-        if(r.ok) community = await r.json(); else loadErr = true;
-      }catch(e2){ loadErr = true; }
-    }
+    }catch(e){ const f = await fallbackRead(); community = f || []; }
   } else {
-    try{
-      const r = await fetchWithTimeout(TEMPLATE_READ + '?t=' + Date.now());
-      if(r.ok) community = await r.json();
-    }catch(e){ loadErr = true; /* 同源读取失败（网络/后端不可达），降级 */ }
+    community = (await fallbackRead()) || [];
+  }
+  // 保护：本次会话刚发布/编辑的模板，若读回列表里还没有（后端或 CDN 缓存滞后），强制补回，
+  // 避免"刚发布显示一下、几秒后又被旧列表覆盖消失"。
+  if(pendingOwnTemplates.length){
+    const known = new Set(community.map(t => t && t.id).filter(Boolean));
+    pendingOwnTemplates.forEach(t => { if(t && t.id && !known.has(t.id)) community.unshift(t); });
   }
   const mine = getMyTemplates();
   lastCommunityList = community;
+  templatesLoaded = true;
   renderTplCards(mergeTplCards(mine, community), loadErr);
 }
 function applyTemplate(t, closePanel){
