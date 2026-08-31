@@ -38,29 +38,5 @@
     "salt": "8a0b03a3096c3ca72a815aa61037f75c",
     "hash": "c82785da65540f553b2cdd2728c07c22084b3ac59510f5207ef2ecd89d1ebe3c",
     "createdAt": "2026-08-31T06:11:37.692Z"
-  },
-  {
-    "id": "6afc544a-f879-4d09-a6ee-fb9a3c662b14",
-    "name": "Snowman Liang",
-    "nameLower": "snowman liang",
-    "salt": "78ba4121c7789007cf57d1b181a6e77f",
-    "hash": "6e58292cd860cb2be6401ffc5180a2af42e3ff21e6035378741af44db51cbecc",
-    "createdAt": "2026-08-31T06:11:39.358Z"
-  },
-  {
-    "id": "bc0fa4b0-a288-480f-9f46-4bd97c0c90e0",
-    "name": "NickTest-A",
-    "nameLower": "nicktest-a",
-    "salt": "38c7bfe164caa8669e6476fbea86a88b",
-    "hash": "03fe1751c11f9df2ff5584e1e1801099f2f3c08fe13d4fe29ce83c3a824c62ec",
-    "createdAt": "2026-08-31T06:55:04.877Z"
-  },
-  {
-    "id": "de6f9ac7-b8b7-417d-85f6-0c31a799f623",
-    "name": "NickTest-B",
-    "nameLower": "nicktest-b",
-    "salt": "e677b8df501c0db805afa71a664b4123",
-    "hash": "0c9ebe00ac694ead3ebbf71ec3dde265ca9b0f6b694b177f4e2ed8ba43198c60",
-    "createdAt": "2026-08-31T06:55:08.878Z"
   }
 ]
