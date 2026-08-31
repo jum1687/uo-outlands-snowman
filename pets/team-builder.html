@@ -221,6 +221,11 @@ html[data-theme="dark"] .tb-login-bar input{ background:#11141a; border-color:#3
 .tb-tpl-panel .tb-panel-title .tb-login-bar{ padding:4px 8px; background:transparent; border:none; font-size:.85em; }
 .tb-tpl-panel .tb-panel-title .tb-login-bar button{ padding:4px 10px; font-size:.9em; }
 .tb-tpl-panel .tb-panel-title .tb-login-bar input{ padding:4px 8px; font-size:.9em; min-width:150px; }
+.tb-login-input{ width:96px; min-width:0 !important; }
+.tb-reg-btn{ background:#fff !important; color:#36c !important; border-color:#36c !important; }
+.tb-reg-btn:hover{ background:#eaf1ff !important; }
+html[data-theme="dark"] .tb-reg-btn{ background:#262b32 !important; color:#7fb0e8 !important; border-color:#4d8fe8 !important; }
+html[data-theme="dark"] .tb-reg-btn:hover{ background:#1c2733 !important; }
 .tb-tpl-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px; }
 .tb-tpl-card{ border:1px solid #e4e7eb; border-radius:7px; padding:7px 8px; background:#fcfcfc; position:relative; }
 .tb-tpl-card h4{ margin:0 0 3px; font-size:.82em; display:flex; align-items:center; gap:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -1006,7 +1011,7 @@ function setMyTemplates(arr){
 function getRated(){ try{ return JSON.parse(localStorage.getItem(LS_RATED)) || {}; }catch(e){ return {}; } }
 function setRated(obj){ try{ localStorage.setItem(LS_RATED, JSON.stringify(obj)); }catch(e){} }
 
-// ---------- 昵称登录（后端 /api/me、/auth/nickname） ----------
+// ---------- 账号登录（注册 / 登录，带密码） ----------
 async function refreshMe(){
   if(!BACKEND_API) return;
   try{
@@ -1016,23 +1021,37 @@ async function refreshMe(){
   }catch(e){ currentUser = null; }
   updateLoginBar();
 }
-async function loginNickname(name){
+const AUTH_ERR = {
+  nickname_too_short: '昵称至少 2 个字',
+  password_too_short: '密码至少 4 位',
+  nickname_taken: '该昵称已被注册，请直接登录',
+  user_not_found: '账号不存在，点「注册」创建新账号',
+  wrong_password: '密码错误'
+};
+async function authUser(action, name, pw){
   name = (name||'').trim();
-  if(!name || !BACKEND_API) return false;
+  if(!BACKEND_API) return { ok:false, msg:'后端未配置' };
+  if(!name) return { ok:false, msg:'请填写昵称' };
+  if(!pw || pw.length < 4) return { ok:false, msg:'密码至少 4 位' };
   try{
-    const r = await fetch(BACKEND_API + '/auth/nickname', {
+    const r = await fetch(BACKEND_API + (action === 'register' ? '/auth/register' : '/auth/login'), {
       method:'POST', credentials:'include',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ nickname: name })
+      body: JSON.stringify({ nickname: name, password: pw })
     });
-    if(r.ok){ const d = await r.json(); currentUser = d.user || null; updateLoginBar(); return true; }
-  }catch(e){}
-  return false;
+    const d = await r.json().catch(()=>({}));
+    if(r.ok){ currentUser = d.user || null; updateLoginBar(); return { ok:true }; }
+    return { ok:false, msg: AUTH_ERR[d.error] || ('失败(' + r.status + ')') };
+  }catch(e){ return { ok:false, msg:'后端不可达，请稍后再试' }; }
 }
-function logout(){
+async function logout(){
   currentUser = null;
+  if(BACKEND_API){
+    try{ await fetch(BACKEND_API + '/auth/logout', { method:'POST', credentials:'include' }); }catch(e){}
+  }
   try{ document.cookie = 'tb_sid=; Path=/; Max-Age=0; SameSite=None; Secure'; }catch(e){}
   updateLoginBar();
+  toast('已退出');
 }
 function updateLoginBar(){
   const el = document.getElementById('tbLoginBar');
@@ -1040,18 +1059,27 @@ function updateLoginBar(){
   if(!BACKEND_API){ el.style.display = 'none'; return; }
   el.style.display = 'flex';
   if(currentUser){
-    el.innerHTML = `<span class="tb-login-state">已登录为 <b>${escapeHtml(currentUser.name)}</b></span>
+    el.innerHTML = `<span class="tb-login-state">已登录 <b>${escapeHtml(currentUser.name)}</b></span>
       <button type="button" id="tbLogout">退出</button>`;
     const lo = document.getElementById('tbLogout');
     if(lo) lo.onclick = logout;
   } else {
-    el.innerHTML = `<input id="tbNick" placeholder="填昵称登录后就能发模板/评分" maxlength="24" />
+    el.innerHTML = `<input id="tbNick" class="tb-login-input" placeholder="昵称" maxlength="24" autocomplete="username" />
+      <input id="tbPwd" class="tb-login-input" type="password" placeholder="密码" maxlength="40" autocomplete="current-password" />
       <button type="button" id="tbLoginBtn">登录</button>
-      <span class="tb-login-hint">游客只能看，登录后可发布/评分/删除自己的模板</span>`;
+      <button type="button" id="tbRegBtn" class="tb-reg-btn">注册</button>`;
     const b = document.getElementById('tbLoginBtn');
+    const g = document.getElementById('tbRegBtn');
     const inp = document.getElementById('tbNick');
-    if(b) b.onclick = async ()=>{ const ok = await loginNickname(inp.value); if(!ok) toast('登录失败（后端未上线？）'); };
-    if(inp) inp.addEventListener('keydown', e=>{ if(e.key==='Enter' && b) b.click(); });
+    const pw = document.getElementById('tbPwd');
+    const submit = async (action)=>{
+      const res = await authUser(action, inp.value, pw.value);
+      if(res.ok) toast(action === 'register' ? '注册并登录成功 ✓' : '登录成功 ✓');
+      else toast(res.msg || '操作失败');
+    };
+    if(b) b.onclick = ()=>submit('login');
+    if(g) g.onclick = ()=>submit('register');
+    [inp, pw].forEach(x=>{ if(x) x.addEventListener('keydown', e=>{ if(e.key==='Enter' && b) b.click(); }); });
   }
 }
 
@@ -1164,8 +1192,10 @@ function openSaveModal(t){
     document.getElementById('tplName').value = '';
     document.getElementById('tplAuthor').value = localStorage.getItem('tb_tpl_author') || '羊哥';
     document.getElementById('tplNote').value = '';
-    document.getElementById('tplPublish').checked = false;
-    document.getElementById('tplHint').textContent = '';
+    document.getElementById('tplPublish').checked = true;
+    document.getElementById('tplHint').textContent = BACKEND_API
+      ? (currentUser ? '默认发布到社区（取消勾选则只存本机）' : '需先登录才能发布到社区（模板库标题右侧）')
+      : '默认发布到社区（取消勾选则只存本机）';
   }
   modal.classList.add('open');
   document.getElementById('tplName').focus();
@@ -1199,7 +1229,7 @@ async function saveTemplate(){
   // 发布前检查：后端模式需登录；旧模式需填本机令牌
   if(publish){
     if(BACKEND_API){
-      if(!currentUser){ hint.textContent = '发布到社区需先登录（填昵称）→ 见模板库上方登录条'; return; }
+      if(!currentUser){ hint.textContent = '发布到社区需先登录 → 见「模板库」标题右侧的登录框'; return; }
     } else {
       const pat = getGhPat();
       if(!pat){ hint.textContent = '勾选发布到社区，但未填写发布令牌'; return; }
@@ -1263,7 +1293,7 @@ async function doSave(name, author, note, publish, okBtn){
           if(newTpl){
             const i = lastCommunityList.findIndex(x=>x.id===newTpl.id);
             if(i>=0) lastCommunityList[i] = newTpl; else lastCommunityList.unshift(newTpl);
-            freshList = lastCommunityList.map(x=>({...x, _tag:'community'}));
+            freshList = lastCommunityList.slice();
           }
           toast(editContext ? '已更新社区模板 ✓' : '已发布到社区 ✓');
         }
@@ -1298,11 +1328,7 @@ async function doSave(name, author, note, publish, okBtn){
   if(okBtn) okBtn.disabled = false;
   // 保存/发布后一律展开模板库面板并滚过去，让用户立刻看到结果（此前面板折叠时渲染了也看不见）
   if(freshList){
-    const merged = [].concat(
-      getMyTemplates().map(x=>({...x, _tag:'mine'})),
-      freshList.map(x=>({...x, _tag:'community'}))
-    );
-    openTplPanelWith(merged);
+    openTplPanelWith(mergeTplCards(getMyTemplates(), freshList));
   } else {
     if(!tplPanelOpen){ tplPanelOpen = true; render(); }
     if(needReload) loadTemplates();
@@ -1522,6 +1548,14 @@ function renderTplCards(cards, loadErr){
     });
   });
 }
+// 合并本机与社区模板：同 id 时只显示社区版，避免发布后同一套出现两张卡片
+function mergeTplCards(mine, community){
+  const ids = new Set((community||[]).map(t => t && t.id).filter(Boolean));
+  return [].concat(
+    (mine||[]).filter(t => !ids.has(t.id)).map(t => ({...t, _tag:'mine'})),
+    (community||[]).map(t => ({...t, _tag:'community'}))
+  );
+}
 async function loadTemplates(){
   const listEl = document.getElementById('tplList');
   if(!listEl) return;
@@ -1547,10 +1581,7 @@ async function loadTemplates(){
   }
   const mine = getMyTemplates();
   lastCommunityList = community;
-  renderTplCards([].concat(
-    mine.map(t=>({...t, _tag:'mine'})),
-    community.map(t=>({...t, _tag:'community'}))
-  ), loadErr);
+  renderTplCards(mergeTplCards(mine, community), loadErr);
 }
 function applyTemplate(t, closePanel){
   const scenario = t.scenario || 'pve';
