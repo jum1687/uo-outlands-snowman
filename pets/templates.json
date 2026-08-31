@@ -1,5 +1,28 @@
 [
   {
+    "id": "t_c7ef6e61mtgttbjj",
+    "name": "小凤自测-密码版",
+    "author": "链路自测5828",
+    "authorId": "4120bb72-afaf-4996-8d4a-159e0f3389cc",
+    "note": "链路自测,稍后删除",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "龙",
+      "虎",
+      null,
+      null,
+      null
+    ],
+    "talents": {},
+    "createdAt": "2026-08-31T05:57:13.519Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_593d9c39mtgpmsvc",
     "name": "吞噬者+2火蚁",
     "author": "Snowman Liang",
