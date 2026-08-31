@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 盗窃类 › <span>侦察隐藏 Detecting Hidden</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Detecting_Hidden" target="_blank" rel="noopener">wiki.uooutlands.com/Detecting_Hidden</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">侦察隐藏 <span class="cnsub">Detecting Hidden</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -71,71 +68,41 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">简介 <span class="en-h">Description</span></h2>
-    
     <p>侦察隐藏（Detecting Hidden）技能允许玩家揭示隐藏的目标，或在搜索隐藏目标时强化追踪（Tracking）技能；为使用补缀（Tinkering）技能放置的爆炸地面陷阱提供加成。开启地牢宝箱（Dungeon Chests）与典范宝箱（Paragon Chests）前，玩家需具备侦察隐藏技能并使用陷阱工具（Trap Tools）清除宝箱上的陷阱，才能安全开启。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>以等于侦察隐藏技能值的成功率，揭示目标地点的隐藏玩家（技能 80 即 80% 成功率）</li>
-      
       <li>揭示目标（或对自己施放时即玩家自身）周围 8 × (侦察隐藏技能 / 100) 格范围内的所有隐藏目标</li>
-      
       <li>使用追踪（Tracking）技能时，增加可发现隐藏玩家的距离</li>
-      
       <li>使用补缀陷阱（Tinker Traps）至少需 80 技能；80 以上的溢出技能会降低地面陷阱的冷却时间</li>
-      
       <li>用于破译研究指南（Research Guides）</li>
-      
       <li>在房屋（House）内，即使技能为 0 也可使用以揭示其中隐藏的任何人</li>
-      
       <li>可用于清除受困地牢或典范宝箱上的陷阱</li>
-      
       <li>当玩家尝试推进地牢宝箱／藏宝图宝箱的进度，或引爆地面陷阱时，会获得 30 秒限制，期间无法主动使用侦察隐藏来揭示玩家</li>
-      
       <li>使用侦探透镜（Detective Lens）至少需 80 技能</li>
     </ul>
-
     <h2 id="removing_traps">解除陷阱 <span class="en-h">Removing Traps</span></h2>
-    
     <p>在 Outlands 中，原版 Remove Trap（解除陷阱）技能的功能已合并进侦察隐藏（Detecting Hidden）。</p>
-
     <h3 id="dungeon_chests">Dungeon Chests</h3>
     <ul class="plain">
-      
       <li>地牢宝箱拥有 1 到 8 级（依地牢位置而定）的陷阱难度（Trap Difficulty），以及 0–100% 的解除陷阱进度（Remove Trap Progress）值</li>
-      
       <li>玩家可使用陷阱工具（Trap Tools）对宝箱进行解除陷阱尝试，成功将提升陷阱进度</li>
-      
       <li>若宝箱的解除陷阱进度低于 100%，玩家在尝试开锁（Lockpicking）时有可能触发陷阱，导致本次尝试被取消</li>
-      
       <li>玩家触发宝箱陷阱不会改变该宝箱的解除陷阱进度（即宝箱可被多次触发陷阱）</li>
-      
       <li>触发陷阱的玩家，接下来 5 秒内无法使用隐藏（Hiding）技能，也无法通过隐身术（Invisibility）进入隐身</li>
-      
       <li>陷阱的威力与效果会随宝箱的陷阱难度等级提升</li>
-      
       <li>随着宝箱解除陷阱进度的提升，开锁与解除陷阱时触发陷阱的几率都会下降</li>
-      
       <li>玩家可双击宝箱打开开锁窗口</li>
-      
       <li>该窗口会显示开锁与解除陷阱的成功率和进度值</li>
-      
       <li>玩家可点击窗口中的按钮对宝箱进行开锁／解除陷阱尝试</li>
-      
       <li>此外，在开锁／解除陷阱窗口中，玩家可轮换不同工具材质以查看成功率变化，并在背包中有对应工具时以该材质进行尝试</li>
-      
       <li>玩家也可选择直接双击陷阱工具并指定宝箱</li>
-      
       <li>单击宝箱会显示其开锁／解除陷阱进度（若已进行）</li>
-      
       <li>使用卓越（exceptional）及有色材质的开锁器，会提升玩家的有效开锁技能（Effective Lockpicking），并提升对应工具每次成功技能判定对宝箱所推进的进度量</li>
     </ul>
     <div class="formula">成功解除陷阱的几率 = ((有效侦察隐藏技能 - 宝箱最低技能) × 2.5%)
 A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Skill - Chest Minimum Skill) * 2.5%)</div>
-
     <h3 id="tool_bonus">Tool Bonus</h3>
-    
     <p>解除陷阱时各材质对有效技能与进度加成的加成。</p>
     <table style="border-collapse:collapse;width:100%;max-width:560px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -157,7 +124,6 @@ A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Sk
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Avarite (钨金)</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+9</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">+22.5%</td></tr>
       </tbody>
     </table>
-
     <h3 id="chest_difficulty">Chest Difficulty</h3>
     <table style="border-collapse:collapse;width:100%;max-width:640px;font-size:13.5px;">
       <thead><tr style="background:#f8f9fa;">
@@ -177,18 +143,12 @@ A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Sk
         <tr><td style="border:1px solid #a2a9b1;padding:6px 10px;">Nearly Impossible</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">8</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">125</td><td style="border:1px solid #a2a9b1;padding:6px 10px;">((12% to 24%) × (1 + Tool Bonus)) %</td></tr>
       </tbody>
     </table>
-
     <h2 id="harvest_aspect">丰收专精 <span class="en-h">Harvest Aspect</span></h2>
-    
     <p>丰收专精（Harvest Aspect）护甲提供“对宝箱的有效技能（Effective Skill on Chests）”，可与侦察隐藏的解除陷阱效果叠加。</p>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
     <ul class="plain">
-      
       <li>0–50 向 NPC 训练</li>
-      
       <li>50–80 在新手地牢（New Player Dungeon）使用侦察隐藏</li>
-      
       <li>80–120 继续使用侦察隐藏</li>
     </ul>
   </div>
@@ -198,29 +158,16 @@ A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Sk
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -284,7 +231,6 @@ A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Sk
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -304,6 +250,5 @@ A player's chance to successfully Remove Trap is ((Effective Detecting Hidden Sk
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
