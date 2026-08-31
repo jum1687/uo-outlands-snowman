@@ -1,5 +1,42 @@
 [
   {
+    "id": "t_21ebf072mthe1mhe",
+    "name": "吞噬者+2蜗牛",
+    "author": "Snowman Liang",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
+    "note": "吞噬者定身后伤害+100%，蜗牛上毒！",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Cave Gorger",
+      "Oozing Noughtilus",
+      "Oozing Noughtilus",
+      null,
+      null
+    ],
+    "talents": {
+      "Attack": [
+        "Lethality",
+        "Swarm",
+        "Mutation",
+        "Toxic"
+      ],
+      "Utility": [
+        "Beast Sting",
+        "Opportunity",
+        "Toxic",
+        "Primal"
+      ],
+      "Tank": []
+    },
+    "createdAt": "2026-08-31T15:23:33.266Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_771e1ee8mtgw47fn",
     "name": "疾病流-收割者+3食尸鬼",
     "author": "Snowman Liang",
