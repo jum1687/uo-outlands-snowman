@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 吟游类 › <span>挑衅 Provocation</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Provocation" target="_blank" rel="noopener">wiki.uooutlands.com/Provocation</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">挑衅 <span class="cnsub">Provocation</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -67,92 +64,58 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="description">描述 <span class="en-h">Description</span></h2>
-    
     <p>挑衅（Provocation）技能让吟游诗人暂时「挑衅」两只生物互相战斗。被挑衅的生物可能遭受吟游中断，从而提前结束挑衅效果，并在有限时间内暂时无法再次被挑衅。玩家也可以通过对自身使用技能来演奏一首挑衅「吟游之歌」，为自己、其随从与盟友提供伤害加成。玩家的挑衅技能上限受音乐造诣（Musicianship）技能限制。挑衅需要玩家背包中携带一件乐器。</p>
-
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
     <ul class="plain">
-      
       <li>玩家可使用挑衅技能让生物互相战斗</li>
-      
       <li>被挑衅的生物对其他生物造成的伤害有 500% 加成</li>
-      
       <li>只要吟游诗人保持在受影响生物 50 格以内，挑衅效果就会一直持续（但吟游中断仍会照常发生）</li>
-      
       <li>技能使用冷却：成功 10 秒、失败 5 秒；但玩家可每 5 秒使用一次压制（即玩家可每 5 秒在挑衅与压制之间交替使用）</li>
-      
       <li>吟游典籍（Bard Codex）会大幅强化挑衅技能</li>
     </ul>
-
     <h2 id="more_details">更多细节 <span class="en-h">More Details</span></h2>
     <ul class="plain">
-      
       <li>玩家的基础挑衅技能上限受音乐造诣限制（即：挑衅 50、音乐造诣 25 的玩家，其挑衅被视为 25）</li>
-      
       <li>玩家的有效挑衅技能 = 挑衅技能 + 乐器技能加成 + 适用的乐器屠戮加成 + 补充技能加成 + 歌词系护甲加成</li>
-      
       <li>玩家可通过法医鉴定（Forensic Eval）与追踪（Tracking）技能提升有效挑衅技能，在上式中列为「补充技能加成」（详见法医鉴定与追踪技能条目）</li>
-      
       <li>玩家来自乐器、补充技能或歌词系护甲的有效挑衅加成总和，不能超过其音乐造诣（即：音乐造诣 25 的玩家，其乐器/补充技能/歌词系护甲最多只能提供 25 点有效挑衅）</li>
-      
       <li>挑衅判定成功时，技能提升几率翻倍</li>
-      
       <li>挑衅效果持续时间 = ((60 秒 - 最高生物难度值) × (有效吟游技能 / 100))，最短持续时间为 15 × (音乐造诣 / 100) 秒</li>
-      
       <li>若玩家尝试和平一只已被挑衅的生物（反之亦然），新效果会覆盖原有的吟游效果</li>
-      
       <li>若对当前已被和平或已被压制的生物使用挑衅，每只需被挑衅的生物（挑衅锁定两只，均会被判定）会为挑衅尝试提供 12.5 点有效吟游技能加成</li>
     </ul>
     <div class="formula">挑衅成功几率（通用吟游公式，详见 Musicianship）：
 Barding Success Chance = (Effective Barding Skill / 100%) - (CreatureDifficultyValue × 1.0%)
 最低成功几率 = 33% × (Effective Barding Skill / 100)
-
 挑衅效果持续时间：
 = (60 - 最高生物难度值) × (有效吟游技能 / 100) 秒
 最短 = 15 × (音乐造诣 / 100) 秒
-
 对已被和平/压制的目标使用挑衅：每只需被挑衅的生物 +12.5 有效吟游技能
 （挑衅锁定两只生物，均分别判定）</div>
-
     <h2 id="barding_songs">吟游之歌 <span class="en-h">Barding Songs</span></h2>
-    
     <p>吟游之歌包括：压制——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的伤害抗性加成。和平——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的接受治疗量加成。挑衅——为玩家及其随从提供 (5% × (有效吟游技能 / 100)) 的伤害加成。</p>
     <ul class="plain">
-      
       <li>演奏吟游之歌有 10 秒冷却，独立于普通的吟游技能使用</li>
-      
       <li>所有范围型（AoE）吟游之歌持续 15 分钟</li>
     </ul>
     <div class="formula">挑衅之歌（对自身演奏）伤害加成 = 5% × (Effective Barding Skill / 100)</div>
-
     <h2 id="provoked_creatures">被挑衅的生物 <span class="en-h">Provoked Creatures</span></h2>
     <ul class="plain">
-      
       <li>被挑衅的生物会互相攻击，直到效果结束</li>
-      
       <li>被挑衅的生物对其他被挑衅生物造成 +50% 伤害 [2020 年 4 月 7 日补丁]</li>
-      
       <li>被挑衅的生物使用 AllNames 时，其头顶文字会显示 *provoked Xs*，其中 X 为挑衅效果剩余的秒数</li>
-      
       <li>若吟游诗人离开被挑衅生物的距离超过其「系绳（Tether）」距离，该生物对其他被挑衅生物仅造成 1 点伤害 [2020 年 4 月 7 日补丁]</li>
-      
       <li>若有友善玩家对某生物施加了挑衅效果，玩家与其他生物对该生物获得 10% 命中加成（玩家可在其吟游典籍设置中切换哪些玩家获得吟游加成）</li>
     </ul>
     <div class="note">挑衅核心加成：被挑衅生物对其他生物造成伤害 +500%；对被挑衅生物之间再 +50%。系绳距离外仅造成 1 点伤害。</div>
-
     <h2 id="miscellaneous">其他 <span class="en-h">Miscellaneous</span></h2>
     <ul class="plain">
-      
       <li>驯服生物无法被挑衅</li>
-      
       <li>若对当前已被和平或已被压制的生物使用挑衅，每只需被挑衅的生物会为挑衅尝试提供 12.5 点有效吟游技能加成</li>
-      
       <li>玩家的挑衅「系绳」距离现为 (有效挑衅技能 / 2) 格（此前为 18 格）[2020 年 4 月 7 日补丁]</li>
     </ul>
     <div class="formula">挑衅系绳距离 = (Effective Provocation Skill / 2) 格</div>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）对生物使用挑衅 | 80–100 在 Prevalia 动物园对生物使用挑衅</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -161,29 +124,16 @@ Barding Success Chance = (Effective Barding Skill / 100%) - (CreatureDifficultyV
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -247,7 +197,6 @@ Barding Success Chance = (Effective Barding Skill / 100%) - (CreatureDifficultyV
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -267,6 +216,5 @@ Barding Success Chance = (Effective Barding Skill / 100%) - (CreatureDifficultyV
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
