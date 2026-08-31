@@ -13,9 +13,9 @@
 @media (max-width:860px){ .tb-app{ flex-direction:column; } }
 
 /* 左侧：宠物队伍 */
-.tb-roster{ width:240px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; }
+.tb-roster{ width:240px; flex-shrink:0; display:flex; flex-direction:column; gap:10px; background:#fff; border:1px solid #d4d8dd; border-radius:10px; padding:12px 14px; }
 @media (max-width:860px){ .tb-roster{ width:100%; flex-direction:row; flex-wrap:wrap; } }
-.tb-roster-head{ display:flex; align-items:center; justify-content:space-between; padding:0 4px; }
+.tb-roster-head{ display:flex; align-items:center; justify-content:space-between; padding:0; }
 .tb-roster-title{ font-weight:bold; font-size:1.05em; }
 .tb-roster-actions{ display:flex; gap:6px; }
 .tb-roster-head .tb-suggest{ font-size:.78em; color:#fff; background:#36c; border:none; border-radius:4px; padding:4px 9px; cursor:pointer; }
@@ -224,6 +224,7 @@ html[data-theme="dark"] .tb-roster-head .tb-clear{ background:#3a414b; color:#9a
 html[data-theme="dark"] .tb-roster-head .tb-clear:hover{ background:#ff4d4f; color:#fff; }
 html[data-theme="dark"] .tb-slot-combo input{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
 html[data-theme="dark"] .tb-roster-head .tb-suggest:hover{ background:#2a8; }
+html[data-theme="dark"] .tb-roster{ background:#262b32; border-color:#3a414b; color:#d6dbe2; }
 
 /* 保留 .dbadge 在深色下的可读性（style.css 已有颜色） */
 
