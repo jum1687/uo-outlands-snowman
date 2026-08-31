@@ -38,7 +38,6 @@
     <div class="nav-menu">
       <a href="../pets/index.html">可驯服宠物</a>
       <a href="../pets/follower-abilities.html">宠物技能大全</a>
-      <a href="../pets/simulator.html">宠物天赋模拟器</a>
       <a href="../pets/team-builder.html">智能配宠向导</a>
     </div>
   </div>
@@ -50,10 +49,8 @@
     </div>
   </div>
 </nav>
-
 <nav class="breadcrumb"><a href="index.html">技能目录</a> › 荒野类 › <span>兽医 Veterinary</span></nav>
 <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Veterinary" target="_blank" rel="noopener">wiki.uooutlands.com/Veterinary</a></div>
-
 <div class="mw-body">
   <h1 class="mw-page-title-main">兽医 <span class="cnsub">Veterinary</span></h1>
   <div class="toc"><div class="toctitle">目录</div><ol>
@@ -65,86 +62,52 @@
   </ol></div>
   <div class="mw-content">
     <h2 id="summary">概要 <span class="en-h">Summary</span></h2>
-    
     <p>兽医（Veterinary）技能让玩家使用兽医用品或绷带进行治疗、解毒与复活。玩家可对跟随者与自身使用兽医用品，但治疗其他玩家需要绷带。该技能与驯兽（Animal Taming）和动物知识（Animal Lore）相辅相成。与治疗（Healing）技能类似，你必须靠近目标才能开始并完成包扎尝试。</p>
     <ul class="plain">
-      
       <li>兽医用品可治疗小范围内的多个目标，而绷带在交叉（crossover）惩罚下只能治疗单个目标。</li>
-      
       <li>若玩家拥有至少 80 点显示兽医与 80 点显示动物知识，则有资格享受治疗者法典（Healers Codex）的加成。</li>
-      
       <li>成功的绷带解毒尝试需要最低 60 点动物知识。</li>
-      
       <li>成功的绷带复活尝试需要最低 80 点动物知识。</li>
-      
       <li>对生物的绷带治疗量为（(兽医技能 / 100) × ((80 到 120 的随机值) × (1 + (0.2 × 动物知识技能 / 100)))）。</li>
-      
       <li>玩家对被驯服与召唤跟随者施放治疗（Heal）与高级治疗（Greater Heal），会使其获得的治疗量提升（50% × (有效兽医技能 / 100)）。</li>
-      
       <li>被驯服与召唤跟随者获得（10% × (有效兽医技能 / 100)）的伤害加成。</li>
     </ul>
     <div class="formula">生物绷带治疗量 = (兽医技能 / 100) × ((80~120 随机值) × (1 + 0.2 × 动物知识技能 / 100))
 治疗/高级治疗增益 = 50% × (有效兽医技能 / 100)
 跟随者伤害加成 = 10% × (有效兽医技能 / 100)</div>
-
     <h3 id="stationary">静止包扎 <span class="en-h">Stationary Bandaging</span></h3>
     <ul class="plain">
-      
       <li>静止 5 秒的玩家可对最远 2 格的目标进行包扎。</li>
-      
       <li>若玩家在包扎结束 5 秒内移动，其治疗范围会恢复到 1 格。</li>
     </ul>
-
     <h3 id="curing">解毒 <span class="en-h">Curing Poison</span></h3>
-    
     <p>更多详情请参阅下毒（Poisoning）页面！</p>
-
     <h2 id="supplies">兽医用品 <span class="en-h">Veterinary Supplies</span></h2>
     <ul class="plain">
-      
       <li>玩家可在 100 裁缝（Tailoring）技能时制作兽医用品。</li>
-      
       <li>需要 100 布、10 蜂蜡、1 高级治疗药剂（Greater Heal Potion）与 1 高级解毒药剂（Greater Cure Potion）。</li>
-      
       <li>兽医用品以 200 个一组制作，每件仅可使用一次。</li>
-      
       <li>使用兽医用品的包扎计时长度与用绷带配合兽医相同。</li>
-      
       <li>玩家双击兽医用品时，会尝试治疗 2 格内所有友好跟随者（宠物/召唤物）。</li>
-      
       <li>使用兽医用品时玩家不能使用绷带；激活兽医用品会取消其正在进行中的任何绷带包扎。</li>
     </ul>
-    
     <p>在玩家正常的兽医 5 秒包扎计时结束后，玩家 2 格内所有友好跟随者将被视为已用绷带治疗，但有以下修改：</p>
     <ul class="plain">
-      
       <li>恢复的生命为正常量的 50%（若仅单个目标受影响则提升至 75%）。</li>
-      
       <li>解毒几率为正常几率的 50%（若仅单个目标受影响则提升至 75%）。</li>
-      
       <li>复活死亡跟随者的几率为正常几率的 50%（若仅单个目标受影响则提升至 75%）。</li>
     </ul>
-
     <h2 id="crossover">包扎技能交叉 <span class="en-h">Bandaging Skills Crossover</span></h2>
     <ul class="plain">
-      
       <li>对目标使用绷带时，玩家会因使用通常不被允许用于该目标类型的包扎技能而受到「交叉（Crossover）」惩罚，例如对玩家使用兽医+动物知识，或对跟随者使用治疗+解剖学（Anatomy）。</li>
-      
       <li>包扎交叉存在惩罚，导致仅有正常治疗量、解毒与复活几率的 50%。</li>
-      
       <li>若玩家尝试用交叉技能对目标解毒或复活，所用的交叉技能必须满足该动作类型的基础技能要求（即解毒要求两项技能均达 60 或以上，复活要求两项技能均达 80 或以上）。</li>
-      
       <li>若玩家既可用「常规」技能也可用「交叉」技能治疗目标，包扎尝试将采用能得出更高治疗量或更高解毒/复活成功率的技能。</li>
-      
       <li>包扎的技能增益始终作用于该目标的常规技能：包扎玩家始终提升治疗+解剖学，包扎生物始终提升兽医+动物知识。</li>
     </ul>
-
     <h2 id="commands">指令 <span class="en-h">Commands</span></h2>
-    
     <p>玩家现可输入 [VetSupplies 或 [VeterinarySupplies 来搜索背包中的兽医用品并使用它。</p>
-
     <h2 id="training">训练 <span class="en-h">Training</span></h2>
-    
     <p>技能进阶：0–50 向 NPC 训练 | 50–80 在新手地牢（New Player Dungeon）中治疗宠物 | 80–120 在 Shelter Island 之外继续治疗宠物。</p>
   </div>
   <p class="backlink"><a href="index.html">← 返回技能目录</a></p>
@@ -153,29 +116,16 @@
   <div><b>资料来源：</b>译自官方 Wiki <a href="https://wiki.uooutlands.com/" target="_blank" rel="noopener">wiki.uooutlands.com</a>，非官方整理，仅供学习交流；数值以官方 Discord 补丁公告为准。</div>
   <div>UO Outlands 中文资料库 · 本地预览版 · 2026-08-07</div>
 </footer>
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
 
 
-
-
-
 <!-- 背景音乐 -->
-
-
-
 
 
 <!-- 背景音乐 -->
@@ -239,7 +189,6 @@
   });
 })();
 </script>
-
 <style>
 /* ===== 背景音乐控制 ===== */
 .bgm-ctrl{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -259,6 +208,5 @@
 .bgm-vol{width:80px;accent-color:#36c;cursor:pointer;}
 @media(max-width:600px){.bgm-vol{width:56px;}.bgm-ctrl{right:10px;bottom:10px;}}
 </style>
-
 </body>
 </html>
