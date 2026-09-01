@@ -1,5 +1,39 @@
 [
   {
+    "id": "t_32a9d7e4mtidedon",
+    "name": "凤凰刷刷刷",
+    "author": "AL",
+    "authorId": "b54c907a-9c6b-4e0e-a2fc-1af83e2e5698",
+    "note": "",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Phoenix",
+      "Frost Mephit"
+    ],
+    "talents": {
+      "Attack": [
+        "Immolate",
+        "Hunting Party",
+        "Swarm",
+        "Lethality"
+      ],
+      "Utility": [
+        "Frostbite",
+        "Beast Sting",
+        "Opportunity",
+        "Hearty"
+      ],
+      "Tank": []
+    },
+    "createdAt": "2026-09-01T07:53:14.951Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_21ebf072mthe1mhe",
     "name": "吞噬者+2蜗牛",
     "author": "Snowman Liang",
