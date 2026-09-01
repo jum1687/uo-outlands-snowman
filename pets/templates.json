@@ -67,9 +67,11 @@
     },
     "createdAt": "2026-08-31T15:23:33.266Z",
     "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
+      "sum": 8,
+      "count": 1,
+      "voters": {
+        "759d4015-6130-4ccf-a338-1dd863879cb4": 8
+      }
     }
   },
   {
