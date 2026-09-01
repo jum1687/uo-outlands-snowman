@@ -1,5 +1,41 @@
 [
   {
+    "id": "t_7f69d94cmtiot940",
+    "name": "1猪+3冰狼",
+    "author": "Snowman Liang",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
+    "note": "",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Warpig",
+      "Winter Wolf",
+      "Winter Wolf",
+      "Winter Wolf"
+    ],
+    "talents": {
+      "Attack": [
+        "Swarm",
+        "Lethality",
+        "Cornered",
+        "Primal"
+      ],
+      "Utility": [
+        "Frostbite",
+        "Beast Sting",
+        "Opportunity",
+        "Primal"
+      ],
+      "Tank": []
+    },
+    "createdAt": "2026-09-01T13:12:44.640Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_32a9d7e4mtidedon",
     "name": "凤凰刷刷刷",
     "author": "AL",
