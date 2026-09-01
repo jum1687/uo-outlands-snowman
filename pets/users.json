@@ -38,5 +38,13 @@
     "salt": "8a0b03a3096c3ca72a815aa61037f75c",
     "hash": "c82785da65540f553b2cdd2728c07c22084b3ac59510f5207ef2ecd89d1ebe3c",
     "createdAt": "2026-08-31T06:11:37.692Z"
+  },
+  {
+    "id": "b54c907a-9c6b-4e0e-a2fc-1af83e2e5698",
+    "name": "AL",
+    "nameLower": "al",
+    "salt": "95494be2bf7b386d0260feb6612ca4b2",
+    "hash": "fafd5d153f6949c870dba8fdacf0d0dceeadb97f72860a4d9f01b2f7b7672dcd",
+    "createdAt": "2026-09-01T07:52:58.796Z"
   }
 ]
