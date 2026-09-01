@@ -28,9 +28,11 @@
     },
     "createdAt": "2026-09-01T07:53:14.951Z",
     "ratings": {
-      "sum": 0,
-      "count": 0,
-      "voters": {}
+      "sum": 7,
+      "count": 1,
+      "voters": {
+        "759d4015-6130-4ccf-a338-1dd863879cb4": 7
+      }
     }
   },
   {
