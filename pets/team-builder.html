@@ -747,6 +747,9 @@ function moveTip(e){
 }
 function hideTip(){
   tipEl.style.display = 'none';
+  tipEl.classList.remove('tip-mobile');
+  const bg = document.getElementById('tip-bg');
+  if(bg) bg.classList.remove('tip-bg-show');
   if(tipTimer){ clearTimeout(tipTimer); tipTimer=null; }
 }
 // 桌面端判定：主要用来区分「点击卡片直接加点」还是「只显示 ± 按钮」。
