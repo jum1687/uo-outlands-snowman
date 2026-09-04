@@ -447,6 +447,37 @@ html[data-theme="dark"] .tb-pat-status{ color:#aaa; }
 html[data-theme="dark"] .tb-pat-status.ok{ color:#58d68d; }
 html[data-theme="dark"] .tb-pat-status.err{ color:#ff7a7a; }
 html[data-theme="dark"] .tb-pat-row button{ background:#3a414b; border-color:#4a515b; color:#d6dbe2; }
+/* ===== 移动端适配（2026-09-04 补充） ===== */
+@media (max-width:860px){
+  /* roster 转横向后，槽位按内容宽度会参差不齐 → 手机两列均分 */
+  .tb-roster .tb-slot{ flex:1 1 calc(50% - 5px); min-width:0; }
+  .tb-roster-head{ width:100%; }
+  .tb-roster-actions{ flex-direction:row; gap:6px; }
+  .tb-roster-head .tb-suggest,
+  .tb-roster-head .tb-clear{ width:auto; flex:1; }
+  /* 天赋列头部：图标+系名+代表宠+点数+重置，窄屏允许换行避免挤压 */
+  .tb-tcol-head{ flex-wrap:wrap; }
+  .tb-tcol-rep{ max-width:100%; }
+}
+@media (max-width:700px){
+  /* 玩法说明 + 伤害汇总：小屏改为上下堆叠，取消 260px 最小宽度 */
+  .tb-play-dmg-wrap{ gap:12px; }
+  .tb-play-dmg-wrap .tb-play-side,
+  .tb-play-dmg-wrap .tb-dmg-side{ flex:1 1 100%; min-width:0; }
+  .tb-play-dmg-wrap .tb-dmg-side .tb-dmg-panel-body{ max-height:320px; }
+}
+@media (max-width:600px){
+  .tb-panel{ padding:10px; }
+  .tb-panel-title{ margin-bottom:8px; }
+  .tb-overview{ padding:8px 10px; font-size:.84em; gap:4px 12px; }
+  .tb-dmg-side-head{ padding:6px 10px; }
+  .tb-tpl-bar button{ flex:1 1 auto; }
+  .tb-tcol{ padding:8px; }
+}
+@media (max-width:420px){
+  /* 超小屏：队伍槽位单列，避免两列过窄挤压内容 */
+  .tb-roster .tb-slot{ flex:1 1 100%; }
+}
 </style>
 </head>
 <body class="side-nav-page">
