@@ -292,3 +292,18 @@ html[data-theme="dark"] .side-nav-page .site-nav .nav-menu{ background:#27466f !
   margin-top: 2px;
   line-height: 1.25;
 }
+
+/* ===== 手机端宽表横向滚动（2026-09-04 补充） =====
+   5 列以上的宽表在手机上会撑破页面 → 窄屏改为表内横向滚动。
+   注意排除 .pet-table：它已有 600px 卡片化适配，勿破坏。 */
+@media (max-width:700px){
+  .mw-body table:not(.pet-table),
+  table.wikitable,
+  table.craft-table,
+  table.aspect-data-table{
+    display:block;
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+}
