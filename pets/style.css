@@ -181,6 +181,35 @@ h3 {
   margin-top: 4px;
 }
 .type-nav { margin: 10px 0 20px; }
+
+/* 技能大全：每个技能下方列出拥有该技能的宠物（2026-09-13 新增） */
+.ability-entry .ability-owners {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #eaecf0;
+  font-size: 0.88em;
+  line-height: 2;
+  color: #54595d;
+}
+.ability-entry .ability-owners .ao-label { margin-right: 6px; color: #72777d; }
+.ability-entry .ability-owners a {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  padding: 1px 9px;
+  border: 1px solid #c8ccd1;
+  border-radius: 11px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ability-entry .ability-owners a:hover { background: #eaecf0; }
+.ability-entry .ability-owners.ao-none { color: #a2a9b1; }
+html[data-theme="dark"] .ability-entry .ability-owners { border-top-color: #3a414b; color: #b9c0c9; }
+html[data-theme="dark"] .ability-entry .ability-owners .ao-label { color: #9aa3ad; }
+html[data-theme="dark"] .ability-entry .ability-owners a { border-color: #4a525d; }
+html[data-theme="dark"] .ability-entry .ability-owners a:hover { background: #2c333c; }
+@media (max-width:600px){
+  .ability-entry .ability-owners a { padding: 2px 8px; }
+}
 .type-nav a {
   display: inline-block;
   margin-right: 10px;
@@ -317,6 +346,7 @@ h3 {
 }
 .tag-note b { font-weight: 600; }
 .tag-note .dbadge { vertical-align: middle; }
+.tag-note .en { font-style: italic; font-size: 0.88em; color: #54595d; margin-left: 1px; font-weight: 400; }
 .count-hint { color: #54595d; font-size: 0.85em; margin-bottom: 8px; }
 
 img.creature-thumb {

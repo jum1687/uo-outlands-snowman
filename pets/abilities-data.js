@@ -2,7 +2,7 @@
 window.ABILITIES = {
  "air-breath": {
   "name": "气流吐息",
-  "desc": "向最远 12 格外目标发射弹体，造成（最大伤害 DamageMax * 1.75）伤害，并施加（控制槽 Control Slots * 5%）的削弱效果，持续 15 秒。"
+  "desc": "向最远 12 格外的目标发射弹体，造成（最大伤害 DamageMax * 1.75）伤害，并施加（控制槽 Control Slots * 5%）的削弱效果，持续 15 秒。"
  },
  "air-shield": {
   "name": "气流护盾",
@@ -18,7 +18,7 @@ window.ABILITIES = {
  },
  "biolumen-barrage": {
   "name": "生物荧光弹幕",
-  "desc": "向最远 8 格外目标发射 2 枚弹体，各造成（最大伤害 DamageMax * 1.0）伤害；若目标是其他生物的小弟 minion、boss 召唤物或召唤物，其受到伤害 +50%。"
+  "desc": "向最远 8 格外的目标发射 2 枚弹体，每枚造成（最大伤害 DamageMax * 1.0）伤害；若目标是某生物的仆从、BOSS 生成物或召唤物，则额外承受 +50% 伤害。"
  },
  "blood-breath": {
   "name": "血之吐息",
@@ -46,11 +46,11 @@ window.ABILITIES = {
  },
  "bog-barrage": {
   "name": "泥沼弹幕",
-  "desc": "在 8 格半径内发射 3 波弹体，每波命中最多 6 个目标。每次命中造成（最大伤害 DamageMax * 0.33）伤害，并有 15% 几率每 5 秒造成（最大伤害 DamageMax * 0.33）疾病伤害，持续 20 秒。"
+  "desc": "以 8 格半径发射 3 波弹体，每波命中最多 6 个目标。每次命中造成（最大伤害 DamageMax * 0.33）伤害，并有 15% 几率每 5 秒造成（最大伤害 DamageMax * 0.33）疾病伤害，持续 20 秒。"
  },
  "boreal-breath": {
   "name": "严寒吐息",
-  "desc": "向最远 12 格外目标发射弹体，造成（最大伤害 DamageMax * 0.8）伤害，并施加（控制槽 Control Slots * 5）的穿透效果 30 秒；同时施加（控制槽 Control Slots * 2%）的寒冷效果 60 秒（可叠至 20%）。"
+  "desc": "向最远 12 格外的目标发射弹体，造成（最大伤害 DamageMax * 0.8）伤害，并施加（控制槽 Control Slots * 5）的穿刺 Pierce 效果，持续 30 秒。同时施加（控制槽 Control Slots * 2%）的冰寒效果，持续 60 秒（最多叠加至 20%）。"
  },
  "brass-shield": {
   "name": "黄铜护盾",
@@ -60,37 +60,21 @@ window.ABILITIES = {
   "name": "黄铜尖钉",
   "desc": "若宠物已激活黄铜护盾 Brass Shield 效果，将消耗该效果并向最远 12 格内的目标发射 5 枚弹射物，每枚造成（最大伤害 DamageMax * 0.33）伤害。施加（控制栏位 Control Slots * 4%）的残废效果，持续接下来 15 秒。"
  },
- "burrow": {
-  "name": "掘地",
-  "desc": "近战攻击时有 15% 几率造成（最大伤害 DamageMax * 2.0）流血伤害，持续 15 秒。"
- },
  "charge": {
   "name": "冲锋",
-  "desc": "传送至最远 12 格外某点，命中 1 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.8）伤害，首个命中目标 +75% 伤害。"
+  "desc": "传送至最远 12 格外的位置，命中 1 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.8）伤害，首个命中的目标承受 +75% 伤害。"
  },
  "chilled-charge": {
   "name": "寒霜冲锋",
-  "desc": "传送至最远 12 格外某点，命中 1 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.7）伤害，首目标 +75% 伤害；施加（控制槽 Control Slots * 2%）寒冷效果 60 秒（叠至 20%）。"
- },
- "choke": {
-  "name": "窒息",
-  "desc": "近战命中时有（5% +（控制槽 Control Slots * 5%））几率缠绕目标 4 秒，并造成（最大伤害 DamageMax * 1.5）伤害（无视半数护甲）；同时施加（最大伤害 DamageMax * 1.0）压力效果，持续 10 秒。"
+  "desc": "传送至最远 12 格外的位置，命中 1 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.7）伤害，首个命中的目标承受 +75% 伤害。施加（控制槽 Control Slots * 2%）的冰寒效果，持续 60 秒（最多叠加至 20%）。"
  },
  "concussion-breath": {
   "name": "震荡吐息",
   "desc": "向最远 12 格内的目标发射一枚弹射物，造成（最大伤害 DamageMax * 1.75）伤害，无视目标一半护甲。若驯兽师对目标施放了驯兽乐曲 Barding 效果，则伤害提升 50%。"
  },
- "constrict": {
-  "name": "绞缠",
-  "desc": "近战命中时有（5% +（控制栏位 Control Slots * 5%））的几率缠绕宠物 4 秒，并造成（最大伤害 DamageMax * 2.0）伤害，无视目标一半护甲。"
- },
  "corruption-blast": {
   "name": "腐蚀爆破",
   "desc": "向最远 6 格内的地点发射一枚弹射物，命中 1 格内最多 3 个目标。每 5 秒造成（最大伤害 DamageMax * 0.33）疾病伤害，持续 20 秒，首个命中的目标额外承受 +33% 伤害。"
- },
- "crush": {
-  "name": "碾压",
-  "desc": "近战攻击时有 15% 几率施加（10 * 控制栏位 Control Slots）的穿刺效果，持续 15 秒。若成功，则有（10% * 控制栏位 Control Slots）的几率定身宠物 3 秒，或使玩家断筋 2 秒。"
  },
  "darkstrike": {
   "name": "黑暗打击",
@@ -98,11 +82,11 @@ window.ABILITIES = {
  },
  "devour": {
   "name": "吞噬",
-  "desc": "可吞食附近尸体以恢复 10% 最大生命。"
+  "desc": "可吞噬附近的尸体，恢复最大生命值的 10%。"
  },
  "dig": {
   "name": "掘击",
-  "desc": "传送至最远 12 格外某点，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害，首目标 +50% 伤害。"
+  "desc": "传送至最远 12 格外的位置，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害，首个命中的目标承受 +50% 伤害。"
  },
  "drowned-barrage": {
   "name": "溺亡弹幕",
@@ -114,7 +98,7 @@ window.ABILITIES = {
  },
  "earth-breath": {
   "name": "大地吐息",
-  "desc": "向最远 12 格外目标发射弹体，造成（最大伤害 DamageMax * 2.0）伤害。"
+  "desc": "向最远 12 格外的目标发射弹体，造成（最大伤害 DamageMax * 2.0）伤害。"
  },
  "earth-shield": {
   "name": "大地护盾",
@@ -126,23 +110,19 @@ window.ABILITIES = {
  },
  "epic-barrage": {
   "name": "史诗弹幕",
-  "desc": "向最远 12 格外目标发射弹体，造成 3 次命中，各造成（最大伤害 DamageMax * 0.6）伤害（无视半数护甲）。修复了导致该能力使施放生物延迟过久的问题。"
+  "desc": "向最远 12 格外的目标发射弹体，造成 3 次命中，每次造成（最大伤害 DamageMax * 0.6）伤害，无视目标一半护甲。"
  },
  "fiery-charge": {
   "name": "烈焰冲锋",
-  "desc": "传送至最远 12 格外某点，命中 3 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害，首目标 +75% 伤害。"
+  "desc": "传送至最远 12 格外的位置，命中 3 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害，首个命中的目标承受 +75% 伤害。"
  },
  "fiery-dig": {
   "name": "烈焰钻地",
-  "desc": "传送至最远 12 格外某点，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 1.1）伤害，首目标 +50% 伤害。"
+  "desc": "传送至最远 12 格外的位置，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 1.1）伤害，首个命中的目标承受 +50% 伤害。"
  },
  "fire-breath": {
   "name": "火焰吐息",
   "desc": "向最远 12 格内的目标发射一枚弹射物，造成（最大伤害 DamageMax * 1.5）伤害。"
- },
- "firebite": {
-  "name": "火焰撕咬",
-  "desc": "近战攻击中毒 Poison 目标（剧毒 Greater Poison 或更高）时，有 15% 几率造成（最大伤害 DamageMax * 2.5）伤害，持续 5 秒，无视目标一半护甲。"
  },
  "flesheater": {
   "name": "噬肉",
@@ -182,7 +162,7 @@ window.ABILITIES = {
  },
  "light-barrage": {
   "name": "光芒弹幕",
-  "desc": "向最远 8 格外目标发射 2 枚弹体，各造成（最大伤害 DamageMax * 1.0）伤害；目标在接下来 15 秒内受被挑衅、未控制生物伤害 +20%。"
+  "desc": "向最远 8 格外的目标发射 2 枚弹体，每枚造成（最大伤害 DamageMax * 1.0）伤害。目标「来自被挑衅、非受控生物的伤害」提升 20%，持续 15 秒。"
  },
  "magic-reflect": {
   "name": "魔法反射",
@@ -202,7 +182,7 @@ window.ABILITIES = {
  },
  "massive-dusk-breath": {
   "name": "巨型暮光吐息",
-  "desc": "锥形发射弹体，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害（无视半数护甲），首目标 +50% 伤害；施加（控制槽 Control Slots * 3%）削弱效果 15 秒。"
+  "desc": "以锥形发射弹体，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.9）伤害，无视目标一半护甲，首个命中的目标额外承受 +50% 伤害。施加（控制槽 Control Slots * 3%）的虚弱 Weaken 效果，持续 15 秒。"
  },
  "massive-fire-breath": {
   "name": "巨型火焰吐息",
@@ -210,7 +190,7 @@ window.ABILITIES = {
  },
  "massive-ice-breath": {
   "name": "巨型寒冰吐息",
-  "desc": "锥形发射弹体，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.8）伤害（无视半数护甲），首目标 +50% 伤害；施加（控制槽 Control Slots * 2%）寒冷效果 60 秒（叠至 20%）。"
+  "desc": "以锥形发射弹体，命中最多 3 个目标。造成（最大伤害 DamageMax * 0.8）伤害，无视目标一半护甲，首个命中的目标额外承受 +50% 伤害。施加（控制槽 Control Slots * 2%）的冰寒效果，持续 60 秒（最多叠加至 20%）。"
  },
  "massive-ruby-breath": {
   "name": "巨型红宝石吐息",
@@ -219,10 +199,6 @@ window.ABILITIES = {
  "massive-water-breath": {
   "name": "巨型水吐息",
   "desc": "以锥形发射弹射物，最多命中 3 个目标。造成 (DamageMax * 0.8) 伤害，首个命中的目标额外承受 +50% 伤害。施加残废 Cripple 效果 (Control Slots * 4%)，持续 15 秒。"
- },
- "mirror": {
-  "name": "镜像",
-  "desc": "施加到宠物身上的法术有 15% 几率被反射回施法者。"
  },
  "ooze-aura": {
   "name": "软泥光环",
@@ -240,17 +216,13 @@ window.ABILITIES = {
   "name": "噬毒护盾",
   "desc": "解除中毒 Poison 状态，并恢复最大生命值 Health 的 5%。"
  },
- "primal-rage": {
-  "name": "原始狂怒",
-  "desc": "近战攻击或遭受近战攻击时有 15% 几率使攻击速度提高 15%、近战伤害提高 30%，持续 8 秒。"
- },
  "reactive-armor": {
   "name": "反应护甲",
   "desc": "对宠物施加反应护甲 Reactive Armor 法术，总计可减免 100 点伤害。"
  },
  "sandblast": {
   "name": "砂暴",
-  "desc": "传送至最远 12 格外某点，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.5）伤害，并施加（控制槽 Control Slots * 10）穿透效果 15 秒。"
+  "desc": "传送至最远 12 格外的位置，命中 2 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.5）伤害，并施加（控制槽 Control Slots * 10）的穿刺 Pierce 效果，持续 15 秒。"
  },
  "scorching-breath": {
   "name": "灼热吐息",
@@ -258,15 +230,11 @@ window.ABILITIES = {
  },
  "sing": {
   "name": "吟唱",
-  "desc": "接下来 8 秒内，生物对失谐目标的近战攻击额外造成 33% 伤害（无视半数护甲）。"
+  "desc": "接下来 8 秒内，该生物对处于不谐 Discord 状态目标的近战攻击，额外造成 33% 伤害，无视目标一半护甲。"
  },
  "spelleater-shield": {
   "name": "噬法护盾",
   "desc": "反射一个魔法法术，并恢复最大生命值 Health 的 5%。"
- },
- "spellvenom": {
-  "name": "法术毒液",
-  "desc": "施法时有 10% 几率施加剧毒 Greater Poison。若目标已处于剧毒或更高级中毒状态，则造成 (DamageMax * 0.5) 伤害。"
  },
  "spine-barrage": {
   "name": "尖刺弹幕",
@@ -274,7 +242,7 @@ window.ABILITIES = {
  },
  "steam-cloud": {
   "name": "蒸汽云",
-  "desc": "立即进入潜行，命中 3 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.65）伤害（无视半数护甲），首目标 +50% 伤害。"
+  "desc": "立即进入潜行状态，命中 3 格内最多 3 个目标。造成（最大伤害 DamageMax * 0.65）伤害，无视目标一半护甲，首个命中的目标承受 +50% 伤害。"
  },
  "swamp-breath": {
   "name": "沼泽吐息",
@@ -286,7 +254,7 @@ window.ABILITIES = {
  },
  "tranquility": {
   "name": "宁静",
-  "desc": "向最远 12 格外目标发射弹体，造成 3 次命中，各造成（最大伤害 DamageMax * 0.4）伤害（无视半数护甲）；同时施加（控制槽 Control Slots * 25）诅咒效果与（控制槽 Control Slots * 4%）削弱效果 15 秒。大幅减少了该能力使施放生物恢复攻击前的延迟。"
+  "desc": "向最远 12 格外的目标发射弹体，造成 3 次命中，每次造成（最大伤害 DamageMax * 0.4）伤害，无视目标一半护甲。同时施加（控制槽 Control Slots * 25）的诅咒 Hex 效果与（控制槽 Control Slots * 4%）的虚弱 Weaken 效果，持续 15 秒。"
  },
  "vanish": {
   "name": "消失",
@@ -300,25 +268,37 @@ window.ABILITIES = {
   "name": "水爪击",
   "desc": "攻击 1 格内最多 3 个目标。造成 (DamageMax * 0.75) 伤害，首个命中的目标额外承受 +50% 伤害。施加残废 Cripple 效果 (Control Slots * 4%)，持续 15 秒。"
  },
- "weakening-web": {
-  "name": "弱化蛛网",
-  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。同时施加虚弱 Weaken 效果 (Control Slots * 4%)，持续 15 秒。"
- },
- "web": {
-  "name": "蛛网",
-  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物（宠物或其他生物）3 秒，或使玩家断筋 Hamstring 2 秒。"
- },
  "bad-luck": {
   "name": "厄运",
-  "desc": "受击时有 15% 几率将等额伤害（无视目标半数护甲）也施加给攻击者，伤害上限为（最大伤害 DamageMax * 1.0）。"
+  "desc": "受到伤害时有 15% 几率将等额伤害（无视目标一半护甲）也施加给攻击者，伤害上限为（最大伤害 DamageMax * 1.0）。"
  },
  "bleed": {
   "name": "流血",
   "desc": "近战攻击时有 15% 几率造成（最大伤害 * 1.0）的流血伤害，持续 15 秒。"
  },
+ "burrow": {
+  "name": "掘地",
+  "desc": "近战攻击时有 15% 几率造成（最大伤害 DamageMax * 2.0）流血伤害，持续 15 秒。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
  "chill-touch": {
   "name": "寒冷之触",
   "desc": "近战攻击时有 15% 几率造成（最大伤害 * 0.9）的伤害，并施加寒冷效果（控制栏位 * 2%），持续 60 秒（最多叠加至 20%）。"
+ },
+ "choke": {
+  "name": "窒息",
+  "desc": "近战命中时有 (5% + (Control Slots * 5%)) 几率缠绕 Entangle 生物 4 秒，并造成（最大伤害 DamageMax * 1.5）伤害（无视目标一半护甲），同时施加（最大伤害 DamageMax * 1.0）的压迫 Pressure 效果，持续 15 秒。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
+ "constrict": {
+  "name": "绞缠",
+  "desc": "近战命中时有 (5% + (Control Slots * 5%)) 几率缠绕 Entangle 生物 4 秒，并造成（最大伤害 DamageMax * 2.0）伤害，无视目标一半护甲。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
+ "crush": {
+  "name": "碾压",
+  "desc": "近战攻击时有 15% 几率施加（10 * 控制槽 Control Slots）的穿刺 Pierce 效果，持续 15 秒。若成功，另有（10% * 控制槽）几率定身 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
+ "discharge": {
+  "name": "放电",
+  "desc": "近战攻击时有 10% 几率恢复 5% 生命值，并造成额外的（最大伤害 DamageMax * 1.5）伤害，无视目标一半护甲。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
  },
  "disease": {
   "name": "疾病",
@@ -338,7 +318,11 @@ window.ABILITIES = {
  },
  "eversion": {
   "name": "外翻",
-  "desc": "成功近战攻击有 15% 几率损失自身 5% 生命，但对目标每 5 秒造成（最大伤害 DamageMax * 0.66）疾病伤害，持续 20 秒。"
+  "desc": "近战攻击成功时有 15% 几率损失自身 5% 生命值，但会每 5 秒造成（最大伤害 DamageMax * 0.66）疾病伤害，持续 20 秒。"
+ },
+ "firebite": {
+  "name": "火焰撕咬",
+  "desc": "近战攻击中毒目标（剧毒 Greater Poison 或更高）时有 15% 几率造成（最大伤害 DamageMax * 2.5）伤害，持续 5 秒，无视目标一半护甲。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
  },
  "flamestrike": {
   "name": "烈焰打击",
@@ -360,6 +344,10 @@ window.ABILITIES = {
   "name": "坚毅",
   "desc": "若生命值低于 33%，将恢复最大生命值的 15%（冷却 15 秒）。"
  },
+ "mirror": {
+  "name": "镜像",
+  "desc": "对施放于此生物的法术有 15% 几率反弹回施法者身上。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
  "pinch": {
   "name": "钳制",
   "desc": "近战命中时有（5% +（控制栏位 * 5%））几率缠绕宠物 5 秒，并施加穿刺效果（控制栏位 * 10），持续 15 秒。同时施加（最大伤害 * 0.8）的压迫效果，持续 15 秒。"
@@ -374,7 +362,7 @@ window.ABILITIES = {
  },
  "shock": {
   "name": "电击",
-  "desc": "法术施放有 15% 几率造成（最大伤害 DamageMax * 1.0）伤害（无视半数护甲）。使生物定身（控制槽 Control Slots * 1）秒，或使玩家断筋 2 秒。"
+  "desc": "施法时有 15% 几率造成（最大伤害 DamageMax * 1.0）伤害，无视目标一半护甲。定身 Hinder 生物（控制槽 Control Slots * 1）秒，或使玩家断筋 Hamstring 2 秒。"
  },
  "soak": {
   "name": "浸没",
@@ -386,19 +374,19 @@ window.ABILITIES = {
  },
  "spellbreak": {
   "name": "破法",
-  "desc": "法术施放有 15% 几率造成额外（最大伤害 DamageMax * 0.5）伤害（无视半数护甲），并施加（控制槽 Control Slots * 15）诅咒效果 15 秒。"
+  "desc": "施法时有 15% 几率造成额外的（最大伤害 DamageMax * 0.5）伤害，无视目标一半护甲，并施加（控制槽 Control Slots * 15）的诅咒 Hex 效果，持续 15 秒。"
  },
  "spellburn": {
   "name": "咒焰",
-  "desc": "法术施放有 15% 几率造成额外（最大伤害 DamageMax * 1.0）伤害（无视半数护甲）。"
+  "desc": "施法时有 15% 几率造成额外的（最大伤害 DamageMax * 1.0）伤害，无视目标一半护甲。"
  },
  "spellchill": {
   "name": "咒寒",
-  "desc": "法术施放有 15% 几率造成额外（最大伤害 DamageMax * 0.75）伤害（无视半数护甲），并施加（控制槽 Control Slots * 2%）寒冷效果 60 秒（叠至 20%）。"
+  "desc": "施法时有 15% 几率造成额外的（最大伤害 DamageMax * 0.75）伤害，无视目标一半护甲，并施加（控制槽 Control Slots * 2%）的冰寒效果，持续 60 秒（最多叠加至 20%）。"
  },
  "spellcrush": {
   "name": "咒碎",
-  "desc": "法术施放有 15% 几率造成额外（最大伤害 DamageMax * 0.50）伤害（无视半数护甲），并施加（控制槽 Control Slots * 10）穿透效果 15 秒。"
+  "desc": "施法时有 15% 几率造成额外的（最大伤害 DamageMax * 0.50）伤害，无视目标一半护甲，并施加（控制槽 Control Slots * 10）的穿刺 Pierce 效果，持续 15 秒。"
  },
  "spellflaying": {
   "name": "咒剥",
@@ -412,17 +400,29 @@ window.ABILITIES = {
   "name": "咒涌",
   "desc": "施法时有 15% 几率使 10 秒内的下一次施法伤害提高 125%。"
  },
+ "spellvenom": {
+  "name": "法术毒液",
+  "desc": "施法时有 10% 几率施加剧毒 Greater Poison。若目标已处于剧毒或更高中毒状态，则造成（最大伤害 DamageMax * 0.5）伤害。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
  "swordspin": {
   "name": "旋剑",
   "desc": "近战攻击时有 15% 几率对目标造成（最大伤害 * 1.25）的流血伤害，持续 15 秒。还会对防御者 1 格内的另外两个目标造成（最大伤害 * 0.75）的流血伤害，持续 15 秒。"
  },
  "warpigment": {
   "name": "扭曲颜料",
-  "desc": "近战攻击有 15% 几率提升近战伤害与命中 5%，持续 60 秒（可叠至 25%）。"
+  "desc": "近战攻击时有 15% 几率使自身近战伤害与命中率提升 5%，持续 60 秒（最多叠加至 25%）。"
  },
  "weaken": {
   "name": "虚弱",
   "desc": "攻击时有 15% 几率施加虚弱效果（控制栏位 * 4%），持续 15 秒。"
+ },
+ "weakening-web": {
+  "name": "弱化蛛网",
+  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒，同时施加（控制槽 Control Slots * 4%）的虚弱 Weaken 效果，持续 15 秒。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
+ },
+ "web": {
+  "name": "蛛网",
+  "desc": "近战攻击时有 (5 + (Control Slots * 5%)) 几率定身 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒。若该生物在最近 15 秒内已触发过此技能，几率降至正常的 33%。"
  },
  "backstab": {
   "name": "背刺",
@@ -443,10 +443,6 @@ window.ABILITIES = {
  "corpse-barrage": {
   "name": "尸弹幕",
   "desc": "宠物将普通近战攻击变为最远 12 格的远程攻击。命中时有 15% 几率造成 (DamageMax * 0.5) 疾病伤害，每 5 秒触发一次，持续 20 秒。"
- },
- "discharge": {
-  "name": "放电",
-  "desc": "近战攻击有 10% 几率恢复 5% 生命，并造成额外（最大伤害 DamageMax * 1.5）伤害（无视半数护甲）。"
  },
  "diversion": {
   "name": "诱敌",
@@ -490,6 +486,6 @@ window.ABILITIES = {
  },
  "venom-barrage": {
   "name": "毒液弹幕",
-  "desc": "生物以远程方式进行普通近战攻击，射程最多 12 格。命中时有（33% *（用毒技能 / 100））几率施加致命毒。"
+  "desc": "该生物将普通近战攻击转化为射程最远 12 格的远程攻击。命中时有（33% * (下毒 Poisoning 技能 / 100)）几率施加致命毒 Lethal Poison。"
  }
 };

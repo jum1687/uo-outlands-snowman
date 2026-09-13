@@ -49,6 +49,7 @@
     </div>
   </div>
 </nav>
+
 <div class="mw-body">
   <div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Category:Tameable_Creatures" target="_blank" rel="noopener">wiki.uooutlands.com/Category:Tameable_Creatures</a></div>
   <h1>可驯服生物目录 <span class="cnsub">Tameable Creatures</span></h1>
@@ -81,6 +82,9 @@
   </div>
   <div class="tag-note">
     <b>标签区分：</b><span class="dbadge db-poison_skill">Poison</span>指生物<b>近战自带的中毒攻击</b>（属性栏显示 Poison 等级，如 Greater / Deadly / Lethal）；<span class="dbadge db-poison">中毒</span>指<b>随从技能施加的毒</b>（如 Venom Barrage、Poison Dig、Swamp Breath 等）。二者机制近似，请注意区分。
+  </div>
+  <div class="tag-note">
+    <b>控制类状态：</b>限制敌人行动的一组状态，按<b>目标</b>与<b>来源</b>细分 —— <span class="dbadge db-web">缠绕</span> <span class="en">Entangle</span> 来自 Entangle / Constrict / Choke / Grasp / Pinch 等蛛网绞缠类技能，<b>困住生物</b>（通常不影响玩家）；同为"无法移动"的效果，施加在<b>生物</b>身上叫 <span class="dbadge db-hinder">定身</span> <span class="en">Hinder</span>，施加在<b>玩家</b>身上叫 <span class="dbadge db-hamstring">断筋</span> <span class="en">Hamstring</span>（故技能描述常写作"定身 Hinder 生物 3 秒，或使玩家断筋 Hamstring 2 秒"）。<span class="dbadge db-cripple">残废</span> <span class="en">Cripple</span> 属<b>削弱</b>类：降低目标防御、使其更易被命中，<b>并不限制移动</b>（降低护甲另属「破甲」）。注：Hinder 在部分汉化中译作"阻碍"，本站统一采用<b>定身</b>。
   </div>
   <div class="tag-note">
     <b>Underdog 伤害加成：</b>按玩家 <b>驯兽 Animal Taming</b> 与 <b>驯兽知识 Animal Lore</b> 均取 <b>120</b> 计算 —— 有效技能 = Min(驯兽, 驯兽知识) = 120；Δ = 120 − 宠物最低驯服（Δ 上限取 70）；伤害加成 = <b>40% × Δ / 70</b>，<b>上限 +40%</b>。即最低驯服越低加成越高（最低驯服 ≤ 50 时吃满 +40%）。
@@ -2893,6 +2897,7 @@
   var curSort = 'taming';   // 当前排序列 key
   var curDesc = true;       // 是否降序
   var STORE_KEY = 'petsIdxFilters';  // sessionStorage 持久化筛选+排序
+
   // 提取某行某字段的排序键值
   function fieldVal(row, key) {
     if (key === 'taming') return parseInt(row.children[1].getAttribute('data-taming'), 10) || 0;
@@ -2902,6 +2907,7 @@
     }
     return 0;
   }
+
   function sortRowsBy(key, desc) {
     rows.sort(function(a, b) {
       var va = fieldVal(a, key), vb = fieldVal(b, key);
@@ -2910,11 +2916,13 @@
     var tb = document.getElementById('tbody');
     rows.forEach(function(r){ tb.appendChild(r); });
   }
+
   function applySort() {
     sortRowsBy(curSort, curDesc);
     document.getElementById('th-taming').textContent = '最低驯服 ' + (curSort==='taming' ? (curDesc?'▼':'▲') : '▼');
     document.getElementById('th-dmg').textContent    = '基础伤害 ' + (curSort==='dmg'    ? (curDesc?'▼':'▲') : '▼');
   }
+
   function persist() {
     var dbChecked = [];
     var cbs = document.querySelectorAll('.db-filter:checked');
@@ -2929,6 +2937,7 @@
       sort: curSort, desc: curDesc
     }));
   }
+
   // 页面初始化：从 sessionStorage 还原筛选+排序
   try {
     var saved = JSON.parse(sessionStorage.getItem(STORE_KEY) || 'null');
@@ -2948,11 +2957,13 @@
       if (typeof saved.desc === 'boolean') curDesc = saved.desc;
     }
   } catch(e){}
+
   window.clearDb = function() {
     var cbs = document.querySelectorAll('.db-filter');
     for (var i = 0; i < cbs.length; i++) cbs[i].checked = false;
     filter();
   };
+
   window.filter = function() {
     var q = document.getElementById('q').value.toLowerCase().trim();
     var cls = document.getElementById('cls').value;
@@ -2960,10 +2971,12 @@
     var slots = document.getElementById('slots').value;
     var tv = document.getElementById('taming').value;
     var taming = tv ? parseInt(tv, 10) : 0;
+
     // 收集所有勾选的特殊技能（AND 逻辑：必须全部满足）
     var dbChecked = [];
     var cbs = document.querySelectorAll('.db-filter:checked');
     for (var i = 0; i < cbs.length; i++) dbChecked.push(cbs[i].value);
+
     var n = 0;
     for (var i = 0; i < rows.length; i++) {
       var r = rows[i];
@@ -2973,6 +2986,7 @@
       var rs = r.children[4].getAttribute('data-slots') || '';
       var rt = parseInt(r.children[1].getAttribute('data-taming'), 10) || 0;
       var rd = (r.children[8].getAttribute('data-debuff') || '');
+
       var ok = true;
       // 名称搜索
       if (q && name.indexOf(q) === -1) ok = false;
@@ -2999,6 +3013,7 @@
     document.getElementById('cnt').textContent = hint;
     persist();
   };
+
   document.getElementById('th-taming').addEventListener('click', function() {
     if (curSort === 'taming') curDesc = !curDesc;
     else { curSort = 'taming'; curDesc = true; }
@@ -3011,6 +3026,7 @@
     applySort();
     persist();
   });
+
   applySort();
   filter();
 })();
