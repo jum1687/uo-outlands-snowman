@@ -12,7 +12,7 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IMG = '../data/images/mastery'
-CSSV = '20260904_1'
+CSSV = '20260913_1'
 
 # ---------------- 链环奖励值大表（7 列） ----------------
 # (英文, 中文, Bronze, Silver, Gold, Corrupted, Elective, Multi)
@@ -122,6 +122,7 @@ NAV = '''<nav class="site-nav">
   <a href="../skills/index.html">技能详解</a>
   <a href="../elements/index.html">元素精通</a>
   <a href="../mastery/index.html">精通链</a>
+  <a href="../commands/index.html">命令大全</a>
   <div class="nav-dropdown">
     <a href="../codex/index.html">宝典图鉴</a>
     <div class="nav-menu">
