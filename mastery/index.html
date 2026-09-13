@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精通链 Mastery Chain | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css?v=20260904_1">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/theme.js"></script>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../patch/index.html">版本更新</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <a href="../mastery/index.html">精通链</a>
+  <div class="nav-dropdown">
+    <a href="../codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="../codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="../codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="../codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="../codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="../codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="../codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="../codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="../codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="../codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="../codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="../codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="../codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="../codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="../ships.html">船舰系统总页</a>
+      <a href="../ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> › <span>精通链 Mastery Chain</span></nav>
+<div class="source-link">官方原文：<a href="https://wiki.uooutlands.com/Mastery_Chain" target="_blank" rel="noopener">wiki.uooutlands.com/Mastery_Chain</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">精通链 <span class="cnsub">Mastery Chain</span></h1>
+  <div class="toc"><div class="toctitle">目录</div><ol>
+    <li><a href="#summary">系统总览 / Summary</a></li>
+    <li><a href="#appearance">链的外观 / Appearance</a></li>
+    <li><a href="#using">使用精通链 / Using</a></li>
+    <li><a href="#liftlock">防抬锁 / Liftlock</a></li>
+    <li><a href="#acquire">获取链环 / Acquiring</a></li>
+    <li><a href="#exp">获得经验 / Experience</a></li>
+    <li><a href="#upgrade">升级精通链 / Upgrading</a></li>
+    <li><a href="#linktypes">链环类型 / Link Types</a></li>
+    <li><a href="#values">链环奖励数值 / Bonus Values</a></li>
+    <li><a href="#pvp">PvP 限制 / Restrictions</a></li>
+    <li><a href="#install">安装链环 / Installing</a></li>
+    <li><a href="#remove">移除链环 / Removing</a></li>
+    <li><a href="#reforge">重铸工具 / Reforging</a></li>
+    <li><a href="#tome">链环宝典 / Link Tome</a></li>
+    <li><a href="#xptable">XP 需求表 / XP Table</a></li>
+  </ol></div>
+  <div class="mw-content">
+
+    <h2 id="summary">系统总览 <span class="en-h">Summary</span></h2>
+    <ul>
+      <li>精通链（Mastery Chain）系统是<strong>终局 PvM 系统</strong>，为玩家提供众多进一步强化角色的选项。</li>
+      <li>精通链是<strong>祝福（Blessed）</strong>的可穿戴物品，占用角色的<strong>护身符（Talisman）</strong>栏位。</li>
+      <li>精通链必须<strong>双击绑定</strong>到角色后才能使用。
+        <ul><li>绑定后，双击或佩戴即可激活。一条链会一直保持激活，直到你激活另一条。</li></ul></li>
+      <li>玩家可用 <strong>120 修补（Tinkering）</strong>制作精通链；获得解锁链环槽所需的 XP 后，可为链添加链环，提供 PvM 加成。</li>
+      <li>没有精通链也能开始累积 XP，但<strong>必须有链才能看到已累积的 XP</strong>。</li>
+      <li>可用 <code>[MasteryChain</code> 命令、双击精通链，或通过角色右键菜单中的「Mastery Chain」选项查看精通链面板。</li>
+      <li>精通链 XP 在<strong>同一账号的所有角色间共享</strong>，但每个角色必须各有自己的精通链才能获得收益。</li>
+      <li>与元素类似，玩家最多<strong>每 30 秒</strong>只能更换一次精通链（不会阻止你装备，但新装备的精通链加成在 30 秒内不生效）。</li>
+    </ul>
+
+    <h2 id="appearance">链的外观 <span class="en-h">Chain Appearance</span></h2>
+    <p>视觉效果<strong>不影响机制</strong>，只影响外观。共有 11 种可制作外观：</p>
+    <table class="wikitable mc-style"><tbody>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/masterychainexquisite2.png" alt="masterychainexquisite2.png" loading="lazy"><br><b>精致</b><br><span class="en-cell">Exquisite</span></td>
+<td><img class="mc-img" src="../data/images/mastery/masterychainfashionable2.png" alt="masterychainfashionable2.png" loading="lazy"><br><b>时尚</b><br><span class="en-cell">Fashionable</span></td>
+</tr>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/masterychaingilded2.png" alt="masterychaingilded2.png" loading="lazy"><br><b>鎏金</b><br><span class="en-cell">Gilded</span></td>
+<td><img class="mc-img" src="../data/images/mastery/masterychaintwinloop2.png" alt="masterychaintwinloop2.png" loading="lazy"><br><b>双环</b><br><span class="en-cell">Twin Loop</span></td>
+</tr>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/briolettechain.png" alt="briolettechain.png" loading="lazy"><br><b>梨形珠</b><br><span class="en-cell">Briolette</span></td>
+<td><img class="mc-img" src="../data/images/mastery/cabochonchain.png" alt="cabochonchain.png" loading="lazy"><br><b>蛋面</b><br><span class="en-cell">Cabochon</span></td>
+</tr>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/chandelierchain.png" alt="chandelierchain.png" loading="lazy"><br><b>枝形吊灯</b><br><span class="en-cell">Chandelier</span></td>
+<td><img class="mc-img" src="../data/images/mastery/graduatedbeadchain.png" alt="graduatedbeadchain.png" loading="lazy"><br><b>渐变珠</b><br><span class="en-cell">Graduated Bead</span></td>
+</tr>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/hornpendantchain.png" alt="hornpendantchain.png" loading="lazy"><br><b>角坠</b><br><span class="en-cell">Horn Pendant</span></td>
+<td><img class="mc-img" src="../data/images/mastery/layeredchain.png" alt="layeredchain.png" loading="lazy"><br><b>层叠</b><br><span class="en-cell">Layered</span></td>
+</tr>
+<tr>
+<td><img class="mc-img" src="../data/images/mastery/twistedcablechain.png" alt="twistedcablechain.png" loading="lazy"><br><b>绞索</b><br><span class="en-cell">Twisted Cable</span></td>
+<td></td>
+</tr>
+</tbody></table>
+    <h3>精通链重铸外观契约 <span class="en-h">Restyle Deeds</span></h3>
+    <p>精通链可用（通常为限时的）重铸契约改成独特变体：</p>
+    <table class="wikitable mc-style"><tbody><tr>
+      <td><img class="mc-img" src="../data/images/mastery/toothchain.png" alt="toothchain.png" loading="lazy"><br><b>牙饰项链</b><br><span class="en-cell">Tooth Necklace</span></td>
+      <td></td>
+    </tr></tbody></table>
+
+    <h2 id="using">使用精通链 <span class="en-h">Using Mastery Chains</span></h2>
+    <ul>
+      <li>精通链必须<strong>永久绑定</strong>到该玩家，才能从中获得加成。</li>
+      <li>玩家可以同时绑定<strong>多条</strong>精通链到自己身上。</li>
+      <li>玩家可以选择把链放在背包里而不佩戴（因为它会占用护身符栏位），但<strong>必须至少装备一次</strong>，才能把该链设为「当前激活」以获取其加成。</li>
+      <li>单击已绑定的精通链，会显示它绑定到的角色。</li>
+      <li>单击精通链可查看切换当前链后，加成的激活倒计时。</li>
+      <li>可随时自由装备精通链（不会受阻），但新装备的链加成 30 秒后才生效。</li>
+      <li>只能从<strong>自己拥有的</strong>精通链上移除链环（链绑定其拥有者）。</li>
+    </ul>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/masterychaingumpaddalllinks.gif" alt="masterychaingumpaddalllinks.gif" loading="lazy"></p>
+    <ul>
+      <li>精通链菜单有「<strong>安装背包中全部链环</strong>」按钮，点击可搜索背包并一次性安装所有有效链环。</li>
+      <li>此方式安装遵循普通安装规则（重复效果上限、腐化链环限制、每环奥术精华消耗等）。</li>
+      <li>系统会提示找到并成功安装了多少个链环。</li>
+      <li>若因<strong>奥术精华不足</strong>而无法安装，会收到提示。</li>
+      <li>若触发重复效果限制，则不会有专门提示：只会告知成功安装了几个（即未安装的都因某种限制被拦下）。</li>
+    </ul>
+
+    <h2 id="liftlock">防抬锁 <span class="en-h">Liftlock</span></h2>
+    <ul>
+      <li>精通链新增「防抬锁（Liftlock）」机制，可切换以防止在背包或已装备状态下被「抬起（Lift）」。</li>
+      <li>按住 Shift 单击精通链（背包中或已装备），选择「Enable Liftlock」启用，或「Disable Liftlock」禁用。</li>
+    </ul>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/masterychain-liftlock1.jpg" alt="masterychain-liftlock1.jpg" loading="lazy"></p>
+    <ul><li>启用后，若玩家试图从背包或人物栏抬起该物品，会被阻止并收到系统提示。</li></ul>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/masterychain-liftlock2.jpg" alt="masterychain-liftlock2.jpg" loading="lazy"></p>
+
+    <h2 id="acquire">获取精通链环 <span class="en-h">Acquiring Mastery Chain Links</span></h2>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/howdoigetmasterychains.png" alt="howdoigetmasterychains.png" loading="lazy"></p>
+    <ul>
+      <li>完成一本<a href="../skills/index.html">学识之书（Lore Book）</a></li>
+      <li>完成《英雄典籍》（Tome of Heroism）</li>
+      <li>击杀全能 BOSS（Omni Boss）</li>
+      <li>完成深渊试炼（Pit Trials）</li>
+      <li>也可用以下系统的奖励点数购买链环：
+        <ul><li>竞技场（Arenas）</li><li>阵营（Factions）</li><li>成就（Achievements）</li><li>公会（Societies）</li><li>奇境（Strangelands）</li></ul></li>
+    </ul>
+
+    <h2 id="exp">获得经验 <span class="en-h">Gaining Experience</span></h2>
+    <h3>经验公式（说明） <span class="en-h">Experience Formula</span></h3>
+    <ul>
+      <li>击杀生物时，每位玩家的经验通常按「<strong>对生物造成的伤害百分比 × 该生物的金币价值</strong>」计算。</li>
+      <li>例如：一只价值 1000 金币的生物，某玩家造成 33% 伤害，则获得 <strong>333</strong> 点经验（计入精通链、武器宝典、巫师法典等系统）。</li>
+      <li>多名队员共同伤害同一生物时，会获得<strong>组队经验倍率</strong>。</li>
+      <li>完整的经验获取说明见官方 <a href="https://wiki.uooutlands.com/Experience_Gain" target="_blank" rel="noopener">Experience Gain</a>。</li>
+    </ul>
+
+    <h2 id="upgrade">升级精通链 <span class="en-h">Upgrading Mastery Chains</span></h2>
+    <ul>
+      <li>精通链本身在添加链环前<strong>不提供任何收益</strong>。</li>
+      <li>每条精通链最多可添加 <strong>30 个链环</strong>，但必须先用 XP <strong>解锁链环槽</strong>。</li>
+      <li>通过能获得金币的行为积累 XP（击杀怪物、开启地牢宝箱等）。</li>
+      <li>XP 足够解锁新链环槽时，会收到提示。</li>
+      <li>若链上有可用的已解锁槽位，链的图形中会显示一个或多个<strong>绿色</strong>链环。</li>
+      <li>安装一个新链环需消耗 <strong>10 个奥术精华（Arcane Essence）</strong>。</li>
+    </ul>
+
+    <h2 id="linktypes">精通链环类型 <span class="en-h">Mastery Chain Link Types</span></h2>
+    <ul>
+      <li>链环是极为稀有的战利品，仅通过少数特定机制获得（如全能 BOSS、寻宝），或用某些系统的大量奖励点数购买（如公会）。</li>
+      <li>链环有 <strong>4 种材质</strong>：青铜（Bronze）、白银（Silver）、黄金（Gold）、腐化（Corrupted）。
+        <ul><li>腐化链环的完整说明、限制与衰减计时，见官方 <a href="https://wiki.uooutlands.com/Corrupted_Mastery_Chain_Links" target="_blank" rel="noopener">Corrupted Mastery Chain Links</a>。</li></ul></li>
+      <li>每个链环提供特定效果或加成，加成数值随材质提升：
+        <ul>
+          <li><strong>白银</strong>比青铜更稀有，加成通常比青铜高 <strong>25%</strong>。</li>
+          <li><strong>黄金</strong>极为稀有，加成通常比青铜高 <strong>50%</strong>。</li>
+        </ul></li>
+    </ul>
+    <h3>链环奖励数值 <span class="en-h">Mastery Chain Link Bonus Values</span></h3>
+    <p>各链环的当前数值如下：</p>
+    <ul class="mc-note">
+      <li>链环的「有效技能」加成<strong>只提升战斗中由该技能带来的收益</strong>，<strong>不</strong>提升制作时的技能值。</li>
+      <li>「可选升级（Elective Upgrades）」表示可通过双击把左列链环转换为该列所示链环；<strong>不可逆</strong>（除非使用重铸工具）。</li>
+      <li>表格底部星号说明：<em>* 该链环已不再掉落；** 荒野资料片（Wildlands）变更；*** 荒野资料片新增；**** 第一阶段平衡性调整变更。</em></li>
+    </ul>
+    <div class="mc-table-wrap">
+    <table class="wikitable mc-links"><thead><tr>
+<th>奖励类型<br><span class="en">Bonus Type</span></th>
+<th class="th-bronze">青铜<br><span class="en">Bronze</span></th>
+<th class="th-silver">白银<br><span class="en">Silver</span></th>
+<th class="th-gold">黄金<br><span class="en">Gold</span></th>
+<th class="th-corrupt">腐化<br><span class="en">Corrupted</span></th>
+<th>可选升级<br><span class="en">Elective Upgrades</span></th>
+<th>叠加方式<br><span class="en">Multi Type</span></th>
+</tr></thead><tbody>
+<tr class="mc-group"><td colspan="7">吟游类链环 <span class="en">Barding Type Links</span></td></tr>
+<tr><td class="bonus-name">吟游重置/打断无视几率<br><span class="en-cell">Bard Reset/Break Ignore Chance</span></td><td class="c-bronze">2.50%</td><td class="c-silver">~3.13%</td><td class="c-gold">3.75%</td><td class="c-corrupt">4.06%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">吟游效果持续时间<br><span class="en-cell">Barding Effect Durations</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">吟游重置/打断无视几率</td><td></td></tr>
+<tr><td class="bonus-name">对被吟游生物伤害<br><span class="en-cell">Damage to Barded Creatures</span></td><td class="c-bronze">1.75%</td><td class="c-silver">~2.19%</td><td class="c-gold">~2.63%</td><td class="c-corrupt">~2.84%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">有效吟游技能<br><span class="en-cell">Effective Barding Skill</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">吟游重置/打断无视几率</td><td></td></tr>
+<tr class="mc-group"><td colspan="7">航海类链环 <span class="en">Boating Type Links</span></td></tr>
+<tr><td class="bonus-name">对船只伤害<br><span class="en-cell">Damage on Ships</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">船只伤害抗性<br><span class="en-cell">Damage Resistance on Ships</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">船炮伤害<br><span class="en-cell">Ship Cannon Damage**</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec">加算?</td><td></td></tr>
+<tr><td class="bonus-name">船员伤害<br><span class="en-cell">Crewmember Damage***</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec">加算?</td><td></td></tr>
+<tr><td class="bonus-name">船员伤害抗性<br><span class="en-cell">Crewmember Damage Resistance***</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec"></td><td></td></tr>
+<tr class="mc-group"><td colspan="7">随从类链环 <span class="en">Follower Type Links</span></td></tr>
+<tr><td class="bonus-name">随从命中/防御<br><span class="en-cell">Follower Accuracy/Defense***</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">随从攻击速度<br><span class="en-cell">Follower Attack Speed</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.25%</td><td class="c-gold">1.50%</td><td class="c-corrupt">~1.63%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">随从伤害<br><span class="en-cell">Follower Damage</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">随从攻击速度</td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">随从伤害抗性<br><span class="en-cell">Follower Damage Resistance</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">炼金/治疗/兽医<br>随从攻击速度</td><td></td></tr>
+<tr><td class="bonus-name">随从受到的治疗<br><span class="en-cell">Follower Healing Received</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">炼金/治疗/兽医、随从攻击速度</td><td></td></tr>
+<tr class="mc-group"><td colspan="7">近战类链环 <span class="en">Melee Type Links</span></td></tr>
+<tr><td class="bonus-name">近战元素特效几率<br><span class="en-cell">Melee Aspect Effect Chance****</span></td><td class="c-bronze">4.50%</td><td class="c-silver">~5.63%</td><td class="c-gold">6.75%</td><td class="c-corrupt">~7.31%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">近战元素特效倍率<br><span class="en-cell">Melee Aspect Effect Modifier</span></td><td class="c-bronze">5.00%</td><td class="c-silver">6.25%</td><td class="c-gold">7.50%</td><td class="c-corrupt">~8.13%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">近战命中<br><span class="en-cell">Melee Accuracy</span></td><td class="c-bronze">1.75%</td><td class="c-silver">~2.19%</td><td class="c-gold">~2.62%</td><td class="c-corrupt">~2.84%</td><td class="elec">近战命中/防御</td><td></td></tr>
+<tr><td class="bonus-name">近战防御<br><span class="en-cell">Melee Defense</span></td><td class="c-bronze">2.50%</td><td class="c-silver">~3.13%</td><td class="c-gold">3.75%</td><td class="c-corrupt">4.06%</td><td class="elec">近战命中/防御</td><td></td></tr>
+<tr><td class="bonus-name">近战命中/防御<br><span class="en-cell">Melee Accuracy/Defense</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">近战特殊几率<br><span class="en-cell">Melee Special Chance**</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">近战特殊几率/特殊伤害</td><td></td></tr>
+<tr><td class="bonus-name">近战特殊几率/特殊伤害<br><span class="en-cell">Melee Special Chance/Special Damage**</span></td><td class="c-bronze">1.75%</td><td class="c-silver">~2.19%</td><td class="c-gold">~2.63%</td><td class="c-corrupt">~2.88%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">近战伤害<br><span class="en-cell">Melee Damage**</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">近战伤害/无视护甲几率</td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">近战无视护甲几率<br><span class="en-cell">Melee Ignore Armor Chance</span></td><td class="c-bronze">4.00%</td><td class="c-silver">5.00%</td><td class="c-gold">6.00%</td><td class="c-corrupt">6.50%</td><td class="elec">近战伤害/无视护甲几率</td><td></td></tr>
+<tr><td class="bonus-name">近战伤害/无视护甲几率<br><span class="en-cell">Melee Damage/Ignore Armor Chance**</span></td><td class="c-bronze">2.50%</td><td class="c-silver">~3.13%</td><td class="c-gold">3.75%</td><td class="c-corrupt">~4.06%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">近战挥击速度<br><span class="en-cell">Melee Swing Speed****</span></td><td class="c-bronze">0.80%</td><td class="c-silver">1.00%</td><td class="c-gold">1.20%</td><td class="c-corrupt">1.30%</td><td class="elec"></td><td></td></tr>
+<tr class="mc-group"><td colspan="7">法术类链环 <span class="en">Spell Type Links</span></td></tr>
+<tr><td class="bonus-name">冥想速率<br><span class="en-cell">Meditation Rate</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">冥想速率/打断回避几率</td><td></td></tr>
+<tr><td class="bonus-name">法术打断回避几率<br><span class="en-cell">Spell Disrupt Avoid Chance</span></td><td class="c-bronze">6.00%</td><td class="c-silver">7.50%</td><td class="c-gold">9.00%</td><td class="c-corrupt">9.75%</td><td class="elec">冥想速率/打断回避几率<br>无随从时法术伤害</td><td></td></tr>
+<tr><td class="bonus-name">冥想速率/打断回避几率<br><span class="en-cell">Meditation Rate/Disrupt Avoid Chance</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">无随从时法术伤害</td><td></td></tr>
+<tr><td class="bonus-name">法术元素特效倍率<br><span class="en-cell">Spell Aspect Effect Modifier</span></td><td class="c-bronze">5.00%</td><td class="c-silver">6.25%</td><td class="c-gold">7.50%</td><td class="c-corrupt">~8.13%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">法术元素特殊几率<br><span class="en-cell">Spell Aspect Special Chance****</span></td><td class="c-bronze">4.50%</td><td class="c-silver">~5.63%</td><td class="c-gold">6.75%</td><td class="c-corrupt">~7.31%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">法术充能几率<br><span class="en-cell">Spell Charged Chance**</span></td><td class="c-bronze">4.00%</td><td class="c-silver">5.00%</td><td class="c-gold">6.00%</td><td class="c-corrupt">6.50%</td><td class="elec">法术充能几率/充能伤害</td><td></td></tr>
+<tr><td class="bonus-name">法术充能伤害<br><span class="en-cell">Spell Charged Damage**</span></td><td class="c-bronze">6.00%</td><td class="c-silver">7.50%</td><td class="c-gold">9.00%</td><td class="c-corrupt">9.75%</td><td class="elec">法术充能几率/充能伤害</td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">法术充能几率/充能伤害<br><span class="en-cell">Spell Charged Chance/Charged Damage**</span></td><td class="c-bronze">3.50%</td><td class="c-silver">~4.38%</td><td class="c-gold">5.25%</td><td class="c-corrupt">~5.69%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">法术伤害<br><span class="en-cell">Spell Damage**</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">法术伤害/无视抗性几率</td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">法术无视抗性几率<br><span class="en-cell">Spell Ignore Resist Chance</span></td><td class="c-bronze">4.00%</td><td class="c-silver">5.00%</td><td class="c-gold">6.00%</td><td class="c-corrupt">6.50%</td><td class="elec">法术伤害/无视抗性几率</td><td></td></tr>
+<tr><td class="bonus-name">法术伤害/无视抗性几率<br><span class="en-cell">Spell Damage/Ignore Resist Chance**</span></td><td class="c-bronze">2.50%</td><td class="c-silver">~3.13%</td><td class="c-gold">3.75%</td><td class="c-corrupt">~4.06%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">无随从时法术伤害<br><span class="en-cell">Spell Damage When No Followers**</span></td><td class="c-bronze">4.00%</td><td class="c-silver">5.00%</td><td class="c-gold">6.00%</td><td class="c-corrupt">6.50%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr class="mc-group"><td colspan="7">伤害类链环 <span class="en">Damage Type Links</span></td></tr>
+<tr><td class="bonus-name">背刺伤害<br><span class="en-cell">Backstab Damage****</span></td><td class="c-bronze">4.50%</td><td class="c-silver">~5.63%</td><td class="c-gold">6.75%</td><td class="c-corrupt">~7.31%</td><td class="elec">乘算?</td><td></td></tr>
+<tr><td class="bonus-name">对患病生物伤害<br><span class="en-cell">Damage to Diseased Creatures****</span></td><td class="c-bronze">1.75%</td><td class="c-silver">2.1875%</td><td class="c-gold">2.625%</td><td class="c-corrupt">2.84375%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">对流血生物伤害<br><span class="en-cell">Damage to Bleeding Creatures</span></td><td class="c-bronze">1.75%</td><td class="c-silver">2.1875%</td><td class="c-gold">2.625%</td><td class="c-corrupt">2.84375%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">对 BOSS 伤害<br><span class="en-cell">Damage to Bosses</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">对 66% 以上血量生物伤害<br><span class="en-cell">Damage to Creatures Above 66% HP****</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">玩家造成的伤害</td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">对 33% 以下血量生物伤害<br><span class="en-cell">Damage to Creatures Below 33% HP</span></td><td class="c-bronze">2.50%</td><td class="c-silver">~3.13%</td><td class="c-gold">3.75%</td><td class="c-corrupt">4.06%</td><td class="elec">玩家造成的伤害</td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">玩家造成的伤害<br><span class="en-cell">Damage Dealt By Player</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec">可升级为任意其他类型链环</td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">陷阱伤害<br><span class="en-cell">Trap Damage**</span></td><td class="c-bronze">4.00%</td><td class="c-silver">5.00%</td><td class="c-gold">6.00%</td><td class="c-corrupt">6.50%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr class="mc-group"><td colspan="7">剧毒类链环 <span class="en">Poison Type Links</span></td></tr>
+<tr><td class="bonus-name">对中毒生物伤害<br><span class="en-cell">Damage to Poisoned Creatures****</span></td><td class="c-bronze">1.75%</td><td class="c-silver">~2.19%</td><td class="c-gold">~2.63%</td><td class="c-corrupt">~2.84%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">有效毒药技能<br><span class="en-cell">Effective Poisoning Skill</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">毒伤害/无视抗性、对患病生物伤害</td><td></td></tr>
+<tr><td class="bonus-name">毒伤害<br><span class="en-cell">Poison Damage**</span></td><td class="c-bronze">7.00%</td><td class="c-silver">8.75%</td><td class="c-gold">10.50%</td><td class="c-corrupt">11.375%</td><td class="elec">毒伤害/无视毒抗</td><td class="mul-multi"><span class="q-mark">乘算?</span></td></tr>
+<tr><td class="bonus-name">毒伤害/无视毒抗<br><span class="en-cell">Poison Damage/Resist Ignore****</span></td><td class="c-bronze">4.50%</td><td class="c-silver">5.625%</td><td class="c-gold">6.75%</td><td class="c-corrupt">7.3125%</td><td class="elec">对患病生物伤害</td><td class="mul-multi"><span class="q-mark">乘算?</span></td></tr>
+<tr class="mc-group"><td colspan="7">抗性类链环 <span class="en">Resistance Type Links</span></td></tr>
+<tr><td class="bonus-name">BOSS 伤害抗性<br><span class="en-cell">Boss Damage Resistance</span></td><td class="c-bronze">2.00%</td><td class="c-silver">2.50%</td><td class="c-gold">3.00%</td><td class="c-corrupt">3.25%</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">伤害抗性<br><span class="en-cell">Damage Resistance</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.25%</td><td class="c-gold">1.50%</td><td class="c-corrupt">~1.63%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">物理伤害抗性<br><span class="en-cell">Physical Damage Resistance</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">法术伤害抗性<br><span class="en-cell">Spell Damage Resistance</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr class="mc-group"><td colspan="7">有效技能类链环 <span class="en">Effective Skill Links</span></td></tr>
+<tr><td class="bonus-name">有效炼金技能<br><span class="en-cell">Effective Alchemy Skill</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">炼金/治疗/兽医</td><td></td></tr>
+<tr><td class="bonus-name">炼金/治疗/兽医<br><span class="en-cell">Alchemy/Healing/Veterinary</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">随从攻击速度</td><td></td></tr>
+<tr><td class="bonus-name">有效武器学<br><span class="en-cell">Effective Arms Lore***</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">有效露营技能<br><span class="en-cell">Effective Camping Skill***</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">骑士精神技能<br><span class="en-cell">Chivalry Skill</span></td><td class="c-bronze">2.50</td><td class="c-silver">~3.13</td><td class="c-gold">3.75</td><td class="c-corrupt">4.06</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">有效采集技能<br><span class="en-cell">Effective Harvest Skill***</span></td><td class="c-bronze">1.00</td><td class="c-silver">1.25</td><td class="c-gold">1.50</td><td class="c-corrupt">~1.63</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">有效魔法抗性技能<br><span class="en-cell">Effective Magic Resist Skill</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">死灵法术技能<br><span class="en-cell">Necromancy Skill</span></td><td class="c-bronze">2.50</td><td class="c-silver">~3.13</td><td class="c-gold">3.75</td><td class="c-corrupt">4.06</td><td class="elec">随从伤害<br>随从伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">有效格挡技能<br><span class="en-cell">Effective Parrying Skill</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">伤害抗性</td><td></td></tr>
+<tr><td class="bonus-name">对箱子的有效技能<br><span class="en-cell">Effective Skill on Chests</span></td><td class="c-bronze">3.00</td><td class="c-silver">3.75</td><td class="c-gold">4.50</td><td class="c-corrupt">~4.88</td><td class="elec">箱子成功率/进度</td><td></td></tr>
+<tr><td class="bonus-name">通灵/铭文<br><span class="en-cell">Spirit Speak/Inscription</span></td><td class="c-bronze">2.50</td><td class="c-silver">~3.13</td><td class="c-gold">3.75</td><td class="c-corrupt">4.06</td><td class="elec">随从伤害<br>随从伤害抗性</td><td></td></tr>
+<tr class="mc-group"><td colspan="7">其他链环 <span class="en">Other Links</span></td></tr>
+<tr><td class="bonus-name">潜行时 5 额外步数几率<br><span class="en-cell">Chance on Stealth for 5 Extra Steps</span></td><td class="c-bronze">5.00%</td><td class="c-silver">6.25%</td><td class="c-gold">7.50%</td><td class="c-corrupt">~8.13%</td><td class="elec"></td><td class="mul-add">加算</td></tr>
+<tr><td class="bonus-name">箱子成功率/进度<br><span class="en-cell">Chest Success Chances/Progress</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">卓越品质几率<br><span class="en-cell">Exceptional Quality Chance***</span></td><td class="c-bronze">1.50%</td><td class="c-silver">~1.88%</td><td class="c-gold">2.25%</td><td class="c-corrupt">~2.44%</td><td class="elec"></td><td class="mul-multi">乘算</td></tr>
+<tr><td class="bonus-name">金币/达布隆掉落增加<br><span class="en-cell">Gold/Doubloon Drop Increase</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.50%</td><td class="c-gold">2.00%</td><td class="c-corrupt">2.25%</td><td class="elec"></td><td></td></tr>
+<tr><td class="bonus-name">受到的治疗<br><span class="en-cell">Healing Received</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.50%</td><td class="c-corrupt">~4.88%</td><td class="elec">炼金/治疗/兽医</td><td></td></tr>
+<tr><td class="bonus-name">特殊战利品几率<br><span class="en-cell">Special Loot Chance*</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.50%</td><td class="c-gold">2.00%</td><td class="c-corrupt">2.25%</td><td class="elec">特殊/稀有战利品几率</td><td></td></tr>
+<tr><td class="bonus-name">稀有战利品几率<br><span class="en-cell">Rare Loot Chance*</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.50%</td><td class="c-gold">2.00%</td><td class="c-corrupt">2.25%</td><td class="elec">特殊/稀有战利品几率</td><td></td></tr>
+<tr><td class="bonus-name">特殊/稀有战利品几率<br><span class="en-cell">Special/Rare Loot Chance</span></td><td class="c-bronze">1.00%</td><td class="c-silver">1.50%</td><td class="c-gold">2.00%</td><td class="c-corrupt">2.25%</td><td class="elec">特殊/稀有战利品几率</td><td></td></tr>
+<tr><td class="bonus-name">召唤持续时间与驱散抗性<br><span class="en-cell">Summon Duration and Dispel Resist*</span></td><td class="c-bronze">3.00%</td><td class="c-silver">3.75%</td><td class="c-gold">4.5%</td><td class="c-corrupt">4.88%</td><td class="elec">通灵/铭文</td><td></td></tr>
+</tbody></table>
+    </div>
+
+    <h2 id="pvp">PvP 限制 <span class="en-h">PvP Restrictions</span></h2>
+    <ul>
+      <li>默认情况下，<strong>仅</strong>影响怪物的 PvM 加成在玩家处于 PvP 标记状态时<strong>依然生效</strong>。例如：伤害抗性、防御。</li>
+      <li>凡本质上有可能影响 PvP 的效果，在 PvP 标记时<strong>一律禁用</strong>。例如：法力回复/恢复、法力返还、生命回复/恢复、给予/受到的治疗、有效技能。</li>
+      <li>在竞技场、冥河裂隙（Stygian Rifts），或 Stalag Grotto Battle 等特殊 PvP 事件中，PvM 加成始终禁用。</li>
+    </ul>
+    <h3>其他限制 <span class="en-h">Other Restrictions</span></h3>
+    <ul><li>「对中毒生物伤害」链环仅在目标带有<strong>高等毒或以上</strong>时生效。</li></ul>
+
+    <h2 id="install">安装链环 <span class="en-h">Installing Mastery Chain Links</span></h2>
+    <ul>
+      <li>若链上有可用的已解锁槽位（链图形顶部显示为绿色），可在精通链面板点击「Install Link」，再指定背包中的链环安装。</li>
+      <li>同一种加成效果的链环，每条链最多安装 <strong>10 个</strong>（红线升级后可提高到 <strong>15 个</strong>），各效果累计加成会显示在面板中。</li>
+      <li>唯一例外是「特殊/稀有掉落几率」，可装 <strong>20 个</strong>。</li>
+      <li>点击窗口右下角的「Remove Links」按钮可移除链环。</li>
+    </ul>
+
+    <h2 id="remove">移除链环 <span class="en-h">Removing Mastery Chain Links</span></h2>
+    <ul>
+      <li>移除时可用左右箭头浏览已安装的链环，选中的链环以<strong>绿色指针</strong>标记，其加成显示在底部面板。</li>
+      <li>点击红色「Remove Link」按钮会移除高亮链环并放回背包。</li>
+      <li>移除链环<strong>不会退还</strong> 10 个奥术精华，但可在原位装回新链环。</li>
+      <li>完成后点击右下角「Done」返回主界面。</li>
+      <li>可点击「Remove Row」移除当前选中行的全部链环（需<strong>双击</strong>确认）。</li>
+      <li>可点击「Remove All」移除全部已安装链环（需<strong>三重</strong>确认）。</li>
+    </ul>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/masterychainlinkremoval.png" alt="masterychainlinkremoval.png" loading="lazy"></p>
+
+    <h2 id="reforge">链环重铸工具 <span class="en-h">Reforging Tools</span></h2>
+    <ul>
+      <li>有青铜、白银、黄金、腐化四种重铸工具，须使用与目标链环<strong>相同材质</strong>的工具（即青铜工具用于青铜链环）。</li>
+      <li>双击背包中的重铸工具，然后指定要修改的链环。</li>
+      <li>在弹出菜单中，用左右箭头在可选的奖励效果间切换。</li>
+      <li>选定后点击「Reforge Link」更换链环加成（会消耗该工具）。</li>
+      <li>可用竞技场、成就、阵营、公会奖励系统的奖励点数购买重铸工具。</li>
+      <li>也可在普雷瓦利亚市场（Prevalia Market）用金币购买。</li>
+      <li>重铸工具会同时显示多种奖励类型，并按奖励类型<strong>字母顺序</strong>排列。</li>
+      <li>使用新工具时，会记住上一把工具所选的奖励类型与页码，便于连续重铸多个链环。</li>
+    </ul>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/linkreforgeagain.png" alt="linkreforgeagain.png" loading="lazy"></p>
+
+    <h2 id="tome">链环宝典 <span class="en-h">Mastery Chain Link Tome</span></h2>
+    <p>玩家可在普雷瓦利亚市场商人处购买<strong>链环宝典</strong>，用于存放获得的各类链环。</p>
+    <p class="mc-fig"><img class="mc-img" src="../data/images/mastery/masterychainlinktome.png" alt="masterychainlinktome.png" loading="lazy"></p>
+
+    <h2 id="xptable">XP 需求表 <span class="en-h">Mastery Chain XP Table</span></h2>
+    <p>解锁每一个链环槽所需的 XP：</p>
+    <div class="mc-table-wrap">
+    <table class="wikitable mc-xp"><thead><tr><th>链环序号</th><th>本级所需 XP</th><th>累计 XP</th></tr></thead><tbody>
+<tr><td>1</td><td>250,000</td><td>250,000</td></tr>
+<tr><td>2</td><td>500,000</td><td>750,000</td></tr>
+<tr><td>3</td><td>750,000</td><td>1,500,000</td></tr>
+<tr><td>4</td><td>1,000,000</td><td>2,500,000</td></tr>
+<tr><td>5</td><td>1,250,000</td><td>3,750,000</td></tr>
+<tr><td>6</td><td>1,500,000</td><td>5,250,000</td></tr>
+<tr><td>7</td><td>1,750,000</td><td>7,000,000</td></tr>
+<tr><td>8</td><td>2,000,000</td><td>9,000,000</td></tr>
+<tr><td>9</td><td>2,250,000</td><td>11,250,000</td></tr>
+<tr><td>10</td><td>2,500,000</td><td>13,750,000</td></tr>
+<tr><td>11</td><td>2,750,000</td><td>16,500,000</td></tr>
+<tr><td>12</td><td>3,000,000</td><td>19,500,000</td></tr>
+<tr><td>13</td><td>3,250,000</td><td>22,750,000</td></tr>
+<tr><td>14</td><td>3,500,000</td><td>26,250,000</td></tr>
+<tr><td>15</td><td>3,750,000</td><td>30,000,000</td></tr>
+<tr><td>16</td><td>4,000,000</td><td>34,000,000</td></tr>
+<tr><td>17</td><td>4,250,000</td><td>38,250,000</td></tr>
+<tr><td>18</td><td>4,500,000</td><td>42,750,000</td></tr>
+<tr><td>19</td><td>4,750,000</td><td>47,500,000</td></tr>
+<tr><td>20</td><td>5,000,000</td><td>52,500,000</td></tr>
+<tr><td>21</td><td>5,250,000</td><td>57,750,000</td></tr>
+<tr><td>22</td><td>5,500,000</td><td>63,250,000</td></tr>
+<tr><td>23</td><td>5,750,000</td><td>69,000,000</td></tr>
+<tr><td>24</td><td>6,000,000</td><td>75,000,000</td></tr>
+<tr><td>25</td><td>6,250,000</td><td>81,250,000</td></tr>
+<tr><td>26</td><td>6,500,000</td><td>87,750,000</td></tr>
+<tr><td>27</td><td>6,750,000</td><td>94,500,000</td></tr>
+<tr><td>28</td><td>7,000,000</td><td>101,500,000</td></tr>
+<tr><td>29</td><td>7,250,000</td><td>108,750,000</td></tr>
+<tr><td>30</td><td>7,500,000</td><td>116,250,000</td></tr>
+</tbody></table>
+    </div>
+
+  </div>
+  <p class="backlink"><a href="../index.html">← 返回资料库首页</a></p>
+</div>
+<footer>
+  <p>UO Outlands 中文资料库 · 非官方粉丝翻译，内容版权归 Outlands 官方所有。</p>
+</footer>
+</body>
+</html>
