@@ -307,3 +307,20 @@ html[data-theme="dark"] .side-nav-page .site-nav .nav-menu{ background:#27466f !
     -webkit-overflow-scrolling:touch;
   }
 }
+
+/* ===== 毒药工具包页（Poison Kit，2026-09-13） ===== */
+.pk-fig{margin:14px 0;text-align:center;}
+.pk-fig img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:8px;}
+.pk-warn{color:#b45309;}
+html[data-theme="dark"] .pk-warn{color:#fbbf24;}
+.pk-table{width:100%;}
+.pk-table .pk-sec{text-align:center;background:rgba(46,125,50,.12);font-weight:700;}
+.pk-name-col{width:18%;}
+.pk-pts-col{width:15%;}
+.pk-name{font-weight:600;text-align:center;}
+.pk-pts{text-align:center;font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:.92em;}
+.pk-table td:last-child{text-align:left;line-height:1.6;}
+.pk-note{margin-top:12px;font-size:.88em;color:var(--muted);line-height:1.6;}
+@media (max-width:700px){
+  .pk-name-col,.pk-pts-col{width:auto;}
+}

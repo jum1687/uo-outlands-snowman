@@ -110,7 +110,9 @@ footer{
 footer a{color:var(--link);}
 
 /* ===== 首页分类卡片 + 宠物悬停下拉 ===== */
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:18px 0;}
+/* 桌面端固定 5 个一行，超过换行（2026-09-13 羊哥要求）；
+   「宠物图鉴」需保持在第 1 行内，排列顺序见 web/index.html */
+.skill-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:18px 0;}
 .skill-card{
   display:block;padding:12px 16px;border:1px solid var(--border);border-radius:8px;
   background:#fff;color:var(--text);font-size:1em;font-weight:600;text-decoration:none;
@@ -138,6 +140,9 @@ footer a{color:var(--link);}
 .dropdown-menu a:last-child{border-bottom:none;}
 .dropdown-menu a:hover{background:#f0f6ff;color:var(--accent);text-decoration:none;}
 .dropdown-menu .en{display:block;font-size:.72em;color:var(--muted);margin-top:.15em;font-weight:400;}
+@media(max-width:1180px){
+  .skill-grid{grid-template-columns:repeat(3,1fr);}
+}
 @media(max-width:700px){
   .skill-grid{grid-template-columns:1fr;}
 }
