@@ -46,5 +46,13 @@
     "salt": "95494be2bf7b386d0260feb6612ca4b2",
     "hash": "fafd5d153f6949c870dba8fdacf0d0dceeadb97f72860a4d9f01b2f7b7672dcd",
     "createdAt": "2026-09-01T07:52:58.796Z"
+  },
+  {
+    "id": "2f77ed6d-923b-4aee-a89a-70d00a1ce816",
+    "name": "mykiss",
+    "nameLower": "mykiss",
+    "salt": "f0ca438b2b0f38bd0cf4697250a8f75e",
+    "hash": "794cbd569f6d5cd4d2d327d74b61af641ea44f8eedce5ac5a6762d380c01d88c",
+    "createdAt": "2026-09-14T05:48:39.531Z"
   }
 ]
