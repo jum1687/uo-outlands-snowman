@@ -270,8 +270,8 @@
 .item-card .meta .slot{ color:#54595d; font-size:0.84em; display:block; margin-top:3px; }
 @media(max-width:600px){ .item-grid{ grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; } .item-card .thumb{ padding:10px; } .item-card .meta{ padding:10px 12px; font-size:0.9em; } }
 
-/* ===== 本页图片尺寸调整（2026-09-19 v2）===== */
-.item-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,352px)) !important; gap:18px; margin:14px 0 6px; justify-content:center; }
+/* ===== 本页图片尺寸调整（2026-09-19 v3）===== */
+.item-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,352px)) !important; gap:18px; margin:14px auto 6px !important; justify-content:center; max-width:760px; }
 .item-card{ min-width:0; }
 .item-card .thumb img{ width:100% !important; max-width:430px; }
 .mw-content img.creature-thumb{ max-width:200px !important; }
