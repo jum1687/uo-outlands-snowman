@@ -1,5 +1,34 @@
 [
   {
+    "id": "t_24b7ec58mu9myfdp",
+    "name": "双黑寡妇",
+    "author": "Snowman Liang",
+    "authorId": "759d4015-6130-4ccf-a338-1dd863879cb4",
+    "note": "当前版本最强！没有之一！",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Giant Black Widow",
+      "Black Widow"
+    ],
+    "talents": {
+      "Attack": [],
+      "Utility": [
+        "Contagion",
+        "Opportunity",
+        "Toxic",
+        "Primal"
+      ],
+      "Tank": []
+    },
+    "createdAt": "2026-09-20T09:50:33.565Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_7f69d94cmtiot940",
     "name": "1猪+3冰狼",
     "author": "Snowman Liang",
