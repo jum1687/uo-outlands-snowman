@@ -70,5 +70,13 @@
     "salt": "e4163441c3e04462edb3137194918a53",
     "hash": "fbf7b31ed800a1600c756150d51c3d761f81fa239e7a29760c399eadfb789eba",
     "createdAt": "2026-09-28T02:04:00.288Z"
+  },
+  {
+    "id": "bb701586-e84e-438b-bc73-237a1bb6c34e",
+    "name": "supere1981",
+    "nameLower": "supere1981",
+    "salt": "5eac78cb0120c921fa895ab7df9235b3",
+    "hash": "e477eb368a4cdfa3bba4ecd869c2f29722d1251b7148ed9a4fd7d27a11e630a2",
+    "createdAt": "2026-09-29T02:38:14.961Z"
   }
 ]
