@@ -8,15 +8,34 @@
 <link rel="stylesheet" href="assets/theme.css">
 <script src="assets/theme.js"></script>
 <style>
-/* ===== 装备属性页专属样式 ===== */
-.wikitable{border-collapse:collapse;margin:.8em 0 1.2em;width:100%;background:#fff;border:1px solid #eaecf0;font-size:13.5px;}
-.wikitable th{background:#f8f9fa;border:1px solid #eaecf0;padding:7px 9px;text-align:center;font-weight:600;}
-.wikitable td{border:1px solid #eaecf0;padding:6px 9px;text-align:center;vertical-align:top;}
-.wikitable tr:nth-child(even) td{background:#fcfcfd;}
+/* ===== 装备属性页专属样式（排版对齐官方 Wiki） ===== */
+.wikitable{border-collapse:collapse;margin:0;width:100%;background:#fff;border:1px solid #d5dae2;font-size:13.5px;color:#24292f;}
+.wikitable th,.wikitable td{border:1px solid #d5dae2;padding:6px 10px;text-align:center;vertical-align:middle;}
+/* 表头①：图标 + 居中标题 */
+.wikitable tr.tbl-hd th{background:#232a35;border-color:#232a35;color:#fff;padding:9px 10px 8px;}
+.wikitable tr.tbl-hd img{display:block;margin:0 auto 5px;width:auto;height:32px;image-rendering:pixelated;}
+.wikitable tr.tbl-hd .tbl-name{display:block;font-weight:700;font-size:14px;letter-spacing:.4px;}
+.wikitable tr.tbl-hd .tbl-name .en2{color:#bcc7d6;}
+/* 表头②：列名 */
+.wikitable tr.col-hd th{background:#39485c;border-color:#39485c;color:#fff;font-weight:600;white-space:nowrap;}
+.wikitable tr.col-hd th .en2{color:#c5d0de;}
+/* 分类行（官方色 #334159） */
+.wikitable td.cat{background:#334159;border-color:#334159;color:#fff;font-weight:700;text-align:center;}
+.wikitable td.cat .en{color:#c3cede;font-weight:400;font-size:12px;}
+/* 数据行 */
 .wikitable td.lft{text-align:left;}
-.wikitable .cat{background:#334159;color:#fff;font-weight:700;text-align:left;padding:7px 10px;}
-.wikitable .cat .en{color:#cdd6e0;font-weight:400;font-size:12px;margin-left:6px;}
-.wikitable .bonus{font-weight:700;color:#1a6e3a;white-space:nowrap;}
+.wikitable .en2{color:#6b7280;}
+.wikitable td.bonus{font-weight:700;color:#1a6e3a;white-space:nowrap;}
+.wikitable tbody tr:hover td{background:#eef4fb;}
+.wikitable tbody tr:hover td.cat{background:#334159;}
+/* 材料行首图标 */
+.wikitable td.mat{text-align:left;white-space:nowrap;}
+.wikitable td.mat img{height:24px;width:auto;vertical-align:-6px;margin-right:8px;image-rendering:pixelated;}
+/* 双列并排布局（表格按内容自适应宽度，不做拉伸） */
+.mod-grid{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;margin:.4em 0 1.6em;}
+.mod-grid>.mod-cell{flex:0 0 auto;max-width:100%;}
+.mod-grid>.mod-cell>h3{margin:0 0 .5em;font-size:15px;}
+.mod-grid .wikitable{width:auto;min-width:250px;}
 .en2{color:var(--muted);font-size:12px;font-weight:400;}
 .mod-img{display:block;max-width:100%;height:auto;margin:.8em auto 0;border:1px solid #eaecf0;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.08);background:#fff;}
 .cap{text-align:center;color:var(--muted);font-size:12px;margin:6px 0 1.4em;}
@@ -89,163 +108,210 @@
   <h2>魔法物品修饰词 <span class="en-h">Magic Item Modifiers</span></h2>
   <p class="sub-note">下表为各类装备可附带的修饰词及其加成数值。同一类装备的修饰词分多个层级（如 Durable → Indestructible 为耐久递增）。</p>
 
-  <h3>武器 <span class="en-h">Weapons</span></h3>
-  <table class="wikitable">
-    <tr><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th><th>说明 <span class="en2">Type</span></th></tr>
-    <tr><td class="cat" colspan="3">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
-    <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+25</td><td class="lft">提升耐久上限</td></tr>
-    <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+50</td><td class="lft">提升耐久上限</td></tr>
-    <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+75</td><td class="lft">提升耐久上限</td></tr>
-    <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+100</td><td class="lft">提升耐久上限</td></tr>
-    <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+125</td><td class="lft">提升耐久上限</td></tr>
-    <tr><td class="cat" colspan="3">精准 <span class="en">Accuracy（提升命中率 Hit Chance）</span></td></tr>
-    <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td class="bonus">PvM +3% / PvP +0%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="lft">精准 <span class="en2">Accurate</span></td><td class="bonus">PvM +5% / PvP +1%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="lft">超凡精准 <span class="en2">Surpassingly Accurate</span></td><td class="bonus">PvM +10% / PvP +2%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="lft">卓绝精准 <span class="en2">Eminently Accurate</span></td><td class="bonus">PvM +15% / PvP +3%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="lft">极致精准 <span class="en2">Exceedingly Accurate</span></td><td class="bonus">PvM +20% / PvP +4%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="lft">至高精准 <span class="en2">Supremely Accurate</span></td><td class="bonus">PvM +25% / PvP +5%</td><td class="lft">命中率加成</td></tr>
-    <tr><td class="cat" colspan="3">伤害 <span class="en">Damage（提升 Tactics，即直接加伤害值）</span></td></tr>
-    <tr><td class="lft">毁灭 <span class="en2">Ruin</span></td><td class="bonus">+5</td><td class="lft">直接加伤害</td></tr>
-    <tr><td class="lft">精制 / 威能 <span class="en2">Exceptional / Might</span></td><td class="bonus">+10</td><td class="lft">直接加伤害</td></tr>
-    <tr><td class="lft">强力 <span class="en2">Force</span></td><td class="bonus">+15</td><td class="lft">直接加伤害</td></tr>
-    <tr><td class="lft">威势 <span class="en2">Power</span></td><td class="bonus">+20</td><td class="lft">直接加伤害</td></tr>
-    <tr><td class="lft">征服 <span class="en2">Vanquishing</span></td><td class="bonus">+25</td><td class="lft">直接加伤害</td></tr>
-    <tr><td class="cat" colspan="3">屠戮 <span class="en">Slayer（提升对怪物 PvM 伤害）</span></td></tr>
-    <tr><td class="lft">次级屠戮 <span class="en2">Lesser Slaying</span></td><td class="bonus">+15%</td><td class="lft">对怪物增伤</td></tr>
-    <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td><td class="lft">对怪物增伤</td></tr>
-    <tr><td class="lft">高级屠戮 <span class="en2">Greater Slaying</span></td><td class="bonus">+25%</td><td class="lft">对怪物增伤</td></tr>
-  </table>
+  <div class="mod-grid">
+    <section class="mod-cell">
+      <h3>武器 <span class="en-h">Weapons</span></h3>
+      <table class="wikitable">
+        <thead>
+          <tr class="tbl-hd"><th colspan="3"><img src="data/images/modifiers/weapons1.jpg?v=20261005" alt="武器 Weapons"><span class="tbl-name">武器 <span class="en2">Weapons</span></span></th></tr>
+          <tr class="col-hd"><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th><th>说明 <span class="en2">Type</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat" colspan="3">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
+          <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+25</td><td class="lft">提升耐久上限</td></tr>
+          <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+50</td><td class="lft">提升耐久上限</td></tr>
+          <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+75</td><td class="lft">提升耐久上限</td></tr>
+          <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+100</td><td class="lft">提升耐久上限</td></tr>
+          <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+125</td><td class="lft">提升耐久上限</td></tr>
+          <tr><td class="cat" colspan="3">精准 <span class="en">Accuracy（提升命中率 Hit Chance）</span></td></tr>
+          <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td class="bonus">PvM +3% / PvP +0%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="lft">精准 <span class="en2">Accurate</span></td><td class="bonus">PvM +5% / PvP +1%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="lft">超凡精准 <span class="en2">Surpassingly Accurate</span></td><td class="bonus">PvM +10% / PvP +2%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="lft">卓绝精准 <span class="en2">Eminently Accurate</span></td><td class="bonus">PvM +15% / PvP +3%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="lft">极致精准 <span class="en2">Exceedingly Accurate</span></td><td class="bonus">PvM +20% / PvP +4%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="lft">至高精准 <span class="en2">Supremely Accurate</span></td><td class="bonus">PvM +25% / PvP +5%</td><td class="lft">命中率加成</td></tr>
+          <tr><td class="cat" colspan="3">伤害 <span class="en">Damage（提升 Tactics，即直接加伤害值）</span></td></tr>
+          <tr><td class="lft">毁灭 <span class="en2">Ruin</span></td><td class="bonus">+5</td><td class="lft">直接加伤害</td></tr>
+          <tr><td class="lft">精制 / 威能 <span class="en2">Exceptional / Might</span></td><td class="bonus">+10</td><td class="lft">直接加伤害</td></tr>
+          <tr><td class="lft">强力 <span class="en2">Force</span></td><td class="bonus">+15</td><td class="lft">直接加伤害</td></tr>
+          <tr><td class="lft">威势 <span class="en2">Power</span></td><td class="bonus">+20</td><td class="lft">直接加伤害</td></tr>
+          <tr><td class="lft">征服 <span class="en2">Vanquishing</span></td><td class="bonus">+25</td><td class="lft">直接加伤害</td></tr>
+          <tr><td class="cat" colspan="3">屠戮 <span class="en">Slayer（提升对怪物 PvM 伤害）</span></td></tr>
+          <tr><td class="lft">次级屠戮 <span class="en2">Lesser Slaying</span></td><td class="bonus">+15%</td><td class="lft">对怪物增伤</td></tr>
+          <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td><td class="lft">对怪物增伤</td></tr>
+          <tr><td class="lft">高级屠戮 <span class="en2">Greater Slaying</span></td><td class="bonus">+25%</td><td class="lft">对怪物增伤</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-  <h3>护甲 <span class="en-h">Armor</span></h3>
-  <table class="wikitable">
-    <tr><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
-    <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
-    <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+25</td></tr>
-    <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td class="bonus">+25</td></tr>
-    <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+50</td></tr>
-    <tr><td class="lft">大师精制 <span class="en2">Mastercrafted</span></td><td class="bonus">+50</td></tr>
-    <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+75</td></tr>
-    <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+100</td></tr>
-    <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+125</td></tr>
-    <tr><td class="cat" colspan="2">防护 <span class="en">Protection（提升护甲值 Armor Rating）</span></td></tr>
-    <tr><td class="lft">防御 <span class="en2">Defense</span></td><td class="bonus">+20%</td></tr>
-    <tr><td class="lft">守护 <span class="en2">Guarding</span></td><td class="bonus">+40%</td></tr>
-    <tr><td class="lft">硬化 <span class="en2">Hardening</span></td><td class="bonus">+60%</td></tr>
-    <tr><td class="lft">要塞 <span class="en2">Fortification</span></td><td class="bonus">+80%</td></tr>
-    <tr><td class="lft">无敌 <span class="en2">Invulnerability</span></td><td class="bonus">+100%</td></tr>
-  </table>
+    <section class="mod-cell">
+      <h3>护甲 <span class="en-h">Armor</span></h3>
+      <table class="wikitable">
+        <thead>
+          <tr class="tbl-hd"><th colspan="2"><img src="data/images/modifiers/armor1.jpg?v=20261005" alt="护甲 Armor"><span class="tbl-name">护甲 <span class="en2">Armor</span></span></th></tr>
+          <tr class="col-hd"><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
+          <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+25</td></tr>
+          <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td class="bonus">+25</td></tr>
+          <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+50</td></tr>
+          <tr><td class="lft">大师精制 <span class="en2">Mastercrafted</span></td><td class="bonus">+50</td></tr>
+          <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+75</td></tr>
+          <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+100</td></tr>
+          <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+125</td></tr>
+          <tr><td class="cat" colspan="2">防护 <span class="en">Protection（提升护甲值 Armor Rating）</span></td></tr>
+          <tr><td class="lft">防御 <span class="en2">Defense</span></td><td class="bonus">+20%</td></tr>
+          <tr><td class="lft">守护 <span class="en2">Guarding</span></td><td class="bonus">+40%</td></tr>
+          <tr><td class="lft">硬化 <span class="en2">Hardening</span></td><td class="bonus">+60%</td></tr>
+          <tr><td class="lft">要塞 <span class="en2">Fortification</span></td><td class="bonus">+80%</td></tr>
+          <tr><td class="lft">无敌 <span class="en2">Invulnerability</span></td><td class="bonus">+100%</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
 
-  <h3>法术书与奥术法杖 <span class="en-h">Spellbooks &amp; Arcane Staves</span></h3>
-  <table class="wikitable">
-    <tr><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
-    <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
-    <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+100</td></tr>
-    <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+150</td></tr>
-    <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+200</td></tr>
-    <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+250</td></tr>
-    <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+300</td></tr>
-    <tr><td class="cat" colspan="2">效能 <span class="en">Potency（施法返还法力）</span></td></tr>
-    <tr><td class="lft">高效 <span class="en2">Potent</span></td><td class="bonus">+5%</td></tr>
-    <tr><td class="lft">超凡高效 <span class="en2">Surpassingly Potent</span></td><td class="bonus">+10%</td></tr>
-    <tr><td class="lft">卓绝高效 <span class="en2">Eminently Potent</span></td><td class="bonus">+15%</td></tr>
-    <tr><td class="lft">极致高效 <span class="en2">Exceedingly Potent</span></td><td class="bonus">+20%</td></tr>
-    <tr><td class="lft">至高高效 <span class="en2">Supremely Potent</span></td><td class="bonus">+25%</td></tr>
-    <tr><td class="cat" colspan="2">伤害 <span class="en">Damage（提升伤害）</span></td></tr>
-    <tr><td class="lft">毁灭 <span class="en2">Ruin</span></td><td class="bonus">+5%</td></tr>
-    <tr><td class="lft">威能 <span class="en2">Might</span></td><td class="bonus">+10%</td></tr>
-    <tr><td class="lft">强力 <span class="en2">Force</span></td><td class="bonus">+15%</td></tr>
-    <tr><td class="lft">威势 <span class="en2">Power</span></td><td class="bonus">+20%</td></tr>
-    <tr><td class="lft">征服 <span class="en2">Vanquishing</span></td><td class="bonus">+25%</td></tr>
-    <tr><td class="cat" colspan="2">屠戮 <span class="en">Slayer（提升伤害）</span></td></tr>
-    <tr><td class="lft">次级 <span class="en2">Lesser</span></td><td class="bonus">+15%</td></tr>
-    <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td></tr>
-    <tr><td class="lft">高级 <span class="en2">Greater</span></td><td class="bonus">+25%</td></tr>
-  </table>
+  <div class="mod-grid">
+    <section class="mod-cell">
+      <h3>法术书与奥术法杖 <span class="en-h">Spellbooks &amp; Arcane Staves</span></h3>
+      <table class="wikitable">
+        <thead>
+          <tr class="tbl-hd"><th colspan="2"><img src="data/images/modifiers/spellbookstaff2.png?v=20261005" alt="法术书与奥术法杖"><span class="tbl-name">法术书与奥术法杖 <span class="en2">Spellbooks &amp; Staves</span></span></th></tr>
+          <tr class="col-hd"><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
+          <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+100</td></tr>
+          <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+150</td></tr>
+          <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+200</td></tr>
+          <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+250</td></tr>
+          <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+300</td></tr>
+          <tr><td class="cat" colspan="2">效能 <span class="en">Potency（施法返还法力）</span></td></tr>
+          <tr><td class="lft">高效 <span class="en2">Potent</span></td><td class="bonus">+5%</td></tr>
+          <tr><td class="lft">超凡高效 <span class="en2">Surpassingly Potent</span></td><td class="bonus">+10%</td></tr>
+          <tr><td class="lft">卓绝高效 <span class="en2">Eminently Potent</span></td><td class="bonus">+15%</td></tr>
+          <tr><td class="lft">极致高效 <span class="en2">Exceedingly Potent</span></td><td class="bonus">+20%</td></tr>
+          <tr><td class="lft">至高高效 <span class="en2">Supremely Potent</span></td><td class="bonus">+25%</td></tr>
+          <tr><td class="cat" colspan="2">伤害 <span class="en">Damage（提升伤害）</span></td></tr>
+          <tr><td class="lft">毁灭 <span class="en2">Ruin</span></td><td class="bonus">+5%</td></tr>
+          <tr><td class="lft">威能 <span class="en2">Might</span></td><td class="bonus">+10%</td></tr>
+          <tr><td class="lft">强力 <span class="en2">Force</span></td><td class="bonus">+15%</td></tr>
+          <tr><td class="lft">威势 <span class="en2">Power</span></td><td class="bonus">+20%</td></tr>
+          <tr><td class="lft">征服 <span class="en2">Vanquishing</span></td><td class="bonus">+25%</td></tr>
+          <tr><td class="cat" colspan="2">屠戮 <span class="en">Slayer（提升伤害）</span></td></tr>
+          <tr><td class="lft">次级 <span class="en2">Lesser</span></td><td class="bonus">+15%</td></tr>
+          <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td></tr>
+          <tr><td class="lft">高级 <span class="en2">Greater</span></td><td class="bonus">+25%</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-  <h3>乐器 <span class="en-h">Instruments</span></h3>
-  <table class="wikitable">
-    <tr><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
-    <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
-    <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+100</td></tr>
-    <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+200</td></tr>
-    <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+300</td></tr>
-    <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+400</td></tr>
-    <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+500</td></tr>
-    <tr><td class="cat" colspan="2">技艺 <span class="en">Artistry（提升吟游效果 Barding）</span></td></tr>
-    <tr><td class="lft">悦耳 <span class="en2">Melodious</span></td><td class="bonus">+5</td></tr>
-    <tr><td class="lft">超凡悦耳 <span class="en2">Surpassingly Melodious</span></td><td class="bonus">+10</td></tr>
-    <tr><td class="lft">卓绝悦耳 <span class="en2">Eminently Melodious</span></td><td class="bonus">+15</td></tr>
-    <tr><td class="lft">极致悦耳 <span class="en2">Exceedingly Melodious</span></td><td class="bonus">+20</td></tr>
-    <tr><td class="lft">至高悦耳 <span class="en2">Supremely Melodious</span></td><td class="bonus">+25</td></tr>
-    <tr><td class="cat" colspan="2">屠戮 <span class="en">Slayer（提升吟游效果 Barding）</span></td></tr>
-    <tr><td class="lft">次级 <span class="en2">Lesser</span></td><td class="bonus">+10%</td></tr>
-    <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td></tr>
-    <tr><td class="lft">高级 <span class="en2">Greater</span></td><td class="bonus">+30%</td></tr>
-  </table>
+    <section class="mod-cell">
+      <h3>乐器 <span class="en-h">Instruments</span></h3>
+      <table class="wikitable">
+        <thead>
+          <tr class="tbl-hd"><th colspan="2"><img src="data/images/modifiers/instrument1.jpg?v=20261005" alt="乐器 Instruments"><span class="tbl-name">乐器 <span class="en2">Instruments</span></span></th></tr>
+          <tr class="col-hd"><th>修饰词 <span class="en2">Modifier</span></th><th>加成 <span class="en2">Bonus</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat" colspan="2">耐久 <span class="en">Durability（提升使用次数）</span></td></tr>
+          <tr><td class="lft">耐用 <span class="en2">Durable</span></td><td class="bonus">+100</td></tr>
+          <tr><td class="lft">坚固 <span class="en2">Substantial</span></td><td class="bonus">+200</td></tr>
+          <tr><td class="lft">厚重 <span class="en2">Massive</span></td><td class="bonus">+300</td></tr>
+          <tr><td class="lft">强化 <span class="en2">Fortified</span></td><td class="bonus">+400</td></tr>
+          <tr><td class="lft">不可摧毁 <span class="en2">Indestructible</span></td><td class="bonus">+500</td></tr>
+          <tr><td class="cat" colspan="2">技艺 <span class="en">Artistry（提升吟游效果 Barding）</span></td></tr>
+          <tr><td class="lft">悦耳 <span class="en2">Melodious</span></td><td class="bonus">+5</td></tr>
+          <tr><td class="lft">超凡悦耳 <span class="en2">Surpassingly Melodious</span></td><td class="bonus">+10</td></tr>
+          <tr><td class="lft">卓绝悦耳 <span class="en2">Eminently Melodious</span></td><td class="bonus">+15</td></tr>
+          <tr><td class="lft">极致悦耳 <span class="en2">Exceedingly Melodious</span></td><td class="bonus">+20</td></tr>
+          <tr><td class="lft">至高悦耳 <span class="en2">Supremely Melodious</span></td><td class="bonus">+25</td></tr>
+          <tr><td class="cat" colspan="2">屠戮 <span class="en">Slayer（提升吟游效果 Barding）</span></td></tr>
+          <tr><td class="lft">次级 <span class="en2">Lesser</span></td><td class="bonus">+10%</td></tr>
+          <tr><td class="lft">屠戮 <span class="en2">Slaying</span></td><td class="bonus">+20%</td></tr>
+          <tr><td class="lft">高级 <span class="en2">Greater</span></td><td class="bonus">+30%</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
 
   <h2>材料加成 <span class="en-h">Material Bonuses</span></h2>
   <p class="sub-note">用彩色材料制造的装备，会按材料类型获得下列额外加成。金属/皮革/木板各自的加成项目不同（详见各表列头）。</p>
 
   <h3>铁锭材料加成 <span class="en-h">Ingot Material Bonuses</span></h3>
-  <p class="sub-note">金属武器与金属护甲（ Ringmail 锁子甲、Chainmail 锁甲、Platemail 板甲）使用彩色铁锭制造时获得：</p>
+  <p class="sub-note">金属武器与金属护甲（Ringmail 锁子甲、Chainmail 锁甲、Platemail 板甲）使用彩色铁锭制造时获得：</p>
   <table class="wikitable">
-    <tr><th>材料 <span class="en2">Material</span></th><th>耐久 <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>战术(伤害) <span class="en2">Tactics</span></th><th>精准(PvM) <span class="en2">Accuracy</span></th></tr>
-    <tr><td class="lft">铁 <span class="en2">Iron</span></td><td>50（基础）</td><td>+0%</td><td>+0</td><td>+0%</td></tr>
-    <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10</td><td>+3%</td></tr>
-    <tr><td class="lft">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0%</td><td>+0</td><td>+0%</td></tr>
-    <tr><td class="lft">钝铜 <span class="en2">Dull Copper</span></td><td>+15</td><td>+5%</td><td>+1</td><td>+1%</td></tr>
-    <tr><td class="lft">暗影 <span class="en2">Shadow</span></td><td>+20</td><td>+10%</td><td>+2</td><td>+2%</td></tr>
-    <tr><td class="lft">铜 <span class="en2">Copper</span></td><td>+25</td><td>+15%</td><td>+3</td><td>+3%</td></tr>
-    <tr><td class="lft">青铜 <span class="en2">Bronze</span></td><td>+30</td><td>+20%</td><td>+4</td><td>+4%</td></tr>
-    <tr><td class="lft">金 <span class="en2">Gold</span></td><td>+35</td><td>+25%</td><td>+5</td><td>+5%</td></tr>
-    <tr><td class="lft">银长石 <span class="en2">Agapite</span></td><td>+40</td><td>+30%</td><td>+6</td><td>+6%</td></tr>
-    <tr><td class="lft">维瑞特 <span class="en2">Verite</span></td><td>+45</td><td>+35%</td><td>+7</td><td>+7%</td></tr>
-    <tr><td class="lft">英勇 <span class="en2">Valorite</span></td><td>+50</td><td>+40%</td><td>+8</td><td>+8%</td></tr>
-    <tr><td class="lft">贪婪 <span class="en2">Avarite</span></td><td>+55</td><td>+45%</td><td>+9</td><td>+9%</td></tr>
+    <thead>
+      <tr class="tbl-hd"><th colspan="5"><img src="data/images/modifiers/ingotiron.png?v=20261005" alt="铁锭"><span class="tbl-name">铁锭材料加成 <span class="en2">Ingot</span></span></th></tr>
+      <tr class="col-hd"><th>材料 <span class="en2">Material</span></th><th>耐久 <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>战术(伤害) <span class="en2">Tactics</span></th><th>精准(PvM) <span class="en2">Accuracy</span></th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotiron.png?v=20261005" alt="">铁 <span class="en2">Iron</span></td><td>50（基础）</td><td>+0%</td><td>+0</td><td>+0%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_smithshammer.jpg?v=20261005" alt="">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10</td><td>+3%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_smithshammer.jpg?v=20261005" alt="">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0%</td><td>+0</td><td>+0%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotdullcopper.png?v=20261005" alt="">钝铜 <span class="en2">Dull Copper</span></td><td>+15</td><td>+5%</td><td>+1</td><td>+1%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotshadow.png?v=20261005" alt="">暗影 <span class="en2">Shadow</span></td><td>+20</td><td>+10%</td><td>+2</td><td>+2%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotcopper.png?v=20261005" alt="">铜 <span class="en2">Copper</span></td><td>+25</td><td>+15%</td><td>+3</td><td>+3%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotbronze.png?v=20261005" alt="">青铜 <span class="en2">Bronze</span></td><td>+30</td><td>+20%</td><td>+4</td><td>+4%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotgold.png?v=20261005" alt="">金 <span class="en2">Gold</span></td><td>+35</td><td>+25%</td><td>+5</td><td>+5%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotagapite.png?v=20261005" alt="">银长石 <span class="en2">Agapite</span></td><td>+40</td><td>+30%</td><td>+6</td><td>+6%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotverite.png?v=20261005" alt="">维瑞特 <span class="en2">Verite</span></td><td>+45</td><td>+35%</td><td>+7</td><td>+7%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotvalorite.png?v=20261005" alt="">英勇 <span class="en2">Valorite</span></td><td>+50</td><td>+40%</td><td>+8</td><td>+8%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/ingotavarite.png?v=20261005" alt="">贪婪 <span class="en2">Avarite</span></td><td>+55</td><td>+45%</td><td>+9</td><td>+9%</td></tr>
+    </tbody>
   </table>
 
   <h3>皮革材料加成 <span class="en-h">Leather Material Bonuses</span></h3>
   <p class="sub-note">皮革护甲（Bone 骨甲、Studded 钉甲、Leather 皮甲）、皮革制造的法术书、以及制造的渔网分别获得：护甲 AR / 法力再生 / 伤害 / 捕鱼几率加成。</p>
   <table class="wikitable">
-    <tr><th>材料 <span class="en2">Material</span></th><th>耐久(护甲) <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>法力再生(法书) <span class="en2">Mana Regen</span></th><th>伤害(法书) <span class="en2">Damage</span></th><th>捕鱼加成(渔网) <span class="en2">Fishing</span></th></tr>
-    <tr><td class="lft">普通皮革 <span class="en2">Leather</span></td><td>50（基础）</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-    <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10%</td><td>+10</td><td>+4%</td></tr>
-    <tr><td class="lft">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0</td><td>0</td><td>0</td><td>+8%</td></tr>
-    <tr><td class="lft">钝皮 <span class="en2">Dullhide</span></td><td>+15</td><td>+5%</td><td>+10%</td><td>+1</td><td>+2%</td></tr>
-    <tr><td class="lft">暗影皮 <span class="en2">Shadowhide</span></td><td>+20</td><td>+10%</td><td>+15%</td><td>+2</td><td>+4%</td></tr>
-    <tr><td class="lft">铜皮 <span class="en2">Copperhide</span></td><td>+25</td><td>+15%</td><td>+20%</td><td>+3</td><td>+6%</td></tr>
-    <tr><td class="lft">青铜皮 <span class="en2">Bronzehide</span></td><td>+30</td><td>+20%</td><td>+25%</td><td>+4</td><td>+8%</td></tr>
-    <tr><td class="lft">金皮 <span class="en2">Goldenhide</span></td><td>+35</td><td>+25%</td><td>+30%</td><td>+5</td><td>+10%</td></tr>
-    <tr><td class="lft">玫瑰皮 <span class="en2">Rosehide</span></td><td>+40</td><td>+30%</td><td>+35%</td><td>+6</td><td>+12%</td></tr>
-    <tr><td class="lft">维瑞皮 <span class="en2">Verehide</span></td><td>+45</td><td>+35%</td><td>+45%</td><td>+7</td><td>+14%</td></tr>
-    <tr><td class="lft">谷地皮 <span class="en2">Valehide</span></td><td>+50</td><td>+40%</td><td>+50%</td><td>+8</td><td>+16%</td></tr>
-    <tr><td class="lft">贪婪皮 <span class="en2">Avarhide</span></td><td>+55</td><td>+45%</td><td>+55%</td><td>+9</td><td>+18%</td></tr>
+    <thead>
+      <tr class="tbl-hd"><th colspan="6"><img src="data/images/modifiers/leathernormal.png?v=20261005" alt="皮革"><span class="tbl-name">皮革材料加成 <span class="en2">Leather</span></span></th></tr>
+      <tr class="col-hd"><th>材料 <span class="en2">Material</span></th><th>耐久(护甲) <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>法力再生(法书) <span class="en2">Mana Regen</span></th><th>伤害(法书) <span class="en2">Damage</span></th><th>捕鱼加成(渔网) <span class="en2">Fishing</span></th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mat"><img src="data/images/modifiers/leathernormal.png?v=20261005" alt="">普通皮革 <span class="en2">Leather</span></td><td>50（基础）</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_sewingkit.jpg?v=20261005" alt="">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10%</td><td>+10</td><td>+4%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_sewingkit.jpg?v=20261005" alt="">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0</td><td>0</td><td>0</td><td>+8%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leatherdull.png?v=20261005" alt="">钝皮 <span class="en2">Dullhide</span></td><td>+15</td><td>+5%</td><td>+10%</td><td>+1</td><td>+2%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leathershadow.png?v=20261005" alt="">暗影皮 <span class="en2">Shadowhide</span></td><td>+20</td><td>+10%</td><td>+15%</td><td>+2</td><td>+4%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leathercopper.png?v=20261005" alt="">铜皮 <span class="en2">Copperhide</span></td><td>+25</td><td>+15%</td><td>+20%</td><td>+3</td><td>+6%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leatherbronze.png?v=20261005" alt="">青铜皮 <span class="en2">Bronzehide</span></td><td>+30</td><td>+20%</td><td>+25%</td><td>+4</td><td>+8%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leathergolden.png?v=20261005" alt="">金皮 <span class="en2">Goldenhide</span></td><td>+35</td><td>+25%</td><td>+30%</td><td>+5</td><td>+10%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leatherrose.png?v=20261005" alt="">玫瑰皮 <span class="en2">Rosehide</span></td><td>+40</td><td>+30%</td><td>+35%</td><td>+6</td><td>+12%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leathervere.png?v=20261005" alt="">维瑞皮 <span class="en2">Verehide</span></td><td>+45</td><td>+35%</td><td>+45%</td><td>+7</td><td>+14%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leathervale.png?v=20261005" alt="">谷地皮 <span class="en2">Valehide</span></td><td>+50</td><td>+40%</td><td>+50%</td><td>+8</td><td>+16%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/leatheravar.png?v=20261005" alt="">贪婪皮 <span class="en2">Avarhide</span></td><td>+55</td><td>+45%</td><td>+55%</td><td>+9</td><td>+18%</td></tr>
+    </tbody>
   </table>
 
   <h3>木板材料加成 <span class="en-h">Board Material Bonuses</span></h3>
   <p class="sub-note">木制武器、盾牌、乐器与钓竿使用彩色木板制造时获得：</p>
   <table class="wikitable">
-    <tr><th>材料 <span class="en2">Material</span></th><th>耐久 <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>战术(伤害) <span class="en2">Tactics</span></th><th>精准(PvM) <span class="en2">Accuracy</span></th><th>吟游技能 <span class="en2">Bard</span></th><th>捕鱼加成 <span class="en2">Fishing</span></th></tr>
-    <tr><td class="lft">普通 <span class="en2">Regular</span></td><td>50（基础）</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0%</td></tr>
-    <tr><td class="lft">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10</td><td>+3%</td><td>+5</td><td>+0%</td></tr>
-    <tr><td class="lft">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>+8%</td></tr>
-    <tr><td class="lft">钝木 <span class="en2">Dullwood</span></td><td>+15</td><td>+5%</td><td>+1</td><td>+1%</td><td>+3</td><td>+2%</td></tr>
-    <tr><td class="lft">暗影木 <span class="en2">Shadowwood</span></td><td>+20</td><td>+10%</td><td>+2</td><td>+2%</td><td>+4</td><td>+4%</td></tr>
-    <tr><td class="lft">铜木 <span class="en2">Copperwood</span></td><td>+25</td><td>+15%</td><td>+3</td><td>+3%</td><td>+5</td><td>+6%</td></tr>
-    <tr><td class="lft">青铜木 <span class="en2">Bronzewood</span></td><td>+30</td><td>+20%</td><td>+4</td><td>+4%</td><td>+6</td><td>+8%</td></tr>
-    <tr><td class="lft">金木 <span class="en2">Goldenwood</span></td><td>+35</td><td>+25%</td><td>+5</td><td>+5%</td><td>+7</td><td>+10%</td></tr>
-    <tr><td class="lft">玫瑰木 <span class="en2">Rosewood</span></td><td>+40</td><td>+30%</td><td>+6</td><td>+6%</td><td>+8</td><td>+12%</td></tr>
-    <tr><td class="lft">维瑞木 <span class="en2">Verewood</span></td><td>+45</td><td>+35%</td><td>+7</td><td>+7%</td><td>+9</td><td>+14%</td></tr>
-    <tr><td class="lft">谷地木 <span class="en2">Valewood</span></td><td>+50</td><td>+40%</td><td>+8</td><td>+8%</td><td>+10</td><td>+16%</td></tr>
-    <tr><td class="lft">贪婪木 <span class="en2">Avarwood</span></td><td>+55</td><td>+45%</td><td>+9</td><td>+9%</td><td>+11</td><td>+18%</td></tr>
+    <thead>
+      <tr class="tbl-hd"><th colspan="7"><img src="data/images/modifiers/boardregularwood.png?v=20261005" alt="木板"><span class="tbl-name">木板材料加成 <span class="en2">Board</span></span></th></tr>
+      <tr class="col-hd"><th>材料 <span class="en2">Material</span></th><th>耐久 <span class="en2">Durability</span></th><th>护甲 <span class="en2">AR</span></th><th>战术(伤害) <span class="en2">Tactics</span></th><th>精准(PvM) <span class="en2">Accuracy</span></th><th>吟游技能 <span class="en2">Bard</span></th><th>捕鱼加成 <span class="en2">Fishing</span></th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mat"><img src="data/images/modifiers/boardregularwood.png?v=20261005" alt="">普通 <span class="en2">Regular</span></td><td>50（基础）</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_saw.jpg?v=20261005" alt="">精制 <span class="en2">Exceptional</span></td><td>+25</td><td>+40%</td><td>+10</td><td>+3%</td><td>+5</td><td>+0%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/tinkering_tinkertools.jpg?v=20261005" alt="">大师精制 <span class="en2">Mastercrafted</span></td><td>+25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>+8%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boarddullwood.png?v=20261005" alt="">钝木 <span class="en2">Dullwood</span></td><td>+15</td><td>+5%</td><td>+1</td><td>+1%</td><td>+3</td><td>+2%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardshadowwood.png?v=20261005" alt="">暗影木 <span class="en2">Shadowwood</span></td><td>+20</td><td>+10%</td><td>+2</td><td>+2%</td><td>+4</td><td>+4%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardcopperwood.png?v=20261005" alt="">铜木 <span class="en2">Copperwood</span></td><td>+25</td><td>+15%</td><td>+3</td><td>+3%</td><td>+5</td><td>+6%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardbronzewood.png?v=20261005" alt="">青铜木 <span class="en2">Bronzewood</span></td><td>+30</td><td>+20%</td><td>+4</td><td>+4%</td><td>+6</td><td>+8%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardgoldwood.png?v=20261005" alt="">金木 <span class="en2">Goldenwood</span></td><td>+35</td><td>+25%</td><td>+5</td><td>+5%</td><td>+7</td><td>+10%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardrosewood.png?v=20261005" alt="">玫瑰木 <span class="en2">Rosewood</span></td><td>+40</td><td>+30%</td><td>+6</td><td>+6%</td><td>+8</td><td>+12%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardverewood.png?v=20261005" alt="">维瑞木 <span class="en2">Verewood</span></td><td>+45</td><td>+35%</td><td>+7</td><td>+7%</td><td>+9</td><td>+14%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardvalewood.png?v=20261005" alt="">谷地木 <span class="en2">Valewood</span></td><td>+50</td><td>+40%</td><td>+8</td><td>+8%</td><td>+10</td><td>+16%</td></tr>
+      <tr><td class="mat"><img src="data/images/modifiers/boardavarwood.png?v=20261005" alt="">贪婪木 <span class="en2">Avarwood</span></td><td>+55</td><td>+45%</td><td>+9</td><td>+9%</td><td>+11</td><td>+18%</td></tr>
+    </tbody>
   </table>
 
   <h2>概览 <span class="en-h">Overview</span></h2>
   <p class="sub-note">下图对比各类修饰词（Crafted vs Magic），可点开查看大图。</p>
-  <img class="mod-img" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/modifiers/CraftedVSMagicByTyr.png?v=20261005" alt="精制与魔法物品修饰词对比图（Tyr 制作）" loading="lazy">
+  <img class="mod-img" src="data/images/modifiers/CraftedVSMagicByTyr.png?v=20261005" alt="精制与魔法物品修饰词对比图（Tyr 制作）" loading="lazy">
   <div class="cap">精制装备 vs 魔法物品修饰词对比（by Tyr）</div>
-  <img class="mod-img" src="https://cdn.jsdelivr.net/gh/jum1687/uo-outlands-snowman@main/data/images/modifiers/CraftedVSMagicItems-byRakar.png?v=20261005" alt="精制与魔法物品对比图（Rakar 制作）" loading="lazy">
+  <img class="mod-img" src="data/images/modifiers/CraftedVSMagicItems-byRakar.png?v=20261005" alt="精制与魔法物品对比图（Rakar 制作）" loading="lazy">
   <div class="cap">精制装备 vs 魔法物品对比（by Rakar）</div>
 
   <p class="backlink"><a href="index.html">← 返回资料库首页</a></p>
