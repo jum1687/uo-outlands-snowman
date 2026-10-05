@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>状态效果与破甲机制 | Outlands 中文百科</title>
+<link rel="stylesheet" href="style.css?v=20260913_2">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../patch/index.html">版本更新</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <a href="../mastery/index.html">精通链</a>
+  <a href="../commands/index.html">命令大全</a>
+  <a href="../modifiers.html">装备属性</a>
+  <div class="nav-dropdown">
+    <a href="../codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="../codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="../codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="../codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="../codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="../codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="../codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="../codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="../codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="../codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="../codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="../codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="../codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="../codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="../codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="../codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="index.html">可驯服宠物</a>
+      <a href="follower-abilities.html">宠物技能大全</a>
+      <a href="status-effects.html">状态效果与破甲机制</a>
+      <a href="team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="../ships.html">船舰系统总页</a>
+      <a href="../ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<div class="mw-body">
+  <div class="source-link">口径依据：官方 Wiki 状态效果与破甲机制说明（本站按当前页 + 页脚修订日期引用，旧版「溢出等值转伤」已废止）</div>
+  <h1>状态效果与破甲机制 <span class="cnsub">Status Effects &amp; Armor Break</span></h1>
+  <p>本页汇总 Outlands 中宠物与玩家战斗相关的<b>减益状态效果</b>与<b>破甲 / 破魔抗规则</b>，作为宠物图鉴与配宠向导的权威口径参考。下表先区分各状态效果的作用，再说明护甲与魔抗的溢出处理、以及天赋联动。</p>
+
+  <h2>一、状态效果总览 <span class="en-h">Status Effects</span></h2>
+  <table class="wikitable">
+    <tr><th>状态效果</th><th>英文</th><th>对目标的影响</th><th>备注 / 易混淆点</th></tr>
+    <tr><td>诅咒</td><td>Hex</td><td>降低目标<b>魔法抗性</b></td><td>法术输出吃 Hex。宠物中由 5 只技能施加：秘法吐息 / 破法 / 宁静 / 梦境沉眠 等。</td></tr>
+    <tr><td>虚弱</td><td>Weaken</td><td>降低目标<b>造成的伤害</b></td><td>气流吐息 Air Breath 等施加。</td></tr>
+    <tr><td>穿刺</td><td>Pierce</td><td>降低目标<b>护甲</b></td><td>物理输出吃 Pierce。</td></tr>
+    <tr><td>残废</td><td>Cripple</td><td>降低目标<b>防御</b>，更易被命中</td><td><b>不限制移动</b>。</td></tr>
+    <tr><td>定身</td><td>Hinder</td><td>定住目标并造成<b>眩晕</b></td><td>施加于<b>生物</b>。</td></tr>
+    <tr><td>缠绕</td><td>Entangle / Web</td><td><b>只定住</b>（不眩晕）</td><td>蛛网 / 绞缠 / 窒息 / 抓握 / 钳制 等绞缠类。</td></tr>
+    <tr><td>断筋</td><td>Hamstring</td><td><b>减速</b></td><td>同一效果施加于<b>玩家</b>。</td></tr>
+    <tr><td>火系</td><td>Fire</td><td>火焰伤害</td><td>烈焰打击 / 咒焰 / 各类 Breath 火焰等。</td></tr>
+    <tr><td>流血</td><td>Bleed</td><td>持续流血伤害</td><td>—</td></tr>
+    <tr><td>中毒</td><td>Poison</td><td>中毒伤害</td><td>—</td></tr>
+    <tr><td>疾病</td><td>Disease</td><td>疾病伤害</td><td>—</td></tr>
+    <tr><td>冰霜易伤</td><td>Frost</td><td>冰霜易伤</td><td>寒冷之触 / 咒寒 / 严寒吐息 等。</td></tr>
+  </table>
+  <div class="note">控制类四态最易混：<b>缠绕</b> Entangle（只定住）／<b>断筋</b> Hamstring（减速）／<b>定身</b> Hinder（定住+眩晕）／<b>残废</b> Cripple（降防御，不限制移动）。Hinder 在部分汉化中译作「阻碍」，本站统一用<b>定身</b>。</div>
+
+  <h2>二、破甲 / 破魔抗机制 <span class="en-h">Armor Break</span></h2>
+  <ul>
+    <li><b>护甲（Armor）与魔法抗性（Magic Resist）地板均为 0，不能为负。</b></li>
+    <li><b>溢出不线性转伤，而是固定档：</b>
+      <ul>
+        <li>锤类特攻：基础 <b>+100% 伤害 +25 Pierce</b>；当目标护甲<b>触底 / 为 0</b> 时，再固定 <b>+50%</b>（合计最高 <b>+150%</b>）。</li>
+        <li>「<b>无视护甲 / 魔抗</b>」类技能：对 0 甲目标固定 <b>+15%</b>（<b>PvP 不生效</b>）。</li>
+      </ul>
+    </li>
+    <li>⚠️ <b>宠物技能施加的 Pierce / Hex 无溢出 / 触底补偿</b>——即宠物打 0 甲目标不会吃到上述 +50% / +15% 额外档位。</li>
+    <li>⚠️ 旧版「溢出等值转伤」规则<b>已废止</b>。引用官方机制请以<b>当前页 + 页脚修订日期</b>为准。</li>
+  </ul>
+
+  <h2>三、天赋联动 <span class="en-h">Mastery Synergy</span></h2>
+  <table class="wikitable">
+    <tr><th>天赋</th><th>效果</th></tr>
+    <tr><td>刮拭<br>Scour</td><td>施加 <b>虚弱 Weaken / 残废 Cripple / 穿刺 Pierce / 诅咒 Hex</b> 效果时，效果量提升 <b>(20% / 60% / 100%)</b>；若随从无法施加这些效果，则自身伤害提升 (5% / 15% / 25%)。</td></tr>
+    <tr><td>惩罚<br>Punishment</td><td>当宠物的 <b>穿刺 Pierce 或 诅咒 Hex</b> 效果在目标身上<b>到期 expire</b> 时，将对其造成 (DamageMax * 0.5 / 1.0 / 1.5) 伤害（<b>忽略护甲</b>）；若宠物无法施加 Pierce / Hex，则造成伤害提高 (4% / 8% / 12%)。</td></tr>
+  </table>
+
+  <p class="backlink"><a href="../index.html">← 返回站点首页</a> · <a href="follower-abilities.html">宠物技能大全</a> · <a href="index.html">可驯服宠物</a></p>
+</div>
+</body>
+<footer class="site-footer">
+  <div>UO Outlands 中文资料库 · 状态效果与破甲机制 · 2026-10-05</div>
+</footer>
+</html>

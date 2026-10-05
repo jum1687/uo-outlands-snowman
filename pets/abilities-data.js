@@ -2,7 +2,7 @@
 window.ABILITIES = {
  "air-breath": {
   "name": "气流吐息",
-  "desc": "向最远 12 格外的目标发射弹体，造成（最大伤害 DamageMax * 1.75）伤害，并施加（控制槽 Control Slots * 5%）的削弱效果，持续 15 秒。"
+  "desc": "向最远 12 格外的目标发射弹体，造成（最大伤害 DamageMax * 1.75）伤害，并施加（控制槽 Control Slots * 5%）的虚弱 Weaken 效果，持续 15 秒。"
  },
  "air-shield": {
   "name": "气流护盾",
@@ -306,7 +306,7 @@ window.ABILITIES = {
  },
  "dreamlull": {
   "name": "梦境沉眠",
-  "desc": "施法时有 15% 几率施加压制效果（控制栏位 * 25），持续 15 秒。同时定身生物（控制栏位 * 1）秒或使玩家断筋 2 秒。"
+  "desc": "施法时有 15% 几率施加诅咒 Hex 效果（控制栏位 * 25），持续 15 秒。同时定身生物（控制栏位 * 1）秒或使玩家断筋 2 秒。"
  },
  "earth-seeds": {
   "name": "大地之种",
