@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>版本更新 · 2026-10-12 补丁说明 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="style.css?v=20260913_1">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/theme.js"></script>
+<style>
+/* 本页图片：随内容自适应，居中显示 */
+.mw-content img{ display:block; max-width:100%; height:auto; margin:14px auto; border:1px solid #d8dde5; border-radius:6px; background:#fff; }
+</style>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../patch/index.html">版本更新</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <a href="../mastery/index.html">精通链</a>
+  <a href="../commands/index.html">命令大全</a>
+  <a href="../modifiers.html">装备属性</a>
+  <div class="nav-dropdown">
+    <a href="../codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="../codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="../codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="../codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="../codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="../codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="../codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="../codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="../codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="../codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="../codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="../codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="../codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="../codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="../codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="../codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="../ships.html">船舰系统总页</a>
+      <a href="../ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> &#8250; <a href="index.html">版本更新</a> &#8250; <span>2026-10-12 补丁</span></nav>
+<div class="source-link">官方原文：<a href="https://forums.uooutlands.com/index.php?threads/patch-notes-for-october-12-2026.6370/" target="_blank" rel="noopener">forums.uooutlands.com · Patch Notes for October 12, 2026</a></div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">2026 年 10 月 12 日 补丁说明 <span class="cnsub">Patch Notes for October 12, 2026</span></h1>
+  <div class="mw-content">
+<blockquote>
+<p>译自官方论坛补丁帖：<em>Patch Notes for October 12, 2026</em>（作者 Luthius）<br />
+说明：本译文尽量保留原文结构与数值；专有名词首次出现标注英文（如 宝典 Codex），便于对照。</p>
+</blockquote>
+<hr />
+<div class="toc"><span class="toctitle">本页目录</span><ul>
+<li><a href="#echoes">一、回声 Echoes</a></li>
+<li><a href="#rental-vendors">二、租赁商人 Rental Vendors</a><ul>
+<li><a href="#daily-upkeep">每日维护费 Daily Upkeep</a></li>
+<li><a href="#collect-all-gold">一键收取全部金币 Collect All Gold</a></li>
+<li><a href="#my-vendors-menu">我的商人菜单 My Vendors Menu</a></li>
+<li><a href="#dismiss-vendor">解雇商人 Dismiss Vendor</a></li>
+<li><a href="#last-restocked">最近补货 Last Restocked</a></li>
+<li><a href="#guild-ally-discounts">公会与盟友折扣 Guild and Ally Discounts</a></li>
+</ul>
+</li>
+<li><a href="#summoning">三、召唤 Summoning</a></li>
+<li><a href="#region-restrictions">四、区域限制 Region Restrictions</a></li>
+<li><a href="#houses">五、房屋 Houses</a></li>
+<li><a href="#rental-rooms">六、租赁房间 Rental Rooms</a></li>
+<li><a href="#codex-loadouts">七、宝典配置方案 Codex Loadouts</a></li>
+<li><a href="#distribution-loot-bag">八、分发战利品袋 Distribution Loot Bag</a></li>
+<li><a href="#distribution-chests">九、分发箱 Distribution Chests</a></li>
+<li><a href="#gold-decay">十、金币衰减 Gold Decay</a></li>
+<li><a href="#adventurers-satchel">十一、冒险者背包 Adventurer's Satchel</a></li>
+<li><a href="#item-graphics">十二、物品图形 Item Graphics</a></li>
+<li><a href="#item-names">十三、物品名称 Item Names</a></li>
+<li><a href="#containers">十四、容器 Containers</a></li>
+<li><a href="#prevalia-trunk">十五、普雷瓦利亚储物箱 Prevalia Trunk</a></li>
+<li><a href="#ships">十六、船只 Ships</a><ul>
+<li><a href="#ship-bandages">绷带 Bandages</a></li>
+<li><a href="#spyglasses">望远镜 Spyglasses</a></li>
+<li><a href="#aggression-damage-tracking">攻击与伤害追踪 Aggression and Damage Tracking</a></li>
+<li><a href="#contested-ocean-bosses">争夺海洋 Boss Contested Ocean Bosses</a></li>
+<li><a href="#infamy">恶名 Infamy</a></li>
+<li><a href="#infamy-decay">恶名衰减 Infamy Decay</a></li>
+<li><a href="#when-patch-goes-live">补丁上线时 When Patch Goes Live</a></li>
+</ul>
+</li>
+<li><a href="#barding">十七、威慑 Barding</a></li>
+<li><a href="#aspects">十八、元素 Aspects</a><ul>
+<li><a href="#aspect-menu">元素菜单 Aspect Menu</a></li>
+<li><a href="#agorawave-armor">波涛护甲 Agorawave Armor</a></li>
+</ul>
+</li>
+<li><a href="#monster-shuffle">十九、怪物洗牌 Monster Shuffle</a></li>
+<li><a href="#animations">二十、动画 Animations</a></li>
+<li><a href="#training-weapons">二十一、训练武器 Training Weapons</a></li>
+<li><a href="#plants">二十二、植物 Plants</a></li>
+<li><a href="#collectable-card-tomes">二十三、收藏卡册 Collectable Card Tomes</a></li>
+<li><a href="#kings-faire">二十四、国王集市 King's Faire</a></li>
+<li><a href="#fishing-poles">二十五、钓竿 Fishing Poles</a></li>
+<li><a href="#weekly-lotteries">二十六、每周抽奖 Weekly Lotteries</a></li>
+<li><a href="#event-moongates">二十七、活动月门 Event Moongates</a></li>
+<li><a href="#society-master">二十八、公会大师 Society Master</a></li>
+<li><a href="#kings-faire-interactive-prevalia-items">二十九、国王集市互动普雷瓦利亚物品 King's Faire Interactive Prevalia Items</a></li>
+</ul></div>
+
+<h2 id="echoes">一、回声 Echoes</h2>
+<ul>
+<li>回声菜单现在带有<strong>下拉列表</strong>，可在<strong>可用回声 Available Echoes</strong> 之间切换（位于右侧）。</li>
+<li>用于浏览可用回声的<strong>上一个/下一个按钮</strong>现在可以<strong>循环</strong>（到头后可回到起点/末尾）。</li>
+</ul>
+<img alt="回声菜单新增的下拉列表" src="../data/images/patch/20261012/echoes-menu.png" />
+<hr />
+
+<h2 id="rental-vendors">二、租赁商人 Rental Vendors</h2>
+
+<h3 id="daily-upkeep">每日维护费 Daily Upkeep</h3>
+<ul>
+<li>计算<strong>租赁商人 Rental Vendors</strong> 的<strong>每日维护费 Daily Upkeep</strong> 时，以<strong>固定价</strong>或<strong>单价</strong>挂牌、单价<strong>超过 500,000</strong> 金币的物品，现在每件<strong>按 500,000 封顶</strong>参与维护费计算。</li>
+<li>计算租赁商人的<strong>每日维护费</strong>时，以「<strong>整叠单价 Stack Price (each)</strong>」出售、<strong>整叠总价值超过 5,000,000 金币</strong>的物品，现在<strong>按 5,000,000 封顶</strong>参与维护费计算。</li>
+</ul>
+
+<h3 id="collect-all-gold">一键收取全部金币 Rental Vendors Collect All Gold</h3>
+<ul>
+<li>玩家现在拥有<strong>「一键收取全部金币 Collect All Gold」</strong>机制：可在<strong>一次操作</strong>中取出<strong>所有租赁商人</strong>上的<strong>已存金币 Gold Stored</strong>，包括玩家<strong>自己拥有</strong>的与<strong>通过租赁契约向其他玩家租用</strong>的商人。</li>
+</ul>
+
+<h3 id="my-vendors-menu">我的商人菜单 My Vendors Menu</h3>
+<ul>
+<li>玩家可在<strong>「我的商人 My Vendors」菜单</strong>中使用「一键收取全部金币」功能，可通过以下方式打开：
+<ul>
+<li>输入 <strong>[Vendors</strong></li>
+<li><strong>人物纸娃娃 Paperdoll → 帮助 Help → 我的商人 My Vendors</strong></li>
+</ul>
+</li>
+</ul>
+<img alt="我的商人菜单" src="../data/images/patch/20261012/vendors-menu.png" />
+<ul>
+<li>在菜单中点击<strong>「一键收取全部金币」按钮</strong>（需三连击确认），玩家将取出每个商人上的<strong>全部「已存金币」</strong>，并存入角色的<strong>银行箱 Bank Box</strong>。</li>
+</ul>
+<img alt="一键收取全部金币" src="../data/images/patch/20261012/collect-all-gold.png" />
+
+<h3 id="dismiss-vendor">解雇商人 Dismiss Vendor</h3>
+<ul>
+<li>玩家现在可以<strong>解雇 Dismiss</strong> 自己的租赁商人（自有或租用），即使其<strong>背包中仍有剩余物品</strong>。</li>
+</ul>
+<img alt="解雇仍有物品的商人" src="../data/images/patch/20261012/dismiss-vendor-1.png" />
+<ul>
+<li>解雇仍有物品的商人时，物品会转入玩家的<strong>银行箱</strong>；若银行空间不足，则启用<strong>「排队 Queueing」</strong>机制。</li>
+</ul>
+<img alt="物品转入银行箱" src="../data/images/patch/20261012/dismiss-vendor-2.png" />
+
+<h3 id="last-restocked">最近补货 Last Restocked</h3>
+<ul>
+<li>向租赁商人上<strong>已有的物品叠</strong>中<strong>追加物品</strong>出售，现在会更新该商人的<strong>「最近补货 Last Restocked」</strong>日期。</li>
+</ul>
+
+<h3 id="guild-ally-discounts">公会与盟友折扣 Guild and Ally Discounts</h3>
+<ul>
+<li>在租赁商人的 Owner 菜单中，为<strong>公会 Guild</strong>或<strong>联盟 Alliance</strong>设置<strong>100% 折扣</strong>时，现在显示为<strong>「免费 Free」</strong>（而非 100%，以免混淆）。</li>
+</ul>
+<img alt="100% 折扣显示为免费" src="../data/images/patch/20261012/guild-discount-free.png" />
+<ul>
+<li>在玩家的<strong>购买物品 Purchase Item</strong> 菜单中，对享有 100% 折扣的物品，现在显示为<strong>「免费！(公会/盟友折扣)」</strong>。</li>
+</ul>
+<img alt="购买菜单显示免费" src="../data/images/patch/20261012/purchase-free.png" />
+<ul>
+<li>对享有<strong>100% 折扣</strong>的商人，<strong>单击</strong>提示现在显示为<strong>「[物品对公会/盟友免费]」</strong>。</li>
+</ul>
+<img alt="单击提示显示免费" src="../data/images/patch/20261012/singleclick-free.png" />
+<hr />
+
+<h2 id="summoning">三、召唤 Summoning</h2>
+<ul>
+<li>修复了导致气元素 <strong>「Microburst」</strong> 升级加成计算不正确的问题。</li>
+<li>修复了导致剑灵 <strong>「Dancing Blades」</strong> 升级加成计算不正确的问题。</li>
+<li>修复了导致恶魔 <strong>「Ancient」</strong> 升级加成计算不正确的问题。</li>
+<li>修复了导致能量漩涡 <strong>「Gathering Storm」</strong> 升级加成计算不正确的问题。</li>
+</ul>
+<hr />
+
+<h2 id="region-restrictions">四、区域限制 Region Restrictions</h2>
+<ul>
+<li>在受限区域（如地牢 Dungeons）死亡的<strong>红手盗贼 Red Hand Thieves</strong>，现在会收到<strong>头顶文字提示</strong>，告知其在该地点的<strong>新区域限制</strong>（此前仅有系统消息）。</li>
+</ul>
+<img alt="盗贼死亡后的区域限制提示" src="../data/images/patch/20261012/redhand-region.png" />
+<ul>
+<li>在受限区域（如地牢）死亡的<strong>杀人者 Murderers</strong>，现在会收到<strong>头顶文字提示</strong>，告知其在一个或多个地点的<strong>区域限制</strong>（此前仅有系统消息）。</li>
+</ul>
+<img alt="杀人者死亡后的区域限制提示" src="../data/images/patch/20261012/murderer-region.png" />
+<ul>
+<li>作为盗贼或杀人者死亡时，玩家仍会收到<strong>「说出 'I must consider my sins' 或输入 [ConsiderSins 查看你的区域限制」</strong>的系统消息。</li>
+</ul>
+<hr />
+
+<h2 id="houses">五、房屋 Houses</h2>
+<ul>
+<li>修复了将房屋由<strong>公开 Public 改为私有 Private</strong> 后，<strong>房屋标牌 House Sign</strong> 朝向错误的问题。</li>
+<li>通过房屋标牌<strong>购买房屋</strong>，现在会<strong>重置该房屋的所有设置</strong>，涉及<strong>传送地毯 Warp Tiles</strong> 与<strong>自定义运输箱 Custom Shipping Crates</strong>（机制仍保持解锁，但位置会被清空、设置重置为最严格值）。</li>
+</ul>
+<hr />
+
+<h2 id="rental-rooms">六、租赁房间 Rental Rooms</h2>
+<ul>
+<li>以<strong>幽灵 ghost</strong> 状态<strong>单击</strong>租赁房间的<strong>前门</strong>，现在会显示<strong>「(双击复活)」</strong>提示。</li>
+<li>以<strong>幽灵</strong>状态<strong>双击</strong>租赁房间的<strong>前门</strong>，现在会给出<strong>复活 resurrect</strong> 选项。</li>
+</ul>
+<img alt="幽灵状态双击租赁房间门可复活" src="../data/images/patch/20261012/rental-room-door.png" />
+<ul>
+<li>玩家<strong>在租赁房间内死亡</strong>时，会收到<strong>「双击你的租赁房间门以复活，或作为幽灵离开。」</strong>的头顶提示。</li>
+</ul>
+<img alt="租赁房间内死亡的提示" src="../data/images/patch/20261012/rental-room-death.png" />
+<hr />
+
+<h2 id="codex-loadouts">七、宝典配置方案 Codex Loadouts</h2>
+<ul>
+<li>交换了用于切换宝典配置方案的<strong>上/下按钮</strong>位置，使其与下拉列表中的方案浏览方向一致。</li>
+<li>下拉列表中任何因<strong>红线宝典升级 Redline Codex Upgrades</strong> 而<strong>花费点数超过通常上限</strong>（多数宝典为 20 点）的<strong>宝典配置方案</strong>，现在会在方案名称中显示<strong>已花费总点数</strong>，例如「[21 pts] Tamer Bard」，让玩家知道该方案使用了红线宝典升级。</li>
+</ul>
+<img alt="配置方案名称显示总点数" src="../data/images/patch/20261012/codex-loadout-pts.png" />
+<hr />
+
+<h2 id="distribution-loot-bag">八、分发战利品袋 Distribution Loot Bag</h2>
+<ul>
+<li>玩家现在可在<strong>普雷瓦利亚市场 Prevalia Market</strong> 的 <strong>Misc 分类</strong>与<strong>家具 Furniture 分类</strong>下购买<strong>分发战利品袋 Distribution Loot Bags</strong>。</li>
+</ul>
+<img alt="分发战利品袋（Misc 分类）" src="../data/images/patch/20261012/dist-loot-bag-1.png" />
+<img alt="分发战利品袋（家具分类）" src="../data/images/patch/20261012/dist-loot-bag-2.png" />
+<ul>
+<li>若玩家的<strong>银行内</strong>放有分发战利品袋，则每当有物品通过<strong>分发箱 Distribution Chest</strong> 的分发送入玩家银行时，这些物品会<strong>放入分发战利品袋</strong>，而非银行箱主层。</li>
+<li>无法装入分发战利品袋（125 件上限），或会超出玩家银行总容量（125 件上限，可通过自定义提高）的物品，将走常规的<strong>「银行排队 Bank Queue」</strong>处理。</li>
+</ul>
+<img alt="银行排队处理" src="../data/images/patch/20261012/dist-bank-queue.png" />
+<hr />
+
+<h2 id="distribution-chests">九、分发箱 Distribution Chests</h2>
+<ul>
+<li><strong>分发箱</strong>的<strong>取回空容器 Retrieve Empty Containers</strong> 机制，现在会<strong>忽略任何已封存的 Paragon 宝箱 Paragon Chests</strong>（即实际装有物品者）。</li>
+</ul>
+<hr />
+
+<h2 id="gold-decay">十、金币衰减 Gold Decay</h2>
+<ul>
+<li>当地牢内发生<strong>金币衰减 Gold Decay</strong>（地面或地面容器中的金币）时，<strong>99 或以下</strong>的金币数量将被<strong>删除</strong>（而非仅减少）。</li>
+</ul>
+<hr />
+
+<h2 id="adventurers-satchel">十一、冒险者背包 Adventurer's Satchel</h2>
+<ul>
+<li>从<strong>冒险者背包 Adventurer's Satchels</strong> 中移除了<strong>「将背包内全部加入 Add All in Backpack」</strong>的 shift-单击上下文菜单选项按钮。</li>
+</ul>
+<hr />
+
+<h2 id="item-graphics">十二、物品图形 Item Graphics</h2>
+<ul>
+<li>修复了若干<strong>「旋转后」图形</strong>错误的物品（经由室内装潢师 Interior Decorator）。</li>
+</ul>
+<hr />
+
+<h2 id="item-names">十三、物品名称 Item Names</h2>
+<ul>
+<li>修复了若干<strong>单击名称</strong>错误的物品（例如「Cambeson」「Startassle Jelly」）。</li>
+</ul>
+<hr />
+
+<h2 id="containers">十四、容器 Containers</h2>
+<ul>
+<li>更新了 <strong>100+ 个容器</strong>的<strong>容器图形 Container graphics</strong>。</li>
+</ul>
+<img alt="更新后的容器图形" src="../data/images/patch/20261012/containers-gfx.png" />
+<hr />
+
+<h2 id="prevalia-trunk">十五、普雷瓦利亚储物箱 Prevalia Trunk</h2>
+<ul>
+<li>修复了若干无法加入<strong>普雷瓦利亚储物箱 Prevalia Trunk</strong> 的限量版普雷瓦利亚商人更新<strong>「附加内容契约 Add-On Deeds」</strong>。</li>
+</ul>
+<hr />
+
+<h2 id="ships">十六、船只 Ships</h2>
+
+<h3 id="ship-bandages">绷带 Bandages</h3>
+<ul>
+<li>玩家在<strong>正在使用兽医补给 Veterinary Supplies</strong> 期间，将<strong>无法</strong>再通过<strong>船只热键栏 Ship Hotbar</strong> 为<strong>船员 crewmembers</strong> 施加<strong>绷带 Bandages</strong>。</li>
+</ul>
+
+<h3 id="spyglasses">望远镜 Spyglasses</h3>
+<ul>
+<li>修复了<strong>望远镜 Spyglasses</strong> 使用的是玩家<strong>当前所在船只</strong>的加成、而非其<strong>担任船长的船只</strong>加成的问题。</li>
+</ul>
+
+<h3 id="aggression-damage-tracking">攻击与伤害追踪 Aggression and Damage Tracking</h3>
+<ul>
+<li>修复了若干问题：玩家之间各类敌对船只对战行为，有时无法正确建立或维持玩家与船只之间的「攻击 Aggression」追踪（曾导致恶名 Infamy 分配偶发异常）。</li>
+<li>船只对战的攻击与伤害追踪现在<strong>统一持续 5 分钟</strong>（若战斗继续则持续刷新）。</li>
+</ul>
+
+<h3 id="contested-ocean-bosses">争夺海洋 Boss Contested Ocean Bosses</h3>
+<ul>
+<li>修复了在<strong>争夺海洋 Boss 区域</strong>（半径 150 格）战斗时的若干攻击标记问题。</li>
+<li>海洋 Boss <strong>死亡</strong>后，其死亡<strong>地点</strong>在接下来 <strong>5 分钟</strong>内仍按半径 150 格的争夺海洋 Boss 区域处理，用于攻击与恶名判定。</li>
+</ul>
+
+<h3 id="infamy">恶名 Infamy</h3>
+<ul>
+<li>修复了若干恶名无法正确识别<strong>玩家船只、玩家随从与玩家船员</strong>之间<strong>攻击</strong>行为的问题。</li>
+<li>玩家现在在任何情况下，每 <strong>15 分钟</strong>从<strong>同一名玩家</strong>处最多获得 <strong>1 点恶名</strong>（击沉船只、玩家死亡或两者兼有）。</li>
+<li>玩家死亡现在<strong>仅当该玩家仍在船上</strong>（而非陆地）时才计入<strong>恶名</strong>。</li>
+</ul>
+
+<h3 id="infamy-decay">恶名衰减 Infamy Decay</h3>
+<ul>
+<li>在<strong>每天的开始时</strong>，玩家将失去 1 点恶名。</li>
+<li>若玩家在<strong>最近 3 天内</strong>未获得任何恶名，则改为失去 <strong>2 点</strong>恶名。</li>
+<li>若玩家在<strong>最近 7 天内</strong>未获得任何恶名，则改为失去 <strong>3 点</strong>恶名。</li>
+</ul>
+
+<h3 id="when-patch-goes-live">补丁上线时 When Patch Goes Live</h3>
+<ul>
+<li>在本补丁上线时，任何 OutlandsID 上<strong>恶名达到 30 或以上</strong>的玩家，将被<strong>降至 29 点恶名</strong>。</li>
+</ul>
+<hr />
+
+<h2 id="barding">十七、威慑 Barding</h2>
+<ul>
+<li>所有来自<strong>被玩家挑衅 provoked</strong> 的生物的<strong>伤害</strong>，若该玩家处于<strong>静止惩罚 Stationary Penalty</strong> 状态（因 5 分钟未移动，或最后一次旅行后未移动），将被<strong>降至 1</strong>。</li>
+</ul>
+<hr />
+
+<h2 id="aspects">十八、元素 Aspects</h2>
+
+<h3 id="aspect-menu">元素菜单 Aspect Menu</h3>
+<ul>
+<li>元素菜单的<strong>元素特殊效果按钮</strong>现在带有<strong>悬停提示 rollover tooltips</strong>，显示其描述。</li>
+</ul>
+<img alt="元素特殊效果按钮的悬停提示" src="../data/images/patch/20261012/aspect-tooltip.png" />
+
+<h3 id="agorawave-armor">波涛护甲 Agorawave Armor</h3>
+<ul>
+<li>波涛领域 Agorawave Fields 不再击中与领域所在格 <strong>z 轴高度差超过 15 层</strong>的生物（即与施法者不在同一楼层的生物）。</li>
+</ul>
+<hr />
+
+<h2 id="monster-shuffle">十九、怪物洗牌 Monster Shuffle</h2>
+<ul>
+<li>玩家现在可以为怪物洗牌使用<strong>「向余额增加 25,000」</strong>按钮选项。</li>
+<li>怪物洗牌的起始<strong>下注成本 Roll Cost</strong> 现在是 <strong>500</strong>（此前为 250）。</li>
+<li>玩家现在可将<strong>下注成本</strong>提高至<strong>最高 25,000</strong>（此前上限为 5,000）。</li>
+<li><strong>注意：</strong>中奖概率与奖励处理与之前相同；随下注成本线性提升的机制也与之前一致。</li>
+</ul>
+<img alt="怪物洗牌下注界面" src="../data/images/patch/20261012/monster-shuffle.png" />
+<hr />
+
+<h2 id="animations">二十、动画 Animations</h2>
+<ul>
+<li>怪物洗牌的生物现在<strong>有动画了</strong>！</li>
+</ul>
+<img alt="怪物洗牌生物动画" src="../data/images/patch/20261012/monster-shuffle-anim.gif" />
+<hr />
+
+<h2 id="training-weapons">二十一、训练武器 Training Weapons</h2>
+<ul>
+<li><strong>训练武器 Training Weapons</strong> 现在<strong>最高造成 1 点伤害</strong>（此前从 1 点伤害起步，但会因宝典 / 红线 / 精通链 / 技能而获得递增，最终伤害高得多）。</li>
+</ul>
+<hr />
+
+<h2 id="plants">二十二、植物 Plants</h2>
+<ul>
+<li><strong>植物盆 Plant Bowls</strong> 的<strong>当前效果按钮</strong>现在带有<strong>悬停提示</strong>，显示其描述。</li>
+</ul>
+<img alt="植物盆当前效果按钮的悬停提示" src="../data/images/patch/20261012/plant-tooltip.png" />
+<hr />
+
+<h2 id="collectable-card-tomes">二十三、收藏卡册 Collectable Card Tomes</h2>
+<ul>
+<li>收藏卡册现在<strong>所有玩家</strong>均可查看（即使不是 Owner / Co-Owner / Friends）。</li>
+<li>修复了玩家无法通过<strong>右键单击</strong>特定卡牌页面来<strong>关闭</strong>收藏卡册菜单的问题。</li>
+</ul>
+<hr />
+
+<h2 id="kings-faire">二十四、国王集市 King's Faire</h2>
+<ul>
+<li>修复了<strong>参与国王集市活动</strong>的玩家会导致其账号下、位于国王集市区域的<strong>其他未参与玩家</strong>无法<strong>使用物品</strong>（如杂耍物品）的问题。</li>
+</ul>
+<hr />
+
+<h2 id="fishing-poles">二十五、钓竿 Fishing Poles</h2>
+<ul>
+<li>玩家现在可以<strong>双击</strong>背包中的任意钓竿来<strong>「快速装备 Fast Equip」</strong>，机制与武器/护甲相同。</li>
+</ul>
+<img alt="双击钓竿快速装备" src="../data/images/patch/20261012/fishing-fast-equip.png" />
+<hr />
+
+<h2 id="weekly-lotteries">二十六、每周抽奖 Weekly Lotteries</h2>
+<ul>
+<li>修复了上一周抽奖的<strong>「抽奖结束日期」</strong>会错误地显示为最近一次已完成抽奖日期的问题。</li>
+</ul>
+<hr />
+
+<h2 id="event-moongates">二十七、活动月门 Event Moongates</h2>
+<ul>
+<li>玩家在<strong>幽灵</strong>状态下，将<strong>无法</strong>再使用<strong>公共月门前往限时活动地点</strong>（如国王集市 King's Faire、普雷瓦利亚草原 Prevalia Meadows、雪球大战 Snowbrawl 等）。</li>
+</ul>
+<hr />
+
+<h2 id="society-master">二十八、公会大师 Society Master</h2>
+<ul>
+<li>玩家现在可以<strong>双击</strong>任意<strong>公会大师 NPC Society Masters</strong> 来打开其公会任务菜单。</li>
+</ul>
+<img alt="双击公会大师打开任务菜单" src="../data/images/patch/20261012/society-master.png" />
+<hr />
+
+<h2 id="kings-faire-interactive-prevalia-items">二十九、国王集市互动普雷瓦利亚物品 King's Faire Interactive Prevalia Items</h2>
+<ul>
+<li>大量来自<strong>国王集市</strong>的互动普雷瓦利亚商人物品（包括杂耍物品 Juggling Items / 喷火油 Firebreathing Oil / 纸飞机 Paper Airplanes）现在可在<strong>骑乘 Mounted</strong> 状态下使用。</li>
+</ul>
+<img alt="骑乘状态使用国王集市互动物品" src="../data/images/patch/20261012/kingsfaire-mounted.png" />
+
+  </div>
+  <p class="backlink"><a href="index.html">&#8592; 返回版本更新索引</a></p>
+</div>
+<footer>
+  <div>收集整理：Snowman Liang ｜ 如发现错误请联系整理者：QQ16873486 ｜ 更新日期：2026年10月13日</div>
+</footer>
+<audio id="bgm" loop preload="auto" src="../assets/music/buccaneers-den.mp3"></audio>
+<div class="bgm-ctrl" id="bgmCtrl">
+  <button class="bgm-toggle" id="bgmToggle" aria-label="播放/暂停背景音乐" title="播放/暂停：Buccaneer's Den">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <button class="bgm-mute" id="bgmMute" aria-label="静音/取消静音" title="静音">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a4 4 0 010 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18.5 5.5a8 8 0 010 13" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 5M21 9l-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <input type="range" class="bgm-vol" id="bgmVol" min="0" max="1" step="0.01" value="0.5" aria-label="音量">
+</div>
+<script>
+(function(){
+  var KEY_P='uo_bgm_playing', KEY_M='uo_bgm_muted', KEY_V='uo_bgm_vol', KEY_T='uo_bgm_time';
+  var bgm=document.getElementById('bgm');
+  var toggle=document.getElementById('bgmToggle');
+  var mute=document.getElementById('bgmMute');
+  var vol=document.getElementById('bgmVol');
+  var playing=false;
+  function setPlaying(p){playing=p;toggle.classList.toggle('playing',p);}
+  var v=parseFloat(localStorage.getItem(KEY_V)); if(isNaN(v))v=0.5;
+  bgm.volume=v; vol.value=v;
+  var muted=localStorage.getItem(KEY_M)==='1';
+  bgm.muted=muted; mute.classList.toggle('muted',muted);
+  var intendPlay=localStorage.getItem(KEY_P)==='1';
+  function saveTime(){ try{localStorage.setItem(KEY_T,String(bgm.currentTime||0));}catch(e){} }
+  bgm.addEventListener('timeupdate',saveTime);
+  window.addEventListener('pagehide',saveTime);
+  function startFrom(t){
+    if(t>0 && isFinite(t)){ try{bgm.currentTime=t;}catch(e){} }
+    bgm.play().then(function(){setPlaying(true);}).catch(function(){});
+  }
+  if(intendPlay){
+    var t=parseFloat(localStorage.getItem(KEY_T))||0;
+    if(bgm.readyState>=1){ startFrom(t); }
+    else { bgm.addEventListener('loadedmetadata',function(){startFrom(t);},{once:true}); }
+  }
+  toggle.addEventListener('click',function(){
+    if(playing){bgm.pause();localStorage.setItem(KEY_P,'0');setPlaying(false);}
+    else{bgm.play().then(function(){localStorage.setItem(KEY_P,'1');setPlaying(true);}).catch(function(){});}
+  });
+  bgm.addEventListener('play',function(){setPlaying(true);localStorage.setItem(KEY_P,'1');});
+  mute.addEventListener('click',function(){
+    bgm.muted=!bgm.muted;
+    mute.classList.toggle('muted',bgm.muted);
+    localStorage.setItem(KEY_M,bgm.muted?'1':'0');
+  });
+  vol.addEventListener('input',function(){
+    var val=parseFloat(vol.value);
+    bgm.volume=val;
+    localStorage.setItem(KEY_V,String(val));
+    if(val>0 && bgm.muted){bgm.muted=false;mute.classList.remove('muted');localStorage.setItem(KEY_M,'0');}
+  });
+})();
+</script>
+</body>
+</html>
