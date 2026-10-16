@@ -59,7 +59,7 @@
     var bar = document.createElement('div');
     bar.id = 'site-credit';
     bar.className = 'site-credit';
-    bar.textContent = '收集整理：Snowman Liang ｜ 如发现错误请联系整理者：QQ16873486 ｜ 更新日期：2026年8月12日';
+    bar.textContent = '收集整理：Snowman Liang ｜ 如发现错误请联系整理者：QQ16873486 ｜ 更新日期：2026年10月16日';
     nav.parentNode.insertBefore(bar, nav.nextSibling);
   }
 
