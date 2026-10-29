@@ -123,6 +123,9 @@ NAV = '''<nav class="site-nav">
   <a href="../elements/index.html">元素精通</a>
   <a href="../mastery/index.html">精通链</a>
   <a href="../commands/index.html">命令大全</a>
+  <a href="../modifiers.html">装备属性</a>
+  <a href="../poison.html">用毒 Poison</a>
+  <a href="../treasure-maps.html">藏宝图与资源图</a>
   <div class="nav-dropdown">
     <a href="../codex/index.html">宝典图鉴</a>
     <div class="nav-menu">
