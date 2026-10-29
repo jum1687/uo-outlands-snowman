@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藏宝图与资源图 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="skills/style.css?v=20260913_1">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
+<style>
+.toc{float:none;max-width:none;margin:0 0 1.4em;}
+.toc ol{column-count:2;column-gap:34px;}
+@media (max-width:640px){ .toc ol{column-count:1;} }
+/* 本页配图左对齐、随内容自适应，不受全站 320px 上限约束 */
+.mw-content img{ display:block; max-width:100%; height:auto; margin:12px 0; border:1px solid #d8dde5; border-radius:6px; background:#fff; }
+.mw-content p.img-cap{ font-size:12.5px; color:var(--muted,#667); margin:-6px 0 12px; }
+.related-box{ border-left:4px solid #6a9fb5; background:#eef6fa; padding:8px 14px; margin:1em 0; border-radius:0 4px 4px 0; font-size:13.5px; }
+</style>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="index.html">首页</a>
+  <a href="patch/index.html">版本更新</a>
+  <a href="skills/index.html">技能详解</a>
+  <a href="elements/index.html">元素精通</a>
+  <a href="mastery/index.html">精通链</a>
+  <a href="commands/index.html">命令大全</a>
+  <a href="modifiers.html">装备属性</a>
+  <a href="poison.html">用毒 Poison</a>
+  <a href="treasure-maps.html">藏宝图与资源图</a>
+  <div class="nav-dropdown">
+    <a href="codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="pets/index.html">可驯服宠物</a>
+      <a href="pets/follower-abilities.html">宠物技能大全</a>
+      <a href="pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="ships.html">船舰系统总页</a>
+      <a href="ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="index.html">资料库首页</a> &#8250; <a href="patch/index.html">版本更新</a> &#8250; <span>藏宝图与资源图</span></nav>
+<div class="source-link">机制译自官方补丁帖：<a href="https://forums.uooutlands.com/index.php?threads/patch-notes-for-august-11-2026.5913/" target="_blank" rel="noopener">Patch Notes for August 11, 2026</a>（<a href="patch/2026-08-11.html">本站完整补丁说明</a>）</div>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">藏宝图与资源图 <span class="cnsub">Treasure & Resource Maps</span></h1>
+  <div class="toc"><span class="toctitle">本页目录</span><ol>
+      <li><a href="#part-treasure">第一部分 · 藏宝图 Treasure Maps</a></li>
+      <li><a href="#undecoded-maps">未解码地图 Undecoded Maps</a></li>
+      <li><a href="#treasure-map-tomes">藏宝图书 Treasure Map Tomes</a></li>
+      <li><a href="#treasure-map-menu">藏宝图菜单 Treasure Map Menu</a></li>
+      <li><a href="#cartography-skill-and-treasure-map-actions">制图技能与藏宝图操作 Cartography Skill and Treasure Map Actions</a></li>
+      <li><a href="#_1">藏宝图宝箱各等级最低制图技能要求</a></li>
+      <li><a href="#decode-map">解码地图 Decode Map</a></li>
+      <li><a href="#active-map-item">激活地图物品 Active Map Item</a></li>
+      <li><a href="#treasure-map-expiration">藏宝图过期 Treasure Map Expiration</a></li>
+      <li><a href="#hike-to-vicinity">徒步至附近 Hike to Vicinity</a></li>
+      <li><a href="#navigate-to-chest">导航至宝箱 Navigate to Chest</a></li>
+      <li><a href="#reveal-chest">揭示宝箱 Reveal Chest</a></li>
+      <li><a href="#defeat-creatures">击败生物 Defeat Creatures</a></li>
+      <li><a href="#treasure-chest-access-loot-and-rewards">宝箱访问、战利品与奖励 Treasure Chest Access, Loot, and Rewards</a></li>
+      <li><a href="#exclusivity-period">独占期 Exclusivity Period</a></li>
+      <li><a href="#opening-treasure-chest">打开宝箱 Opening Treasure Chest</a></li>
+      <li><a href="#other-players">其他玩家 Other Players</a></li>
+      <li><a href="#abandon">放弃 Abandon</a></li>
+      <li><a href="#complete">完成 Complete</a></li>
+      <li><a href="#player-vendors">玩家商店 Player Vendors</a></li>
+      <li><a href="#razor">客户端 / Razor</a></li>
+      <li><a href="#part-resource">第二部分 · 资源图 Resource Maps</a></li>
+      <li><a href="#overhaul">改版 Overhaul</a></li>
+      <li><a href="#graphics-and-hues">图形与色相 Graphics and Hues</a></li>
+      <li><a href="#undecoded-maps_1">未解码地图 Undecoded Maps</a></li>
+      <li><a href="#existing-partially-harvested-maps">现有部分采集地图 Existing Partially Harvested Maps</a></li>
+      <li><a href="#new-resource-maps">新资源图 New Resource Maps</a></li>
+      <li><a href="#fishing-maps">钓鱼图 Fishing Maps</a></li>
+      <li><a href="#resource-map-menu">资源图菜单 Resource Map Menu</a></li>
+      <li><a href="#skill-requirements-and-map-actions">技能要求与地图操作 Skill Requirements and Map Actions</a></li>
+      <li><a href="#_2">各地图类型最低有效采集技能要求</a></li>
+      <li><a href="#decode-map_1">解码地图 Decode Map</a></li>
+      <li><a href="#active-map-item_1">激活地图物品 Active Map Item</a></li>
+      <li><a href="#map-expiration">地图过期 Map Expiration</a></li>
+      <li><a href="#hike-to-vicinity_1">徒步至附近 Hike to Vicinity</a></li>
+      <li><a href="#navigate-to-camp">导航至营地 Navigate to Camp</a></li>
+      <li><a href="#reveal-camp">揭示营地 Reveal Camp</a></li>
+      <li><a href="#harvest-resources">采集资源 Harvest Resources</a></li>
+      <li><a href="#abandon_1">放弃 Abandon</a></li>
+      <li><a href="#completion">完成 Completion</a></li>
+      <li><a href="#resource-map-tomes">资源图书 Resource Map Tomes</a></li>
+      <li><a href="#razor_1">客户端 / Razor</a></li>
+  </ol></div>
+  <div class="related-box">相关：<a href="skills/cartography.html">制图术 Cartography</a>｜<a href="skills/lockpicking.html">开锁 Lockpicking</a>｜<a href="skills/fishing.html">钓鱼 Fishing</a>｜<a href="skills/lumberjacking.html">伐木 Lumberjacking</a>｜<a href="patch/2026-08-11.html">2026-08-11 完整补丁说明</a></div>
+  <div class="mw-content">
+<p class="note">藏宝图与资源图共用一套「激活地图物品」机制：解码后绑定角色、同时只能持有一个、按流程徒步/导航/揭示、完成或放弃后才能操作下一张。30 分钟（传说图 60 分钟）内未完成将自动过期。</p>
+<h2 id="part-treasure">第一部分 · 藏宝图 <span class="cnsub">Treasure Maps</span></h2>
+<h3 id="undecoded-maps">未解码地图 Undecoded Maps</h3>
+<ul>
+<li><strong>未解码</strong>藏宝图可与<strong>同等级</strong>的其他未解码藏宝图<strong>堆叠</strong>。</li>
+<li>已解码但<strong>尚未生成宝箱</strong>的藏宝图，在补丁上线时统一<strong>回退为未解码</strong>（历史迁移说明）。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/jtTthos.png" /></p>
+<h3 id="treasure-map-tomes">藏宝图书 Treasure Map Tomes</h3>
+<ul>
+<li><strong>藏宝图书</strong><strong>只</strong>存储<strong>未解码</strong>藏宝图。</li>
+<li>藏宝图书内已解码的藏宝图在补丁上线时统一<strong>回退为未解码</strong>（历史迁移说明）。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/JWC3YmW.png" /></p>
+<h3 id="treasure-map-menu">藏宝图菜单 Treasure Map Menu</h3>
+<ul>
+<li>挖取藏宝图<strong>无需铲子 Shovels</strong>。</li>
+<li>藏宝图通过<strong>藏宝图菜单</strong>管理：在背包中<strong>双击</strong>藏宝图即可打开。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/kbxdnIk.png" /></p>
+<ul>
+<li>须先将藏宝图从其<strong>堆叠</strong>中<strong>分离</strong>，才能双击打开。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/oM2zbuv.png" /></p>
+<h3 id="cartography-skill-and-treasure-map-actions">制图技能与藏宝图操作 Cartography Skill and Treasure Map Actions</h3>
+<ul>
+<li>藏宝图宝箱<strong>不需要开锁 Lockpicking</strong> 技能，也<strong>不</strong>从<strong>采矿 Mining</strong> 技能获得定位宝箱的益处。</li>
+<li>藏宝图提供多个可执行的<strong>「操作」</strong>，其中数项需具备足够的<strong>已学制图技能 printed Cartography skill</strong>（解码地图 Decode Map、揭示宝箱 Reveal Chest）。</li>
+<li>完成藏宝图<strong>无需铲子</strong>；在成功执行解码地图、揭示宝箱等操作时，须<strong>消耗背包中的探险者包</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/yHlz7WF.png" /></p>
+<h3 id="_1">藏宝图宝箱各等级最低制图技能要求</h3>
+<ul>
+<li><strong>粗略绘制（1 级 Plainly Drawn）：</strong> 制图 85</li>
+<li><strong>熟练绘制（2 级 Expertly Drawn）：</strong> 制图 90</li>
+<li>** adept 绘制（3 级 Adeptly Drawn）：** 制图 95</li>
+<li><strong>巧妙绘制（4 级 Cleverly Drawn）：</strong> 制图 100</li>
+<li><strong>诡诈绘制（5 级 Deviously Drawn）：</strong> 制图 105</li>
+<li><strong>精巧绘制（6 级 Ingeniously Drawn）：</strong> 制图 110</li>
+<li><strong>恶魔绘制（7 级 Diabolically Drawn）：</strong> 制图 115</li>
+<li><strong>传说绘制（8 级 / 传说图 Lore Map）：</strong> 制图 120</li>
+</ul>
+<h3 id="decode-map">解码地图 Decode Map</h3>
+<ul>
+<li>开启藏宝图的第一步是<strong>解码</strong>。</li>
+<li>点击藏宝图菜单中的<strong>「解码地图」按钮</strong>即可解码。</li>
+<li>解码需玩家<strong>静止 15 秒</strong>，完成时从背包<strong>消耗 1 个探险者包</strong>。</li>
+<li>解码过程中若<strong>移动</strong>，操作<strong>取消</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/nfHXYbc.png" /></p>
+<p><img alt=" " src="data/images/maps/0F1cssT.png" /></p>
+<p><img alt=" " src="data/images/maps/SOmdkIZ.png" /></p>
+<h3 id="active-map-item">激活地图物品 Active Map Item</h3>
+<ul>
+<li><strong>解码后</strong>，藏宝图成为<strong>「激活地图物品」</strong>（跨 <strong>OutlandsID</strong>，即所有角色与账号共享此状态）。</li>
+<li><strong>激活地图物品</strong>呈<strong>红色 Red Hue</strong>、<strong>祝福 Blessed</strong>，并<strong>绑定</strong>到解码它的角色。</li>
+<li>玩家<strong>同时只能持有 1 个</strong>激活地图物品（含藏宝图与各类资源图：钓鱼/伐木/矿石/剥皮）。</li>
+<li>绑定到 OutlandsID 上其他角色的藏宝图<strong>无法使用</strong>。</li>
+<li>必须先<strong>完成</strong>或<strong>放弃</strong>当前激活地图物品，才能解码或操作其他地图。</li>
+<li><strong>单击</strong>激活藏宝图可查看<strong>过期</strong>剩余时间与<strong>绑定</strong>角色。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/KFKsYA8.png" /></p>
+<h3 id="treasure-map-expiration">藏宝图过期 Treasure Map Expiration</h3>
+<ul>
+<li>藏宝图<strong>激活后</strong>，1–7 级地图须在 <strong>30 分钟</strong>内完成、8 级（传说图）<strong>60 分钟</strong>内完成，否则自动<strong>过期</strong>并转为<strong>放弃 Abandoned</strong>。</li>
+<li>藏宝图被放弃或过期时，连同其宝箱与生成的生物一并<strong>删除</strong>。</li>
+</ul>
+<h3 id="hike-to-vicinity">徒步至附近 Hike to Vicinity</h3>
+<ul>
+<li>藏宝图宝箱位置<strong>不再提供</strong>视觉预览（地图弹出）。</li>
+<li>须点击<strong>「徒步至附近」按钮</strong>，<strong>徒步</strong>前往宝箱位置附近。</li>
+<li>徒步至附近适用<strong>地图集徒步</strong>的所有正常限制。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/FWCo4og.png" /></p>
+<h3 id="navigate-to-chest">导航至宝箱 Navigate to Chest</h3>
+<ul>
+<li>点击<strong>「导航至宝箱」按钮</strong>会显示指向宝箱位置的<strong>追踪箭头</strong>。</li>
+<li>该追踪箭头<strong>不显示</strong>目标<strong>坐标</strong>与<strong>距离</strong>（与常规追踪箭头不同）。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/dtDwN9r.png" /></p>
+<h3 id="reveal-chest">揭示宝箱 Reveal Chest</h3>
+<ul>
+<li>点击藏宝图菜单中的<strong>「揭示宝箱」按钮</strong>可尝试揭示宝箱。</li>
+<li>揭示需<strong>静止 15 秒</strong>，完成时从背包<strong>消耗 1 个探险者包</strong>。</li>
+<li>过程中若移动，操作取消。</li>
+<li>须位于宝箱位置 <strong>3 格内</strong>才能成功揭示。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/1QksbaP.png" /></p>
+<h3 id="defeat-creatures">击败生物 Defeat Creatures</h3>
+<ul>
+<li>宝箱揭示后，数个<strong>生物</strong>会在附近生成。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/Ic3JTL7.png" /></p>
+<ul>
+<li>所有生成生物被<strong>击败</strong>后，<strong>所有者</strong>会收到头顶通知。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/mjtGqpM.png" /></p>
+<h3 id="treasure-chest-access-loot-and-rewards">宝箱访问、战利品与奖励 Treasure Chest Access, Loot, and Rewards</h3>
+<ul>
+<li>所有生成生物被<strong>击败</strong>后，可<strong>双击</strong>宝箱打开，生成<strong>战利品</strong>并改变宝箱<strong>外观</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/q8QrGXl.png" /></p>
+<h3 id="exclusivity-period">独占期 Exclusivity Period</h3>
+<ul>
+<li>击败生成生物后 <strong>2 分钟</strong>内，仅<strong>所有者</strong>可<strong>打开</strong>宝箱。</li>
+<li>此期间<strong>其他玩家</strong>尝试打开会收到<strong>系统消息</strong>，告知剩余可开启时间。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/VKIhs99.png" /></p>
+<h3 id="opening-treasure-chest">打开宝箱 Opening Treasure Chest</h3>
+<ul>
+<li>首位开箱玩家获得<strong>经验</strong>，其<strong>加成</strong>（元素、精通链、公会恩惠等）决定宝箱<strong>战利品</strong>的调整。</li>
+<li>若<strong>所有者</strong>在开箱时<strong>存活</strong>且位于宝箱 <strong>18 格内</strong>，则记入<strong>成就 Achievements、公会任务 Society Jobs、服务器排名 Server Rank</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/q8QrGXl.png" /></p>
+<h3 id="other-players">其他玩家 Other Players</h3>
+<ul>
+<li>宝箱<strong>打开后</strong>，<strong>所有玩家</strong>均可访问。</li>
+<li>但与所有者不在同一<strong>公会、队伍或联盟</strong>的玩家，打开宝箱属<strong>犯罪行为 criminal</strong>。</li>
+</ul>
+<h3 id="abandon">放弃 Abandon</h3>
+<ul>
+<li>点击藏宝图菜单中的<strong>「放弃」按钮</strong>（需三次点击确认）可<strong>放弃</strong>激活藏宝图。</li>
+<li>放弃将<strong>删除</strong>藏宝图、宝箱及其生成的生物。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/wFyjQJY.png" /></p>
+<h3 id="complete">完成 Complete</h3>
+<ul>
+<li><strong>击败</strong>生成生物并<strong>拾取</strong>宝箱后，点击<strong>「完成 Completion」按钮</strong>（需双击确认）即可<strong>删除</strong>藏宝图与宝箱。</li>
+<li>激活藏宝图须<strong>放弃/过期</strong>或<strong>完成</strong>后，才能操作其他藏宝图。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/H5sBM1m.png" /></p>
+<p><img alt=" " src="data/images/maps/3MbQXGz.png" /></p>
+<p><em>玩家将藏宝图标为「已完成」，地图随即被删除。</em></p>
+<h3 id="player-vendors">玩家商店 Player Vendors</h3>
+<ul>
+<li>仅<strong>未解码</strong>藏宝图可上架<strong>玩家商店 Player Vendors</strong> 出售。</li>
+</ul>
+<h3 id="razor">客户端 / Razor</h3>
+<ul>
+<li><strong>禁止</strong>使用<strong>客户端/Razor</strong> 向藏宝图菜单发送<strong>脚本化的菜单/Gump 响应</strong>（防自动化）。</li>
+</ul>
+<hr />
+<h2 id="part-resource">第二部分 · 资源图 <span class="cnsub">Resource Maps</span></h2>
+<h3 id="overhaul">改版 Overhaul</h3>
+<ul>
+<li><strong>资源图</strong>（<strong>钓鱼、伐木、矿石、剥皮</strong>四类）与藏宝图采用一致的<strong>交互处理</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/RrpLgOi.png" /></p>
+<h3 id="graphics-and-hues">图形与色相 Graphics and Hues</h3>
+<ul>
+<li>四类资源图拥有各自的新<strong>图形</strong>，并采用对应<strong>资源</strong>的<strong>色相</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/qeYAKf4.png" /></p>
+<h3 id="undecoded-maps_1">未解码地图 Undecoded Maps</h3>
+<ul>
+<li><strong>未解码</strong>资源图可与<strong>同类型、同等级</strong>的其他未解码资源图<strong>堆叠</strong>（补丁前部分采集的地图除外，其呈非彩色色相）。</li>
+<li>补丁上线时已解码的资源图统一<strong>回退为未解码</strong>（历史迁移说明）。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/MINRscH.png" /></p>
+<h3 id="existing-partially-harvested-maps">现有部分采集地图 Existing Partially Harvested Maps</h3>
+<p>补丁上线时已<strong>部分采集</strong>的资源图按以下规则处理（历史迁移说明）：</p>
+<ul>
+<li>回退为<strong>未解码</strong></li>
+<li>具有<strong>非彩色色相</strong>（而非新资源色相），以表明其为部分采集</li>
+<li><strong>不可堆叠</strong></li>
+<li><strong>不能</strong>加入资源书</li>
+<li><strong>不能</strong>上架玩家商店出售</li>
+</ul>
+<p><img alt=" " src="data/images/maps/V9v1a0V.png" /></p>
+<h3 id="new-resource-maps">新资源图 New Resource Maps</h3>
+<ul>
+<li>补丁后<strong>新生成</strong>的资源图，其<strong>可采集总资源量默认值为固定值</strong>（旧版会在该值 −50% 至 +50% 间随机）。</li>
+</ul>
+<p><strong>地图资源总量如下：</strong></p>
+<ul>
+<li><strong>暗铜 / 暗木 / 暗皮 / 暗鳞：</strong> 180 资源</li>
+<li><strong>影铁 / 影木 / 影皮 / 影鳞：</strong> 165 资源</li>
+<li><strong>红铜木 / 红铜 / 红铜皮 / 红铜鳞：</strong> 150 资源</li>
+<li><strong>青铜 / 青铜木 / 青铜皮 / 青铜鳞：</strong> 135 资源</li>
+<li><strong>金 / 金木 / 金皮 / 金鳞：</strong> 120 资源</li>
+<li><strong>银长石 / 玫瑰木 / 玫瑰皮 / 玫瑰鳞：</strong> 105 资源</li>
+<li><strong>维瑞 / 维木 / 维皮 / 维鳞：</strong> 90 资源</li>
+<li><strong>瓦洛里 / 瓦木 / 瓦皮 / 瓦鳞：</strong> 75 资源</li>
+<li><strong>阿瓦里 / 阿瓦木 / 阿瓦皮 / 阿瓦鳞：</strong> 60 资源</li>
+</ul>
+<h3 id="fishing-maps">钓鱼图 Fishing Maps</h3>
+<ul>
+<li>钓鱼图<strong>取消</strong>「剩余抛竿次数 Casts Remaining」，与伐木/矿石/剥皮图一致：<strong>总剩余资源归零</strong>时完成。</li>
+<li>钓鱼图每次采集操作<strong>必定</strong>获得<strong>资源</strong>（木板、矿石或皮革中随机），且<strong>不会「失败」</strong>。</li>
+<li>水族箱鱼 Aquarium Fish 作为<strong>额外战利品</strong>出现，不取代资源获取。</li>
+<li>钓鱼图采集操作<strong>不再</strong>产出<strong>基础鱼 Basic Fish</strong> 或<strong>特殊鱼 Special Fish</strong>。</li>
+</ul>
+<h3 id="resource-map-menu">资源图菜单 Resource Map Menu</h3>
+<ul>
+<li>资源图通过<strong>资源图菜单</strong>管理：在背包中<strong>双击</strong>资源图即可打开。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/DZ6p8Jw.png" /></p>
+<ul>
+<li>须先将资源图从其<strong>堆叠</strong>中<strong>分离</strong>，才能双击打开。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/dy4FBSB.png" /></p>
+<h3 id="skill-requirements-and-map-actions">技能要求与地图操作 Skill Requirements and Map Actions</h3>
+<ul>
+<li>资源图<strong>不</strong>从<strong>采矿</strong>技能获得定位<strong>营地位置 Camp Locations</strong> 的益处。</li>
+<li>资源图提供多个可执行的<strong>「操作」</strong>，其中数项需具备足够的<strong>有效采集技能</strong>（含元素/链接等采集加成）才能完成（解码地图、揭示营地）。</li>
+<li>执行解码地图、揭示营地等操作时须<strong>消耗背包中的探险者包</strong>。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/0Eju1Ye.png" /></p>
+<h3 id="_2">各地图类型最低有效采集技能要求</h3>
+<p><strong>钓鱼图 Fishing Map</strong></p>
+<ul>
+<li>暗鳞 Dullscale：钓鱼 65</li>
+<li>影鳞 Shadowscale：钓鱼 70</li>
+<li>红铜鳞 Copperscale：钓鱼 75</li>
+<li>青铜鳞 Bronzescale：钓鱼 80</li>
+<li>金鳞 Goldenscale：钓鱼 85</li>
+<li>玫瑰鳞 Rosescale：钓鱼 90</li>
+<li>维鳞 Verescale：钓鱼 95</li>
+<li>瓦鳞 Valescale：钓鱼 99</li>
+<li>阿瓦鳞 Avarscale：钓鱼 110</li>
+</ul>
+<p><strong>伐木图 Lumber Map</strong></p>
+<ul>
+<li>暗木 Dullwood：伐木 65</li>
+<li>影木 Shadowwood：伐木 70</li>
+<li>红铜木 Copperwood：伐木 75</li>
+<li>青铜木 Bronzewood：伐木 80</li>
+<li>金木 Goldenwood：伐木 85</li>
+<li>玫瑰木 Rosewood：伐木 90</li>
+<li>维木 Verewood：伐木 95</li>
+<li>瓦木 Valewood：伐木 99</li>
+<li>阿瓦木 Avarwood：伐木 110</li>
+</ul>
+<p><strong>矿石图 Ore Map</strong></p>
+<ul>
+<li>暗铜 Dull Copper：采矿 65</li>
+<li>影铁 Shadow Iron：采矿 70</li>
+<li>红铜 Copper：采矿 75</li>
+<li>青铜 Bronze：采矿 80</li>
+<li>金 Gold：采矿 85</li>
+<li>银长石 Agapite：采矿 90</li>
+<li>维瑞 Verite：采矿 95</li>
+<li>瓦洛里 Valorite：采矿 99</li>
+<li>阿瓦里 Avarite：采矿 110</li>
+</ul>
+<p><strong>剥皮图 Skinning Map</strong></p>
+<ul>
+<li>暗皮 Dullhide：法医鉴定 Forensic Eval 65</li>
+<li>影皮 Shadowhide：法医鉴定 70</li>
+<li>红铜皮 Copperhide：法医鉴定 75</li>
+<li>青铜皮 Bronzehide：法医鉴定 80</li>
+<li>金皮 Goldenhide：法医鉴定 85</li>
+<li>玫瑰皮 Rosehide：法医鉴定 90</li>
+<li>维皮 Verehide：法医鉴定 95</li>
+<li>瓦皮 Valehide：法医鉴定 99</li>
+<li>阿瓦皮 Avarhide：法医鉴定 110</li>
+</ul>
+<h3 id="decode-map_1">解码地图 Decode Map</h3>
+<ul>
+<li>开启资源图的第一步是<strong>解码</strong>：点击资源图菜单中的「解码地图」按钮。</li>
+<li>解码需<strong>静止 15 秒</strong>，完成时从背包<strong>消耗 1 个探险者包</strong>。</li>
+<li>过程中若移动，操作取消。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/Yuvvvdq.png" /></p>
+<p><img alt=" " src="data/images/maps/ykbtYYd.png" /></p>
+<p><img alt=" " src="data/images/maps/cmWfhZ2.png" /></p>
+<h3 id="active-map-item_1">激活地图物品 Active Map Item</h3>
+<ul>
+<li><strong>解码后</strong>，资源图成为「激活地图物品」（跨 OutlandsID），呈红色、祝福，并绑定到解码角色。</li>
+<li>同时只能持有 1 个激活地图物品（含藏宝图与资源图）；绑定到其他角色的图无法使用。</li>
+<li>须先完成或放弃，才能操作其他地图。</li>
+<li>单击激活资源图可查看过期剩余时间与绑定角色。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/BEVkwlK.png" /></p>
+<h3 id="map-expiration">地图过期 Map Expiration</h3>
+<ul>
+<li>资源图<strong>激活后</strong>须在 <strong>30 分钟</strong>内完成，否则自动<strong>过期</strong>并转为放弃（连同已创建的资源营地）。</li>
+</ul>
+<h3 id="hike-to-vicinity_1">徒步至附近 Hike to Vicinity</h3>
+<ul>
+<li>资源图位置<strong>不再提供</strong>视觉预览。</li>
+<li>须点击「徒步至附近」按钮徒步前往<strong>营地位置</strong>附近；适用地图集徒步的所有正常限制。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/n4SNRSe.png" /></p>
+<h3 id="navigate-to-camp">导航至营地 Navigate to Camp</h3>
+<ul>
+<li>点击「导航至营地」按钮显示指向营地的追踪箭头，不显示坐标与距离。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/8QMq5xL.png" /></p>
+<h3 id="reveal-camp">揭示营地 Reveal Camp</h3>
+<ul>
+<li>点击资源图菜单中的「揭示营地」按钮尝试揭示：需静止 15 秒、消耗 1 个探险者包，并在营地位置 3 格内才能成功。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/eOZn9fF.png" /></p>
+<p><img alt=" " src="data/images/maps/2QuYs6g.png" /></p>
+<h3 id="harvest-resources">采集资源 Harvest Resources</h3>
+<ul>
+<li>揭示营地后，可用<strong>正常采集操作</strong>（双击采集工具或「智能采集 Smart Harvesting」）采集资源。</li>
+<li>须在资源营地 <strong>3 格内</strong>采集。</li>
+<li>资源营地所有采集操作耗时 <strong>2 秒</strong>（含钓鱼）。</li>
+</ul>
+<h3 id="abandon_1">放弃 Abandon</h3>
+<ul>
+<li>点击资源图菜单中的「放弃」按钮（需三次点击确认）放弃激活资源图，删除资源图及其营地（若已揭示）。</li>
+<li>生成的资源营地<strong>无法「拆除 Demolish」</strong>，须用放弃机制提前结束。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/WknAgmk.png" /></p>
+<h3 id="completion">完成 Completion</h3>
+<ul>
+<li><strong>采集完所有资源</strong>后，资源图<strong>自动完成</strong>并删除，资源营地消失。</li>
+<li>激活地图物品（藏宝或资源图）须放弃/过期或完成后，才能操作其他地图。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/sVC6ZmE.png" /></p>
+<h3 id="resource-map-tomes">资源图书 Resource Map Tomes</h3>
+<ul>
+<li><strong>资源图书</strong><strong>只</strong>存储<strong>未解码</strong>资源图。</li>
+<li>补丁上线时资源图书内已解码资源图统一回退为未解码（历史迁移说明）。</li>
+<li>补丁上线时已解码但部分采集的存储资源图，合并剩余资源并（取整）调整所存未解码地图数量（历史迁移说明）。</li>
+</ul>
+<p><img alt=" " src="data/images/maps/PYezCMv.png" /></p>
+<h3 id="razor_1">客户端 / Razor</h3>
+<ul>
+<li><strong>禁止</strong>使用客户端/Razor 向资源图菜单发送脚本化响应（防自动化）。</li>
+</ul>
+  </div>
+  <div style="margin-top:26px;padding-top:12px;border-top:1px solid #ccd;color:#667;font-size:13px;">
+    机制整理自 2026-08-11 官方补丁说明 ｜ 收集整理：Snowman Liang ｜ 更新：2026-10-29
+  </div>
+</div>
+</body>
+</html>
