@@ -65,6 +65,10 @@ html[data-theme="dark"] .bgm-toggle.playing{background:#4c8fd0;color:#fff;}
       <a href="codex/trap.html">陷阱 <span class="en">Trap</span></a>
       <a href="codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
       <a href="codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+      <a href="codex/wizard_grimoire.html">法师 <span class="en">Wizard</span></a>
+      <a href="codex/summoner_tome.html">召唤 <span class="en">Summoner</span></a>
     </div>
   </div>
   <div class="nav-dropdown">
@@ -88,6 +92,31 @@ html[data-theme="dark"] .bgm-toggle.playing{background:#4c8fd0;color:#fff;}
   <h1 class="mw-page-title-main">本站更新记录 <span class="cnsub">Changelog</span></h1>
   <div class="mw-content">
     <div class="note">本站持续维护中，以下为近期面向玩家的主要更新。数据以官方最新版本为准，如有出入欢迎反馈。</div>
+    <div class="cl-date">2026-11-06</div>
+    <ul class="changelog-list">
+      <li>
+        <div class="cl-card">
+          <h3>新增「法师宝典 Wizard's Grimoire」宝典分支</h3>
+          <p><span class="tag">新增</span>译自官方 Wiki <b>Wizard's Grimoire</b>（含 <code>SpellTierUpgrades</code> 模板全文），补齐宝典图鉴第 16 个分支。法师宝典是用抄写（Inscription）在「书籍与魔典」分类下制作的祝福（Blessed）物品，双击进入绑定角色的<b>法师档案</b>，档案永久保存、丢书不丢进度。</p>
+          <p><span class="tag">门槛</span>须 <b>80 魔法（Magery）</b>，并至少 <b>80 冥想（Meditation）</b>或 <b>80 魔法评估（Eval Int）</b>，否则宝典不生效。</p>
+          <p><span class="tag">成长</span>击杀生物累积法师经验，第 1 点需 <b>1000</b> 经验、此后每点比上一点多 1000，最多 <b>40 点</b>；升档成本累计 <b>1 / 3 / 5</b> 点对应 I / II / III 档；点数分配<b>每 5 分钟可重置一次</b>，重置会取消已获得的档位增益。</p>
+          <p><span class="tag">法术表</span>完整收录 <b>25 项</b>法术档位加成（含 4 组共享条目：解毒／大解毒、保护／大保护、诅咒／群体诅咒、吸魔／噬魔，合计覆盖 29 个法术），逐项列出 I / II / III 三档数值，并注明档位加成<b>仅在非 PvP 标记状态生效</b>、且为法术原有效果之外的额外收益。</p>
+          <p><span class="tag">图片</span>官方配图 <b>34 张</b>（5 张界面截图 + 29 个法术图标）已本地托管于 <code>data/images/codex/</code>，页面用同站相对路径引用，不依赖外部图床。</p>
+          <p><span class="tag">导航</span>全站 <b>123 个页面</b>的宝典下拉已加入「法师 Wizard」入口；另将 <b>101 个</b>仍停留在旧版 13 项下拉的页面补齐「盗贼」「药剂」两项，全站宝典下拉统一为 <b>16 项</b>。四个内置导航模板的生成器（gen_commands / gen_mastery / gen_misc_codex / gen_pets）同步更新，防重跑回潮。</p>
+        </div>
+      </li>
+      <li>
+        <div class="cl-card">
+          <h3>新增「召唤之书 Summoner's Tome」</h3>
+          <p><span class="tag">新增</span>译自官方 Wiki <b>Summoner's Tome</b>（含 8 个 <code>SummonersTome*</code> 法术模板全文），作为宝典图鉴分支收录。召唤之书是用抄写（Inscription）制作的祝福（Blessed）工具书，专门强化 PvM 召唤物，双击进入绑定角色的<b>召唤档案（Summoner Profile）</b>，永久保存、丢书不丢进度。</p>
+          <p><span class="tag">门槛</span>须 <b>80 魔法（Magery）+ 80 通灵（Spirit Speak）</b>；技能不足时只能看档案，拿不到任何加成。</p>
+          <p><span class="tag">升级</span>带召唤物击杀非驯服／非召唤生物累积升级进度，进度的多寡按<b>金币价值 × 伤害占比</b>计算；只用一系则全额记该系，多系混打按系平均分配（两系各 50%、三系各 33%）。每系法术最多解锁 <b>20 点</b>，升档累计成本 <b>1 / 3 / 5</b> 点对应 Tier 1 / 2 / 3；只要该系随从不在场即可重置点数。</p>
+          <p><span class="tag">法术表</span>完整收录 <b>8 系召唤 × 8 项升级 = 64 条</b>中英对照（风元素 / 剑灵 / 恶魔 / 土元素 / 能量漩涡 / 火元素 / 召唤生物 / 水元素），逐条列出三档数值；另含<b>召唤物默认名称</b>功能说明。</p>
+          <p><span class="tag">图片</span>官方配图 <b>14 张</b>（5 张界面截图 + 8 系法术图标 + 默认名称 3 张）已本地托管于 <code>data/images/codex/</code>，页面用同站相对路径引用，不依赖外部图床。</p>
+          <p><span class="tag">导航</span>宝典下拉由 <b>16 项</b>扩至 <b>17 项</b>，全站 <b>125 个页面</b>已加入「召唤 Summoner」入口；四个内置导航模板的生成器同步更新。</p>
+        </div>
+      </li>
+    </ul>
     <div class="cl-date">2026-10-29</div>
     <ul class="changelog-list">
       <li>
