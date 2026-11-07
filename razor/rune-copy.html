@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>符石书复制器 | UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="../skills/style.css?v=20261107_2">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/theme.js"></script>
+<style>
+.rc-wrap{max-width:860px;margin:0 auto;}
+.rc-card{background:#fff;border:1px solid #d8dde5;border-radius:8px;padding:18px 22px;margin:0 0 18px;}
+.rc-card h2{font-size:17px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #e8edf3;color:#2a3542;}
+.rc-card h2 .stepno{display:inline-block;background:#2a3542;color:#fff;border-radius:50%;width:22px;height:22px;line-height:22px;text-align:center;font-size:13px;margin-right:8px;}
+.rc-field{margin:0 0 14px;}
+.rc-field label{display:block;font-weight:600;font-size:13.5px;margin:0 0 5px;color:#2a3542;}
+.rc-field .hint{font-size:12.5px;color:#667;margin:4px 0 0;line-height:1.55;}
+.rc-field input[type=text],.rc-field select,.rc-field textarea{
+  width:100%;box-sizing:border-box;border:1px solid #c4ccd6;border-radius:5px;padding:7px 10px;font-size:14px;font-family:inherit;background:#fbfcfe;}
+.rc-field textarea{font-family:Consolas,monospace;font-size:13px;line-height:1.6;}
+.rc-field input:focus,.rc-field select:focus,.rc-field textarea:focus{outline:none;border-color:#6a9fb5;background:#fff;}
+.rc-row{display:flex;gap:16px;flex-wrap:wrap;}
+.rc-row>.rc-field{flex:1;min-width:220px;}
+.rc-radio{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;}
+.rc-radio label{display:flex;align-items:flex-start;gap:6px;font-weight:400;cursor:pointer;margin:0;}
+.rc-radio .sub{display:block;font-size:12px;color:#667;font-weight:400;}
+.rc-check{font-size:13.5px;display:flex;align-items:center;gap:6px;cursor:pointer;}
+.rc-btn{display:inline-block;background:#2a6f97;color:#fff;border:none;border-radius:6px;padding:10px 26px;font-size:15px;cursor:pointer;font-family:inherit;}
+.rc-btn:hover{background:#1d5677;}
+.rc-btn.ghost{background:#fff;color:#2a6f97;border:1px solid #2a6f97;}
+.rc-btn.ghost:hover{background:#eef6fa;}
+.rc-btn:disabled{background:#a9b6c2;cursor:not-allowed;}
+.rc-parse-head{display:flex;align-items:baseline;gap:12px;margin:0 0 6px;}
+.rc-count{font-size:13px;color:#2a6f97;font-weight:600;}
+.rc-warns{margin:8px 0 0;padding:8px 12px;background:#fdf6e3;border:1px solid #eedc9a;border-radius:5px;font-size:12.5px;color:#7a5d12;line-height:1.7;}
+.rc-err{display:none;margin:14px 0 0;padding:10px 14px;background:#fdecec;border:1px solid #e8a5a5;border-radius:6px;color:#a03030;font-size:13.5px;line-height:1.7;white-space:pre-wrap;}
+.rc-out-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px;}
+.rc-out-head .meta{font-size:12.5px;color:#667;}
+.rc-out{width:100%;box-sizing:border-box;height:340px;border:1px solid #c4ccd6;border-radius:5px;padding:10px;font-family:Consolas,monospace;font-size:12.5px;line-height:1.55;background:#f6f8fa;color:#223;white-space:pre;overflow:auto;}
+.rc-note{font-size:12.5px;color:#667;line-height:1.8;background:#f2f6f9;border-left:4px solid #6a9fb5;padding:9px 14px;border-radius:0 4px 4px 0;margin:0 0 18px;}
+.rc-note code{background:#e4ecf2;border-radius:3px;padding:1px 5px;font-size:12px;}
+.rc-badge{display:inline-block;background:#e8833a;color:#fff;font-size:11px;border-radius:4px;padding:1px 7px;vertical-align:2px;margin-left:8px;font-weight:400;}
+</style>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../patch/index.html">版本更新</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <a href="../mastery/index.html">精通链</a>
+  <a href="../commands/index.html">命令大全</a>
+  <a href="../modifiers.html">装备属性</a>
+  <a href="../poison.html">用毒 Poison</a>
+  <a href="../treasure-maps.html">藏宝图与资源图</a>
+  <a href="index.html">Razor 脚本</a>
+  <div class="nav-dropdown">
+    <a href="../codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="../codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="../codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="../codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="../codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="../codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="../codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="../codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="../codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="../codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="../codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="../codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="../codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="../codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="../codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="../codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+      <a href="../codex/wizard_grimoire.html">法师 <span class="en">Wizard</span></a>
+      <a href="../codex/summoner_tome.html">召唤 <span class="en">Summoner</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="../ships.html">船舰系统总页</a>
+      <a href="../ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> &#8250; <a href="index.html">Razor 脚本</a> &#8250; <span>符石书复制器</span></nav>
+<div class="mw-body rc-wrap">
+  <h1 class="mw-page-title-main">符石书复制器 <span class="cnsub">Rune Book Copier</span><span class="rc-badge">试水版</span></h1>
+
+  <div class="rc-note">
+    把一本符石书 / 符石图集里的点位，用 Razor 脚本批量复制到你自己的 Tome（符石图集，26 格）里。<br>
+    <b>用法三步</b>：① 游戏里用任意 AI 对话工具发出符石书界面截图，让它「按顺序提取每行站点名」→ 复制结果；② 把结果整坨粘贴到下面第 3 步的大文本框，页面自动清洗成条目（可手动改）；③ 填好两本书的 ID，一键生成 Razor 脚本，复制进游戏内的 Razor 脚本框即可。<br>
+    <b>取书 ID</b>：游戏里输入 <code>-info</code> 回车，再点向那本书，在 Object Information 里读 <code>Serial:</code> 一行（形如 <code>0x754DEB39</code>，<b>不要</b>读下面十进制的 SerialDec）。<br>
+    <b>前置条件</b>：站在你的回馆点；背包里有空白符石；你的回馆符石（如「旅店」）已放进载体 Tome 里——<code>[recallcharge</code> 只扫描书内 mark 名，符石单放背包无效。
+  </div>
+
+  <div class="rc-card">
+    <h2><span class="stepno">1</span>粘贴 AI 提取的站点目录</h2>
+    <div class="rc-field">
+      <label for="stationsRaw">把 AI 对话给出的目录原样整坨粘贴到这里（编号、圆点、前后废话都不用删）</label>
+      <textarea id="stationsRaw" rows="7" placeholder="例如：
+好的，以下是目录：
+1. Corpse Creek Lookout
+2. Corpse Creek North Entrance
+……"></textarea>
+      <div class="hint">粘贴后自动清洗：剥掉序号/圆点/废话，按书的排列顺序重建条目。识别结果在下方，可随手改。</div>
+    </div>
+    <div class="rc-parse-head"><span class="rc-count" id="parseCount">未识别到条目</span></div>
+    <div class="rc-field">
+      <textarea id="stationsParsed" rows="8" placeholder="清洗后的条目会出现在这里（每行一条，可手动修改）"></textarea>
+    </div>
+    <div class="rc-warns" id="parseWarns" style="display:none"></div>
+  </div>
+
+  <div class="rc-card">
+    <h2><span class="stepno">2</span>填两本书的信息</h2>
+    <div class="rc-row">
+      <div class="rc-field">
+        <label for="bookSerial">源书 ID（要复制的那本）*</label>
+        <input type="text" id="bookSerial" placeholder="0x754DEB39">
+      </div>
+      <div class="rc-field">
+        <label for="bookKind">源书类型</label>
+        <select id="bookKind">
+          <option value="tome">Tome 符石图集（26 格，按钮 99+行号）</option>
+          <option value="runebook">Runebook 符石书（16 格，按钮 2/8/14…92）</option>
+        </select>
+        <div class="hint" id="kindHint">条目 &gt; 16 条时只能是 Tome。</div>
+      </div>
+    </div>
+    <div class="rc-field">
+      <label>源书放在哪</label>
+      <div class="rc-radio">
+        <label><input type="radio" name="srcWhere" value="fixed" checked>
+          <span><b>锁在外面</b>（放地上 / 银行 / 公共书）<span class="sub">每刻一站折返回馆一次，再从书里飞下一站。最稳。</span></span></label>
+        <label><input type="radio" name="srcWhere" value="bag">
+          <span><b>拿在背包里</b><span class="sub">Mark 完直接开包里的书飞下一站，不用每站折返；全部跑完才回馆。</span></span></label>
+      </div>
+    </div>
+    <div class="rc-field" id="destField">
+      <label for="destSerial">载体 Tome ID（装复件的那本，26 格）<span id="destReq" style="color:#a03030"></span></label>
+      <input type="text" id="destSerial" placeholder="0x........（留空 = 按图形找包里唯一那本 Tome）">
+      <div class="hint" id="destHint">源书在背包且也是 Tome 时必填——包里两本 Tome 图形相同，不给 ID 分不清哪本是载体。源书是 Runebook 时可留空（Runebook 与 Tome 图形不同，脚本认得出）。</div>
+    </div>
+    <div class="rc-row">
+      <div class="rc-field">
+        <label for="homeName">回馆符石的 mark 名</label>
+        <input type="text" id="homeName" value="旅店">
+        <div class="hint">生成 <code>say "[recallcharge 名字"</code>，全部跑完 / 每站折返时回家用。这个名字必须已经刻好并放进载体 Tome 里。</div>
+      </div>
+      <div class="rc-field">
+        <label>辅助选项</label>
+        <label class="rc-check"><input type="checkbox" id="usePet" checked> 召唤宠物护卫（土元素，跟着你防偷袭）</label>
+        <label class="rc-check"><input type="checkbox" id="pauseReturn" checked> 每站回馆后停留 2.5 秒确认（防串站，建议开）</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="rc-card">
+    <h2><span class="stepno">3</span>生成脚本</h2>
+    <div class="rc-out-head">
+      <button class="rc-btn" id="btnGen">生成 Razor 脚本</button>
+      <span id="roundWrap" style="display:none">
+        第 <select id="roundSel" style="padding:4px 6px"></select> 轮
+        <span class="meta" id="roundMeta"></span>
+      </span>
+    </div>
+    <div class="rc-err" id="errBox"></div>
+    <div class="rc-out-head" id="outHead" style="display:none">
+      <button class="rc-btn ghost" id="btnCopy">复制脚本</button>
+      <button class="rc-btn ghost" id="btnDl">下载 .txt</button>
+      <span class="meta" id="outMeta"></span>
+    </div>
+    <textarea class="rc-out" id="output" readonly spellcheck="false" style="display:none"></textarea>
+  </div>
+
+  <div class="rc-note">
+    <b>分轮说明</b>：Runebook 的 recall charge 上限是 10 格，条目超过 10 条会自动分轮（每轮 8 站），第 1 轮跑完停下来给源书补 charge，再回来生成第 2 轮。Tome 不受 charge 限制，一轮跑完。<br>
+    <b>容量说明</b>：载体 Tome 里已放回馆符石占 1 格；26 格 = 1 + 25。条目满 26 条时，最后一枚装不进，脚本会把它留在背包并提示手动收尾（取出回馆符石 → 放入最后一枚）。<br>
+    <b>⚠ 回馆刹车（防串站核心）</b>：<code>[recallcharge</code> 走载体 Tome 的 recall 充能、<b>同时耗蓝</b>；它失败时（Heat of Battle 交战限制／充能不够／蓝不够／施法后摇吞指令）<b>脚本内没有任何报错</b>。所以脚本在每站回馆后<b>先开一次源书验证位置</b>——源书锁在回馆点，只有人真回去了才打得开；打不开就 <code>overhead</code> 报警并 <code>stop</code> 终止宏，<b>绝不把下一站刻错坐标</b>。开跑时也先验证一次（人不在回馆点直接停）。<br>
+    <b>recallcharge 静默失效的已知原因</b>：① 刚交战过（Heat of Battle 限制 recall，宠物站台打怪最易触发）；② 载体 Tome recall 充能耗尽；③ 蓝低于 Recall 所需（实测 charge recall 也扣 mana）；④ 施法/改名后摇期间 <code>say</code> 被吞。前三者看系统消息栏可确认，脚本已用补蓝＋刹车兜底。<br>
+    <b>更稳的替代</b>：若每站折返总出事，把源书拿进背包（第 2 步选「拿在背包里」），改成<b>一路连飞、全部跑完才回馆一次</b>——只回馆一次，几乎不会串站。<br>
+    本页为粉丝自制工具（非官方），脚本基于社区 Razor 语法实测整理；生成逻辑与「UO 符石书复制助手」技能同源。
+  </div>
+</div>
+
+<script>
+/* ================= 纯逻辑区（与 gen_rune_copy.py 同源，可独立测试） ================= */
+var RC = (function(){
+  var D = {
+    rune_graphic:"0x1F14", marked_hue:"0x0000", tome_graphic:"0x71AF",
+    dest_capacity:26, batch_size:8,
+    summon_spell:"Earth Elemental", summon_label:"土元素",
+    mana_summon:55, wait_summon:6500, mana_recall:30, mana_mark:25, mana_return:45,
+    meditate_wait:5000, wait_arrive:3000, wait_guard:1000, wait_follow:500,
+    wait_return:4500, wait_mark:2200, wait_rename:1500,
+    wait_lift:800, wait_drop:900, wait_sweep:700,
+    sweep_max:4, pause_after_return:true, pause_ms:2500
+  };
+  // overhead 小工具
+  function ov(m,c){ return "overhead \""+m+"\" "+c+"\n"; }
+
+  function normSerial(v, field, required){
+    var s = String(v||"").trim();
+    if(!s){ if(required) throw "缺少 " + field; return ""; }
+    var body = s.toLowerCase().indexOf("0x")===0 ? s.slice(2) : s;
+    body = body.trim();
+    if(body.length!==8 || /[^0-9a-fA-F]/.test(body))
+      throw field + " 不是合法 serial：" + s + "\n要求形如 0x754DEB39（0x + 8 位十六进制）。\n游戏里输入 -info 回车，点向那本书，读 Serial: 那行（不要 SerialDec）。";
+    return "0x" + body.toUpperCase();
+  }
+
+  function tagOf(name){
+    var short = String(name).split(" - ").pop();
+    return short.replace(/["']/g,"");
+  }
+
+  function planBatches(n, size, cap){
+    if(n<=0) return [[0,0]];
+    if(!cap || n<=cap) return [[0,n]];
+    var step = Math.min(size||8, cap);
+    var out=[];
+    for(var i=0;i<n;i+=step) out.push([i, Math.min(i+step,n)]);
+    return out;
+  }
+
+  function dropSnippet(c){
+    if(c.dest_serial){
+      return "  lift r1 1\n  wait "+c.wait_lift+"\n  drop "+c.dest_serial+" -1 -1 -1\n  wait "+c.wait_drop+"\n";
+    }
+    return "  lift r1 1\n  wait "+c.wait_lift+"\n"+
+      "  if findtype "+c.tome_graphic+" backpack as tome\n"+
+      "    drop tome -1 -1 -1\n    wait "+c.wait_drop+"\n"+
+      "  else\n    overhead \"背包里找不到 tome，这枚符石还留在包里\" 34\n  endif\n";
+  }
+
+  function sweepSnippet(c){
+    if(!c.sweep) return "";
+    var drop;
+    if(c.dest_serial) drop = "  drop "+c.dest_serial+" -1 -1 -1";
+    else drop = "  if findtype "+c.tome_graphic+" backpack as tome\n    drop tome -1 -1 -1\n  else\n    drop backpack -1 -1 -1\n  endif";
+    var passes="";
+    for(var k=1;k<=c.sweep_max;k++){
+      passes += "if findtype "+c.rune_graphic+" backpack "+c.marked_hue+" as s"+k+"\n"+
+        "  lift s"+k+" 1\n  wait "+c.wait_sweep+"\n"+drop+"\n  wait "+c.wait_sweep+"\nendif\n";
+    }
+    return "# 开局清扫：把背包直层残留的已刻符石（hue "+c.marked_hue+"）收进书里，最多 "+c.sweep_max+" 枚\n"+
+      "# 这里刻意用「固定次数 + if」而不是 while：书满时 drop 会失败、符石留在背包，\n"+
+      "# while findtype 会一遍遍捞到同一枚，原地死循环把宏挂住。\n"+passes;
+  }
+
+  function petHead(c, tag){
+    if(!c.use_pet) return "";
+    return "if followers < 1\n"+
+      "  while mana < "+c.mana_summon+"\n    useskill 'Meditation'\n    wait "+c.meditate_wait+"\n  endwhile\n"+
+      "  cast '"+c.summon_spell+"'\n  wait "+c.wait_summon+"\n"+
+      "  overhead \""+tag+"：已召唤 "+c.summon_label+"\" 34\nendif\n"+
+      "say \"all follow me\"\nwait 1000\n";
+  }
+
+  function render(cfg, batchIndex){
+    var stations = cfg.stations, n = stations.length;
+    var batches = planBatches(n, cfg.batch_size, cfg.charge_cap);
+    if(batchIndex<1 || batchIndex>batches.length)
+      throw "本轮号 "+batchIndex+" 超出范围：共 "+batches.length+" 轮";
+    var start = batches[batchIndex-1][0], end = batches[batchIndex-1][1];
+    var nBatch = end-start, m = batches.length;
+    var cap = cfg.dest_capacity;
+    var bag = cfg.source_in_bag;
+    var overflowLast = cfg.sweep && (n+1>cap);
+
+    var destLine;
+    if(cfg.dest_serial) destLine = "serial "+cfg.dest_serial+"（直投）";
+    else if(bag) destLine = "未给 serial ｜ 源书为 runebook，投给包里那本 tome（按图形识别）";
+    else destLine = "未给 serial ｜ 源书不在背包，投给包里那本 tome";
+
+    var preLine, whereLine;
+    if(bag){
+      preLine = "# 前置：人在回馆点起跑，源书在背包里，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n";
+      whereLine = "# 源书在背包：每站 mark 完直接开书飞下一站，不用折返；全部跑完才回馆\n";
+    } else {
+      preLine = "# 前置：人在回馆点，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n";
+      whereLine = "";
+    }
+
+    var head = "# =====================================================\n"+
+      "# 符石书批量复制："+n+" 站（Razor 宏）"+(m>1?("（第 "+batchIndex+" / "+m+" 轮）"):"")+"\n"+
+      "# 源书（被复制的）："+cfg.book_kind+" ｜ gump 按钮 起 "+cfg.start_button+" / 步长 "+cfg.button_step+" ｜ charge 上限 "+(cfg.charge_cap||"不限")+"\n"+
+      "# 载体（装复件的）：tome ｜ 容量 "+cap+" 格 ｜ "+destLine+"\n"+
+      preLine+
+      "#       （[recallcharge 只扫描书内的 mark 名：符石单放背包既无效，又会与新刻的混淆）\n"+
+      "# 源符石书 serial： "+cfg.book_serial+"（本脚本只对这本有效；换书必须换这个值）\n"+
+      "# 回馆命令： say \""+cfg.home_command+"\"\n"+
+      ((m>1 ? "# 源书 charge 上限 "+cfg.charge_cap+" 格 < "+n+" 站，故分 "+m+" 轮跑，每轮 "+cfg.batch_size+" 站\n" : ""))+
+      (m>1 ? (batchIndex===1
+        ? "# 本轮范围：全 "+n+" 站里的第 "+(start+1)+"–"+end+" 站，**只跑这一段，跑完停下**\n"
+        : "# 本轮范围：全 "+n+" 站里的第 "+(start+1)+"–"+end+" 站\n# ⚠ 跑前确认源书 charge 已补满，至少 "+nBatch+" 格；没补就别开跑\n") : "")+
+      whereLine+
+      "# =====================================================\n\n";
+
+    var parts=[head];
+    parts.push(sweepSnippet(cfg));
+
+    // 开跑位置验证：方案A 源书锁在外面，只有人在回馆点才打得开它。
+    // 打不开 = 起跑位置不对，后面全是废动作，直接停。
+    if(!bag){
+      parts.push("# 开跑验证：人在回馆点才能打开锁在外面的源书\n"+
+        "dclick "+cfg.book_serial+"\nwaitforgump\nwait 800\n"+
+        "if not gumpexists 'any'\n"+
+        "  overhead \"⚠ 源书打不开——人不在回馆点？宏已停止\" 34\n  stop\nendif\n\n");
+    }
+
+    var drop = dropSnippet(cfg);
+    for(var gi=start; gi<end; gi++){
+      var st=stations[gi], k=gi-start+1;
+      var name=st.name;
+      var btn=cfg.start_button + gi*cfg.button_step;
+      var tag=tagOf(name);
+      var thisDrop = (overflowLast && gi===n-1)
+        ? "  overhead \"书已满 "+cap+" 格，最后一枚装不进去，先留在背包\" 34\n" : drop;
+      // returning：方案A 每站都回馆；方案B 只有末站回馆（其余在目的地直接收石后飞下一站）
+      var returning = (!bag || gi===end-1);
+      // 方案A：源书 gump 已在开跑/上一站结尾打开，直接按键飞；方案B：源书在背包，每站自己开
+      var openBook = bag ? ("dclick "+cfg.book_serial+"\nwaitforgump\nwait 800\n") : "";
+      parts.push("# ===== 第 "+(gi+1)+" / "+n+" 站（本轮第 "+k+" / "+nBatch+" 站）=====\n"+
+        "# ---------- "+name+"（按钮 "+btn+"）----------\n"+
+        ov("▶ 飞往第 "+(gi+1)+" 站："+tag,34)+
+        petHead(cfg,tag)+
+        "while mana < "+cfg.mana_recall+"\n  useskill 'Meditation'\n  wait "+cfg.meditate_wait+"\nendwhile\n"+
+        openBook+
+        "gumpresponse "+btn+"\nwait "+cfg.wait_arrive+"\n"+
+        (cfg.use_pet ? "say \"all guard me\"\nwait "+cfg.wait_guard+"\n" : "")+
+        ov("✔ 已到达 "+tag+"，开始刻石",34)+
+        "while mana < "+cfg.mana_mark+"\n  useskill 'Meditation'\n  wait "+cfg.meditate_wait+"\nendwhile\n"+
+        "cast 'Mark'\nwaitfortarget\n"+
+        "targettype "+cfg.rune_graphic+"\nwait "+cfg.wait_mark+"\n"+
+        "dclicktype "+cfg.rune_graphic+" backpack "+cfg.marked_hue+"\nwait "+cfg.wait_rename+"\n"+
+        "promptresponse \""+name+"\"\nwait "+cfg.wait_rename+"\n");
+      if(returning){
+        // 先回馆再收石 + 回馆刹车。
+        // recallcharge 走载体 tome 的 charge（实测也耗蓝），回馆前补到 mana_return；
+        // 失败场景（Heat of Battle 交战限制 / 充能不够 / 蓝不够 / 施法后摇吞 say）都没有脚本内报错，
+        // 所以用「能否打开源书」做位置判定：打不开 = 没回馆 = 立即 stop，绝不串站。
+        parts.push(ov("⏎ "+tag+" 已刻好，先回馆（"+cfg.home_command+"）",34)+
+          "say \"all follow me\"\nwait "+cfg.wait_follow+"\n"+
+          "while mana < "+cfg.mana_return+"\n  useskill 'Meditation'\n  wait "+cfg.meditate_wait+"\nendwhile\n"+
+          "say \""+cfg.home_command+"\"\nwait "+cfg.wait_return+"\n");
+        if(gi < end-1){
+          // 回馆刹车：只有人在回馆点才打得开源书
+          parts.push(ov("✔ 验证回馆（打开源书）",34)+
+            "dclick "+cfg.book_serial+"\nwaitforgump\nwait 800\n"+
+            "if not gumpexists 'any'\n"+
+            "  overhead \"⚠ 回馆失败！recallcharge 没生效，宏已停止\" 34\n"+
+            "  overhead \"看系统消息栏：多半是 Heat of Battle（刚交战）/ 载体充能不够 / 蓝不够\" 34\n"+
+            "  stop\nendif\n");
+        }
+        parts.push("if findtype "+cfg.rune_graphic+" backpack "+cfg.marked_hue+" as r1\n"+
+          thisDrop+
+          "  overhead \""+tag+" 已收进载体\" 34\nelse\n  overhead \""+tag+" 新符石没找到（已回馆，符石可能还在背包）\" 34\nendif\n");
+        if(cfg.pause_after_return){
+          parts.push(ov("✔ 已回馆｜停留 "+(cfg.pause_ms/1000)+" 秒后飞下一站",34)+"wait "+cfg.pause_ms+"\n\n");
+        } else {
+          parts.push("\n");
+        }
+      } else {
+        // 方案B 非末站：在目的地直接把符石收进载体，再飞下一站（不回馆）
+        parts.push(
+          "if findtype "+cfg.rune_graphic+" backpack "+cfg.marked_hue+" as r1\n"+
+          thisDrop+
+          "  overhead \""+tag+" 完成（已收进载体，飞下一站）\" 34\nelse\n  overhead \""+tag+" 没找到新符石\" 34\nendif\n\n"
+        );
+      }
+    }
+
+    if(batchIndex<m){
+      parts.push("overhead \"第 "+batchIndex+"/"+m+" 轮（"+end+"/"+n+" 站）跑完，请停下：回馆给源书补 charge，再回来生成第 "+(batchIndex+1)+" 轮\" 34\n");
+    } else {
+      parts.push("overhead \""+n+" 站全部跑完\" 34\n");
+      if(cfg.final_hint && overflowLast)
+        parts.push("overhead \"最后一枚符石在背包里（书已满 "+cap+" 格）\" 34\noverhead \"手动收尾：1) 从书里取出「"+cfg.home_name+"」 2) 把最后一枚符石放进书\" 34\n");
+    }
+    return parts.join("");
+  }
+
+  /* ---------- 容错解析：吃下 AI 对话复制来的整坨文本 ---------- */
+  var CIRCLED="①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳";
+  var SKIP_RE=/^(好的|当然|以下|如下|这是|共\s*\d+|一共\s*\d+|希望|以上|需要|请|如果|然后|最后|另外|其中|说明|注意|提示|来源|截图|识别|提取|排序|生成|复制|okay|ok\b|sure|here\s+(is|are)|note\b|total\b|these\s+are|the\s+following)/i;
+
+  function cleanName(s){
+    return s.replace(/["“”]/g,"").replace(/[\s.、:：\-—–]+$/,"").trim();
+  }
+
+  function parseStations(raw){
+    var names=[], warns=[], expected=1;
+    var lines=String(raw||"").split(/\r?\n/);
+    for(var i=0;i<lines.length;i++){
+      var s=lines[i].trim();
+      if(!s) continue;
+      var orig=s;
+      var hadNum=null;
+      // 圆点 / 项目符号
+      var m=s.match(/^[-•*·●▸►o]\s+(.*)$/);
+      if(m) s=m[1];
+      // 第 N 站：
+      m=s.match(/^第\s*(\d{1,2})\s*[站条个]\s*[:：、.\-]\s*(.*)$/);
+      if(m && +m[1]===expected){ hadNum=+m[1]; s=m[2]; }
+      if(hadNum===null){
+        // 序号前缀：1. / 1、 / 1: / 1) / (1) / 1 -
+        m=s.match(/^[（(]?\s*(\d{1,2})\s*[）)]?\s*(?:[.、:：\-—–]\s*|\s+)(.+)$/);
+        if(m && +m[1]===expected){ hadNum=+m[1]; s=m[2]; }
+        else{
+          var ci=CIRCLED.indexOf(s.charAt(0));
+          if(ci>=0 && ci+1===expected){ hadNum=ci+1; s=s.slice(1).replace(/^[.、:：\-—–\s]+/,""); }
+        }
+      }
+      // 连续命中序号才推进期望值；没命中下一行从上次的期望继续
+      if(hadNum!==null) expected=hadNum+1;
+      s=cleanName(s);
+      if(!s || s.length<2){ continue; }
+      if(/^[0-9\s.、:：\-—–()（）]+$/.test(s)){ warns.push("跳过纯数字行：「"+orig+"」"); continue; }
+      if(SKIP_RE.test(s) && !/[A-Za-z]{2,}/.test(s)){ warns.push("跳过疑似说明行：「"+orig+"」"); continue; }
+      names.push({num:hadNum, name:(names.length+1)+" - "+s});
+    }
+    return {names:names, warns:warns};
+  }
+
+  function buildCfg(input){
+    var kind=input.book_kind;
+    var stations=input.stations;
+    var n=stations.length;
+    if(!input.book_serial) throw "缺少源书 ID。游戏里 -info 点那本书，读 Serial: 那行。";
+    var cfg={
+      book_serial: normSerial(input.book_serial,"源书 ID",true),
+      dest_serial: normSerial(input.dest_serial,"载体 Tome ID",false),
+      book_kind: kind,
+      source_in_bag: !!input.source_in_bag,
+      home_name: input.home_name,
+      home_command: "[recallcharge "+input.home_name,
+      stations: stations,
+      use_pet: !!input.use_pet,
+      // 未显式传时取默认 true（!!undefined 会错成 false，挡住 D 里的默认值）
+      pause_after_return: input.pause_after_return!==undefined ? !!input.pause_after_return : true,
+      sweep: true,
+      final_hint: true,
+      start_button: kind==="tome"?100:2,
+      button_step: kind==="tome"?1:6,
+      charge_cap: kind==="runebook"?10:0
+    };
+    for(var k in D) if(cfg[k]===undefined) cfg[k]=D[k];
+    if(n<1) throw "站点目录为空：先在第 1 步粘贴 AI 提取的条目。";
+    if(n>26) throw "条目数 "+n+" 超过载体 Tome 的 26 格，请拆成两次复制。";
+    if(kind==="runebook" && n>16) throw "Runebook 最多 16 条，识别到 "+n+" 条——请检查是不是 Tome。";
+    if(cfg.source_in_bag && kind==="tome" && !cfg.dest_serial)
+      throw "源书在背包里且也是 Tome，必须给「载体 Tome ID」。\n包里两本 Tome 图形相同，不给 ID 脚本分不清往哪本书里丢符石。\n游戏里 -info 点你那本空白 Tome，把 Serial 填进载体 ID 框。";
+    return cfg;
+  }
+
+  return {parse:parseStations, build:buildCfg, render:render, batches:planBatches};
+})();
+</script>
+<script>
+/* ================= 页面交互区 ================= */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var rawEl=$("stationsRaw"), parsedEl=$("stationsParsed"),
+      countEl=$("parseCount"), warnsEl=$("parseWarns"),
+      kindEl=$("bookKind"), kindHint=$("kindHint"),
+      destSerial=$("destSerial"), destReq=$("destReq"), destHint=$("destHint"),
+      errBox=$("errBox"), outEl=$("output"), outHead=$("outHead"),
+      outMeta=$("outMeta"), roundWrap=$("roundWrap"), roundSel=$("roundSel"),
+      roundMeta=$("roundMeta"), btnGen=$("btnGen");
+  var lastCfg=null, lastText="";
+
+  function srcInBag(){ return document.querySelector("input[name=srcWhere]:checked").value==="bag"; }
+
+  function refreshDest(){
+    var need = srcInBag() && kindEl.value==="tome";
+    destReq.textContent = need ? " *（必填）" : "";
+    destHint.innerHTML = need
+      ? "<b style='color:#a03030'>源书在背包且也是 Tome：必填。</b>包里两本 Tome 图形相同，不给 ID 分不清哪本是载体。"
+      : "源书是 Runebook 时可留空（图形不同，脚本认得出包里唯一那本 Tome）；给了 ID 则直投，最稳。";
+  }
+
+  rawEl.addEventListener("input", function(){
+    var r=RC.parse(rawEl.value);
+    parsedEl.value=r.names.map(function(x){return x.name;}).join("\n");
+    countEl.textContent = r.names.length ? ("识别到 "+r.names.length+" 条") : "未识别到条目";
+    if(r.warns.length){ warnsEl.style.display=""; warnsEl.innerHTML=r.warns.map(function(w){return "· "+w;}).join("<br>"); }
+    else warnsEl.style.display="none";
+    applyKindByCount(r.names.length);
+  });
+
+  function applyKindByCount(cnt){
+    if(cnt>16){
+      kindEl.value="tome"; kindEl.disabled=true;
+      kindHint.innerHTML="识别到 <b>"+cnt+"</b> 条 &gt; 16，已锁定为 Tome。";
+    } else {
+      kindEl.disabled=false;
+      kindHint.textContent="条目 ≤ 16 时两种书型都可选；Runebook 按钮规律固定为起 2 / 步长 6。";
+    }
+    refreshDest();
+  }
+
+  kindEl.addEventListener("change", refreshDest);
+  document.querySelectorAll("input[name=srcWhere]").forEach(function(r){ r.addEventListener("change", refreshDest); });
+
+  function fail(msg){ errBox.style.display="block"; errBox.textContent=msg; outEl.style.display="none"; outHead.style.display="none"; roundWrap.style.display="none"; }
+
+  function generate(){
+    errBox.style.display="none";
+    var names=parsedEl.value.split(/\r?\n/).map(function(s){return s.trim();}).filter(Boolean);
+    if(!names.length){ fail("站点目录为空：先在第 1 步粘贴 AI 提取的条目。"); return; }
+    var input={
+      book_serial:$("bookSerial").value,
+      dest_serial:destSerial.value,
+      book_kind:kindEl.value,
+      source_in_bag:srcInBag(),
+      home_name:$("homeName").value.trim()||"旅店",
+      use_pet:$("usePet").checked,
+      pause_after_return:$("pauseReturn").checked,
+      stations:names.map(function(s){return {name:s};})
+    };
+    var cfg;
+    try{ cfg=RC.build(input); }catch(e){ fail(String(e)); return; }
+    lastCfg=cfg;
+    var batches=RC.batches(cfg.stations.length, cfg.batch_size, cfg.charge_cap);
+    if(batches.length>1){
+      roundWrap.style.display="";
+      roundSel.innerHTML="";
+      batches.forEach(function(b,i){
+        var o=document.createElement("option");
+        o.value=i+1; o.textContent=i+1;
+        roundSel.appendChild(o);
+      });
+      roundMeta.textContent="共 "+batches.length+" 轮（源书 charge 上限 "+cfg.charge_cap+" 格）；"+
+        batches.map(function(b,i){return "第"+(i+1)+"轮 "+(b[0]+1)+"–"+b[1];}).join("，");
+    } else {
+      roundWrap.style.display="none";
+    }
+    doRender(1);
+  }
+
+  function doRender(batchIndex){
+    try{
+      var text=RC.render(lastCfg, batchIndex);
+      lastText=text;
+      outEl.value=text;
+      outEl.style.display="block"; outHead.style.display="flex";
+      var n=lastCfg.stations.length;
+      outMeta.textContent="本轮 "+(RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][1]-RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][0])+" 站 ｜ 源书 "+lastCfg.book_serial+(lastCfg.dest_serial?(" ｜ 载体直投 "+lastCfg.dest_serial):"");
+      window.__rc_out=text;
+    }catch(e){ fail(String(e)); }
+  }
+
+  btnGen.addEventListener("click", generate);
+  roundSel.addEventListener("change", function(){ doRender(+roundSel.value); });
+  // 复制：先走同步选中+execCommand（保留用户手势，最稳），失败再退回剪贴板 API。
+  // 旧写法直接调 navigator.clipboard.writeText 且不接 promise，被拒时毫无反馈、
+  // 按钮却照显「已复制」—— 就是羊爸遇到的"点了没复制到"。
+  function copyBySelection(t){
+    var ta=document.createElement("textarea");
+    ta.value=t; ta.setAttribute("readonly","");
+    ta.style.position="fixed"; ta.style.top="-1000px"; ta.style.opacity="0";
+    document.body.appendChild(ta);
+    var ok=false;
+    try{ ta.select(); ta.setSelectionRange(0, t.length); ok=document.execCommand("copy"); }catch(e){ ok=false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  $("btnCopy").addEventListener("click", function(){
+    var b=this, t=(window.__rc_out||"").replace(/\n/g,"\r\n");
+    function done(ok){
+      b.textContent = ok ? "已复制 ✓" : "复制失败：请手动全选";
+      setTimeout(function(){ b.textContent="复制脚本"; }, ok?1500:2800);
+    }
+    if(copyBySelection(t)){ done(true); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(false); });
+    } else { done(false); }
+  });
+  $("btnDl").addEventListener("click", function(){
+    var t=(window.__rc_out||"").replace(/\n/g,"\r\n");
+    var blob=new Blob([t],{type:"text/plain;charset=utf-8"});
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    var bi=roundSel.value||1;
+    a.download="razor-rune-copy"+(RC.batches(lastCfg.stations.length,lastCfg.batch_size,lastCfg.charge_cap).length>1?("-b"+bi):"")+".txt";
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+  refreshDest();
+})();
+</script>
+</body>
+</html>

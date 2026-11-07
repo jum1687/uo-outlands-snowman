@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razor 脚本 · UO Outlands 中文资料库</title>
+<link rel="stylesheet" href="../skills/style.css?v=20261107_2">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/theme.js"></script>
+</head>
+<body class="side-nav-page">
+<nav class="site-nav">
+  <span class="nav-brand">UO Outlands 中文资料库</span>
+  <a href="../index.html">首页</a>
+  <a href="../patch/index.html">版本更新</a>
+  <a href="../skills/index.html">技能详解</a>
+  <a href="../elements/index.html">元素精通</a>
+  <a href="../mastery/index.html">精通链</a>
+  <a href="../commands/index.html">命令大全</a>
+  <a href="../modifiers.html">装备属性</a>
+  <a href="../poison.html">用毒 Poison</a>
+  <a href="../treasure-maps.html">藏宝图与资源图</a>
+  <a href="index.html">Razor 脚本</a>
+  <div class="nav-dropdown">
+    <a href="../codex/index.html">宝典图鉴</a>
+    <div class="nav-menu">
+      <a href="../codex/arcane.html">奥术 <span class="en">Arcane</span></a>
+      <a href="../codex/archery.html">弓箭 <span class="en">Archery</span></a>
+      <a href="../codex/dual-wielding.html">双持 <span class="en">Dual Wielding</span></a>
+      <a href="../codex/fencing.html">细剑 <span class="en">Fencing</span></a>
+      <a href="../codex/fishing.html">钓鱼 <span class="en">Fishing</span></a>
+      <a href="../codex/macing.html">锤类 <span class="en">Macing</span></a>
+      <a href="../codex/swords.html">剑术 <span class="en">Swords</span></a>
+      <a href="../codex/throwing.html">投掷 <span class="en">Throwing</span></a>
+      <a href="../codex/wrestling.html">徒手 <span class="en">Wrestling</span></a>
+      <a href="../codex/parrying.html">格挡 <span class="en">Parrying</span></a>
+      <a href="../codex/trap.html">陷阱 <span class="en">Trap</span></a>
+      <a href="../codex/healers_codex.html">治疗 <span class="en">Healers</span></a>
+      <a href="../codex/bard_codex.html">音乐 <span class="en">Bard</span></a>
+      <a href="../codex/thieves_codex.html">盗贼 <span class="en">Thieves</span></a>
+      <a href="../codex/potion_codex.html">药剂 <span class="en">Potion</span></a>
+      <a href="../codex/wizard_grimoire.html">法师 <span class="en">Wizard</span></a>
+      <a href="../codex/summoner_tome.html">召唤 <span class="en">Summoner</span></a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../pets/index.html">宠物图鉴</a>
+    <div class="nav-menu">
+      <a href="../pets/index.html">可驯服宠物</a>
+      <a href="../pets/follower-abilities.html">宠物技能大全</a>
+      <a href="../pets/team-builder.html">智能配宠向导</a>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <a href="../ships.html">船舰系统</a>
+    <div class="nav-menu">
+      <a href="../ships.html">船舰系统总页</a>
+      <a href="../ships-newbie.html">新手第一条船</a>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="../index.html">资料库首页</a> &#8250; <span>Razor 脚本</span></nav>
+<div class="mw-body">
+  <h1 class="mw-page-title-main">Razor 脚本 <span class="cnsub">Razor Scripts</span></h1>
+  <div class="mw-content">
+    <p>把重复、机械、容易手滑的操作交给客户端 Razor 插件跑。本站收录的都是<b>实跑验证过</b>的脚本，配套网页工具可直接生成。</p>
+    <p class="note">脚本以 <code>.txt</code> 交付：复制进 Razor 脚本框保存即可运行，无需改动客户端文件、不用重启。</p>
+
+    <h2>脚本目录 <span class="en-h">Scripts</span></h2>
+    <div class="skill-grid">
+      <a class="skill-card" href="rune-copy.html">符石书复制器 <span class="en">Rune Book Copier</span></a>
+    </div>
+
+    <h2>使用须知 <span class="en-h">Before You Run</span></h2>
+    <ul class="plain">
+      <li><b>取物品 ID</b>：游戏内输入 <code>-info</code> 回车，再点向目标物，读 Object Information 里的 <code>Serial:</code>（形如 <code>0x754DEB39</code>），<b>不要</b>读下面十进制的 SerialDec。</li>
+      <li><b>脚本不必开满速</b>：每一步都靠等待时间对齐服务器，把 <code>wait</code> 调小反而会漏动作。</li>
+      <li><b>城区部分区域禁发言</b>：靠 <code>say "[…"</code> 发的方括号指令在刷广告的挂机区会被吞，宏照跑但人不动。此类区域改用界面按钮路径。</li>
+      <li><b>先看刹车再跑</b>：好的脚本会在关键节点自检（比如「能否打开锁在原地的书」＝人是否真的到位），不对就停下报警，而不是硬跑下去。</li>
+    </ul>
+
+    <p class="note">本页为粉丝自制工具（非官方），脚本基于社区 Razor 语法实测整理；如遇失效，多半是游戏机制变动，欢迎回报。</p>
+  </div>
+</div>
+</body>
+</html>
