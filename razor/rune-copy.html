@@ -148,9 +148,13 @@
       </div>
     </div>
     <div class="rc-field" id="destField">
-      <label for="destSerial">载体 Tome ID（装复件的那本，26 格）<span id="destReq" style="color:#a03030"></span></label>
-      <input type="text" id="destSerial" placeholder="0x........（留空 = 按图形找包里唯一那本 Tome）">
-      <div class="hint" id="destHint">源书在背包且也是 Tome 时必填——包里两本 Tome 图形相同，不给 ID 分不清哪本是载体。源书是 Runebook 时可留空（Runebook 与 Tome 图形不同，脚本认得出）。</div>
+      <label>载体 Tome 怎么认（不需要填 ID）</label>
+      <div class="hint" id="destHint" style="border-left:3px solid #a03030;padding-left:10px">
+        <b style="color:#a03030">跑之前：背包直层只留载体那一本 Tome。</b><br>
+        脚本靠「按图形找背包直层的那本 Tome」投符石，<b>写死 ID 直投实测无效</b>（符石会落回背包、宏零报错）。
+        多出来的 Tome 请塞进一个子包或放银行——<b>子包里的 Tome 不会被扫到</b>，这是本客户端唯一可靠的隔离方式。
+        （所有 Tome 色相相同，没法用颜色区分。）
+      </div>
     </div>
     <div class="rc-row">
       <div class="rc-field">
@@ -186,6 +190,7 @@
 
   <div class="rc-note">
     <b>分轮说明</b>：Runebook 的 recall charge 上限是 10 格，条目超过 10 条会自动分轮（每轮 8 站），第 1 轮跑完停下来给源书补 charge，再回来生成第 2 轮。Tome 不受 charge 限制，一轮跑完。<br>
+    <b>载体怎么认（必读）</b>：脚本靠 <code>findtype 0x71AF backpack</code> 找<b>背包直层</b>那本 Tome 投符石，<b>不认写死的 ID</b>——2026-11-14 实测 <code>drop 0x........-1 -1 -1</code> 会被静默丢弃、符石落回背包且宏零报错。<b>所以跑之前背包直层只能有一本 Tome</b>；多出来的塞进一个子包或放银行（子包与书内物品不会被扫到，这是本客户端唯一可靠的隔离手段）。所有 Tome 色相相同，无法用颜色区分。<br>
     <b>容量说明</b>：载体 Tome 里已放回馆符石占 1 格；26 格 = 1 + 25。条目满 26 条时，最后一枚装不进，脚本会把它留在背包并提示手动收尾（取出回馆符石 → 放入最后一枚）。<br>
     <b>⚠ 回馆刹车（防串站核心）</b>：<code>[recallcharge</code> 走载体 Tome 的 recall 充能、<b>同时耗蓝</b>；它失败时（Heat of Battle 交战限制／充能不够／蓝不够／施法后摇吞指令）<b>脚本内没有任何报错</b>。所以脚本在每站回馆后<b>先开一次源书验证位置</b>——源书锁在回馆点，只有人真回去了才打得开；打不开就 <code>overhead</code> 报警并 <code>stop</code> 终止宏，<b>绝不把下一站刻错坐标</b>。开跑时也先验证一次（人不在回馆点直接停）。<br>
     <b>recallcharge 静默失效的已知原因</b>：① 刚交战过（Heat of Battle 限制 recall，宠物站台打怪最易触发）；② 载体 Tome recall 充能耗尽；③ 蓝低于 Recall 所需（实测 charge recall 也扣 mana）；④ 施法/改名后摇期间 <code>say</code> 被吞。前三者看系统消息栏可确认，脚本已用补蓝＋刹车兜底。<br>
@@ -235,9 +240,7 @@ var RC = (function(){
   }
 
   function dropSnippet(c){
-    if(c.dest_serial){
-      return "  lift r1 1\n  wait "+c.wait_lift+"\n  drop "+c.dest_serial+" -1 -1 -1\n  wait "+c.wait_drop+"\n";
-    }
+    // 只用 findtype 别名投：写死 serial 的 drop 在客户端静默无效（2026-11-14 实测）
     return "  lift r1 1\n  wait "+c.wait_lift+"\n"+
       "  if findtype "+c.tome_graphic+" backpack as tome\n"+
       "    drop tome -1 -1 -1\n    wait "+c.wait_drop+"\n"+
@@ -246,9 +249,7 @@ var RC = (function(){
 
   function sweepSnippet(c){
     if(!c.sweep) return "";
-    var drop;
-    if(c.dest_serial) drop = "  drop "+c.dest_serial+" -1 -1 -1";
-    else drop = "  if findtype "+c.tome_graphic+" backpack as tome\n    drop tome -1 -1 -1\n  else\n    drop backpack -1 -1 -1\n  endif";
+    var drop = "  if findtype "+c.tome_graphic+" backpack as tome\n    drop tome -1 -1 -1\n  else\n    drop backpack -1 -1 -1\n  endif";
     var passes="";
     for(var k=1;k<=c.sweep_max;k++){
       passes += "if findtype "+c.rune_graphic+" backpack "+c.marked_hue+" as s"+k+"\n"+
@@ -279,17 +280,16 @@ var RC = (function(){
     var bag = cfg.source_in_bag;
     var overflowLast = cfg.sweep && (n+1>cap);
 
-    var destLine;
-    if(cfg.dest_serial) destLine = "serial "+cfg.dest_serial+"（直投）";
-    else if(bag) destLine = "未给 serial ｜ 源书为 runebook，投给包里那本 tome（按图形识别）";
-    else destLine = "未给 serial ｜ 源书不在背包，投给包里那本 tome";
+    var destLine = "按图形找背包直层那本 tome（别名投；写死 ID 无效）";
 
     var preLine, whereLine;
     if(bag){
-      preLine = "# 前置：人在回馆点起跑，源书在背包里，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n";
+      preLine = "# 前置：人在回馆点起跑，源书在背包里，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n"+
+                "# 前置（关键）：背包直层只留载体这一本 tome；其它 tome 塞进子包或放银行（子包内的不会被 findtype 扫到）\n";
       whereLine = "# 源书在背包：每站 mark 完直接开书飞下一站，不用折返；全部跑完才回馆\n";
     } else {
-      preLine = "# 前置：人在回馆点，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n";
+      preLine = "# 前置：人在回馆点，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n"+
+                "# 前置（关键）：背包直层只留载体这一本 tome；其它 tome 塞进子包或放银行（子包内的不会被 findtype 扫到）\n";
       whereLine = "";
     }
 
@@ -441,7 +441,6 @@ var RC = (function(){
     if(!input.book_serial) throw "缺少源书 ID。游戏里 -info 点那本书，读 Serial: 那行。";
     var cfg={
       book_serial: normSerial(input.book_serial,"源书 ID",true),
-      dest_serial: normSerial(input.dest_serial,"载体 Tome ID",false),
       book_kind: kind,
       source_in_bag: !!input.source_in_bag,
       home_name: input.home_name,
@@ -460,8 +459,7 @@ var RC = (function(){
     if(n<1) throw "站点目录为空：先在第 1 步粘贴 AI 提取的条目。";
     if(n>26) throw "条目数 "+n+" 超过载体 Tome 的 26 格，请拆成两次复制。";
     if(kind==="runebook" && n>16) throw "Runebook 最多 16 条，识别到 "+n+" 条——请检查是不是 Tome。";
-    if(cfg.source_in_bag && kind==="tome" && !cfg.dest_serial)
-      throw "源书在背包里且也是 Tome，必须给「载体 Tome ID」。\n包里两本 Tome 图形相同，不给 ID 脚本分不清往哪本书里丢符石。\n游戏里 -info 点你那本空白 Tome，把 Serial 填进载体 ID 框。";
+
     return cfg;
   }
 
@@ -475,7 +473,7 @@ var RC = (function(){
   var rawEl=$("stationsRaw"), parsedEl=$("stationsParsed"),
       countEl=$("parseCount"), warnsEl=$("parseWarns"),
       kindEl=$("bookKind"), kindHint=$("kindHint"),
-      destSerial=$("destSerial"), destReq=$("destReq"), destHint=$("destHint"),
+      destHint=$("destHint"),
       errBox=$("errBox"), outEl=$("output"), outHead=$("outHead"),
       outMeta=$("outMeta"), roundWrap=$("roundWrap"), roundSel=$("roundSel"),
       roundMeta=$("roundMeta"), btnGen=$("btnGen");
@@ -484,11 +482,15 @@ var RC = (function(){
   function srcInBag(){ return document.querySelector("input[name=srcWhere]:checked").value==="bag"; }
 
   function refreshDest(){
+    // 载体只能靠「背包直层唯一那本 Tome」认定，没有 ID 可填，这里只做场景提示
     var need = srcInBag() && kindEl.value==="tome";
-    destReq.textContent = need ? " *（必填）" : "";
     destHint.innerHTML = need
-      ? "<b style='color:#a03030'>源书在背包且也是 Tome：必填。</b>包里两本 Tome 图形相同，不给 ID 分不清哪本是载体。"
-      : "源书是 Runebook 时可留空（图形不同，脚本认得出包里唯一那本 Tome）；给了 ID 则直投，最稳。";
+      ? "<b style='color:#a03030'>源书在背包且也是 Tome：两本图形相同。</b><br>"+
+        "跑之前把其他 Tome 全部塞进一个子包或放银行，<b>背包直层只留载体那一本</b>——脚本按图形找直层那本投，多一本就会投错。<br>"+
+        "（为什么不能填 ID：写死 serial 的 <code>drop</code> 在本客户端静默无效，符石会落回背包且宏零报错。）"
+      : "<b style='color:#a03030'>跑之前：背包直层只留载体那一本 Tome。</b><br>"+
+        "脚本按图形找背包直层那本 Tome 投符石；多出来的 Tome 塞进子包或放银行，<b>子包里的不会被扫到</b>。<br>"+
+        "（为什么不能填 ID：写死 serial 的 <code>drop</code> 在本客户端静默无效，符石会落回背包且宏零报错。）";
   }
 
   rawEl.addEventListener("input", function(){
@@ -522,7 +524,6 @@ var RC = (function(){
     if(!names.length){ fail("站点目录为空：先在第 1 步粘贴 AI 提取的条目。"); return; }
     var input={
       book_serial:$("bookSerial").value,
-      dest_serial:destSerial.value,
       book_kind:kindEl.value,
       source_in_bag:srcInBag(),
       home_name:$("homeName").value.trim()||"旅店",
@@ -557,7 +558,7 @@ var RC = (function(){
       outEl.value=text;
       outEl.style.display="block"; outHead.style.display="flex";
       var n=lastCfg.stations.length;
-      outMeta.textContent="本轮 "+(RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][1]-RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][0])+" 站 ｜ 源书 "+lastCfg.book_serial+(lastCfg.dest_serial?(" ｜ 载体直投 "+lastCfg.dest_serial):"");
+      outMeta.textContent="本轮 "+(RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][1]-RC.batches(n,lastCfg.batch_size,lastCfg.charge_cap)[batchIndex-1][0])+" 站 ｜ 源书 "+lastCfg.book_serial;
       window.__rc_out=text;
     }catch(e){ fail(String(e)); }
   }
