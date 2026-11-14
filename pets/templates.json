@@ -1,5 +1,37 @@
 [
   {
+    "id": "t_d3e122e8mwgks2u4",
+    "name": "baolongqun",
+    "author": "Cross Veus",
+    "authorId": "f04361b8-989f-4da9-980d-69ba8f2a7201",
+    "note": "",
+    "scenario": "pve",
+    "slots": 5,
+    "team": [
+      "Blood Hunter",
+      "Blood Hunter",
+      "Blood Hunter",
+      "Blood Hunter",
+      "Blood Hunter"
+    ],
+    "talents": {
+      "Attack": [
+        "Hunting Party",
+        "Feed",
+        "Swarm",
+        "Lethality"
+      ],
+      "Utility": [],
+      "Tank": []
+    },
+    "createdAt": "2026-11-14T15:43:26.044Z",
+    "ratings": {
+      "sum": 0,
+      "count": 0,
+      "voters": {}
+    }
+  },
+  {
     "id": "t_24b7ec58mu9myfdp",
     "name": "双黑寡妇",
     "author": "Snowman Liang",
