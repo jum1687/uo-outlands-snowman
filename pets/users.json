@@ -94,5 +94,13 @@
     "salt": "79b1bd0b7c39064e9b28fef026e5b7cd",
     "hash": "bbeef93e5c440a0873dc53ed7ff692dc1c3a5ee9ce3be564f4fc30c0c1434b13",
     "createdAt": "2026-10-20T11:03:59.455Z"
+  },
+  {
+    "id": "f04361b8-989f-4da9-980d-69ba8f2a7201",
+    "name": "Cross Veus",
+    "nameLower": "cross veus",
+    "salt": "446111ddab3543753d70fafa5488c005",
+    "hash": "2e09633d8ca22dc7735f95f1cb5d89143bb7f79167c2b150be03778106528fa7",
+    "createdAt": "2026-11-14T15:38:07.964Z"
   }
 ]
