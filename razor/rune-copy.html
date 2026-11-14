@@ -148,13 +148,19 @@
       </div>
     </div>
     <div class="rc-field" id="destField">
-      <label>载体 Tome 怎么认（不需要填 ID）</label>
+      <label for="tomeGraphic">载体书 Graphic（装复件的那本，必填）*</label>
+      <input type="text" id="tomeGraphic" value="0xBF66" placeholder="0xBF66">
+      <div class="hint">
+        <b style="color:#a03030">必须用 -info 现场读</b>：游戏里输入 <code>-info</code> 回车，点向那本载体书，读 <code>Graphic:</code> 那行。
+        不同书的图形不同 —— <b>图形填错，脚本会一直找不到书、符石全掉在地上或进错书，而且零报错</b>。
+        <br>已知：装符石的 Tome 常见 <code>0xBF66</code>；另有 <code>0x71AF</code> 那种（普通书本类）。你的那本是多少，以 -info 为准。
+      </div>
+      <label>载体怎么认（不需要填 Serial）</label>
       <div class="hint" id="destHint" style="border-left:3px solid #a03030;padding-left:10px">
-        <b style="color:#a03030">跑之前：背包里只能有载体这一本 Tome。</b><br>
-        脚本靠 <code>findtype 0x71AF backpack</code> 找那本 Tome 投符石，<b>写死 ID 直投实测无效</b>（符石落回背包、宏零报错）。<br>
-        ⚠ <b>塞子包没用</b>——findtype 会连子包一起递归（2026-11-14 实测），子包里的 Tome 照样被命中、照样投错。
-        多出来的 Tome 请<b>放银行、放地上或交给别的角色</b>。<br>
-        （所有 Tome 色相相同，没法用颜色区分；书内的物品则扫不到，所以书里的回馆符石不干扰。）
+        脚本按 <b>Graphic</b> 找书投符石（<code>findtype &lt;图形&gt; backpack</code> → 别名投），<b>不用填 Serial</b>。<br>
+        <b style="color:#a03030">前提：背包里同图形的书只能有一本。</b>别的书图形不同就无妨；图形相同的第二本<b>必须移出背包</b>（银行/地上/别的角色）。<br>
+        ⚠ <b>塞子包没用</b>：findtype 会连子包一起递归（2026-11-14 实测）。<br>
+        （色相区分不了——同类书同色；但<b>书内的物品扫不到</b>，所以书里的回馆符石不干扰。）
       </div>
     </div>
     <div class="rc-row">
@@ -191,7 +197,10 @@
 
   <div class="rc-note">
     <b>分轮说明</b>：Runebook 的 recall charge 上限是 10 格，条目超过 10 条会自动分轮（每轮 8 站），第 1 轮跑完停下来给源书补 charge，再回来生成第 2 轮。Tome 不受 charge 限制，一轮跑完。<br>
-    <b>载体怎么认（必读）</b>：脚本靠 <code>findtype 0x71AF backpack</code> 找那本 Tome 投符石，<b>不认写死的 ID</b>——2026-11-14 实测 <code>drop 0x........ -1 -1 -1</code>（十进制同样）被静默丢弃、符石落回背包且宏零报错；<code>dclick</code> 该 serial 也打不开书。<b>所以跑之前背包里只能有一本 Tome</b>；多出来的<b>放银行 / 放地上 / 交给别的角色</b>——<b>塞子包无效，findtype 会递归进子包</b>。所有 Tome 色相相同，无法用颜色区分；但<b>书（tome）内的物品扫不到</b>，所以书里的回馆符石不会干扰判断。<br>
+    <b>载体怎么认（必读）</b>：脚本按你填的 <b>Graphic</b> 找书——<code>findtype &lt;图形&gt; backpack as tome</code> → <code>drop tome</code>（别名投），<b>不认 Serial</b>。<br>
+    · <b>图形必须 -info 现场读</b>：2026-11-14 实测，装符石的 Tome 常见 <code>0xBF66</code>，另有一种 <code>0x71AF</code>；<b>填错图形 → 找不到书、符石掉地或进错书，宏零报错</b>。<br>
+    · <b>背包里同图形的书只能有一本</b>：findtype 只取第一本，第二本同图形的必定投错。图形不同则互不干扰。<b>塞子包无效</b>（会递归进子包）。<br>
+    · 色相区分不了（同类书同色）；但<b>书（tome）内的物品扫不到</b>，所以书里的回馆符石不会干扰判断。<br>
     <b>容量说明</b>：载体 Tome 里已放回馆符石占 1 格；26 格 = 1 + 25。条目满 26 条时，最后一枚装不进，脚本会把它留在背包并提示手动收尾（取出回馆符石 → 放入最后一枚）。<br>
     <b>⚠ 回馆刹车（防串站核心）</b>：<code>[recallcharge</code> 走载体 Tome 的 recall 充能、<b>同时耗蓝</b>；它失败时（Heat of Battle 交战限制／充能不够／蓝不够／施法后摇吞指令）<b>脚本内没有任何报错</b>。所以脚本在每站回馆后<b>先开一次源书验证位置</b>——源书锁在回馆点，只有人真回去了才打得开；打不开就 <code>overhead</code> 报警并 <code>stop</code> 终止宏，<b>绝不把下一站刻错坐标</b>。开跑时也先验证一次（人不在回馆点直接停）。<br>
     <b>recallcharge 静默失效的已知原因</b>：① 刚交战过（Heat of Battle 限制 recall，宠物站台打怪最易触发）；② 载体 Tome recall 充能耗尽；③ 蓝低于 Recall 所需（实测 charge recall 也扣 mana）；④ 施法/改名后摇期间 <code>say</code> 被吞。前三者看系统消息栏可确认，脚本已用补蓝＋刹车兜底。<br>
@@ -204,7 +213,7 @@
 /* ================= 纯逻辑区（与 gen_rune_copy.py 同源，可独立测试） ================= */
 var RC = (function(){
   var D = {
-    rune_graphic:"0x1F14", marked_hue:"0x0000", tome_graphic:"0x71AF",
+    rune_graphic:"0x1F14", marked_hue:"0x0000", tome_graphic:"0xBF66",
     dest_capacity:26, batch_size:8,
     summon_spell:"Earth Elemental", summon_label:"土元素",
     mana_summon:55, wait_summon:6500, mana_recall:30, mana_mark:25, mana_return:45,
@@ -224,6 +233,16 @@ var RC = (function(){
     if(body.length!==8 || /[^0-9a-fA-F]/.test(body))
       throw field + " 不是合法 serial：" + s + "\n要求形如 0x754DEB39（0x + 8 位十六进制）。\n游戏里输入 -info 回车，点向那本书，读 Serial: 那行（不要 SerialDec）。";
     return "0x" + body.toUpperCase();
+  }
+
+  function normGraphic(v){
+    var s = String(v||"").trim();
+    if(!s) throw "缺少载体书 Graphic。游戏里 -info 点它，读 Graphic: 那行（形如 0xBF66）。";
+    var body = s.toLowerCase().indexOf("0x")===0 ? s.slice(2) : s;
+    body = body.trim();
+    if(!/^[0-9a-fA-F]{1,4}$/.test(body))
+      throw "载体书 Graphic 不合法：" + s + "\n要求形如 0xBF66（0x + 最多 4 位十六进制）。\n游戏里输入 -info 回车，点向那本载体书，读 Graphic: 那行。";
+    return "0x" + body.toUpperCase().padStart(4, "0");
   }
 
   function tagOf(name){
@@ -281,17 +300,17 @@ var RC = (function(){
     var bag = cfg.source_in_bag;
     var overflowLast = cfg.sweep && (n+1>cap);
 
-    var destLine = "按图形找背包那本 tome（别名投；写死 ID 无效，包里只能有一本）";
+    var destLine = "图形 "+cfg.tome_graphic+" ｜ 按图形找书（别名投）；同图形者只能有一本";
 
     var preLine, whereLine;
     if(bag){
       preLine = "# 前置：人在回馆点起跑，源书在背包里，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n"+
-                "# 前置（关键）：背包里只留载体这一本 tome；其它 tome 放银行/地上/别的角色\n"+
+                "# 前置（关键）：背包里同图形("+cfg.tome_graphic+")的 tome 只能有一本；别的图形无妨\n"+
                 "# 前置（关键）：塞子包无效——findtype 会递归进子包，照样命中、照样投错\n";
       whereLine = "# 源书在背包：每站 mark 完直接开书飞下一站，不用折返；全部跑完才回馆\n";
     } else {
       preLine = "# 前置：人在回馆点，背包有空白符石；回馆符石「"+cfg.home_name+"」已放进这本 tome("+cfg.tome_graphic+") 里\n"+
-                "# 前置（关键）：背包里只留载体这一本 tome；其它 tome 放银行/地上/别的角色\n"+
+                "# 前置（关键）：背包里同图形("+cfg.tome_graphic+")的 tome 只能有一本；别的图形无妨\n"+
                 "# 前置（关键）：塞子包无效——findtype 会递归进子包，照样命中、照样投错\n";
       whereLine = "";
     }
@@ -445,6 +464,7 @@ var RC = (function(){
     var cfg={
       book_serial: normSerial(input.book_serial,"源书 ID",true),
       book_kind: kind,
+      tome_graphic: normGraphic(input.tome_graphic),
       source_in_bag: !!input.source_in_bag,
       home_name: input.home_name,
       home_command: "[recallcharge "+input.home_name,
@@ -488,13 +508,13 @@ var RC = (function(){
     // 载体只能靠「背包直层唯一那本 Tome」认定，没有 ID 可填，这里只做场景提示
     var need = srcInBag() && kindEl.value==="tome";
     destHint.innerHTML = need
-      ? "<b style='color:#a03030'>源书在背包且也是 Tome：两本图形相同。</b><br>"+
-        "跑之前把其他 Tome 全部移出背包（银行/地上/别的角色），<b>背包里只留载体那一本</b>——脚本按图形找书投，多一本就会投错且不报错。<br>"+
+      ? "<b style='color:#a03030'>源书在背包且也是 Tome：若与载体图形相同，就会互相干扰。</b><br>"+
+        "先确认源书和自己的载体书 <b>Graphic 是否一样</b>（-info 各读一次）：<b>不同就没事</b>；相同则把源书移出背包（银行/地上/别的角色）。<br>"+
         "⚠ <b>塞子包没用</b>：findtype 会连子包一起递归（实测）。<br>"+
-        "（为什么不能填 ID：写死 serial 的 <code>drop</code> 与 <code>dclick</code> 在本客户端均无效。）"
-      : "<b style='color:#a03030'>跑之前：背包里只留载体那一本 Tome。</b><br>"+
-        "脚本按图形找那本 Tome 投符石；多出来的移出背包（银行/地上/别的角色），<b>塞子包无效</b>——findtype 会递归进子包。<br>"+
-        "（为什么不能填 ID：写死 serial 的 <code>drop</code> 与 <code>dclick</code> 在本客户端均无效。）";
+        "（为什么不用 Serial：写死 Serial 曾因一位抄错长期排不出，图形是本应用唯一稳的定位维度。）"
+      : "<b style='color:#a03030'>跑之前：确认上面那行 Graphic 与载体书 -info 的值一致。</b><br>"+
+        "脚本按图形找书投符石；<b>同图形的第二本必须移出背包</b>（银行/地上/别的角色），塞子包无效。<br>"+
+        "（为什么不用 Serial：图形错会静默失败，Serial 错也一样，而图形一眼能核对。）";
   }
 
   rawEl.addEventListener("input", function(){
@@ -528,6 +548,7 @@ var RC = (function(){
     if(!names.length){ fail("站点目录为空：先在第 1 步粘贴 AI 提取的条目。"); return; }
     var input={
       book_serial:$("bookSerial").value,
+      tome_graphic:$("tomeGraphic").value,
       book_kind:kindEl.value,
       source_in_bag:srcInBag(),
       home_name:$("homeName").value.trim()||"旅店",
